@@ -24,3 +24,18 @@ buttons.forEach((button, index) => {
     alert("Product Cart me add ho gaya!");
   });
 });
+const checkoutBtn = document.getElementById("checkout-btn");
+
+if (checkoutBtn) {
+  checkoutBtn.addEventListener("click", () => {
+    const message =
+      "Hello Royal Store!%0A%0AI want to order:%0A" +
+      "Total Items: " + cart +
+      "%0ATotal Price: ₹" + total;
+
+    window.open(
+      "https://wa.me/918791139418?text=" + message,
+      "_blank"
+    );
+  });
+}
