@@ -45,3 +45,14 @@ if (checkoutBtn) {
     );
   });
 }
+const cartList = document.getElementById("cart-items");
+
+if (cartList) {
+  cartList.innerHTML = "";
+
+  cartItems.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = `${item.name} - ₹${item.price}`;
+    cartList.appendChild(li);
+  });
+}
