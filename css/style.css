@@ -96,3 +96,33 @@ button:hover{
     background:#FFD700;
     color:#000;
 }
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  padding:30px;
+}
+
+.product{
+  background:#222;
+  color:white;
+  padding:15px;
+  border-radius:12px;
+  text-align:center;
+}
+
+.product img{
+  width:100%;
+  border-radius:10px;
+}
+
+.product button{
+  background:gold;
+  color:black;
+  border:none;
+  padding:10px 20px;
+  border-radius:8px;
+  cursor:pointer;
+  margin-top:10px;
+}
