@@ -1,6 +1,6 @@
 let cart = Number(localStorage.getItem("cart")) || 0;
 let total = Number(localStorage.getItem("total")) || 0;
-
+let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 const cartCount = document.getElementById("cart-count");
 const totalPrice = document.getElementById("total-price");
 
@@ -17,6 +17,8 @@ const products = [
 buttons.forEach((button, index) => {
   button.addEventListener("click", () => {
     cart++;
+    cartItems.push(products[index]);
+localStorage.setItem("cartItems", JSON.stringify(cartItems));
     total += products[index].price;
 
     localStorage.setItem("cart", cart);
