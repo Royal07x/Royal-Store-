@@ -46,7 +46,7 @@ if (checkoutBtn) {
   });
 }
 const cartList = document.getElementById("cart-items");
-
+console.log(cartItems);
 if (cartList) {
   cartList.innerHTML = "";
 
