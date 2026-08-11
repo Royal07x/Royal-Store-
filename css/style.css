@@ -58,3 +58,41 @@ button{
 button:hover{
     background:#fff;
 }
+.hero{
+    text-align:center;
+    padding:60px 20px;
+}
+
+.hero input{
+    width:300px;
+    max-width:90%;
+    padding:12px;
+    border-radius:8px;
+    border:none;
+    margin-top:20px;
+}
+
+.categories{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    padding:40px 20px;
+}
+
+.card{
+    background:#222;
+    color:#FFD700;
+    width:220px;
+    padding:30px;
+    text-align:center;
+    border-radius:12px;
+    font-size:22px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.card:hover{
+    background:#FFD700;
+    color:#000;
+}
