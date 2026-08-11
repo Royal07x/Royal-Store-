@@ -1,11 +1,13 @@
-let cart = 0;
-let total = 0;
+let cart = Number(localStorage.getItem("cart")) || 0;
+let total = Number(localStorage.getItem("total")) || 0;
 
 const cartCount = document.getElementById("cart-count");
 const totalPrice = document.getElementById("total-price");
 
-const buttons = document.querySelectorAll(".product button");
+if (cartCount) cartCount.textContent = cart;
+if (totalPrice) totalPrice.textContent = total;
 
+const buttons = document.querySelectorAll(".product button");
 const prices = [799, 999, 499];
 
 buttons.forEach((button, index) => {
@@ -13,8 +15,11 @@ buttons.forEach((button, index) => {
     cart++;
     total += prices[index];
 
-    cartCount.textContent = cart;
-    totalPrice.textContent = total;
+    localStorage.setItem("cart", cart);
+    localStorage.setItem("total", total);
+
+    if (cartCount) cartCount.textContent = cart;
+    if (totalPrice) totalPrice.textContent = total;
 
     alert("Product Cart me add ho gaya!");
   });
