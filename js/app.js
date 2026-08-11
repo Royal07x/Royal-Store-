@@ -8,12 +8,16 @@ if (cartCount) cartCount.textContent = cart;
 if (totalPrice) totalPrice.textContent = total;
 
 const buttons = document.querySelectorAll(".product button");
-const prices = [799, 999, 499];
+const products = [
+  { name: "Premium Shirt", price: 799 },
+  { name: "Stylish Pant", price: 999 },
+  { name: "Beauty Kit", price: 499 }
+];
 
 buttons.forEach((button, index) => {
   button.addEventListener("click", () => {
     cart++;
-    total += prices[index];
+    total += products[index].price;
 
     localStorage.setItem("cart", cart);
     localStorage.setItem("total", total);
@@ -29,9 +33,9 @@ const checkoutBtn = document.getElementById("checkout-btn");
 if (checkoutBtn) {
   checkoutBtn.addEventListener("click", () => {
     const message =
-      "Hello Royal Store!%0A%0AI want to order:%0A" +
-      "Total Items: " + cart +
-      "%0ATotal Price: ₹" + total;
+  "🛍️ Hello Royal Store!%0A%0AI want to order:%0A%0A" +
+  "📦 Total Items: " + cart +
+  "%0A💰 Total Price: ₹" + total;
 
     window.open(
       "https://wa.me/918791139418?text=" + message,
