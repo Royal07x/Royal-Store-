@@ -407,14 +407,14 @@ justify-content:center;
 
 #side-menu{
     position: fixed;
-    top: 0;
+    top: 60px;
     left: -260px;
-    width: 250px;
-    height: 100%;
+    width: 260px;
+    height: calc(100vh - 60px);
     background: #111;
-    transition: 0.3s;
-    padding-top: 70px;
-    z-index: 1000;
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    z-index: 2000;
 }
 
 #side-menu.active{
@@ -422,15 +422,15 @@ justify-content:center;
 }
 
 #side-menu a{
-    display: block;
-    color: white;
-    text-decoration: none;
-    padding: 15px 25px;
-    font-size: 18px;
+    display:block;
+    color:#fff;
+    text-decoration:none;
+    padding:18px 25px;
+    font-size:22px;
 }
 
 #side-menu a:hover{
-    background: #333;
+    background:#333;
 }
 .top-header{
     position:fixed;
