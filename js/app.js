@@ -75,9 +75,9 @@ if (cartList) {
     const li = document.createElement("li");
 
     li.innerHTML = `
-        ${item.name} - ₹${item.price}
+        ${item.name} - ₹${item.price * item.qty}
         <button class="minus" data-index="${index}">➖</button>
-        <span>1</span>
+        <span>${item.qty}</span>
         <button class="plus" data-index="${index}">➕</button>
     `;
 
@@ -86,13 +86,31 @@ if (cartList) {
 }
 document.querySelectorAll(".plus").forEach(btn => {
     btn.addEventListener("click", () => {
-        alert("Quantity feature next step me complete karenge 🚀");
+
+        const index = btn.dataset.index;
+
+        cartItems[index].qty++;
+
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+        location.reload();
+
     });
 });
 
 document.querySelectorAll(".minus").forEach(btn => {
     btn.addEventListener("click", () => {
-        alert("Quantity feature next step me complete karenge 🚀");
+
+        const index = btn.dataset.index;
+
+        if (cartItems[index].qty > 1) {
+            cartItems[index].qty--;
+        }
+
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+        location.reload();
+
     });
 });
 const clearCartBtn = document.getElementById("clear-cart-btn");
