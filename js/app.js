@@ -251,22 +251,18 @@ I want to order:
 });
 const menuBtn = document.getElementById("menu-btn");
 const sideMenu = document.getElementById("side-menu");
+const overlay = document.getElementById("overlay");
 
-if (menuBtn && sideMenu) {
+if(menuBtn && sideMenu && overlay){
 
-    menuBtn.addEventListener("click", function () {
+    menuBtn.addEventListener("click", () => {
         sideMenu.classList.toggle("active");
+        overlay.classList.toggle("active");
     });
 
-    document.addEventListener("click", function (e) {
-
-        if (
-            !sideMenu.contains(e.target) &&
-            !menuBtn.contains(e.target)
-        ) {
-            sideMenu.classList.remove("active");
-        }
-
+    overlay.addEventListener("click", () => {
+        sideMenu.classList.remove("active");
+        overlay.classList.remove("active");
     });
 
 }
