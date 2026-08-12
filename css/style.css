@@ -393,3 +393,42 @@ justify-content:center;
     color:#fff;
     text-decoration:none;
 }
+#menu-btn{
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+#side-menu{
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 250px;
+    height: 100%;
+    background: #111;
+    transition: 0.3s;
+    padding-top: 70px;
+    z-index: 1000;
+}
+
+#side-menu.active{
+    left: 0;
+}
+
+#side-menu a{
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-size: 18px;
+}
+
+#side-menu a:hover{
+    background: #333;
+}
