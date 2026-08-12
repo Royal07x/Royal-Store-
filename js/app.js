@@ -35,6 +35,11 @@ const checkoutBtn = document.getElementById("checkout-btn");
 
 if (checkoutBtn) {
   checkoutBtn.addEventListener("click", () => {
+    const name = document.getElementById("customer-name").value;
+const phone = document.getElementById("customer-phone").value;
+const address = document.getElementById("customer-address").value;
+const city = document.getElementById("customer-city").value;
+const pincode = document.getElementById("customer-pincode").value;
 
     let productList = "";
 
@@ -43,11 +48,16 @@ if (checkoutBtn) {
     });
 
     const message =
-      "🛍️ Hello Royal Store!%0A%0A" +
-      "I want to order:%0A%0A" +
-      productList +
-      "%0A📦 Total Items: " + cart +
-      "%0A💰 Total Price: ₹" + total;
+"🛍️ Hello Royal Store!%0A%0A" +
+"👤 Name: " + name + "%0A" +
+"📱 Phone: " + phone + "%0A" +
+"🏠 Address: " + address + "%0A" +
+"🏙️ City: " + city + "%0A" +
+"📮 PIN Code: " + pincode + "%0A%0A" +
+"🛒 I want to order:%0A%0A" +
+productList +
+"%0A📦 Total Items: " + cart +
+"%0A💰 Total Price: ₹" + total;
 
     window.open(
       "https://wa.me/918791139418?text=" + message,
