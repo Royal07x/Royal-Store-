@@ -205,13 +205,22 @@ if (loginBtn) {
       return;
     }
 
-    if (email === "admin@royalstore.com" && password === "123456") {
-      alert("Login Successful");
-      localStorage.setItem("loggedIn", "true");
-      window.location.href = "index.html";
-    } else {
-      alert("Invalid Email or Password");
-    }
+    const savedEmail = localStorage.getItem("userEmail");
+const savedPassword = localStorage.getItem("userPassword");
+
+if (
+    (email === "admin@royalstore.com" && password === "123456") ||
+    (email === savedEmail && password === savedPassword)
+) {
+    alert("Login Successful!");
+
+    localStorage.setItem("loggedIn", "true");
+
+    window.location.href = "index.html";
+} else {
+    alert("Invalid Email or Password!");
+}
+      
   });
 }
 document.querySelectorAll(".whatsapp-order").forEach(btn => {
