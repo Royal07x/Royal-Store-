@@ -78,7 +78,8 @@ if (cartList) {
         ${item.name} - ₹${item.price * item.qty}
         <button class="minus" data-index="${index}">➖</button>
         <span>${item.qty}</span>
-        <button class="plus" data-index="${index}">➕</button>
+        <button class="plus" data-index="${index}">+</button>
+<button class="delete" data-index="${index}">🗑️</button>
     `;
 
     cartList.appendChild(li);
@@ -113,16 +114,33 @@ document.querySelectorAll(".minus").forEach(btn => {
 
     });
 });
+document.querySelectorAll(".delete").forEach(btn => {
+    btn.addEventListener("click", () => {
+
+        const index = btn.dataset.index;
+
+        cartItems.splice(index, 1);
+
+        cart = cartItems.reduce((sum, item) => sum + item.qty, 0);
+        total = cartItems.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+        localStorage.setItem("cart", cart);
+        localStorage.setItem("total", total);
+
+        location.reload();
+    });
+});
 const clearCartBtn = document.getElementById("clear-cart-btn");
 
 if (clearCartBtn) {
-  clearCartBtn.addEventListener("click", () => {
-    localStorage.removeItem("cart");
-    localStorage.removeItem("total");
-    localStorage.removeItem("cartItems");
+    clearCartBtn.addEventListener("click", () => {
+        localStorage.removeItem("cart");
+        localStorage.removeItem("total");
+        localStorage.removeItem("cartItems");
 
-    alert("Cart cleared!");
-
-    location.reload();
-  });
+        alert("Cart cleared!");
+        location.reload();
+    });
 }
+
