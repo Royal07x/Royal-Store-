@@ -71,12 +71,30 @@ console.log(cartItems);
 if (cartList) {
   cartList.innerHTML = "";
 
-  cartItems.forEach(item => {
+  cartItems.forEach((item, index) => {
     const li = document.createElement("li");
-    li.textContent = `${item.name} - ₹${item.price}`;
+
+    li.innerHTML = `
+        ${item.name} - ₹${item.price}
+        <button class="minus" data-index="${index}">➖</button>
+        <span>1</span>
+        <button class="plus" data-index="${index}">➕</button>
+    `;
+
     cartList.appendChild(li);
-  });
+});
 }
+document.querySelectorAll(".plus").forEach(btn => {
+    btn.addEventListener("click", () => {
+        alert("Quantity feature next step me complete karenge 🚀");
+    });
+});
+
+document.querySelectorAll(".minus").forEach(btn => {
+    btn.addEventListener("click", () => {
+        alert("Quantity feature next step me complete karenge 🚀");
+    });
+});
 const clearCartBtn = document.getElementById("clear-cart-btn");
 
 if (clearCartBtn) {
