@@ -43,11 +43,11 @@ const pincode = document.getElementById("customer-pincode").value;
 
     let productList = "";
 
-    cartItems.forEach(item => {
-    productList += "• " + item.name + " x" + item.qty + " - ₹" + (item.price * item.qty) + "%0A";
+cartItems.forEach(item => {
+    productList += `• ${item.name} x${item.qty} - ₹${item.price * item.qty}\n`;
 });
 
-   const message = `
+const message = `
 🛍️ Hello Royal Store!
 
 👤 Name: ${name}
@@ -65,11 +65,9 @@ ${productList}
 `;
 
 window.open(
-  "https://wa.me/918791139418?text=" + encodeURIComponent(message),
-  "_blank"
+    "https://wa.me/918791139418?text=" + encodeURIComponent(message),
+    "_blank"
 );
-
-});
     
 }
 const cartList = document.getElementById("cart-items");
