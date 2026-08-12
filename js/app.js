@@ -16,7 +16,15 @@ const products = [
 
 buttons.forEach((button, index) => {
   button.addEventListener("click", () => {
+    
+    if (localStorage.getItem("loggedIn") !== "true") {
+    alert("Please login first!");
+    window.location.href = "login.html";
+    return;
+    }
+    
     cart++;
+    
     cartItems.push({ ...products[index] });
 localStorage.setItem("cartItems", JSON.stringify(cartItems));
     total += products[index].price;
