@@ -214,3 +214,29 @@ if (loginBtn) {
     }
   });
 }
+document.querySelectorAll(".whatsapp-order").forEach(btn => {
+    btn.addEventListener("click", () => {
+
+        if (localStorage.getItem("loggedIn") !== "true") {
+            alert("Please login first!");
+            window.location.href = "login.html";
+            return;
+        }
+
+        const product = btn.dataset.product;
+        const price = btn.dataset.price;
+
+        const message =
+`Hello Royal Store!
+
+I want to order:
+
+🛍 Product: ${product}
+💰 Price: ₹${price}`;
+
+        window.open(
+            "https://wa.me/918791139418?text=" + encodeURIComponent(message),
+            "_blank"
+        );
+    });
+});
