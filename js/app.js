@@ -56,7 +56,7 @@ const pincode = document.getElementById("customer-pincode").value;
 "📮 PIN Code: " + pincode + "%0A%0A" +
 "🛒 I want to order:%0A%0A" +
 productList +
-"%0A📦 Total Items: " + cart +
+"%0A📦 Total Items: " + cartItems.reduce((sum, item) => sum + item.qty, 0) +
 "%0A💰 Total Price: ₹" + total;
 
     window.open(
