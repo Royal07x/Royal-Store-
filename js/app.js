@@ -31,15 +31,15 @@ localStorage.setItem("cartItems", JSON.stringify(cartItems));
   });
 });
 
-const checkoutBtn = document.getElementById("checkout-btn");
+const checkoutBtn = document.getElementById("checkoutBtn");
 
 if (checkoutBtn) {
   checkoutBtn.addEventListener("click", () => {
-    const name = document.getElementById("customer-name").value;
-const phone = document.getElementById("customer-phone").value;
-const address = document.getElementById("customer-address").value;
-const city = document.getElementById("customer-city").value;
-const pincode = document.getElementById("customer-pincode").value;
+    const name = document.getElementById("name").value;
+const phone = document.getElementById("mobile").value;
+const address = document.getElementById("address").value;
+const city = document.getElementById("city").value;
+const pincode = document.getElementById("pin").value;
 
     let productList = "";
 
