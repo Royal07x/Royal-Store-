@@ -178,3 +178,25 @@ if (clearCartBtn) {
     });
 }
 
+// Login System
+const loginBtn = document.querySelector(".login-card button");
+
+if (loginBtn) {
+  loginBtn.addEventListener("click", () => {
+    const email = document.querySelector('input[type="email"]').value.trim();
+    const password = document.querySelector('input[type="password"]').value.trim();
+
+    if (email === "" || password === "") {
+      alert("Please enter Email and Password");
+      return;
+    }
+
+    if (email === "admin@royalstore.com" && password === "123456") {
+      alert("Login Successful");
+      localStorage.setItem("loggedIn", "true");
+      window.location.href = "index.html";
+    } else {
+      alert("Invalid Email or Password");
+    }
+  });
+}
