@@ -7,7 +7,7 @@ const totalPrice = document.getElementById("total-price");
 if (cartCount) cartCount.textContent = cart;
 if (totalPrice) totalPrice.textContent = total;
 
-const buttons = document.querySelectorAll(".product button");
+const buttons = document.querySelectorAll(".product button:first-of-type");
 const products = [
   { name: "Premium Shirt", price: 799 },
   { name: "Stylish Pant", price: 999 },
