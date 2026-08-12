@@ -68,10 +68,11 @@ window.open(
     "https://wa.me/918791139418?text=" + encodeURIComponent(message),
     "_blank"
 );
-    
+
+  });
 }
+
 const cartList = document.getElementById("cart-items");
-console.log(cartItems);
 if (cartList) {
   cartList.innerHTML = "";
 
