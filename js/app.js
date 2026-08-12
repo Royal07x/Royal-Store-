@@ -40,7 +40,11 @@ const phone = document.getElementById("mobile").value;
 const address = document.getElementById("address").value;
 const city = document.getElementById("city").value;
 const pincode = document.getElementById("pin").value;
-
+    
+if (!name || !phone || !address || !city || !pincode) {
+    alert("⚠️ Please fill all details before placing your order.");
+    return;
+}
     let productList = "";
 
 cartItems.forEach(item => {
