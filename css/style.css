@@ -244,7 +244,7 @@ button:hover,
 
 .whatsapp-btn{
     width:100%;
-    background:#25D366;
+    background:linear-gradient(135deg,#25D366,#128C7E);
     color:#fff;
     padding:16px;
     border:none;
@@ -256,23 +256,27 @@ button:hover,
 }
 
 .whatsapp-btn:hover{
-    background:#1ebd5a;
+    background:linear-gradient(135deg,#2eea78,#25D366);
 }
 
 .clear-btn{
     width:100%;
-    background:#141414;
+    background:linear-gradient(135deg,#2B2B2B,#111111);
     color:#fff;
     padding:16px;
     border:none;
-    border-radius:12px;
-    font-size:17px;
+    border-radius:999px;
+    font-size:18px;
+    font-weight:600;
     cursor:pointer;
     margin-top:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,.18);
+    transition:.3s;
 }
 
 .clear-btn:hover{
-    background:#333;
+    background: linear-gradient(135deg,#444,#222);
+transform: translateY(-2px);
 }
 .cart-item{
 list-style:none;
@@ -289,6 +293,10 @@ justify-content:space-between;
 align-items:center;
 }
 
+.cart-info{
+flex:1;
+text-align:left;
+}
 .cart-info h3{
 margin:0;
 font-size:20px;
@@ -302,7 +310,7 @@ color:#777;
 .cart-controls{
 display:flex;
 align-items:center;
-gap:10px;
+gap:14px;
 }
 
 .cart-controls button{
