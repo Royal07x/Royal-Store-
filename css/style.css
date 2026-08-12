@@ -274,3 +274,55 @@ button:hover,
 .clear-btn:hover{
     background:#333;
 }
+.cart-item{
+list-style:none;
+margin:18px 0;
+}
+
+.cart-card{
+background:#fff;
+border-radius:22px;
+padding:18px;
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.cart-info h3{
+margin:0;
+font-size:20px;
+}
+
+.cart-info p{
+margin-top:8px;
+color:#777;
+}
+
+.cart-controls{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.cart-controls button{
+width:42px;
+height:42px;
+border:none;
+border-radius:999px;
+background:#111;
+color:#fff;
+font-size:22px;
+cursor:pointer;
+}
+
+.qty{
+font-size:18px;
+font-weight:bold;
+min-width:20px;
+text-align:center;
+}
+
+.remove-btn{
+background:#ff3b30 !important;
+}
