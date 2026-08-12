@@ -462,3 +462,17 @@ justify-content:center;
 main{
     margin-top:80px;
 }
+#overlay{
+    position: fixed;
+    top:60px;
+    left:0;
+    width:100%;
+    height:calc(100vh - 60px);
+    background:rgba(0,0,0,.5);
+    display:none;
+    z-index:1500;
+}
+
+#overlay.active{
+    display:block;
+}
