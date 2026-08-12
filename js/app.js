@@ -77,3 +77,16 @@ if (cartList) {
     cartList.appendChild(li);
   });
 }
+const clearCartBtn = document.getElementById("clear-cart-btn");
+
+if (clearCartBtn) {
+  clearCartBtn.addEventListener("click", () => {
+    localStorage.removeItem("cart");
+    localStorage.removeItem("total");
+    localStorage.removeItem("cartItems");
+
+    alert("Cart cleared!");
+
+    location.reload();
+  });
+}
