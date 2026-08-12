@@ -47,24 +47,30 @@ const pincode = document.getElementById("customer-pincode").value;
     productList += "• " + item.name + " x" + item.qty + " - ₹" + (item.price * item.qty) + "%0A";
 });
 
-    const message =
-"🛍️ Hello Royal Store!%0A%0A" +
-"👤 Name: " + name + "%0A" +
-"📱 Phone: " + phone + "%0A" +
-"🏠 Address: " + address + "%0A" +
-"🏙️ City: " + city + "%0A" +
-"📮 PIN Code: " + pincode + "%0A%0A" +
-"🛒 I want to order:%0A%0A" +
-productList +
-"%0A📦 Total Items: " + cartItems.reduce((sum, item) => sum + item.qty, 0) +
-"%0A💰 Total Price: ₹" + cartItems.reduce((sum, item) => sum + (item.price * item.qty), 0);
+   const message = `
+🛍️ Hello Royal Store!
 
-    window.open(
-      "https://wa.me/918791139418?text=" + message,
-      "_blank"
-    );
+👤 Name: ${name}
+📱 Phone: ${phone}
+🏠 Address: ${address}
+🏙️ City: ${city}
+📮 PIN Code: ${pincode}
 
-  });
+🛒 I want to order:
+
+${productList}
+
+📦 Total Items: ${cartItems.reduce((sum, item) => sum + item.qty, 0)}
+💰 Total Price: ₹${cartItems.reduce((sum, item) => sum + (item.price * item.qty), 0)}
+`;
+
+window.open(
+  "https://wa.me/918791139418?text=" + encodeURIComponent(message),
+  "_blank"
+);
+
+});
+    
 }
 const cartList = document.getElementById("cart-items");
 console.log(cartItems);
