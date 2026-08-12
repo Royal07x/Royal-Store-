@@ -9,15 +9,15 @@ if (totalPrice) totalPrice.textContent = total;
 
 const buttons = document.querySelectorAll(".product .add-cart");
 const products = [
-  { name: "Premium Shirt", price: 799 },
-  { name: "Stylish Pant", price: 999 },
-  { name: "Beauty Kit", price: 499 }
+  { name: "Premium Shirt", price: 799, qty: 1 },
+  { name: "Stylish Pant", price: 999, qty: 1 },
+  { name: "Beauty Kit", price: 499, qty: 1 }
 ];
 
 buttons.forEach((button, index) => {
   button.addEventListener("click", () => {
     cart++;
-    cartItems.push(products[index]);
+    cartItems.push({ ...products[index] });
 localStorage.setItem("cartItems", JSON.stringify(cartItems));
     total += products[index].price;
 
@@ -44,8 +44,8 @@ const pincode = document.getElementById("customer-pincode").value;
     let productList = "";
 
     cartItems.forEach(item => {
-      productList += "• " + item.name + " - ₹" + item.price + "%0A";
-    });
+    productList += "• " + item.name + " x" + item.qty + " - ₹" + (item.price * item.qty) + "%0A";
+});
 
     const message =
 "🛍️ Hello Royal Store!%0A%0A" +
