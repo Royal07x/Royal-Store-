@@ -34,7 +34,13 @@ localStorage.setItem("cartItems", JSON.stringify(cartItems));
 const checkoutBtn = document.getElementById("checkoutBtn");
 
 if (checkoutBtn) {
+  
   checkoutBtn.addEventListener("click", () => {
+    if (localStorage.getItem("loggedIn") !== "true") {
+    alert("Please login first!");
+    window.location.href = "login.html";
+    return;
+    }
     const name = document.getElementById("name").value;
 const phone = document.getElementById("mobile").value;
 const address = document.getElementById("address").value;
