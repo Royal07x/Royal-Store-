@@ -79,15 +79,30 @@ if (cartList) {
   cartItems.forEach((item, index) => {
     const li = document.createElement("li");
 
-    li.innerHTML = `
-        ${item.name} - ₹${item.price * item.qty}
-        <button class="minus" data-index="${index}">➖</button>
-        <span>${item.qty}</span>
-        <button class="plus" data-index="${index}">+</button>
-<button class="delete" data-index="${index}">🗑️</button>
-    `;
+li.className = "cart-item";
 
-    cartList.appendChild(li);
+li.innerHTML = `
+<div class="cart-card">
+
+  <div class="cart-info">
+    <h3>${item.name}</h3>
+    <p>₹${item.price}</p>
+  </div>
+
+  <div class="cart-controls">
+    <button class="minus" data-index="${index}">−</button>
+
+    <span class="qty">${item.qty}</span>
+
+    <button class="plus" data-index="${index}">+</button>
+
+    <button class="delete remove-btn" data-index="${index}">🗑️</button>
+  </div>
+
+</div>
+`;
+
+cartList.appendChild(li);
 });
 }
 document.querySelectorAll(".plus").forEach(btn => {
