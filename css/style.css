@@ -324,5 +324,13 @@ text-align:center;
 }
 
 .remove-btn{
+width:42px !important;
+height:42px !important;
+padding:0;
+font-size:18px;
 background:#ff3b30 !important;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
 }
