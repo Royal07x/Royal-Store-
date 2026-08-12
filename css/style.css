@@ -432,3 +432,33 @@ justify-content:center;
 #side-menu a:hover{
     background: #333;
 }
+.top-header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:60px;
+    background:#111;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 15px;
+    z-index:1000;
+}
+
+.logo{
+    color:#fff;
+    font-size:22px;
+    margin:0;
+}
+
+.header-icons a{
+    color:#fff;
+    text-decoration:none;
+    margin-left:15px;
+    font-size:22px;
+}
+
+main{
+    margin-top:80px;
+}
