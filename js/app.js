@@ -57,7 +57,7 @@ const pincode = document.getElementById("customer-pincode").value;
 "🛒 I want to order:%0A%0A" +
 productList +
 "%0A📦 Total Items: " + cartItems.reduce((sum, item) => sum + item.qty, 0) +
-"%0A💰 Total Price: ₹" + total;
+"%0A💰 Total Price: ₹" + cartItems.reduce((sum, item) => sum + (item.price * item.qty), 0);
 
     window.open(
       "https://wa.me/918791139418?text=" + message,
@@ -92,9 +92,14 @@ document.querySelectorAll(".plus").forEach(btn => {
 
         cartItems[index].qty++;
 
-        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+cart = cartItems.reduce((sum, item) => sum + item.qty, 0);
+total = cartItems.reduce((sum, item) => sum + (item.price * item.qty), 0);
 
-        location.reload();
+localStorage.setItem("cartItems", JSON.stringify(cartItems));
+localStorage.setItem("cart", cart);
+localStorage.setItem("total", total);
+
+location.reload();
 
     });
 });
@@ -105,12 +110,17 @@ document.querySelectorAll(".minus").forEach(btn => {
         const index = btn.dataset.index;
 
         if (cartItems[index].qty > 1) {
-            cartItems[index].qty--;
-        }
+    cartItems[index].qty--;
+}
 
-        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+cart = cartItems.reduce((sum, item) => sum + item.qty, 0);
+total = cartItems.reduce((sum, item) => sum + (item.price * item.qty), 0);
 
-        location.reload();
+localStorage.setItem("cartItems", JSON.stringify(cartItems));
+localStorage.setItem("cart", cart);
+localStorage.setItem("total", total);
+
+location.reload();
 
     });
 });
