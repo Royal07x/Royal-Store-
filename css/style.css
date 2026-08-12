@@ -1,100 +1,114 @@
+:root{
+  --bg:#F7F3EE;
+  --hero:#F3E7D8;
+  --white:#FFFFFF;
+  --black:#141414;
+  --gray:#666666;
+  --border:#E5E5E5;
+  --gold:#C8A96A;
+}
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
 }
 
 body{
-    background:#111;
-    color:#fff;
+  background:var(--bg);
+  color:var(--black);
 }
 
 header{
-    background:#000;
-    color:#FFD700;
-    text-align:center;
-    padding:20px;
+  background:var(--white);
+  color:var(--black);
+  text-align:center;
+  padding:20px;
+  border-bottom:1px solid var(--border);
 }
 
 nav{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    background:#222;
-    padding:15px;
-    flex-wrap:wrap;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  background:var(--white);
+  padding:15px;
+  border-bottom:1px solid var(--border);
 }
 
 nav a{
-    color:#FFD700;
-    text-decoration:none;
-    font-weight:bold;
+  color:var(--black);
+  text-decoration:none;
+  font-weight:600;
 }
 
 nav a:hover{
-    color:white;
+  color:var(--gold);
 }
 
 main{
-    text-align:center;
-    padding:50px 20px;
+  text-align:center;
+  padding:50px 20px;
 }
 
 h2{
-    color:#FFD700;
+  color:var(--black);
 }
 
 button{
-    background:#FFD700;
-    color:#000;
-    border:none;
-    padding:12px 20px;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:bold;
+  background:var(--gold);
+  color:#fff;
+  border:none;
+  padding:12px 22px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
 }
 
 button:hover{
-    background:#fff;
+  opacity:.9;
 }
+
 .hero{
-    text-align:center;
-    padding:60px 20px;
+  background:var(--hero);
+  text-align:center;
+  padding:60px 20px;
 }
 
 .hero input{
-    width:300px;
-    max-width:90%;
-    padding:12px;
-    border-radius:8px;
-    border:none;
-    margin-top:20px;
+  width:300px;
+  max-width:90%;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  margin-top:20px;
 }
-
 .categories{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-    padding:40px 20px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  padding:40px 20px;
 }
 
 .card{
-    background:#222;
-    color:#FFD700;
-    width:220px;
-    padding:30px;
-    text-align:center;
-    border-radius:12px;
-    font-size:22px;
-    font-weight:bold;
-    transition:.3s;
+  background:#fff;
+  color:#141414;
+  width:220px;
+  padding:30px;
+  text-align:center;
+  border:1px solid #E5E5E5;
+  border-radius:12px;
+  font-size:22px;
+  font-weight:bold;
+  transition:.3s;
 }
 
 .card:hover{
-    background:#FFD700;
-    color:#000;
+  background:#F3E7D8;
+  transform:translateY(-5px);
 }
 
 .products{
@@ -105,9 +119,10 @@ button:hover{
 }
 
 .product{
-  background:#222;
-  color:white;
+  background:#fff;
+  color:#141414;
   padding:15px;
+  border:1px solid #E5E5E5;
   border-radius:12px;
   text-align:center;
 }
@@ -118,11 +133,75 @@ button:hover{
 }
 
 .product button{
-  background:gold;
-  color:black;
-  border:none;
-  padding:10px 20px;
-  border-radius:8px;
-  cursor:pointer;
   margin-top:10px;
+  width:100%;
+}
+
+footer{
+  background:#fff;
+  color:#666;
+  text-align:center;
+  padding:20px;
+  border-top:1px solid #E5E5E5;
+  margin-top:40px;
+}
+
+@media(max-width:768px){
+  nav{
+    gap:12px;
+  }
+
+  .hero{
+    padding:40px 15px;
+  }
+
+  .categories{
+    flex-direction:column;
+    align-items:center;
+  }
+}
+.contact{
+    background:#FFFFFF;
+    margin:40px 20px;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.contact h2{
+    margin-bottom:15px;
+    color:#141414;
+}
+
+.contact p{
+    color:#666666;
+    margin:8px 0;
+}
+
+button,
+.add-cart{
+    background:#141414;
+    color:#FFFFFF;
+    border:none;
+    border-radius:50px;
+    padding:14px 24px;
+    font-size:16px;
+    font-weight:600;
+    transition:.3s;
+}
+
+button:hover,
+.add-cart:hover{
+    background:#2B2B2B;
+    transform:translateY(-2px);
+}
+
+.product{
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.product:hover{
+    transform:translateY(-5px);
+    transition:.3s;
 }
