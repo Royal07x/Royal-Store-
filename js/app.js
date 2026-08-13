@@ -27,10 +27,13 @@ buttons.forEach((button, index) => {
     
     cartItems.push({ ...products[index] });
 localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    updateNotification();
     total += products[index].price;
 
     localStorage.setItem("cart", cart);
     localStorage.setItem("total", total);
+    
+    updateNotification();
 
     if (cartCount) cartCount.textContent = cart;
     if (totalPrice) totalPrice.textContent = total;
