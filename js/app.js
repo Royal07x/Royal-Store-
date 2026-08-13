@@ -268,15 +268,17 @@ if(menuBtn && sideMenu && overlay){
 }
 // Notification Bell
 function updateNotification() {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
     const badge = document.getElementById("notify-count");
 
     if (!badge) return;
 
-    if (cart.length > 0) {
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+    const totalQty = cartItems.reduce((sum, item) => sum + item.qty, 0);
+
+    if (totalQty > 0) {
         badge.style.display = "flex";
-        badge.textContent = cart.length;
+        badge.textContent = totalQty;
     } else {
         badge.style.display = "none";
     }
