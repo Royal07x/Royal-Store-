@@ -216,15 +216,12 @@ if (
       
   });
 }
+const loginModal = document.getElementById("loginModal");
 document.querySelectorAll(".whatsapp-order").forEach(btn => {
     btn.addEventListener("click", () => {
 
         if (localStorage.getItem("loggedIn") !== "true") {
-    if (confirm("Account nahi hai?\nOK = Sign Up\nCancel = Login")) {
-        window.location.href = "signup.html";
-    } else {
-        window.location.href = "login.html";
-    }
+    loginModal.style.display = "flex";
     return;
         }
 
@@ -281,7 +278,6 @@ function updateNotification() {
 }
 
 updateNotification();
-const loginModal = document.getElementById("loginModal");
 const loginBtnModal = document.getElementById("loginBtnModal");
 const signupBtnModal = document.getElementById("signupBtnModal");
 const closeModal = document.getElementById("closeModal");
