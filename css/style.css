@@ -953,294 +953,7 @@ main{
 .clear-btn:hover {
   opacity: 0.9;
 }
-  /* =========================
-   LOGIN REQUIRED POPUP
-========================= */
-
-.login-modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,.55);
-    justify-content:center;
-    align-items:center;
-    z-index:99999;
-    padding:20px;
-    box-sizing:border-box;
-}
-
-.login-modal-box{
-    width:100%;
-    max-width:620px;
-    background:#fff;
-    border-radius:24px;
-    padding:30px 24px;
-    text-align:center;
-    box-shadow:0 20px 60px rgba(0,0,0,.25);
-    box-sizing:border-box;
-}
-
-.login-modal-box h2{
-    margin:0 0 14px;
-    color:#111;
-    font-size:30px;
-    font-weight:700;
-}
-
-.login-modal-box p{
-    margin:0 0 25px;
-    color:#222;
-    font-size:18px;
-    line-height:1.4;
-}
-
-/* Common Modal Button */
-.login-modal-box .modal-btn{
-    width:100%;
-    border:none;
-    padding:16px;
-    margin:8px 0;
-    border-radius:14px;
-    font-size:18px;
-    font-weight:700;
-    cursor:pointer;
-    transition:.25s;
-}
-
-/* LOGIN = BLACK */
-.login-modal-box .login-btn{
-    background:#000;
-    color:#fff;
-}
-
-.login-modal-box .login-btn:hover{
-    background:#222;
-    transform:translateY(-2px);
-}
-
-/* SIGN UP = GREEN */
-.login-modal-box .signup-btn{
-    background:#28b446;
-    color:#fff;
-}
-
-.login-modal-box .signup-btn:hover{
-    background:#209b3b;
-    transform:translateY(-2px);
-}
-
-/* CLOSE = RED */
-.login-modal-box .modal-close{
-    background:none;
-    border:none;
-    color:#e00000;
-    font-size:18px;
-    font-weight:700;
-    cursor:pointer;
-    margin-top:14px;
-    padding:10px 20px;
-}
-
-.login-modal-box .modal-close:hover{
-    color:#b00000;
-}
-
-/* Mobile */
-@media(max-width:600px){
-    .login-modal-box{
-        max-width:620px;
-        padding:28px 20px;
-        border-radius:22px;
-    }
-
-    .login-modal-box h2{
-        font-size:28px;
-    }
-
-    .login-modal-box p{
-        font-size:17px;
-    }
-}
-/* =========================
-   LOGIN REQUIRED POPUP
-   FINAL BUTTON FIX
-========================= */
-
-.login-modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.60);
-    justify-content: center;
-    align-items: center;
-    z-index: 99999;
-}
-
-.login-modal-box {
-    width: 90%;
-    max-width: 620px;
-    background: #ffffff;
-    padding: 40px 35px;
-    border-radius: 22px;
-    text-align: center;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-}
-
-.login-modal-box h2 {
-    color: #111111;
-    font-size: 32px;
-    margin: 0 0 18px;
-}
-
-.login-modal-box p {
-    color: #111111;
-    font-size: 20px;
-    line-height: 1.4;
-    margin: 0 0 25px;
-}
-
-/* Common modal button */
-.login-modal-box .modal-btn,
-.login-modal-box .modal-close {
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: 700;
-    border-radius: 50px;
-    padding: 16px 32px;
-    transition: 0.25s;
-}
-
-/* LOGIN = BLACK */
-.login-modal-box .login-btn {
-    background: #000000 !important;
-    color: #ffffff !important;
-}
-
-/* SIGN UP = GREEN */
-.login-modal-box .signup-btn {
-    background: #22c55e !important;
-    color: #ffffff !important;
-}
-
-/* CLOSE = RED */
-.login-modal-box .modal-close {
-    background: #ef4444 !important;
-    color: #ffffff !important;
-}
-
-/* Hover */
-.login-modal-box .login-btn:hover {
-    background: #222222 !important;
-}
-
-.login-modal-box .signup-btn:hover {
-    background: #16a34a !important;
-}
-
-.login-modal-box .modal-close:hover {
-    background: #dc2626 !important;
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-
-    .login-modal-box {
-        width: 90%;
-        max-width: 620px;
-        padding: 35px 22px;
-        border-radius: 22px;
-    }
-
-    .login-modal-box h2 {
-        font-size: 30px;
-    }
-
-    .login-modal-box p {
-        font-size: 19px;
-    }
-
-    .login-modal-box .modal-btn,
-    .login-modal-box .modal-close {
-        padding: 16px 28px;
-        font-size: 19px;
-    }
-}
-/* ===== LOGIN REQUIRED POPUP - FINAL ===== */
-
-.login-modal-box{
-    width:90%;
-    max-width:620px;
-    background:#fff;
-    padding:35px 25px;
-    border-radius:24px;
-    text-align:center;
-    box-shadow:0 20px 60px rgba(0,0,0,.25);
-}
-
-/* Buttons ko ek row mein */
-.login-modal-box .modal-btn{
-    width:auto !important;
-    min-width:140px;
-    padding:14px 28px !important;
-    margin:8px 3px !important;
-    border:none;
-    border-radius:50px;
-    font-size:18px !important;
-    font-weight:700;
-}
-
-/* Login */
-.login-modal-box .login-btn{
-    background:#000 !important;
-    color:#fff !important;
-}
-
-/* Sign Up */
-.login-modal-box .signup-btn{
-    background:#22b84b !important;
-    color:#fff !important;
-}
-
-/* Close — neeche center */
-.login-modal-box .modal-close{
-    display:block;
-    width:auto !important;
-    min-width:140px;
-    margin:8px auto 0 !important;
-    padding:14px 28px !important;
-    border:none !important;
-    border-radius:50px !important;
-    background:#e00000 !important;
-    color:#fff !important;
-    font-size:18px !important;
-    font-weight:700;
-}
-
-/* Mobile */
-@media(max-width:600px){
-    .login-modal-box{
-        width:90%;
-        padding:30px 18px;
-    }
-
-    .login-modal-box .modal-btn{
-        min-width:125px;
-        padding:13px 22px !important;
-        font-size:17px !important;
-    }
-
-    .login-modal-box .modal-close{
-        min-width:125px;
-        padding:13px 22px !important;
-        font-size:17px !important;
-    }
-}
-/* ===== LOGIN REQUIRED POPUP FINAL ===== */
+  /* ===== LOGIN REQUIRED POPUP ===== */
 
 .login-modal{
     display:none;
@@ -1257,7 +970,7 @@ main{
     width:90%;
     max-width:620px;
     background:#fff;
-    padding:38px 25px;
+    padding:35px 25px;
     border-radius:24px;
     text-align:center;
     box-shadow:0 20px 60px rgba(0,0,0,.25);
@@ -1276,44 +989,44 @@ main{
     line-height:1.4;
 }
 
-/* LOGIN + SIGN UP SAME LINE */
+/* LOGIN + SIGN UP */
 .login-modal-box .modal-btn{
-    display:inline-block !important;
-    width:auto !important;
-    min-width:135px !important;
-    padding:14px 25px !important;
-    margin:5px 4px !important;
-    border:none !important;
-    border-radius:50px !important;
-    font-size:18px !important;
-    font-weight:700 !important;
+    display:inline-block;
+    width:auto;
+    min-width:130px;
+    padding:13px 25px;
+    margin:5px 3px;
+    border:none;
+    border-radius:50px;
+    font-size:18px;
+    font-weight:700;
 }
 
-/* BLACK */
+/* LOGIN BLACK */
 .login-modal-box .login-btn{
-    background:#000 !important;
-    color:#fff !important;
+    background:#000;
+    color:#fff;
 }
 
-/* GREEN */
+/* SIGN UP GREEN */
 .login-modal-box .signup-btn{
-    background:#25b84a !important;
-    color:#fff !important;
+    background:#25b84a;
+    color:#fff;
 }
 
-/* CLOSE - BELOW */
+/* CLOSE RED */
 .login-modal-box .modal-close{
-    display:block !important;
-    width:auto !important;
-    min-width:135px !important;
-    margin:12px auto 0 !important;
-    padding:14px 25px !important;
-    border:none !important;
-    border-radius:50px !important;
-    background:#e00000 !important;
-    color:#fff !important;
-    font-size:18px !important;
-    font-weight:700 !important;
+    display:block;
+    width:auto;
+    min-width:130px;
+    margin:12px auto 0;
+    padding:13px 25px;
+    border:none;
+    border-radius:50px;
+    background:#e00000;
+    color:#fff;
+    font-size:18px;
+    font-weight:700;
 }
 
 /* MOBILE */
@@ -1321,7 +1034,7 @@ main{
 
     .login-modal-box{
         width:90%;
-        padding:32px 18px;
+        padding:30px 18px;
     }
 
     .login-modal-box h2{
@@ -1333,14 +1046,14 @@ main{
     }
 
     .login-modal-box .modal-btn{
-        min-width:125px !important;
-        padding:13px 20px !important;
-        font-size:17px !important;
+        min-width:120px;
+        padding:12px 20px;
+        font-size:17px;
     }
 
     .login-modal-box .modal-close{
-        min-width:125px !important;
-        padding:13px 20px !important;
-        font-size:17px !important;
+        min-width:120px;
+        padding:12px 20px;
+        font-size:17px;
     }
 }
