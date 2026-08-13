@@ -1039,3 +1039,110 @@ main{
         font-size:17px;
     }
 }
+/* =========================
+   LOGIN REQUIRED POPUP
+   FINAL BUTTON FIX
+========================= */
+
+.login-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.60);
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.login-modal-box {
+    width: 90%;
+    max-width: 620px;
+    background: #ffffff;
+    padding: 40px 35px;
+    border-radius: 22px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.login-modal-box h2 {
+    color: #111111;
+    font-size: 32px;
+    margin: 0 0 18px;
+}
+
+.login-modal-box p {
+    color: #111111;
+    font-size: 20px;
+    line-height: 1.4;
+    margin: 0 0 25px;
+}
+
+/* Common modal button */
+.login-modal-box .modal-btn,
+.login-modal-box .modal-close {
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 50px;
+    padding: 16px 32px;
+    transition: 0.25s;
+}
+
+/* LOGIN = BLACK */
+.login-modal-box .login-btn {
+    background: #000000 !important;
+    color: #ffffff !important;
+}
+
+/* SIGN UP = GREEN */
+.login-modal-box .signup-btn {
+    background: #22c55e !important;
+    color: #ffffff !important;
+}
+
+/* CLOSE = RED */
+.login-modal-box .modal-close {
+    background: #ef4444 !important;
+    color: #ffffff !important;
+}
+
+/* Hover */
+.login-modal-box .login-btn:hover {
+    background: #222222 !important;
+}
+
+.login-modal-box .signup-btn:hover {
+    background: #16a34a !important;
+}
+
+.login-modal-box .modal-close:hover {
+    background: #dc2626 !important;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    .login-modal-box {
+        width: 90%;
+        max-width: 620px;
+        padding: 35px 22px;
+        border-radius: 22px;
+    }
+
+    .login-modal-box h2 {
+        font-size: 30px;
+    }
+
+    .login-modal-box p {
+        font-size: 19px;
+    }
+
+    .login-modal-box .modal-btn,
+    .login-modal-box .modal-close {
+        padding: 16px 28px;
+        font-size: 19px;
+    }
+}
