@@ -1273,3 +1273,46 @@ main{
     }
 
 }
+
+/* ===== iPhone Premium Button ===== */
+
+.iphone-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    height:48px;
+    padding:0 22px;
+
+    border:none;
+    border-radius:16px;
+
+    background:linear-gradient(180deg,#0A84FF,#007AFF);
+
+    color:#fff;
+    font-size:15px;
+    font-weight:600;
+
+    font-family:-apple-system,BlinkMacSystemFont,
+    "SF Pro Display","Segoe UI",sans-serif;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    box-shadow:
+    0 8px 20px rgba(0,122,255,.30);
+
+    -webkit-tap-highlight-color:transparent;
+}
+
+.iphone-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:
+    0 12px 28px rgba(0,122,255,.40);
+}
+
+.iphone-btn:active{
+    transform:scale(.96);
+}
+
