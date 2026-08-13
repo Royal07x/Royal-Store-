@@ -833,5 +833,47 @@ Thank you for shopping with Royal Store! 👑
             "signupBtnModal"
         );
 
-    const closeModal =
-        document.getEle
+        const closeModal =
+        document.getElementById("closeModal");
+
+
+    // LOGIN BUTTON
+    if (loginBtnModal) {
+
+        loginBtnModal.onclick = function () {
+
+            window.location.href = "login.html";
+
+        };
+
+    }
+
+
+    // SIGN UP BUTTON
+    if (signupBtnModal) {
+
+        signupBtnModal.onclick = function () {
+
+            window.location.href = "signup.html";
+
+        };
+
+    }
+
+
+    // CLOSE POPUP
+    if (closeModal) {
+
+        closeModal.onclick = function () {
+
+            if (loginModal) {
+
+                loginModal.style.display = "none";
+
+            }
+
+        };
+
+    }
+
+});
