@@ -1046,14 +1046,18 @@ main{
     }
 
     .login-modal-box .modal-btn{
-        min-width:120px;
-        padding:12px 20px;
-        font-size:17px;
-    }
+    width:130px;
+    min-width:130px;
+    padding:13px 10px;
+    margin:5px 3px;
+    font-size:18px;
+}
 
-    .login-modal-box .modal-close{
-        min-width:120px;
-        padding:12px 20px;
-        font-size:17px;
-    }
+.login-modal-box .modal-close{
+    width:130px;
+    min-width:130px;
+    padding:13px 10px;
+    margin:12px auto 0;
+    font-size:18px;
+}
 }
