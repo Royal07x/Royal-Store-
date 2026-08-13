@@ -17,12 +17,6 @@ const products = [
 buttons.forEach((button, index) => {
   button.addEventListener("click", () => {
     
-    if (localStorage.getItem("loggedIn") !== "true") {
-    alert("Please login first!");
-    window.location.href = "login.html";
-    return;
-    }
-    
     cart++;
     
     cartItems.push({ ...products[index] });
@@ -47,11 +41,7 @@ const checkoutBtn = document.getElementById("checkoutBtn");
 if (checkoutBtn) {
   
   checkoutBtn.addEventListener("click", () => {
-    if (localStorage.getItem("loggedIn") !== "true") {
-    alert("Please Login or Create an Account First!");
-    window.location.href = "login.html";
-    return;
-    }
+    
     const name = document.getElementById("name").value;
 const phone = document.getElementById("mobile").value;
 const address = document.getElementById("address").value;
@@ -230,9 +220,12 @@ document.querySelectorAll(".whatsapp-order").forEach(btn => {
     btn.addEventListener("click", () => {
 
         if (localStorage.getItem("loggedIn") !== "true") {
-            alert("Please Login or Create an Account First!");
-            window.location.href = "login.html";
-            return;
+    if (confirm("Account nahi hai?\nOK = Sign Up\nCancel = Login")) {
+        window.location.href = "signup.html";
+    } else {
+        window.location.href = "login.html";
+    }
+    return;
         }
 
         const product = btn.dataset.product;
