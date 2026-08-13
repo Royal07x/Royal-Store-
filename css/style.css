@@ -740,3 +740,67 @@ main{
     margin-top:10px;
     cursor:pointer;
 }
+/* LOGIN REQUIRED POPUP */
+.login-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.login-modal-box {
+    width: 90%;
+    max-width: 620px;
+    background: #fff;
+    border-radius: 28px;
+    padding: 35px 25px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.login-modal-box h2 {
+    margin: 0 0 15px;
+    font-size: 32px;
+    color: #111;
+}
+
+.login-modal-box p {
+    margin: 0 0 25px;
+    font-size: 19px;
+    line-height: 1.5;
+    color: #222;
+}
+
+.modal-btn {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 8px 0;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.login-btn {
+    background: #000;
+    color: #fff;
+}
+
+.signup-btn {
+    background: #28a745;
+    color: #fff;
+}
+
+.modal-close {
+    border: none;
+    background: transparent;
+    color: #e00000;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 15px;
+    cursor: pointer;
+}
