@@ -929,3 +929,113 @@ main{
 
 .whatsapp-btn,
 .clear-btn {
+  /* =========================
+   LOGIN REQUIRED POPUP
+========================= */
+
+.login-modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.55);
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+    padding:20px;
+    box-sizing:border-box;
+}
+
+.login-modal-box{
+    width:100%;
+    max-width:620px;
+    background:#fff;
+    border-radius:24px;
+    padding:30px 24px;
+    text-align:center;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
+    box-sizing:border-box;
+}
+
+.login-modal-box h2{
+    margin:0 0 14px;
+    color:#111;
+    font-size:30px;
+    font-weight:700;
+}
+
+.login-modal-box p{
+    margin:0 0 25px;
+    color:#222;
+    font-size:18px;
+    line-height:1.4;
+}
+
+/* Common Modal Button */
+.login-modal-box .modal-btn{
+    width:100%;
+    border:none;
+    padding:16px;
+    margin:8px 0;
+    border-radius:14px;
+    font-size:18px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+}
+
+/* LOGIN = BLACK */
+.login-modal-box .login-btn{
+    background:#000;
+    color:#fff;
+}
+
+.login-modal-box .login-btn:hover{
+    background:#222;
+    transform:translateY(-2px);
+}
+
+/* SIGN UP = GREEN */
+.login-modal-box .signup-btn{
+    background:#28b446;
+    color:#fff;
+}
+
+.login-modal-box .signup-btn:hover{
+    background:#209b3b;
+    transform:translateY(-2px);
+}
+
+/* CLOSE = RED */
+.login-modal-box .modal-close{
+    background:none;
+    border:none;
+    color:#e00000;
+    font-size:18px;
+    font-weight:700;
+    cursor:pointer;
+    margin-top:14px;
+    padding:10px 20px;
+}
+
+.login-modal-box .modal-close:hover{
+    color:#b00000;
+}
+
+/* Mobile */
+@media(max-width:600px){
+    .login-modal-box{
+        max-width:620px;
+        padding:28px 20px;
+        border-radius:22px;
+    }
+
+    .login-modal-box h2{
+        font-size:28px;
+    }
+
+    .login-modal-box p{
+        font-size:17px;
+    }
+}
