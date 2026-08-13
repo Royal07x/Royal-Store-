@@ -929,6 +929,30 @@ main{
 
 .whatsapp-btn,
 .clear-btn {
+  width: 100%;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.whatsapp-btn {
+  background: #25d366;
+  color: #fff;
+}
+
+.clear-btn {
+  background: #111;
+  color: #fff;
+}
+
+.whatsapp-btn:hover,
+.clear-btn:hover {
+  opacity: 0.9;
+}
   /* =========================
    LOGIN REQUIRED POPUP
 ========================= */
