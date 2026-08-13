@@ -42,6 +42,18 @@ if (checkoutBtn) {
   
   checkoutBtn.addEventListener("click", () => {
     
+    if (localStorage.getItem("loggedIn") !== "true") {
+    const loginModal = document.getElementById("loginModal");
+
+    if (loginModal) {
+        loginModal.style.display = "flex";
+    } else {
+        alert("Please Login or Sign Up first.");
+    }
+
+    return;
+    }
+    
     const name = document.getElementById("name").value;
 const phone = document.getElementById("mobile").value;
 const address = document.getElementById("address").value;
