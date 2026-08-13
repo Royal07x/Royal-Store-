@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Store</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="top-header">
+
+    <button id="menu-btn">☰</button>
+
+    <h1 class="logo">Royal Store</h1>
+
+    <div class="header-icons">
+        <a href="login.html">👤</a>
+        <a href="cart.html">🛒 <span id="cart-count">0</span></a>
+    </div>
+
+</header>
+
+    <nav id="side-menu">
+
+    <a href="index.html">🏠 Home</a>
+
+    <a href="#">👕 Shirts</a>
+
+    <a href="#">👖 Pants</a>
+
+    <a href="#">💄 Beauty</a>
+
+    <a href="login.html">🔑 Login</a>
+
+    <a href="signup.html">📝 Sign Up</a>
+
+    <a href="cart.html">🛒 Cart</a>
+
+    </nav>
+    
+<div id="overlay"></div>
+    
+<main>
+    <section class="hero">
+    <h2>Welcome to Royal Store</h2>
+    <p>Best Shirts, Pants & Beauty Products</p>
+
+    <input type="text" placeholder="Search Products...">
+
+    <br><br>
+
+    <button>Shop Now</button>
+</section>
+
+<section class="categories">
+    <div class="card">👕 Shirts</div>
+    <div class="card">👖 Pants</div>
+    <div class="card">💄 Beauty</div>
+</section>
+<section class="products">
+
+<div class="product">
+    <img src="images/shirt.jpg" alt="Shirt">
+    <h3>Premium Shirt</h3>
+    <p>₹799</p>
+    
+    <button class="add-cart">Add to Cart</button>
+    
+    <button class="whatsapp-order"
+        data-product="Premium Shirt"
+        data-price="799">
+    📲 Order on WhatsApp
+    </button>
+</div>
+
+<div class="product">
+    <img src="images/pant.jpg" alt="Pant">
+    <h3>Stylish Pant</h3>
+    <p>₹999</p>
+    
+    <button class="add-cart">Add to Cart</button>
+    
+    <button class="whatsapp-order"
+        data-product="Stylish Pant"
+        data-price="999">
+    📲 Order on WhatsApp
+    </button>
+</div>
+
+<div class="product">
+    <img src="images/beauty.jpg" alt="Beauty">
+    <h3>Beauty Kit</h3>
+    <p>₹499</p>
+    
+    <button class="add-cart">Add to Cart</button>
+    
+    <button class="whatsapp-order"
+        data-product="Beauty Kit"
+        data-price="499">
+    📲 Order on WhatsApp
+    </button>
+</div>
+    
+</section>
+    <section class="contact">
+  <h2>Contact Us</h2>
+  <p>📞 +91 8791139418</p>
+  <p>📧 royalstore@email.com</p>
+  <p>📍 India</p>
+    </section>
+</main>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
