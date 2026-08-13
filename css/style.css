@@ -1170,3 +1170,73 @@ main{
         font-size: 19px;
     }
 }
+/* ===== LOGIN REQUIRED POPUP - FINAL ===== */
+
+.login-modal-box{
+    width:90%;
+    max-width:620px;
+    background:#fff;
+    padding:35px 25px;
+    border-radius:24px;
+    text-align:center;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+/* Buttons ko ek row mein */
+.login-modal-box .modal-btn{
+    width:auto !important;
+    min-width:140px;
+    padding:14px 28px !important;
+    margin:8px 3px !important;
+    border:none;
+    border-radius:50px;
+    font-size:18px !important;
+    font-weight:700;
+}
+
+/* Login */
+.login-modal-box .login-btn{
+    background:#000 !important;
+    color:#fff !important;
+}
+
+/* Sign Up */
+.login-modal-box .signup-btn{
+    background:#22b84b !important;
+    color:#fff !important;
+}
+
+/* Close — neeche center */
+.login-modal-box .modal-close{
+    display:block;
+    width:auto !important;
+    min-width:140px;
+    margin:8px auto 0 !important;
+    padding:14px 28px !important;
+    border:none !important;
+    border-radius:50px !important;
+    background:#e00000 !important;
+    color:#fff !important;
+    font-size:18px !important;
+    font-weight:700;
+}
+
+/* Mobile */
+@media(max-width:600px){
+    .login-modal-box{
+        width:90%;
+        padding:30px 18px;
+    }
+
+    .login-modal-box .modal-btn{
+        min-width:125px;
+        padding:13px 22px !important;
+        font-size:17px !important;
+    }
+
+    .login-modal-box .modal-close{
+        min-width:125px;
+        padding:13px 22px !important;
+        font-size:17px !important;
+    }
+}
