@@ -1,3 +1,4 @@
+alert("JS Loaded");
 const signupBtn = document.getElementById("signupBtn");
 
 signupBtn.addEventListener("click", () => {
