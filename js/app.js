@@ -48,7 +48,7 @@ if (checkoutBtn) {
   
   checkoutBtn.addEventListener("click", () => {
     if (localStorage.getItem("loggedIn") !== "true") {
-    alert("Please login first!");
+    alert("Please Login or Create an Account First!");
     window.location.href = "login.html";
     return;
     }
@@ -230,7 +230,7 @@ document.querySelectorAll(".whatsapp-order").forEach(btn => {
     btn.addEventListener("click", () => {
 
         if (localStorage.getItem("loggedIn") !== "true") {
-            alert("Please login first!");
+            alert("Please Login or Create an Account First!");
             window.location.href = "login.html";
             return;
         }
