@@ -82,7 +82,7 @@ buttons.forEach((button, index) => {
 
         updateNotification();
 
-        alert("Product Cart me add ho gaya!");
+        showRoyalPopup("Product Cart me add ho gaya!");
     });
 
 });
@@ -708,3 +708,51 @@ if (closeModal) {
     };
 
       }
+// =================================
+// ROYAL STORE PREMIUM CART POPUP
+// =================================
+
+function showRoyalPopup(message) {
+
+    const oldPopup = document.querySelector(".royal-popup");
+
+    if (oldPopup) {
+        oldPopup.remove();
+    }
+
+    const popup = document.createElement("div");
+
+    popup.className = "royal-popup";
+
+    popup.innerHTML = `
+        <div class="royal-popup-icon">✓</div>
+
+        <div class="royal-popup-text">
+            <div class="royal-popup-title">
+                Product Added
+            </div>
+
+            <div class="royal-popup-message">
+                ${message}
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(popup);
+
+    // Show popup
+    requestAnimationFrame(() => {
+        popup.classList.add("show");
+    });
+
+    // Hide after 3 seconds
+    setTimeout(() => {
+
+        popup.classList.remove("show");
+
+        setTimeout(() => {
+            popup.remove();
+        }, 400);
+
+    }, 3000);
+}
