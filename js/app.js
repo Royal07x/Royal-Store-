@@ -492,9 +492,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 localStorage.removeItem("total");
                 localStorage.removeItem("cartItems");
 
-                alert("Cart cleared!");
+                showCartClearedPopup();
 
-                location.reload();
+                setTimeout(function () {
+                    location.reload();
+                }, 1200);
             }
         );
 
@@ -877,3 +879,199 @@ Thank you for shopping with Royal Store! 👑
     }
 
 });
+// =====================================
+// IPHONE STYLE - CART CLEARED POPUP
+// =====================================
+
+function showCartClearedPopup() {
+
+    const oldPopup =
+    document.getElementById("cart-cleared-popup");
+
+    if (oldPopup) {
+        oldPopup.remove();
+    }
+
+    const popup =
+        document.createElement("div");
+
+    popup.id = "cart-cleared-popup";
+
+    popup.innerHTML = `
+        <div class="cart-cleared-icon">
+            ✓
+        </div>
+
+        <div class="cart-cleared-content">
+            <div class="cart-cleared-title">
+                Cart Cleared
+            </div>
+
+            <div class="cart-cleared-text">
+                Your shopping cart is empty
+            </div>
+        </div>
+    `;
+
+    popup.style.cssText = `
+        position: fixed;
+        left: 50%;
+        bottom: 28px;
+        transform: translateX(-50%) translateY(25px) scale(.96);
+
+        width: calc(100% - 32px);
+        max-width: 360px;
+
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        padding: 12px 15px;
+
+        background: rgba(28, 28, 30, .94);
+        color: #ffffff;
+
+        border: 1px solid rgba(255,255,255,.12);
+        border-radius: 18px;
+
+        box-shadow:
+            0 12px 35px rgba(0,0,0,.28),
+            0 2px 8px rgba(0,0,0,.15);
+
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+
+        z-index: 2147483647;
+
+        font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "SF Pro Display",
+            "Segoe UI",
+            Arial,
+            sans-serif;
+
+        opacity: 0;
+
+        transition:
+            opacity .35s ease,
+            transform .35s cubic-bezier(.22,1,.36,1);
+
+        box-sizing: border-box;
+    `;
+
+    const icon =
+        popup.querySelector(".cart-cleared-icon");
+
+    icon.style.cssText = `
+        width: 34px;
+        height: 34px;
+
+        flex: 0 0 34px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+
+        background: #34C759;
+        color: #ffffff;
+
+        font-size: 18px;
+        font-weight: 700;
+
+        box-shadow:
+            0 3px 10px rgba(52,199,89,.35);
+
+        animation:
+            cartCheck .45s ease;
+    `;
+
+    const content =
+        popup.querySelector(".cart-cleared-content");
+
+    content.style.cssText = `
+        min-width: 0;
+        text-align: left;
+    `;
+
+    const title =
+        popup.querySelector(".cart-cleared-title");
+
+    title.style.cssText = `
+        font-size: 14px;
+        line-height: 18px;
+
+        font-weight: 600;
+
+        color: #ffffff;
+
+        margin-bottom: 2px;
+    `;
+
+    const text =
+        popup.querySelector(".cart-cleared-text");
+
+    text.style.cssText = `
+        font-size: 11px;
+        line-height: 15px;
+
+        font-weight: 400;
+
+        color: #A1A1A6;
+    `;
+
+    document.body.appendChild(popup);
+
+    // iPhone style animation
+    requestAnimationFrame(function () {
+
+        popup.style.opacity = "1";
+
+        popup.style.transform =
+            "translateX(-50%) translateY(0) scale(1)";
+
+    });
+
+    // Hide
+    setTimeout(function () {
+
+        popup.style.opacity = "0";
+
+        popup.style.transform =
+            "translateX(-50%) translateY(20px) scale(.96)";
+
+        setTimeout(function () {
+
+            if (popup.parentNode) {
+                popup.remove();
+            }
+
+        }, 350);
+
+    }, 850);
+}
+
+const cartPopupStyle = document.createElement("style");
+
+cartPopupStyle.textContent = `
+@keyframes cartCheck {
+    0% {
+        transform: scale(.5);
+        opacity: 0;
+    }
+
+    70% {
+        transform: scale(1.12);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+`;
+
+document.head.appendChild(cartPopupStyle);
