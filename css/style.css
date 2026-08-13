@@ -1118,3 +1118,17 @@ main{
     background-color: #e00000 !important;
     color: #fff !important;
 }
+#loginBtnModal {
+    background: #000 !important;
+    color: #fff !important;
+}
+
+#signupBtnModal {
+    background: #25D366 !important;
+    color: #fff !important;
+}
+
+#closeModal {
+    background: #e00000 !important;
+    color: #fff !important;
+}
