@@ -1170,3 +1170,106 @@ main{
     font-size: 17px !important;
     display: block !important;
 }
+/* =================================
+   ROYAL STORE - PREMIUM CART POPUP
+================================= */
+
+.royal-popup {
+    position: fixed;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-120px);
+
+    width: min(90%, 360px);
+
+    background: #111111;
+    color: #ffffff;
+
+    border: 1px solid #d4af37;
+    border-radius: 16px;
+
+    padding: 16px 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35),
+        0 0 15px rgba(212, 175, 55, 0.25);
+
+    z-index: 99999;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease;
+}
+
+.royal-popup.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.royal-popup-icon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: #d4af37;
+    color: #111111;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+    font-weight: bold;
+
+    flex-shrink: 0;
+}
+
+.royal-popup-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.royal-popup-title {
+    color: #d4af37;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.royal-popup-message {
+    color: #eeeeee;
+    font-size: 14px;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+
+    .royal-popup {
+        top: 18px;
+        width: 88%;
+        padding: 14px 16px;
+    }
+
+    .royal-popup-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 20px;
+    }
+
+    .royal-popup-title {
+        font-size: 15px;
+    }
+
+    .royal-popup-message {
+        font-size: 13px;
+    }
+
+}
