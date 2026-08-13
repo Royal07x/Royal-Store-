@@ -7,36 +7,42 @@
 
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
 <header class="top-header">
 
-    <button id="menu-btn">☰</button>
+    <button id="menu-btn" type="button">☰</button>
 
     <h1 class="logo">Royal Store</h1>
 
     <div class="header-icons">
-    <a href="login.html">👤</a>
 
-    <a href="#" id="notification">
-        🔔
-        <span id="notify-count" class="notify-badge">0</span>
-    </a>
+        <a href="login.html">👤</a>
 
-    <a href="cart.html">🛒</a>
+        <a href="#" id="notification" onclick="return false;">
+            🔔
+            <span id="notify-count" class="notify-badge">0</span>
+        </a>
+
+        <a href="cart.html">🛒</a>
+
     </div>
 
 </header>
 
-    <nav id="side-menu">
+
+<!-- SIDE MENU -->
+
+<nav id="side-menu">
 
     <a href="index.html">🏠 Home</a>
 
-    <a href="#">👕 Shirts</a>
+    <a href="#shirts">👕 Shirts</a>
 
-    <a href="#">👖 Pants</a>
+    <a href="#pants">👖 Pants</a>
 
-    <a href="#">💄 Beauty</a>
+    <a href="#beauty">💄 Beauty</a>
 
     <a href="login.html">🔑 Login</a>
 
@@ -44,111 +50,313 @@
 
     <a href="cart.html">🛒 Cart</a>
 
-    </nav>
-    
+</nav>
+
 <div id="overlay"></div>
-    
+
+
 <main>
-    <section class="hero">
+
+<!-- HERO -->
+
+<section class="hero">
+
     <h2>Welcome to Royal Store</h2>
+
     <p>Best Shirts, Pants & Beauty Products</p>
 
-    <input type="text" placeholder="Search Products...">
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search Products..."
+    >
 
     <br><br>
 
-    <button>Shop Now</button>
+    <button
+        type="button"
+        id="shopNowBtn">
+        Shop Now
+    </button>
+
 </section>
+
+
+<!-- CATEGORIES -->
 
 <section class="categories">
-    <div class="card">👕 Shirts</div>
-    <div class="card">👖 Pants</div>
-    <div class="card">💄 Beauty</div>
-</section>
-<section class="products">
 
-<div class="product">
-    <img src="images/shirt.jpg" alt="Shirt">
+    <button
+        type="button"
+        class="card"
+        onclick="document.getElementById('shirts').scrollIntoView({behavior:'smooth'})">
+        👕 Shirts
+    </button>
+
+    <button
+        type="button"
+        class="card"
+        onclick="document.getElementById('pants').scrollIntoView({behavior:'smooth'})">
+        👖 Pants
+    </button>
+
+    <button
+        type="button"
+        class="card"
+        onclick="document.getElementById('beauty').scrollIntoView({behavior:'smooth'})">
+        💄 Beauty
+    </button>
+
+</section>
+
+
+<!-- PRODUCTS -->
+
+<section class="products" id="products">
+
+
+<!-- SHIRT -->
+
+<div class="product" id="shirts">
+
+    <img
+        src="images/shirt.jpg"
+        alt="Premium Shirt">
+
     <h3>Premium Shirt</h3>
+
     <p>₹799</p>
-    
-    <button class="add-cart">Add to Cart</button>
-    
-    <button class="whatsapp-order"
-    style="background:#25D366 !important;color:#fff !important;"
-    data-product="Premium Shirt"
-    data-price="799">
-    📲 Order on WhatsApp
+
+    <button
+        type="button"
+        class="add-cart">
+        Add to Cart
     </button>
+
+    <button
+        type="button"
+        class="whatsapp-order"
+        style="background:#25D366 !important;color:#fff !important;"
+        data-product="Premium Shirt"
+        data-price="799">
+
+        📲 Order on WhatsApp
+
+    </button>
+
 </div>
 
-<div class="product">
-    <img src="images/pant.jpg" alt="Pant">
+
+<!-- PANT -->
+
+<div class="product" id="pants">
+
+    <img
+        src="images/pant.jpg"
+        alt="Stylish Pant">
+
     <h3>Stylish Pant</h3>
+
     <p>₹999</p>
-    
-    <button class="add-cart">Add to Cart</button>
-    
-    <button class="whatsapp-order"
-    style="background:#25D366 !important;color:#fff !important;"
-    data-product="Stylish Pant"
-    data-price="999">
-    📲 Order on WhatsApp
+
+    <button
+        type="button"
+        class="add-cart">
+        Add to Cart
     </button>
+
+    <button
+        type="button"
+        class="whatsapp-order"
+        style="background:#25D366 !important;color:#fff !important;"
+        data-product="Stylish Pant"
+        data-price="999">
+
+        📲 Order on WhatsApp
+
+    </button>
+
 </div>
 
-<div class="product">
-    <img src="images/beauty.jpg" alt="Beauty">
+
+<!-- BEAUTY -->
+
+<div class="product" id="beauty">
+
+    <img
+        src="images/beauty.jpg"
+        alt="Beauty Kit">
+
     <h3>Beauty Kit</h3>
+
     <p>₹499</p>
-    
-    <button class="add-cart">Add to Cart</button>
-    
-    <button class="whatsapp-order"
-    style="background:#25D366 !important;color:#fff !important;"
-    data-product="Beauty Kit"
-    data-price="499">
-    📲 Order on WhatsApp
+
+    <button
+        type="button"
+        class="add-cart">
+        Add to Cart
     </button>
+
+    <button
+        type="button"
+        class="whatsapp-order"
+        style="background:#25D366 !important;color:#fff !important;"
+        data-product="Beauty Kit"
+        data-price="499">
+
+        📲 Order on WhatsApp
+
+    </button>
+
 </div>
-    
+
 </section>
-    <section class="contact">
-  <h2>Contact Us</h2>
-  <p>📞 +91 8791139418</p>
-  <p>📧 royalstore@email.com</p>
-  <p>📍 India</p>
-    </section>
+
+
+<!-- CONTACT -->
+
+<section class="contact">
+
+    <h2>Contact Us</h2>
+
+    <p>📞 +91 8791139418</p>
+
+    <p>📧 royalstore@email.com</p>
+
+    <p>📍 India</p>
+
+</section>
+
 </main>
-    
-    <div id="loginModal" class="login-modal">
-  <div class="login-modal-box">
 
-    <h2>🔒 Login Required</h2>
 
-    <p>Please login or create an account to place your order.</p>
+<!-- LOGIN MODAL -->
 
-    <button id="loginBtnModal"
-    class="modal-btn login-btn"
-    style="background:#000 !important;color:#fff !important;width:100% !important;max-width:300px !important;margin:5px auto 10px !important;padding:14px !important;border-radius:50px !important;display:block !important;">
-    Login
-    </button>
+<div id="loginModal" class="login-modal">
 
-<button id="signupBtnModal"
-    class="modal-btn signup-btn"
-    style="background:#25D366 !important;color:#fff !important;width:100% !important;max-width:300px !important;margin:5px auto 10px !important;padding:14px !important;border-radius:50px !important;display:block !important;">
-    Sign Up
-</button>
+    <div class="login-modal-box">
 
-<button id="closeModal"
-    class="modal-close"
-    style="background:#e00000 !important;color:#fff !important;width:120px !important;min-width:120px !important;margin:18px auto 0 !important;padding:12px 8px !important;border:none !important;border-radius:50px !important;display:block !important;font-size:18px !important;font-weight:700 !important;">
-    Close
-</button>
+        <h2>🔒 Login Required</h2>
 
-  </div>
+        <p>
+            Please login or create an account to place your order.
+        </p>
+
+
+        <button
+            type="button"
+            id="loginBtnModal"
+            class="modal-btn login-btn"
+            style="background:#000 !important;color:#fff !important;width:100% !important;max-width:300px !important;margin:5px auto 10px !important;padding:14px !important;border-radius:50px !important;display:block !important;">
+
+            Login
+
+        </button>
+
+
+        <button
+            type="button"
+            id="signupBtnModal"
+            class="modal-btn signup-btn"
+            style="background:#25D366 !important;color:#fff !important;width:100% !important;max-width:300px !important;margin:5px auto 10px !important;padding:14px !important;border-radius:50px !important;display:block !important;">
+
+            Sign Up
+
+        </button>
+
+
+        <button
+            type="button"
+            id="closeModal"
+            class="modal-close"
+            style="background:#e00000 !important;color:#fff !important;width:120px !important;min-width:120px !important;margin:18px auto 0 !important;padding:12px 8px !important;border:none !important;border-radius:50px !important;display:block !important;font-size:18px !important;font-weight:700 !important;">
+
+            Close
+
+        </button>
+
+    </div>
+
 </div>
 
-<script src="js/app.js?v=2"></script>
+
+<!-- APP JS -->
+
+<script src="js/app.js?v=3"></script>
+
+
+<!-- INDEX PAGE BUTTON FIX -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* SHOP NOW */
+
+    const shopNowBtn =
+        document.getElementById("shopNowBtn");
+
+    if (shopNowBtn) {
+
+        shopNowBtn.addEventListener("click", function () {
+
+            const products =
+                document.getElementById("products");
+
+            if (products) {
+
+                products.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }
+
+        });
+
+    }
+
+
+    /* SEARCH */
+
+    const searchInput =
+        document.getElementById("searchInput");
+
+    if (searchInput) {
+
+        searchInput.addEventListener("input", function () {
+
+            const search =
+                this.value.toLowerCase().trim();
+
+            document
+                .querySelectorAll(".product")
+                .forEach(function (product) {
+
+                    const name =
+                        product
+                            .querySelector("h3")
+                            ?.textContent
+                            .toLowerCase() || "";
+
+                    if (name.includes(search)) {
+
+                        product.style.display = "";
+
+                    } else {
+
+                        product.style.display = "none";
+
+                    }
+
+                });
+
+        });
+
+    }
+
+});
+
+</script>
+
 </body>
 </html>
