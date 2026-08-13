@@ -266,16 +266,20 @@ if(menuBtn && sideMenu && overlay){
     });
 
 }
-// Notification Badge
-let notifyCount = 0;
+// Notification Bell
+function updateNotification() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-const notifyBadge = document.getElementById("notify-count");
+    const badge = document.getElementById("notify-count");
 
-document.querySelectorAll(".add-cart").forEach(button => {
-    button.addEventListener("click", () => {
-        notifyCount++;
+    if (!badge) return;
 
-        notifyBadge.style.display = "flex";
-        notifyBadge.textContent = notifyCount;
-    });
-});
+    if (cart.length > 0) {
+        badge.style.display = "flex";
+        badge.textContent = cart.length;
+    } else {
+        badge.style.display = "none";
+    }
+}
+
+updateNotification();
