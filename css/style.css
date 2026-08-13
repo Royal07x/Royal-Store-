@@ -1150,3 +1150,23 @@ main{
     background: #25D366 !important;
     color: #fff !important;
 }
+/* LOGIN POPUP - BUTTON SPACING */
+#loginModal #loginBtnModal,
+#loginModal #signupBtnModal {
+    width: 120px !important;
+    min-width: 120px !important;
+    padding: 12px 8px !important;
+    margin: 5px 8px !important;
+    border-radius: 50px !important;
+    font-size: 17px !important;
+}
+
+#loginModal #closeModal {
+    width: 120px !important;
+    min-width: 120px !important;
+    padding: 12px 8px !important;
+    margin: 15px auto 0 !important;
+    border-radius: 50px !important;
+    font-size: 17px !important;
+    display: block !important;
+}
