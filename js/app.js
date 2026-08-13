@@ -281,3 +281,25 @@ function updateNotification() {
 }
 
 updateNotification();
+const loginModal = document.getElementById("loginModal");
+const loginBtnModal = document.getElementById("loginBtnModal");
+const signupBtnModal = document.getElementById("signupBtnModal");
+const closeModal = document.getElementById("closeModal");
+
+if (loginBtnModal) {
+    loginBtnModal.onclick = () => {
+        window.location.href = "login.html";
+    };
+}
+
+if (signupBtnModal) {
+    signupBtnModal.onclick = () => {
+        window.location.href = "signup.html";
+    };
+}
+
+if (closeModal) {
+    closeModal.onclick = () => {
+        loginModal.style.display = "none";
+    };
+}
