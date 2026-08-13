@@ -1102,3 +1102,19 @@ main{
     font-weight: 700 !important;
     display: block !important;
 }
+/* LOGIN POPUP - FINAL BUTTON COLORS */
+
+#loginModal #loginBtnModal {
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+#loginModal #signupBtnModal {
+    background-color: #25D366 !important;
+    color: #fff !important;
+}
+
+#loginModal #closeModal {
+    background-color: #e00000 !important;
+    color: #fff !important;
+}
