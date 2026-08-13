@@ -266,3 +266,16 @@ if(menuBtn && sideMenu && overlay){
     });
 
 }
+// Notification Badge
+let notifyCount = 0;
+
+const notifyBadge = document.getElementById("notify-count");
+
+document.querySelectorAll(".add-cart").forEach(button => {
+    button.addEventListener("click", () => {
+        notifyCount++;
+
+        notifyBadge.style.display = "flex";
+        notifyBadge.textContent = notifyCount;
+    });
+});
