@@ -1360,40 +1360,19 @@ main{
 /* ===== SHIRTS PAGE BUTTONS ===== */
 
 .add-cart{
-    background:#FFD60A !important;
+    background:#FFD700 !important;
     color:#111 !important;
-    border:none;
-    border-radius:14px;
-    padding:14px;
-    width:100%;
-    font-weight:700;
-    margin-top:10px;
 }
 
 .add-cart:hover{
-    background:#F4C400 !important;
+    background:#FFC107 !important;
 }
 
 .whatsapp-order{
     background:#25D366 !important;
     color:#fff !important;
-    border:none;
-    border-radius:14px;
-    padding:14px;
-    width:100%;
-    font-weight:700;
-    margin-top:10px;
 }
 
 .whatsapp-order:hover{
     background:#1EBE5D !important;
-}
-.add-cart.iphone-btn{
-    background:#FFD600 !important;
-    color:#111 !important;
-}
-
-.whatsapp-order.iphone-btn{
-    background:#25D366 !important;
-    color:#fff !important;
 }
