@@ -1382,16 +1382,16 @@ main{
 
 .input-error{
     border:2px solid #ff3b30 !important;
-    box-shadow:0 0 8px rgba(255,59,48,.25);
+    box-shadow:0 0 8px rgba(255,59,48,.25) !important;
 }
 
 .error-text{
     display:none;
     color:#ff3b30;
     font-size:13px;
+    margin-top:6px;
+    margin-bottom:10px;
     font-weight:600;
-    margin:6px 0 12px;
-    padding-left:4px;
 }
 
 /* Location Button Error */
