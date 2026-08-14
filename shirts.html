@@ -332,3 +332,151 @@ WhatsApp Order
 </button>
 
 </div>
+  <!-- Shirt 7 -->
+
+<div class="product">
+<img src="images/shirt7.jpg">
+<h3>Denim Shirt</h3>
+
+<div class="price">₹349</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button class="whatsapp-order iphone-btn"
+data-product="Denim Shirt"
+data-price="349">
+WhatsApp Order
+</button>
+
+</div>
+
+<!-- Shirt 8 -->
+
+<div class="product">
+<img src="images/shirt8.jpg">
+<h3>Cotton Shirt</h3>
+
+<div class="price">₹399</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button class="whatsapp-order iphone-btn"
+data-product="Cotton Shirt"
+data-price="399">
+WhatsApp Order
+</button>
+
+</div>
+
+<!-- Shirt 9 -->
+
+<div class="product">
+<img src="images/shirt9.jpg">
+<h3>Checks Shirt</h3>
+
+<div class="price">₹449</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button class="whatsapp-order iphone-btn"
+data-product="Checks Shirt"
+data-price="449">
+WhatsApp Order
+</button>
+
+</div>
+
+<!-- Shirt 10 -->
+
+<div class="product">
+<img src="images/shirt10.jpg">
+<h3>Linen Shirt</h3>
+
+<div class="price">₹499</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button class="whatsapp-order iphone-btn"
+data-product="Linen Shirt"
+data-price="499">
+WhatsApp Order
+</button>
+
+</div>
+
+<!-- Shirt 11 -->
+
+<div class="product">
+<img src="images/shirt11.jpg">
+<h3>Party Wear Shirt</h3>
+
+<div class="price">₹399</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button class="whatsapp-order iphone-btn"
+data-product="Party Wear Shirt"
+data-price="399">
+WhatsApp Order
+</button>
+
+</div>
+
+<!-- Shirt 12 -->
+
+<div class="product">
+<img src="images/shirt12.jpg">
+<h3>Luxury Shirt</h3>
+
+<div class="price">₹499</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button class="whatsapp-order iphone-btn"
+data-product="Luxury Shirt"
+data-price="499">
+WhatsApp Order
+</button>
+
+</div>
+
+</div>
+
+<footer style="text-align:center;padding:25px;background:#000;color:#fff;margin-top:30px;">
+© 2026 Royal Store • Premium Fashion
+</footer>
+
+<script>
+
+const searchInput=document.querySelector(".search-box input");
+
+searchInput.addEventListener("keyup",function(){
+
+let value=this.value.toLowerCase();
+
+document.querySelectorAll(".product").forEach(card=>{
+
+let text=card.innerText.toLowerCase();
+
+card.style.display=text.includes(value)?"block":"none";
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
