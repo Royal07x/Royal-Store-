@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Royal Store | Beauty</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+body{
+margin:0;
+background:#f5f5f7;
+font-family:-apple-system,BlinkMacSystemFont,
+"SF Pro Display","Segoe UI",sans-serif;
+}
+
+.header{
+background:#000;
+color:#fff;
+padding:18px;
+text-align:center;
+font-size:24px;
+font-weight:700;
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.back-btn{
+display:inline-block;
+margin:18px;
+padding:12px 18px;
+background:#007AFF;
+color:#fff;
+text-decoration:none;
+border-radius:14px;
+font-weight:600;
+}
+
+.search-box{
+padding:0 18px 20px;
+}
+
+.search-box input{
+width:100%;
+padding:14px;
+border:none;
+border-radius:14px;
+font-size:16px;
+box-sizing:border-box;
+background:#fff;
+box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+gap:18px;
+padding:18px;
+}
+
+.product{
+background:#fff;
+border-radius:20px;
+padding:14px;
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+text-align:center;
+}
+
+.product img{
+width:100%;
+border-radius:16px;
+}
+
+.product h3{
+margin:10px 0 5px;
+font-size:17px;
+}
+
+.price{
+font-size:18px;
+font-weight:bold;
+color:#007AFF;
+margin-bottom:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+💄 Royal Store Beauty
+</div>
+
+<a href="index.html" class="back-btn">
+← Back to Home
+</a>
+
+<div class="search-box">
+<input
+type="text"
+placeholder="Search Beauty Products...">
+</div>
+
+<div class="products">
+
+<!-- Product 1 -->
+
+<div class="product">
+
+<img src="images/beauty1.jpg">
+
+<h3>Face Wash</h3>
+
+<div class="price">₹249</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button
+class="whatsapp-order iphone-btn"
+data-product="Face Wash"
+data-price="249">
+WhatsApp Order
+</button>
+
+</div>
+
+<!-- Product 2 -->
+
+<div class="product">
+
+<img src="images/beauty2.jpg">
+
+<h3>Vitamin C Serum</h3>
+
+<div class="price">₹599</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button
+class="whatsapp-order iphone-btn"
+data-product="Vitamin C Serum"
+data-price="599">
+WhatsApp Order
+</button>
+
+</div>
+
+<!-- Product 3 -->
+
+<div class="product">
+
+<img src="images/beauty3.jpg">
+
+<h3>Moisturizer</h3>
+
+<div class="price">₹349</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button
+class="whatsapp-order iphone-btn"
+data-product="Moisturizer"
+data-price="349">
+WhatsApp Order
+</button>
+
+</div>
+
+<!-- Product 4 -->
+
+<div class="product">
+
+<img src="images/beauty4.jpg">
+
+<h3>Sunscreen SPF 50</h3>
+
+<div class="price">₹499</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button
+class="whatsapp-order iphone-btn"
+data-product="Sunscreen SPF 50"
+data-price="499">
+WhatsApp Order
+</button>
+
+</div>
+  
+  <!-- Product 5 -->
+
+<div class="product">
+
+<img src="images/beauty5.jpg">
+
+<h3>Lip Balm</h3>
+
+<div class="price">₹199</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button
+class="whatsapp-order iphone-btn"
+data-product="Lip Balm"
+data-price="199">
+WhatsApp Order
+</button>
+
+</div>
+
+<!-- Product 6 -->
+
+<div class="product">
+
+<img src="images/beauty6.jpg">
+
+<h3>Hair Oil</h3>
+
+<div class="price">₹399</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button
+class="whatsapp-order iphone-btn"
+data-product="Hair Oil"
+data-price="399">
+WhatsApp Order
+</button>
+
+</div>
+
+<!-- Product 7 -->
+
+<div class="product">
+
+<img src="images/beauty7.jpg">
+
+<h3>Shampoo</h3>
+
+<div class="price">₹449</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button
+class="whatsapp-order iphone-btn"
+data-product="Shampoo"
+data-price="449">
+WhatsApp Order
+</button>
+
+</div>
+
+<!-- Product 8 -->
+
+<div class="product">
+
+<img src="images/beauty8.jpg">
+
+<h3>Conditioner</h3>
+
+<div class="price">₹449</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button
+class="whatsapp-order iphone-btn"
+data-product="Conditioner"
+data-price="449">
+WhatsApp Order
+</button>
+
+</div>
+
+  <!-- Product 9 -->
+
+<div class="product">
+
+<img src="images/beauty9.jpg">
+
+<h3>Perfume</h3>
+
+<div class="price">₹899</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button
+class="whatsapp-order iphone-btn"
+data-product="Perfume"
+data-price="899">
+WhatsApp Order
+</button>
+
+</div>
+
+<!-- Product 10 -->
+
+<div class="product">
+
+<img src="images/beauty10.jpg">
+
+<h3>Body Lotion</h3>
+
+<div class="price">₹499</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button
+class="whatsapp-order iphone-btn"
+data-product="Body Lotion"
+data-price="499">
+WhatsApp Order
+</button>
+
+</div>
+
+<!-- Product 11 -->
+
+<div class="product">
+
+<img src="images/beauty11.jpg">
+
+<h3>Beard Oil</h3>
+
+<div class="price">₹349</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button
+class="whatsapp-order iphone-btn"
+data-product="Beard Oil"
+data-price="349">
+WhatsApp Order
+</button>
+
+</div>
+
+<!-- Product 12 -->
+
+<div class="product">
+
+<img src="images/beauty12.jpg">
+
+<h3>Beauty Kit</h3>
+
+<div class="price">₹999</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button
+class="whatsapp-order iphone-btn"
+data-product="Beauty Kit"
+data-price="999">
+WhatsApp Order
+</button>
+
+</div>
+
+</div>
+
+<footer style="text-align:center;padding:25px;background:#000;color:#fff;margin-top:30px;">
+© 2026 Royal Store • Premium Beauty
+</footer>
+
+<script>
+
+const searchInput=document.querySelector(".search-box input");
+
+searchInput.addEventListener("keyup",function(){
+
+let value=this.value.toLowerCase();
+
+document.querySelectorAll(".product").forEach(card=>{
+
+let text=card.innerText.toLowerCase();
+
+card.style.display=text.includes(value)?"block":"none";
+
+});
+
+});
+
+</script>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
