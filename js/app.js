@@ -621,6 +621,18 @@ if (getLocationBtn) {
                 const pincode =
                     document.getElementById("pin")
                     ?.value.trim();
+                
+                const latitude =
+                    document.getElementById("latitude").value;
+
+               const longitude =
+                   document.getElementById("longitude").value;
+
+               const locationLink =
+               latitude && longitude
+               ?
+                  `https://maps.google.com/?q=${latitude},${longitude}`
+                   : "Location Not Shared";
 
                 if (
                     !name ||
@@ -677,6 +689,8 @@ if (getLocationBtn) {
 🏠 Address: ${address}
 🏙️ City: ${city}
 📮 PIN Code: ${pincode}
+📍 Current Location:
+${locationLink}
 
 🛒 *ORDER DETAILS*
 
