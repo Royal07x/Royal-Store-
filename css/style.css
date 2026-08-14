@@ -1380,18 +1380,12 @@ main{
    FORM VALIDATION
 =========================== */
 
-.input-error{
+input.input-error,
+textarea.input-error,
+select.input-error{
     border:2px solid #ff3b30 !important;
-    box-shadow:0 0 8px rgba(255,59,48,.25) !important;
-}
-
-.error-text{
-    display:none;
-    color:#ff3b30;
-    font-size:13px;
-    margin-top:6px;
-    margin-bottom:10px;
-    font-weight:600;
+    outline:none !important;
+    box-shadow:0 0 8px rgba(255,59,48,.35) !important;
 }
 
 /* Location Button Error */
