@@ -1376,3 +1376,27 @@ main{
 .whatsapp-order:hover{
     background:#1EBE5D !important;
 }
+/* ===========================
+   FORM VALIDATION
+=========================== */
+
+.input-error{
+    border:2px solid #ff3b30 !important;
+    box-shadow:0 0 8px rgba(255,59,48,.25);
+}
+
+.error-text{
+    display:none;
+    color:#ff3b30;
+    font-size:13px;
+    font-weight:600;
+    margin:6px 0 12px;
+    padding-left:4px;
+}
+
+/* Location Button Error */
+#get-location.input-error{
+    background:#ff3b30 !important;
+    color:#fff !important;
+    border:none !important;
+}
