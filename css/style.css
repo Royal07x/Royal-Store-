@@ -1388,12 +1388,12 @@ main{
 .whatsapp-order:hover{
     background:#1EBE5D !important;
 }
-.add-cart{
+.add-cart.iphone-btn{
     background:#FFD600 !important;
     color:#111 !important;
 }
 
-.whatsapp-order{
+.whatsapp-order.iphone-btn{
     background:#25D366 !important;
     color:#fff !important;
 }
