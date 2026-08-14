@@ -1075,3 +1075,50 @@ cartPopupStyle.textContent = `
 `;
 
 document.head.appendChild(cartPopupStyle);
+
+// ===============================
+// SHIRTS PAGE ADD TO CART
+// ===============================
+
+document.querySelectorAll(".add-cart").forEach(function(button){
+
+    button.addEventListener("click", function(){
+
+        const card = button.closest(".product");
+
+        const name = card.querySelector("h3").innerText;
+
+        const price = Number(
+            card.querySelector(".price")
+            .innerText.replace("₹","")
+        );
+
+        let cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+
+        const existing = cartItems.find(item => item.name === name);
+
+        if(existing){
+            existing.qty++;
+        }else{
+            cartItems.push({
+                name:name,
+                price:price,
+                qty:1
+            });
+        }
+
+        localStorage.setItem("cartItems",JSON.stringify(cartItems));
+        localStorage.setItem("cart", cartItems.length);
+
+let total = 0;
+
+cartItems.forEach(function(item){
+    total += item.price * item.qty;
+});
+
+localStorage.setItem("total", total);
+        alert(name + " Added to Cart ✅");
+
+    });
+
+});
