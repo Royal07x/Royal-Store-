@@ -629,10 +629,10 @@ if (getLocationBtn) {
                    document.getElementById("longitude").value;
 
                const locationLink =
-               latitude && longitude
-               ?
-                  `https://maps.google.com/?q=${latitude},${longitude}`
-                   : "Location Not Shared";
+                   latitude && longitude
+                   ?
+                   `https://maps.google.com/?q=${latitude},${longitude}`
+                   : "";
 
                 if (
                     !name ||
@@ -681,6 +681,22 @@ if (getLocationBtn) {
                         0
                     );
 
+                if (!locationLink) {
+    const locationBtn = document.getElementById("get-location");
+
+    locationBtn.innerHTML = "❌ Please Add Your Location";
+    locationBtn.style.background = "#ff3b30";
+    locationBtn.style.color = "#fff";
+
+    setTimeout(() => {
+        locationBtn.innerHTML = "📍 Use My Live Location";
+        locationBtn.style.background = "";
+        locationBtn.style.color = "";
+    }, 3000);
+
+    return;
+                }
+                
                 const message = `
 🛍️ *ROYAL STORE ORDER*
 
