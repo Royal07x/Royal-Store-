@@ -1389,3 +1389,59 @@ select.input-error{
     color:#fff !important;
     border:none !important;
 }
+/* =========================
+   PREMIUM HERO
+========================= */
+
+.hero{
+
+height:340px;
+
+border-radius:28px;
+
+margin:18px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+text-align:center;
+
+background:linear-gradient(
+135deg,
+#111,
+#2a2a2a);
+
+color:#fff;
+
+overflow:hidden;
+}
+
+.hero-content h2{
+
+font-size:42px;
+
+margin-bottom:12px;
+}
+
+.hero-content p{
+
+font-size:18px;
+
+opacity:.9;
+
+margin-bottom:28px;
+}
+
+.hero .iphone-btn{
+
+padding:14px 34px;
+
+border-radius:50px;
+
+background:#fff;
+
+color:#111;
+
+font-weight:700;
+}
