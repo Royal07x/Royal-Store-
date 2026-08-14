@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
 
             <div class="royal-popup-message">
-                ${message || "Product Cart me add ho gaya!"}
+            
             </div>
         `;
 
