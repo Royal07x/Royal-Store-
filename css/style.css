@@ -1320,9 +1320,11 @@ main{
    HOME PAGE → SEE ALL BUTTON
 =================================================== */
 
-a.see-all-btn{
+.see-all-btn{
     display:inline-block !important;
     background:linear-gradient(135deg,#007AFF,#0056D6) !important;
+    width:170px !important;
+    text-align:center !important;
     color:#fff !important;
     text-decoration:none !important;
     padding:12px 22px !important;
