@@ -650,58 +650,34 @@ if (getLocationBtn) {
 
                 let valid = true;
 
-// Name
 if (!name) {
-    document.getElementById("name").classList.add("input-error");
-    document.getElementById("name-error").innerText = "❌ Full Name is required";
-    document.getElementById("name-error").style.display = "block";
-    valid = false;
+  document.getElementById("name").classList.add("input-error");
+  valid = false;
 }
 
-// Mobile
 if (!phone) {
-    document.getElementById("mobile").classList.add("input-error");
-    document.getElementById("mobile-error").innerText = "❌ Mobile Number is required";
-    document.getElementById("mobile-error").style.display = "block";
-    valid = false;
+  document.getElementById("mobile").classList.add("input-error");
+  valid = false;
 }
 
-// Address
 if (!address) {
-    document.getElementById("address").classList.add("input-error");
-    document.getElementById("address-error").innerText = "❌ Address is required";
-    document.getElementById("address-error").style.display = "block";
-    valid = false;
+  document.getElementById("address").classList.add("input-error");
+  valid = false;
 }
 
-// City
 if (!city) {
-    document.getElementById("city").classList.add("input-error");
-    document.getElementById("city-error").innerText = "❌ City is required";
-    document.getElementById("city-error").style.display = "block";
-    valid = false;
+  document.getElementById("city").classList.add("input-error");
+  valid = false;
 }
 
-// State
-const state = document.getElementById("state").value.trim();
-
-if (!state) {
-    document.getElementById("state").classList.add("input-error");
-    document.getElementById("state-error").innerText = "❌ State is required";
-    document.getElementById("state-error").style.display = "block";
-    valid = false;
-}
-
-// PIN
 if (!pincode) {
-    document.getElementById("pin").classList.add("input-error");
-    document.getElementById("pin-error").innerText = "❌ PIN Code is required";
-    document.getElementById("pin-error").style.display = "block";
-    valid = false;
+  document.getElementById("pin").classList.add("input-error");
+  valid = false;
 }
 
-if (!valid) return;
-                }
+if (!valid) {
+  return;
+}
 
                 let productList = "";
 
