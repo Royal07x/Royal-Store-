@@ -12,43 +12,75 @@
 
 <header class="top-header">
 
-    <button id="menu-btn" type="button">☰</button>
+    <button id="menu-btn" type="button">
+        ☰
+    </button>
 
-    <h1 class="logo">Royal Store</h1>
+    <div class="logo-box">
 
-    <div class="header-icons">
+        <img
+            src="images/logo.png"
+            class="logo-img"
+            alt="Royal Store Logo">
 
-        <a href="login.html">👤</a>
-
-        <a href="#" id="notification" onclick="return false;">
-            🔔
-            <span id="notify-count" class="notify-badge">0</span>
-        </a>
-
-        <a href="cart.html">🛒</a>
+        <h1 class="logo">
+            Royal Store
+        </h1>
 
     </div>
 
 </header>
 
-
-<!-- SIDE MENU -->
-
+<!-- MENU -->
 <nav id="side-menu">
 
-    <a href="index.html">🏠 Home</a>
+<a href="login.html">👤 Login / Sign Up</a>
 
-    <a href="#shirts">👕 Shirts</a>
+<hr>
 
-    <a href="#pants">👖 Pants</a>
+<a href="index.html">🏠 Home</a>
 
-    <a href="#beauty">💄 Beauty</a>
+<hr>
 
-    <a href="login.html">🔑 Login</a>
+<a href="shirts.html">👔 Premium Men's Shirts</a>
 
-    <a href="signup.html">📝 Sign Up</a>
+<a href="pants.html">👖 Jeans & Cargo Pants</a>
 
-    <a href="cart.html">🛒 Cart</a>
+<a href="beauty.html">💄 Beauty & Personal Care</a>
+
+<hr>
+
+<a href="#">👟 Premium Sneakers</a>
+
+<a href="#">⌚ Watches</a>
+
+<a href="#">👕 T-Shirts</a>
+
+<a href="#">👗 Women Wear</a>
+
+<a href="#">👜 Hand Bags</a>
+
+<a href="#">🧦 Socks</a>
+
+<a href="#">🩲 Women's Underwear</a>
+
+<a href="#">💄 Makeup</a>
+
+<a href="#">📱 Mobile Accessories</a>
+
+<hr>
+
+<a href="cart.html">🛒 My Cart</a>
+
+<a href="#">📦 My Orders</a>
+
+<a href="#">❤️ Wishlist</a>
+
+<hr>
+
+<a href="#contact">📞 Contact Us</a>
+
+<a href="#">ℹ️ About Us</a>
 
 </nav>
 
@@ -61,52 +93,94 @@
 
 <section class="hero">
 
-    <h2>Welcome to Royal Store</h2>
+    <div class="hero-content">
 
-    <p>Best Shirts, Pants & Beauty Products</p>
+        <h2>Royal Store</h2>
 
-    <input
-        type="text"
-        id="searchInput"
-        placeholder="Search Products..."
-    >
+        <p>
+            Premium Fashion For Everyone
+        </p>
 
-    <br><br>
+        <button
+            type="button"
+            id="shopNowBtn"
+            class="iphone-btn">
 
-    <button
-type="button"
-id="shopNowBtn"
-class="iphone-btn">
-        Shop Now
-    </button>
+            Shop Now
+
+        </button>
+
+    </div>
 
 </section>
 
 
-<!-- CATEGORIES -->
+<!-- FEATURED CATEGORIES -->
 
-<section class="categories">
+<section class="featured-categories">
 
-    <button
-        type="button"
-        class="card"
-        onclick="document.getElementById('shirts').scrollIntoView({behavior:'smooth'})">
-        👕 Shirts
-    </button>
+<h2 class="section-title">
+⭐ Featured Categories
+</h2>
 
-    <button
-        type="button"
-        class="card"
-        onclick="document.getElementById('pants').scrollIntoView({behavior:'smooth'})">
-        👖 Pants
-    </button>
+<div class="featured-grid">
 
-    <button
-        type="button"
-        class="card"
-        onclick="document.getElementById('beauty').scrollIntoView({behavior:'smooth'})">
-        💄 Beauty
-    </button>
+<a href="shirts.html" class="featured-card">
+
+<img src="images/shirt.jpg" alt="Premium Men's Shirts">
+
+<h3>Premium Men's Shirts</h3>
+
+</a>
+
+<a href="pants.html" class="featured-card">
+
+<img src="images/pant.jpg" alt="Jeans & Cargo Pants">
+
+<h3>Jeans & Cargo Pants</h3>
+
+</a>
+
+<a href="beauty.html" class="featured-card">
+
+<img src="images/beauty.jpg" alt="Beauty & Personal Care">
+
+<h3>Beauty & Personal Care</h3>
+
+</a>
+
+</div>
+
+</section>
+    <!-- FUTURE CATEGORIES -->
+
+<section class="future-categories">
+
+<h2 class="section-title">
+✨ Explore More
+</h2>
+
+<div class="future-grid">
+
+<a href="#" class="future-card">👟<span>Premium Sneakers</span></a>
+
+<a href="#" class="future-card">⌚<span>Watches</span></a>
+
+<a href="#" class="future-card">👕<span>T-Shirts</span></a>
+
+<a href="#" class="future-card">👗<span>Women Wear</span></a>
+
+<a href="#" class="future-card">👜<span>Hand Bags</span></a>
+
+<a href="#" class="future-card">🧦<span>Socks</span></a>
+
+<a href="#" class="future-card">🩲<span>Women's Underwear</span></a>
+
+<a href="#" class="future-card">💄<span>Makeup</span></a>
+
+<a href="#" class="future-card">📱<span>Mobile Accessories</span></a>
+
+</div>
 
 </section>
 
