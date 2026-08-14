@@ -247,7 +247,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 product.name +
                 " cart me add ho gaya!"
             );
-
+                   
+           setTimeout(function () {
+              window.location.href = "cart.html";
+              }, 800);
         });
 
     });
@@ -753,6 +756,7 @@ if (!valid) {
 📱 Phone: ${phone}
 🏠 Address: ${address}
 🏙️ City: ${city}
+🗺️ State: ${state}
 📮 PIN Code: ${pincode}
 📍 Current Location:
 ${locationLink}
