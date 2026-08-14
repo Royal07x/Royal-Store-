@@ -511,7 +511,51 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+// ==============================
+// GET CURRENT LOCATION
+// ==============================
 
+const getLocationBtn = document.getElementById("get-location");
+
+if (getLocationBtn) {
+
+  getLocationBtn.addEventListener("click", function () {
+
+    if (!navigator.geolocation) {
+      alert("Location is not supported on this device.");
+      return;
+    }
+
+    getLocationBtn.innerText = "Getting Location...";
+
+    navigator.geolocation.getCurrentPosition(
+
+      function (position) {
+
+        document.getElementById("latitude").value =
+          position.coords.latitude;
+
+        document.getElementById("longitude").value =
+          position.coords.longitude;
+
+        getLocationBtn.innerText = "✅ Location Added";
+
+      },
+
+      function () {
+
+        alert("Please allow location permission.");
+
+        getLocationBtn.innerText = "📍 Use Current Location";
+
+      }
+
+    );
+
+  });
+
+}
+    
     // =================================================
     // CHECKOUT
     // =================================================
