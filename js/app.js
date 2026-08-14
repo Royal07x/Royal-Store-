@@ -203,15 +203,24 @@ document.addEventListener("DOMContentLoaded", function () {
             ".product .add-cart"
         );
 
-    buttons.forEach(function (button, index) {
+               buttons.forEach(function (button, index) {
 
-        button.addEventListener("click", function () {
+               button.addEventListener("click", function () {
 
-            if (!products[index]) {
+                        if (!products[index]) {
                 return;
             }
 
-            const product = products[index];
+            const card = button.closest(".product");
+
+                     const product = {
+    name: card.querySelector("h3").innerText,
+    price: Number(
+        card.querySelector(".price")
+            .innerText.replace("₹", "")
+    ),
+    qty: 1
+};
 
             const existingIndex =
                 cartItems.findIndex(function (item) {
