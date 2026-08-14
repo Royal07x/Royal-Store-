@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Royal Store | Pants</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+body{
+margin:0;
+background:#f5f5f7;
+font-family:-apple-system,BlinkMacSystemFont,
+"SF Pro Display","Segoe UI",sans-serif;
+}
+
+.header{
+background:#000;
+color:#fff;
+padding:18px;
+text-align:center;
+font-size:24px;
+font-weight:700;
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.back-btn{
+display:inline-block;
+margin:18px;
+padding:12px 18px;
+background:#007AFF;
+color:#fff;
+text-decoration:none;
+border-radius:14px;
+font-weight:600;
+}
+
+.search-box{
+padding:0 18px 20px;
+}
+
+.search-box input{
+width:100%;
+padding:14px;
+border:none;
+border-radius:14px;
+font-size:16px;
+box-sizing:border-box;
+background:#fff;
+box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+gap:18px;
+padding:18px;
+}
+
+.product{
+background:#fff;
+border-radius:20px;
+padding:14px;
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+text-align:center;
+}
+
+.product img{
+width:100%;
+border-radius:16px;
+}
+
+.product h3{
+margin:10px 0 5px;
+font-size:17px;
+}
+
+.price{
+font-size:18px;
+font-weight:bold;
+color:#007AFF;
+margin-bottom:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+👖 Royal Store Pants
+</div>
+
+<a href="index.html" class="back-btn">
+← Back to Home
+</a>
+
+<div class="search-box">
+<input
+type="text"
+placeholder="Search Pants...">
+</div>
+
+<div class="products">
+
+<!-- Pant 1 -->
+
+<div class="product">
+
+<img src="images/pant1.jpg">
+
+<h3>Baggy Jeans</h3>
+
+<div class="price">₹599</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button
+class="whatsapp-order iphone-btn"
+data-product="Baggy Jeans"
+data-price="599">
+WhatsApp Order
+</button>
+
+</div>
+
+<!-- Pant 2 -->
+
+<div class="product">
+
+<img src="images/pant2.jpg">
+
+<h3>Cargo Pant</h3>
+
+<div class="price">₹649</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button
+class="whatsapp-order iphone-btn"
+data-product="Cargo Pant"
+data-price="649">
+WhatsApp Order
+</button>
+
+</div>
+
+<!-- Pant 3 -->
+
+<div class="product">
+
+<img src="images/pant3.jpg">
+
+<h3>Regular Fit Pant</h3>
+
+<div class="price">₹699</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button
+class="whatsapp-order iphone-btn"
+data-product="Regular Fit Pant"
+data-price="699">
+WhatsApp Order
+</button>
+
+</div>
+
+<!-- Pant 4 -->
+
+<div class="product">
+
+<img src="images/pant4.jpg">
+
+<h3>Slim Fit Pant</h3>
+
+<div class="price">₹749</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button
+class="whatsapp-order iphone-btn"
+data-product="Slim Fit Pant"
+data-price="749">
+WhatsApp Order
+</button>
+
+</div>
+
+<!-- Pant 5 -->
+
+<div class="product">
+
+<img src="images/pant5.jpg">
+
+<h3>Classic Trouser</h3>
+
+<div class="price">₹799</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button
+class="whatsapp-order iphone-btn"
+data-product="Classic Trouser"
+data-price="799">
+WhatsApp Order
+</button>
+
+</div>
+
+<!-- Pant 6 -->
+
+<div class="product">
+
+<img src="images/pant6.jpg">
+
+<h3>Denim Jeans</h3>
+
+<div class="price">₹849</div>
+
+<button class="add-cart iphone-btn">
+Add to Cart
+</button>
+
+<button
+class="whatsapp-order iphone-btn"
+data-product="Denim Jeans"
+data-price="849">
+WhatsApp Order
+</button>
+
+</div>
+  
+<!-- Pant 7 -->
+<div class="product">
+    <img src="images/pant7.jpg" alt="Slim Fit Pant">
+    <h3>Slim Fit Pant</h3>
+    <div class="price">₹799</div>
+
+    <button class="add-cart iphone-btn">
+        Add to Cart
+    </button>
+
+    <button class="whatsapp-order iphone-btn"
+        data-product="Slim Fit Pant"
+        data-price="799">
+        WhatsApp Order
+    </button>
+</div>
+
+<!-- Pant 8 -->
+<div class="product">
+    <img src="images/pant8.jpg" alt="Cargo Pant">
+    <h3>Cargo Pant</h3>
+    <div class="price">₹899</div>
+
+    <button class="add-cart iphone-btn">
+        Add to Cart
+    </button>
+
+    <button class="whatsapp-order iphone-btn"
+        data-product="Cargo Pant"
+        data-price="899">
+        WhatsApp Order
+    </button>
+</div>
+
+<!-- Pant 9 -->
+<div class="product">
+    <img src="images/pant9.jpg" alt="Jogger Pant">
+    <h3>Jogger Pant</h3>
+    <div class="price">₹999</div>
+
+    <button class="add-cart iphone-btn">
+        Add to Cart
+    </button>
+
+    <button class="whatsapp-order iphone-btn"
+        data-product="Jogger Pant"
+        data-price="999">
+        WhatsApp Order
+    </button>
+</div>
+
+<!-- Pant 10 -->
+<div class="product">
+    <img src="images/pant10.jpg" alt="Denim Pant">
+    <h3>Denim Pant</h3>
+    <div class="price">₹1099</div>
+
+    <button class="add-cart iphone-btn">
+        Add to Cart
+    </button>
+
+    <button class="whatsapp-order iphone-btn"
+        data-product="Denim Pant"
+        data-price="1099">
+        WhatsApp Order
+    </button>
+</div>
+
+<!-- Pant 11 -->
+<div class="product">
+    <img src="images/pant11.jpg" alt="Formal Pant">
+    <h3>Formal Pant</h3>
+    <div class="price">₹1199</div>
+
+    <button class="add-cart iphone-btn">
+        Add to Cart
+    </button>
+
+    <button class="whatsapp-order iphone-btn"
+        data-product="Formal Pant"
+        data-price="1199">
+        WhatsApp Order
+    </button>
+</div>
+
+<!-- Pant 12 -->
+<div class="product">
+    <img src="images/pant12.jpg" alt="Luxury Pant">
+    <h3>Luxury Pant</h3>
+    <div class="price">₹1299</div>
+
+    <button class="add-cart iphone-btn">
+        Add to Cart
+    </button>
+
+    <button class="whatsapp-order iphone-btn"
+        data-product="Luxury Pant"
+        data-price="1299">
+        WhatsApp Order
+    </button>
+</div>
+
+<footer style="text-align:center;padding:25px;background:#000;color:#fff;margin-top:30px;">
+© 2026 Royal Store • Premium Fashion
+</footer>
+
+<script>
+
+const searchInput = document.querySelector(".search-box input");
+
+searchInput.addEventListener("keyup", function () {
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".product").forEach(card => {
+
+        let text = card.innerText.toLowerCase();
+
+        card.style.display = text.includes(value) ? "block" : "none";
+
+    });
+
+});
+
+</script>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
