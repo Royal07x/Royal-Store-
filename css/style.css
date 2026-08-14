@@ -1316,3 +1316,21 @@ main{
     transform:scale(.96);
 }
 
+/* ===================================================
+   HOME PAGE → SEE ALL BUTTON
+=================================================== */
+
+.see-all-btn{
+    display:block;
+    width:85%;
+    margin:18px auto 5px;
+    padding:14px 20px;
+    text-align:center;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:700;
+    color:#fff !important;
+    background:linear-gradient(135deg,#007AFF,#0056D6);
+    border-radius:18px;
+    box-shadow:0 8px 20px rgba(0,122,255,.35);
+}
