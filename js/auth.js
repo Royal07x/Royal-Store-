@@ -477,3 +477,49 @@ function verifyOTP() {
     console.log("OTP Verification Module");
 
 }
+
+/* ========================================
+   ACCOUNT MANAGEMENT (Future)
+======================================== */
+
+function updateProfile() {
+
+    console.log("Update Profile Module");
+
+}
+
+function changePassword() {
+
+    console.log("Change Password Module");
+
+}
+
+function deleteAccount() {
+
+    console.log("Delete Account Module");
+
+}
+
+
+/* ========================================
+   SECURITY (Future)
+======================================== */
+
+function loginAttemptLimit() {
+
+    console.log("Login Attempt Limit");
+
+}
+
+function accountLock() {
+
+    console.log("Account Lock Module");
+
+}
+
+function sessionExpiry() {
+
+    console.log("Session Expiry Module");
+
+}
+
