@@ -1,418 +1,502 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Royal Store</title>
 
+<head>
+    <!-- Character Encoding -->
+    <meta charset="UTF-8">
+
+    <!-- Mobile Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <meta name="description"
+        content="Royal Store - Premium Online Shopping for Men's Fashion, Sneakers, Beauty & Personal Care.">
+
+    <meta name="keywords"
+        content="Royal Store, Men's Shirts, Cargo Pants, Sneakers, Beauty Products, Online Shopping">
+
+    <meta name="author" content="Royal Store">
+
+    <!-- Website Title -->
+    <title>Royal Store | Premium Online Shopping</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<header class="top-header">
+    <!-- =========================
+         STICKY HEADER
+    ========================= -->
 
-    <button id="menu-btn" type="button">
-        ☰
-    </button>
+    <header class="header">
 
-    <div class="logo-box">
+        <div class="header-container">
 
-        <img
-            src="images/logo.png"
-            class="logo-img"
-            alt="Royal Store Logo">
+            <!-- Hamburger Menu -->
+            <button class="menu-btn" id="menuBtn" aria-label="Open Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
 
-        <h1 class="logo">
-            Royal Store
-        </h1>
+            <!-- Royal Store Logo -->
+            <a href="index.html" class="logo">
+                <span class="logo-text">Royal Store</span>
+                <span class="logo-icon">⚡</span>
+            </a>
+
+            <!-- Header Actions -->
+            <div class="header-actions">
 
-    </div>
+                <!-- Search Button -->
+                <button class="icon-btn search-btn" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
 
-</header>
+                <!-- Shopping Cart -->
+                <a href="cart.html" class="icon-btn cart-btn" aria-label="Shopping Cart">
 
-<!-- MENU -->
-<nav id="side-menu">
+                    <i class="fa-solid fa-cart-shopping"></i>
 
-<a href="login.html">👤 Login / Sign Up</a>
+                    <span class="cart-count" id="cartCount">
+                        0
+                    </span>
 
-<hr>
+                </a>
 
-<a href="index.html">🏠 Home</a>
+            </div>
 
-<hr>
+        </div>
 
-<a href="shirts.html">👔 Premium Men's Shirts</a>
+    </header>
 
-<a href="pants.html">👖 Jeans & Cargo Pants</a>
+   <!-- =========================
+         NAVIGATION DRAWER
+    ========================= -->
 
-<a href="beauty.html">💄 Beauty & Personal Care</a>
+    <aside class="nav-drawer" id="navDrawer">
 
-<hr>
+        <!-- Drawer Header -->
+        <div class="drawer-header">
 
-<a href="#">👟 Premium Sneakers</a>
+            <h2 class="drawer-title">
+                Menu
+            </h2>
 
-<a href="#">⌚ Watches</a>
+            <button class="close-btn" id="closeDrawer" aria-label="Close Menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
 
-<a href="#">👕 T-Shirts</a>
+        </div>
 
-<a href="#">👗 Women Wear</a>
+        <!-- Navigation Menu -->
+        <nav class="drawer-menu">
 
-<a href="#">👜 Hand Bags</a>
+            <ul>
 
-<a href="#">🧦 Socks</a>
+                <li>
+                    <a href="login.html">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Login / Sign Up</span>
+                    </a>
+                </li>
 
-<a href="#">🩲 Women's Underwear</a>
+                <li>
+                    <a href="index.html">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
 
-<a href="#">💄 Makeup</a>
+                <li>
+                    <a href="#trending-categories">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <span>Categories</span>
+                    </a>
+                </li>
 
-<a href="#">📱 Mobile Accessories</a>
+                <li>
+                    <a href="cart.html">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span>Cart</span>
+                    </a>
+                </li>
 
-<hr>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-box"></i>
+                        <span>Orders</span>
+                    </a>
+                </li>
 
-<a href="cart.html">🛒 My Cart</a>
+                <li>
+                    <a href="#">
+                        <i class="fa-regular fa-heart"></i>
+                        <span>Wishlist</span>
+                    </a>
+                </li>
 
-<a href="#">📦 My Orders</a>
+                <li>
+                    <a href="#contact-us">
+                        <i class="fa-solid fa-headset"></i>
+                        <span>Contact Us</span>
+                    </a>
+                </li>
 
-<a href="#">❤️ Wishlist</a>
+            </ul>
 
-<hr>
+        </nav>
 
-<a href="#contact">📞 Contact Us</a>
+    </aside>
 
-<a href="#">ℹ️ About Us</a>
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
 
-</nav>
+    <main>
 
-<div id="overlay"></div>
+    <!-- =========================
+         HERO BANNER
+    ========================= -->
 
+    <section class="hero-banner" id="home">
 
-<main>
+        <div class="hero-container">
 
-<!-- HERO -->
+            <!-- Hero Content -->
+            <div class="hero-content">
 
-<section class="hero">
+                <span class="hero-badge">
+                    Premium Shopping Experience
+                </span>
 
-    <div class="hero-content">
+                <h1 class="hero-title">
+                    Welcome to Royal Store
+                </h1>
 
-        <h2>Royal Store</h2>
+                <p class="hero-description">
+                    Discover premium fashion, sneakers and lifestyle products
+                    with quality you can trust and styles you'll love.
+                </p>
 
-        <p>
-            Premium Fashion For Everyone
-        </p>
+                <a href="#featured-products" class="shop-btn">
+                    Shop Now
+                </a>
 
-        <button
-            type="button"
-            id="shopNowBtn"
-            class="iphone-btn">
+            </div>
 
-            Shop Now
+            <!-- Hero Banner Image -->
+            <div class="hero-image">
 
-        </button>
+                <img src="images/banner.jpg"
+                     alt="Royal Store Premium Banner">
 
-    </div>
+            </div>
 
-</section>
+        </div>
 
+    </section>
 
-<!-- FEATURED CATEGORIES -->
+    <!-- =========================
+         TRENDING CATEGORIES
+    ========================= -->
 
-<section class="featured-categories">
+    <section class="trending-categories" id="trending-categories">
 
-<h2 class="section-title">
-⭐ Featured Categories
-</h2>
+        <div class="section-heading">
 
-<div class="featured-grid">
+            <h2>🔥 Trending Categories</h2>
 
-<a href="shirts.html" class="featured-card">
+            <p>
+                Discover our most popular premium collections.
+            </p>
 
-<img src="images/shirt.jpg" alt="Premium Men's Shirts">
+        </div>
 
-<h3>Premium Men's Shirts</h3>
+        <div class="category-grid">
 
-</a>
+            <!-- Category Card 1 -->
+            <a href="#" class="category-card">
 
-<a href="pants.html" class="featured-card">
+                <div class="category-image">
+                    <img src="images/shirt.jpg" alt="Premium Men's Shirts">
+                </div>
 
-<img src="images/pant.jpg" alt="Jeans & Cargo Pants">
+                <div class="category-content">
+                    <h3>Premium Men's Shirts</h3>
+                </div>
 
-<h3>Jeans & Cargo Pants</h3>
+            </a>
 
-</a>
+            <!-- Category Card 2 -->
+            <a href="#" class="category-card">
 
-<a href="beauty.html" class="featured-card">
+                <div class="category-image">
+                    <img src="images/jeans.jpg" alt="Jeans & Cargo Pants">
+                </div>
 
-<img src="images/beauty.jpg" alt="Beauty & Personal Care">
+                <div class="category-content">
+                    <h3>Jeans & Cargo Pants</h3>
+                </div>
 
-<h3>Beauty & Personal Care</h3>
+            </a>
 
-</a>
+            <!-- Category Card 3 -->
+            <a href="#" class="category-card">
 
-</div>
+                <div class="category-image">
+                    <img src="images/sneakers.jpg" alt="Premium Sneakers">
+                </div>
 
-</section>
-    <!-- FUTURE CATEGORIES -->
+                <div class="category-content">
+                    <h3>Premium Sneakers</h3>
+                </div>
 
-<section class="future-categories">
+            </a>
 
-<h2 class="section-title">
-✨ Explore More
-</h2>
+        </div>
 
-<div class="future-grid">
+    </section>
 
-<a href="#" class="future-card">👟<span>Premium Sneakers</span></a>
+    <!-- =========================
+         EXPLORE MORE
+    ========================= -->
 
-<a href="#" class="future-card">⌚<span>Watches</span></a>
+    <section class="explore-more" id="categories">
 
-<a href="#" class="future-card">👕<span>T-Shirts</span></a>
+        <div class="section-heading">
 
-<a href="#" class="future-card">👗<span>Women Wear</span></a>
+            <h2>✨ Explore More</h2>
 
-<a href="#" class="future-card">👜<span>Hand Bags</span></a>
+            <p>
+                Explore more categories for your everyday lifestyle.
+            </p>
 
-<a href="#" class="future-card">🧦<span>Socks</span></a>
+        </div>
 
-<a href="#" class="future-card">🩲<span>Women's Underwear</span></a>
+        <div class="explore-grid">
 
-<a href="#" class="future-card">💄<span>Makeup</span></a>
+            <!-- Card 1 -->
+            <a href="#" class="explore-card">
+                <img src="images/watch.jpg" alt="Watches">
+                <h3>Watches</h3>
+            </a>
 
-<a href="#" class="future-card">📱<span>Mobile Accessories</span></a>
+            <!-- Card 2 -->
+            <a href="#" class="explore-card">
+                <img src="images/tshirt.jpg" alt="T-Shirts">
+                <h3>T-Shirts</h3>
+            </a>
 
-</div>
+            <!-- Card 3 -->
+            <a href="#" class="explore-card">
+                <img src="images/women-wear.jpg" alt="Women Wear">
+                <h3>Women Wear</h3>
+            </a>
 
-</section>
+            <!-- Card 4 -->
+            <a href="#" class="explore-card">
+                <img src="images/handbag.jpg" alt="Hand Bags">
+                <h3>Hand Bags</h3>
+            </a>
 
+            <!-- Card 5 -->
+            <a href="#" class="explore-card">
+                <img src="images/socks.jpg" alt="Socks">
+                <h3>Socks</h3>
+            </a>
 
-<!-- PRODUCTS -->
+            <!-- Card 6 -->
+            <a href="#" class="explore-card">
+                <img src="images/women-underwear.jpg" alt="Women's Underwear">
+                <h3>Women's Underwear</h3>
+            </a>
 
-<section class="products" id="products">
+            <!-- Card 7 -->
+            <a href="#" class="explore-card">
+                <img src="images/makeup.jpg" alt="Makeup">
+                <h3>Makeup</h3>
+            </a>
 
+            <!-- Card 8 -->
+            <a href="#" class="explore-card">
+                <img src="images/mobile-accessories.jpg" alt="Mobile Accessories">
+                <h3>Mobile Accessories</h3>
+            </a>
 
-<!-- SHIRT -->
+            <!-- Card 9 -->
+            <a href="#" class="explore-card">
+                <img src="images/beauty.jpg" alt="Beauty & Personal Care">
+                <h3>Beauty &amp; Personal Care</h3>
+            </a>
 
-<div class="product" id="shirts" onclick="location.href='shirts.html'" style="cursor:pointer;">
+        </div>
 
-    <img
-        src="images/shirt.jpg"
-        alt="Premium Shirt">
+    </section>
 
-    <h3>Premium Shirt</h3>
+    <!-- =========================
+         FEATURED PRODUCTS
+    ========================= -->
 
-    <p>₹799</p>
+    <section class="featured-products" id="featured-products">
 
-<!--
-===================================================
-     HOME PAGE → PREMIUM SHIRT → SEE 
-ALL BUTTON
-================================================== 
--->
+        <div class="section-heading">
 
-<a href="shirts.html"
-   class="see-all-btn"
-   onclick="event.stopPropagation();">
-    ✨ See All →
-</a>
+            <h2>🔥 Featured Products</h2>
 
-</div>
+            <p>
+                Discover our latest premium collection.
+            </p>
 
-<!-- PANT -->
+        </div>
 
-<div class="product" id="pants" onclick="location.href='pants.html'" style="cursor:pointer;">
+        <!-- Dynamic Products Container -->
+        <div class="products-container" id="productsContainer">
 
-    <img
-        src="images/pant.jpg"
-        alt="Stylish Pant">
+            <!-- Products will be loaded dynamically by app.js -->
 
-    <h3>Stylish Pant</h3>
+        </div>
 
-    <p>₹999</p>
+    </section>
 
-<!-- 
-===================================================
-     HOME PAGE → STYLISH PANT → SEE 
-ALL BUTTON
-================================================== 
--->
+    <!-- =========================
+         WHY CHOOSE ROYAL STORE
+    ========================= -->
 
-<a href="pants.html"
-   class="see-all-btn"
-   onclick="event.stopPropagation();">
-    ✨ See All →
-</a>
+    <section class="why-choose" id="why-choose">
 
-</div>
+        <div class="section-heading">
 
-    
-<!-- BEAUTY -->
+            <h2>⭐ Why Choose Royal Store</h2>
 
-<div class="product" id="beauty" onclick="location.href='beauty.html'" style="cursor:pointer;">
+            <p>
+                Premium shopping experience with quality products and trusted service.
+            </p>
 
-    <img
-        src="images/beauty.jpg"
-        alt="Beauty Kit">
+        </div>
 
-    <h3>Beauty Kit</h3>
+        <div class="why-grid">
 
-    <p>₹499</p>
+            <div class="why-card">
+                <i class="fa-solid fa-gem"></i>
+                <h3>Premium Quality</h3>
+            </div>
 
-<!-- 
-===================================================
-     HOME PAGE → BEAUTY KIT → SEE 
-ALL BUTTON
-================================================== 
--->
+            <div class="why-card">
+                <i class="fa-solid fa-truck-fast"></i>
+                <h3>Fast Delivery</h3>
+            </div>
 
-<a href="beauty.html"
-   class="see-all-btn"
-   onclick="event.stopPropagation();">
-    ✨ See All →
-</a>
+            <div class="why-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Secure Payment</h3>
+            </div>
 
-</div>
+            <div class="why-card">
+                <i class="fa-solid fa-headset"></i>
+                <h3>24×7 Support</h3>
+            </div>
 
-    
-<!-- LOGIN MODAL -->
+        </div>
 
-<div id="loginModal" class="login-modal">
+    </section>
 
-    <div class="login-modal-box">
+    <!-- =========================
+         CONTACT US
+    ========================= -->
 
-        <h2>🔒 Login Required</h2>
+    <section class="contact-us" id="contact-us">
 
-        <p>
-            Please login or create an account to place your order.
-        </p>
+        <div class="section-heading">
 
+            <h2>📞 Contact Us</h2>
 
-        <button
-            type="button"
-            id="loginBtnModal"
-            class="modal-btn login-btn iphone-btn"
-            style="background:#000 !important;color:#fff !important;width:100% !important;max-width:300px !important;margin:5px auto 10px !important;padding:14px !important;border-radius:50px !important;display:block !important;">
+            <p>
+                We're always here to help you.
+            </p>
 
-            Login
+        </div>
 
-        </button>
+        <div class="contact-container">
 
+            <div class="contact-info">
 
-        <button
-            type="button"
-            id="signupBtnModal"
-            class="modal-btn signup-btn iphone-btn"
-            style="background:#25D366 !important;color:#fff !important;width:100% !important;max-width:300px !important;margin:5px auto 10px !important;padding:14px !important;border-radius:50px !important;display:block !important;">
+                <p>
+                    <i class="fa-solid fa-phone"></i>
+                    +91 8791139418
+                </p>
 
-            Sign Up
+                <p>
+                    <i class="fa-solid fa-envelope"></i>
+                    support@royalstore.com
+                </p>
 
-        </button>
+            </div>
 
+            <div class="social-buttons">
 
-        <button
-            type="button"
-            id="closeModal"
-            class="modal-close iphone-btn"
-            style="background:#e00000 !important;color:#fff !important;width:120px !important;min-width:120px !important;margin:18px auto 0 !important;padding:12px 8px !important;border:none !important;border-radius:50px !important;display:block !important;font-size:18px !important;font-weight:700 !important;">
+                <a href="#" class="whatsapp-btn">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    WhatsApp
+                </a>
 
-            Close
+                <a href="#" class="instagram-btn">
+                    <i class="fa-brands fa-instagram"></i>
+                    Instagram
+                </a>
 
-        </button>
+                <a href="#" class="facebook-btn">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    Facebook
+                </a>
 
-    </div>
+            </div>
 
-</div>
+        </div>
 
+    </section>
 
-<!-- APP JS -->
+    </main>
 
-<script src="js/app.js?v=3"></script>
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
+    <footer class="footer">
 
-<!-- INDEX PAGE BUTTON FIX -->
+        <div class="footer-container">
 
-<script>
+            <p>
+                © 2026 Royal Store. All Rights Reserved.
+            </p>
 
-document.addEventListener("DOMContentLoaded", function () {
+        </div>
 
-    /* SHOP NOW */
+    </footer>
 
-    const shopNowBtn =
-        document.getElementById("shopNowBtn");
+    <!-- =========================
+         JAVASCRIPT FILES
+    ========================= -->
 
-    if (shopNowBtn) {
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
 
-        shopNowBtn.addEventListener("click", function () {
-
-            const products =
-                document.getElementById("products");
-
-            if (products) {
-
-                products.scrollIntoView({
-                    behavior: "smooth"
-                });
-
-            }
-
-        });
-
-    }
-
-
-    /* SEARCH */
-
-    const searchInput =
-        document.getElementById("searchInput");
-
-    if (searchInput) {
-
-        searchInput.addEventListener("input", function () {
-
-            const search =
-                this.value.toLowerCase().trim();
-
-            document
-                .querySelectorAll(".product")
-                .forEach(function (product) {
-
-                    const name =
-                        product
-                            .querySelector("h3")
-                            ?.textContent
-                            .toLowerCase() || "";
-
-                    if (name.includes(search)) {
-
-                        product.style.display = "";
-
-                    } else {
-
-                        product.style.display = "none";
-
-                    }
-
-                });
-
-        });
-
-    }
-
-});
-
-</script>
-<!-- CONTACT -->
-
-<section class="contact">
-
-    <h2>Contact Us</h2>
-
-    <p>📞 +91 8791139418</p>
-
-    <p>📧 royalstore@email.com</p>
-
-    <p>📍 India</p>
-
-</section>
-    
 </body>
+
 </html>
+        
