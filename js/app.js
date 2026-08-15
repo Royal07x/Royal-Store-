@@ -1,1260 +1,1119 @@
-// ===============================
-// ROYAL STORE - APP.JS
-// ===============================
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    // ---------- CART DATA ----------
-    let cartItems = JSON.parse(
-        localStorage.getItem("cartItems") || "[]"
-    );
-
-    let cart = Number(localStorage.getItem("cart")) || 0;
-    let total = Number(localStorage.getItem("total")) || 0;
-
-    const cartCount = document.getElementById("cart-count");
-    const totalPrice = document.getElementById("total-price");
-
-    // ---------- UPDATE CART ----------
-    function updateCartStorage() {
-
-        cart = cartItems.reduce(function (sum, item) {
-            return sum + Number(item.qty || 0);
-        }, 0);
-
-        total = cartItems.reduce(function (sum, item) {
-            return sum + (
-                Number(item.price || 0) *
-                Number(item.qty || 0)
-            );
-        }, 0);
-
-        localStorage.setItem(
-            "cartItems",
-            JSON.stringify(cartItems)
-        );
-
-        localStorage.setItem("cart", cart);
-        localStorage.setItem("total", total);
-
-        if (cartCount) {
-            cartCount.textContent = cart;
-        }
-
-        if (totalPrice) {
-            totalPrice.textContent = "₹" + total;
-        }
-
-        updateNotification();
-    }
-
-    updateCartStorage();
+/* ========================================
+   ROYAL STORE V2
+   APP.JS
+   VERSION : 2.0
+   BUILD : 2026.08.15
+======================================== */
 
 
-    // =================================================
-    // PREMIUM POPUP
-    // =================================================
+/* ========================================
+   PROJECT CONFIGURATION
+======================================== */
 
-    function showRoyalPopup(message) {
+const CONFIG = {
 
-        const oldPopup =
-            document.getElementById("royal-cart-popup");
+    /* Website Settings */
 
-        if (oldPopup) {
-            oldPopup.remove();
-        }
-
-        const popup =
-            document.createElement("div");
-
-        popup.id = "royal-cart-popup";
-
-        popup.innerHTML = `
-            <div class="royal-popup-icon">✓</div>
-
-            <div class="royal-popup-title">
-                Product Added
-            </div>
-
-            <div class="royal-popup-message">
-            
-            </div>
-        `;
-
-        popup.style.cssText = `
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%) translateY(-20px);
-            width: calc(100% - 30px);
-            max-width: 360px;
-            padding: 18px 20px;
-            background: #111111;
-            color: #ffffff;
-            border: 2px solid #d4af37;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0,0,0,.5);
-            z-index: 2147483647;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            box-sizing: border-box;
-            opacity: 0;
-            transition: all .35s ease;
-        `;
-
-        document.body.appendChild(popup);
-
-        const icon =
-            popup.querySelector(".royal-popup-icon");
-
-        if (icon) {
-            icon.style.cssText = `
-                width: 44px;
-                height: 44px;
-                margin: 0 auto 8px;
-                border-radius: 50%;
-                background: #d4af37;
-                color: #111111;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 26px;
-                font-weight: bold;
-            `;
-        }
-
-        const title =
-            popup.querySelector(".royal-popup-title");
-
-        if (title) {
-            title.style.cssText = `
-                font-size: 18px;
-                font-weight: 700;
-                color: #d4af37;
-                margin-bottom: 6px;
-            `;
-        }
-
-        const text =
-            popup.querySelector(".royal-popup-message");
-
-        if (text) {
-            text.style.cssText = `
-                font-size: 14px;
-                color: #ffffff;
-            `;
-        }
-
-        requestAnimationFrame(function () {
-
-            popup.style.opacity = "1";
-            popup.style.transform =
-                "translateX(-50%) translateY(0)";
-
-        });
-
-        setTimeout(function () {
-
-            popup.style.opacity = "0";
-            popup.style.transform =
-                "translateX(-50%) translateY(-20px)";
-
-            setTimeout(function () {
-
-                if (popup.parentNode) {
-                    popup.parentNode.removeChild(popup);
-                }
-
-            }, 400);
-
-        }, 3000);
-    }
+    websiteName: "Royal Store",
+    websiteVersion: "V2",
+    appVersion: "2.0",
+    buildNumber: "2026.08.15",
+    currencySymbol: "₹",
 
 
-    // =================================================
-    // PRODUCTS
-    // =================================================
+    /* Business Settings */
 
-    const products = [
-        {
-            name: "Premium Shirt",
-            price: 799,
-            qty: 1
-        },
-        {
-            name: "Stylish Pant",
-            price: 999,
-            qty: 1
-        },
-        {
-            name: "Beauty Kit",
-            price: 499,
-            qty: 1
-        }
-    ];
+    businessName: "Royal Store",
+    supportEmail: "support@royalstore.com",
+    supportPhone: "+91XXXXXXXXXX",
 
 
-    // =================================================
-    // ADD TO CART BUTTONS
-    // =================================================
+    /* Social Media Settings */
 
-    const buttons =
-        document.querySelectorAll(
-            ".product .add-cart"
-        );
+    whatsappNumber: "91XXXXXXXXXX",
+    instagramUrl: "https://instagram.com/yourusername",
+    facebookUrl: "https://facebook.com/yourusername",
 
-               buttons.forEach(function (button, index) {
 
-               button.addEventListener("click", function () {
+    /* Store Settings */
 
-                        if (!products[index]) {
-                return;
-            }
+    freeDelivery: true,
+    deliveryCharge: 0,
+    minimumOrderAmount: 299,
+    maintenanceMode: false,
 
-            const card = button.closest(".product");
 
-                     const product = {
-    name: card.querySelector("h3").innerText,
-    price: Number(
-        card.querySelector(".price")
-            .innerText.replace("₹", "")
-    ),
-    qty: 1
+    /* Payment Settings */
+
+    cashOnDelivery: true,
+    upiPayment: false,
+    cardPayment: false,
+    netBanking: false,
+
+
+    /* Delivery Settings */
+
+    requireLogin: true,
+    requireLiveLocation: true,
+
+
+    /* Validation Settings */
+
+    mobileLength: 10,
+    pinCodeLength: 6,
+    maxProductQuantity: 5,
+
+
+    /* Order Settings */
+
+    orderPrefix: "RS",
+    orderStatus: "Pending"
+
 };
 
-            const existingIndex =
-                cartItems.findIndex(function (item) {
-                    return item.name === product.name;
-                });
 
-            if (existingIndex !== -1) {
+/* ========================================
+   PRODUCT DATABASE
+======================================== */
 
-                cartItems[existingIndex].qty++;
+const PRODUCTS = [
 
-            } else {
+    // Products will be added here.
 
-                cartItems.push({
-                    name: product.name,
-                    price: product.price,
-                    qty: 1
-                });
+];
 
-            }
+/* ========================================
+   DOM ELEMENTS
+======================================== */
 
-            updateCartStorage();
+const productContainer = document.getElementById("products-container");
 
-            showRoyalPopup(
-                product.name +
-                " cart me add ho gaya!"
-            );
-                   
-           setTimeout(function () {
-              window.location.href = "cart.html";
-              }, 800);
-        });
+const cartCount = document.getElementById("cart-count");
+
+const menuButton = document.getElementById("menu-btn");
+
+const closeMenuButton = document.getElementById("close-menu");
+
+const navigationDrawer = document.getElementById("nav-drawer");
+
+const searchInput = document.getElementById("search-input");
+
+/* ========================================
+   PRODUCT DATABASE
+======================================== */
+
+const PRODUCTS = [
+
+    {
+        id: 1,
+        sku: "RS-SHIRT-001",
+
+        name: "Premium Men's Shirt",
+
+        category: "shirts",
+
+        price: 799,
+
+        image: "images/shirt.jpg",
+
+        gallery: [
+            "images/shirt.jpg"
+        ],
+
+        status: "In Stock",
+
+        availability: true,
+
+        stock: 25,
+
+        maxOrder: 5,
+
+        badge: "Premium",
+
+        tags: [
+            "Premium",
+            "Men",
+            "Cotton",
+            "Formal"
+        ],
+
+        featured: true,
+
+        trending: true,
+
+        discount: 0,
+
+        rating: 0,
+
+        reviews: 0
+    },
+
+    {
+        id: 2,
+        sku: "RS-JEANS-001",
+
+        name: "Jeans & Cargo Pants",
+
+        category: "jeans",
+
+        price: 1299,
+
+        image: "images/jeans.jpg",
+
+        gallery: [
+            "images/jeans.jpg"
+        ],
+
+        status: "In Stock",
+
+        availability: true,
+
+        stock: 18,
+
+        maxOrder: 5,
+
+        badge: "Trending",
+
+        tags: [
+            "Jeans",
+            "Cargo",
+            "Men"
+        ],
+
+        featured: true,
+
+        trending: true,
+
+        discount: 0,
+
+        rating: 0,
+
+        reviews: 0
+    },
+
+    {
+        id: 3,
+        sku: "RS-BEAUTY-001",
+
+        name: "Beauty & Personal Care",
+
+        category: "beauty",
+
+        price: 499,
+
+        image: "images/beauty.jpg",
+
+        gallery: [
+            "images/beauty.jpg"
+        ],
+
+        status: "In Stock",
+
+        availability: true,
+
+        stock: 40,
+
+        maxOrder: 5,
+
+        badge: "Best Seller",
+
+        tags: [
+            "Beauty",
+            "Skincare",
+            "Personal Care"
+        ],
+
+        featured: true,
+
+        trending: true,
+
+        discount: 0,
+
+        rating: 0,
+
+        reviews: 0
+    }
+
+];
+
+/* ========================================
+   DOM ELEMENTS
+======================================== */
+
+const productContainer = document.getElementById("products-container");
+
+const cartCount = document.getElementById("cart-count");
+
+const menuButton = document.getElementById("menu-btn");
+
+const closeMenuButton = document.getElementById("close-menu");
+
+const navigationDrawer = document.getElementById("nav-drawer");
+
+const searchInput = document.getElementById("search-input");
+
+const categoryButtons = document.querySelectorAll("[data-category]");
+
+const sortSelect = document.getElementById("sort-products");
+
+const checkoutButton = document.getElementById("checkout-btn");
+
+
+/* ========================================
+   LOCAL STORAGE MANAGER
+======================================== */
+
+let cart = JSON.parse(localStorage.getItem("royalCart")) || [];
+
+let wishlist = JSON.parse(localStorage.getItem("royalWishlist")) || [];
+
+let recentProducts =
+    JSON.parse(localStorage.getItem("royalRecentProducts")) || [];
+
+
+/* ========================================
+   LOCAL STORAGE FUNCTIONS
+======================================== */
+
+function saveCart() {
+    localStorage.setItem(
+        "royalCart",
+        JSON.stringify(cart)
+    );
+}
+
+function loadCart() {
+    cart =
+        JSON.parse(localStorage.getItem("royalCart")) || [];
+}
+
+function saveWishlist() {
+    localStorage.setItem(
+        "royalWishlist",
+        JSON.stringify(wishlist)
+    );
+}
+
+function loadWishlist() {
+    wishlist =
+        JSON.parse(localStorage.getItem("royalWishlist")) || [];
+}
+
+function saveRecentProducts() {
+    localStorage.setItem(
+        "royalRecentProducts",
+        JSON.stringify(recentProducts)
+    );
+}
+
+function loadRecentProducts() {
+    recentProducts =
+        JSON.parse(
+            localStorage.getItem("royalRecentProducts")
+        ) || [];
+}
+
+
+/* ========================================
+   CART HELPERS
+======================================== */
+
+function getCartCount() {
+
+    return cart.reduce((total, item) => {
+
+        return total + item.quantity;
+
+    }, 0);
+
+}
+
+function getCartTotal() {
+
+    return cart.reduce((total, item) => {
+
+        return total + (item.price * item.quantity);
+
+    }, 0);
+
+}
+
+function updateCartBadge() {
+
+    if (!cartCount) return;
+
+    cartCount.textContent = getCartCount();
+
+}
+
+/* ========================================
+   PRODUCT RENDER ENGINE
+======================================== */
+
+function renderProducts(productList = PRODUCTS) {
+
+    if (!productContainer) return;
+
+    productContainer.innerHTML = "";
+
+    productList.forEach(product => {
+
+        const productCard = document.createElement("div");
+
+        productCard.className = "product-card";
+
+        productCard.innerHTML = `
+
+            <div class="product-image">
+
+                <img src="${product.image}" alt="${product.name}">
+
+            </div>
+
+            <div class="product-info">
+
+                <h3 class="product-name">
+                    ${product.name}
+                </h3>
+
+                <p class="product-price">
+                    ${CONFIG.currencySymbol}${product.price}
+                </p>
+
+                <div class="product-buttons">
+
+                    <button
+                        class="add-cart-btn"
+                        data-id="${product.id}">
+                        Add to Cart
+                    </button>
+
+                    <button
+                        class="buy-now-btn"
+                        data-id="${product.id}">
+                        Buy Now
+                    </button>
+
+                    <button
+                        class="whatsapp-order-btn"
+                        data-id="${product.id}">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        WhatsApp Order
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+        productContainer.appendChild(productCard);
 
     });
 
-
-    // =================================================
-    // WHATSAPP ORDER BUTTON
-    // =================================================
-
-    document
-        .querySelectorAll(".whatsapp-order")
-        .forEach(function (button) {
-
-            button.addEventListener(
-                "click",
-                function () {
-
-                    const product =
-                        button.dataset.product;
-
-                    const price =
-                        Number(button.dataset.price);
-
-                    if (!product || !price) {
-                        return;
-                    }
-
-                    const existingIndex =
-                        cartItems.findIndex(
-                            function (item) {
-                                return item.name === product;
-                            }
-                        );
-
-                    if (existingIndex !== -1) {
-
-                        cartItems[existingIndex].qty++;
-
-                    } else {
-
-                        cartItems.push({
-                            name: product,
-                            price: price,
-                            qty: 1
-                        });
-
-                    }
-
-                    updateCartStorage();
-
-                    window.location.href =
-                        "cart.html";
-                }
-            );
-
-        });
+}
 
 
-    // =================================================
-    // CART PAGE
-    // =================================================
+/* ========================================
+   PRODUCT HELPERS
+======================================== */
 
-    const cartList =
-        document.getElementById("cart-items");
+function getProductById(productId) {
 
-    if (cartList) {
+    return PRODUCTS.find(product => product.id === productId);
 
-        cartList.innerHTML = "";
+}
 
-        if (cartItems.length === 0) {
+function refreshProducts() {
 
-            cartList.innerHTML = `
-                <li style="
-                    list-style:none;
-                    text-align:center;
-                    padding:30px;
-                ">
-                    🛒 Cart is empty
-                </li>
-            `;
+    renderProducts(PRODUCTS);
 
-        } else {
+}
 
-            cartItems.forEach(
-                function (item, index) {
+/* ========================================
+   ADD TO CART SYSTEM
+======================================== */
 
-                    const li =
-                        document.createElement("li");
+function addToCart(productId) {
 
-                    li.className = "cart-item";
+    /* Login Check */
 
-                    li.innerHTML = `
-                        <div class="cart-card">
+    if (CONFIG.requireLogin && localStorage.getItem("loggedIn") !== "true") {
 
-                            <div class="cart-info">
-                                <h3>${item.name}</h3>
-                                <p>₹${item.price}</p>
-                            </div>
+        alert("Please login first.");
 
-                            <div class="cart-controls">
+        window.location.href = "login.html";
 
-                                <button
-                                    class="minus"
-                                    data-index="${index}">
-                                    −
-                                </button>
+        return;
 
-                                <span class="qty">
-                                    ${item.qty}
-                                </span>
+    }
 
-                                <button
-                                    class="plus"
-                                    data-index="${index}">
-                                    +
-                                </button>
+    const product = getProductById(productId);
 
-                                <button
-                                    class="delete remove-btn"
-                                    data-index="${index}">
-                                    🗑️
-                                </button>
+    if (!product) {
 
-                            </div>
+        alert("Product not found.");
 
-                        </div>
-                    `;
+        return;
 
-                    cartList.appendChild(li);
+    }
 
-                }
-            );
+    /* Stock Validation */
+
+    if (!product.availability || product.stock <= 0) {
+
+        alert("This product is currently out of stock.");
+
+        return;
+
+    }
+
+    /* Check Existing Product */
+
+    const existingProduct = cart.find(item => item.id === productId);
+
+    if (existingProduct) {
+
+        /* Maximum Quantity Validation */
+
+        if (existingProduct.quantity >= product.maxOrder) {
+
+            alert(`Maximum ${product.maxOrder} quantity allowed.`);
+
+            return;
 
         }
+
+        existingProduct.quantity++;
+
+    } else {
+
+        cart.push({
+
+            id: product.id,
+            sku: product.sku,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            quantity: 1
+
+        });
+
     }
 
+    saveCart();
 
-    // =================================================
-    // PLUS
-    // =================================================
+    updateCartBadge();
 
-    document
-        .querySelectorAll(".plus")
-        .forEach(function (button) {
+    alert(`${product.name} added to cart successfully.`);
 
-            button.addEventListener(
-                "click",
-                function () {
-
-                    const index =
-                        Number(button.dataset.index);
-
-                    if (!cartItems[index]) {
-                        return;
-                    }
-
-                    cartItems[index].qty++;
-
-                    updateCartStorage();
-
-                    location.reload();
-                }
-            );
-
-        });
+}
 
 
-    // =================================================
-    // MINUS
-    // =================================================
+/* ========================================
+   REMOVE FROM CART
+======================================== */
 
-    document
-        .querySelectorAll(".minus")
-        .forEach(function (button) {
+function removeFromCart(productId) {
 
-            button.addEventListener(
-                "click",
-                function () {
+    cart = cart.filter(item => item.id !== productId);
 
-                    const index =
-                        Number(button.dataset.index);
+    saveCart();
 
-                    if (!cartItems[index]) {
-                        return;
-                    }
+    updateCartBadge();
 
-                    if (cartItems[index].qty > 1) {
-
-                        cartItems[index].qty--;
-
-                    } else {
-
-                        cartItems.splice(index, 1);
-
-                    }
-
-                    updateCartStorage();
-
-                    location.reload();
-                }
-            );
-
-        });
+}
 
 
-    // =================================================
-    // DELETE
-    // =================================================
+/* ========================================
+   UPDATE PRODUCT QUANTITY
+======================================== */
 
-    document
-        .querySelectorAll(".delete")
-        .forEach(function (button) {
+function updateQuantity(productId, action) {
 
-            button.addEventListener(
-                "click",
-                function () {
+    const item = cart.find(product => product.id === productId);
 
-                    const index =
-                        Number(button.dataset.index);
+    if (!item) return;
 
-                    if (!cartItems[index]) {
-                        return;
-                    }
+    if (action === "increase") {
 
-                    cartItems.splice(index, 1);
+        if (item.quantity >= CONFIG.maxProductQuantity) {
 
-                    updateCartStorage();
+            alert("Maximum quantity reached.");
 
-                    location.reload();
-                }
-            );
+            return;
 
-        });
+        }
+
+        item.quantity++;
+
+    }
+
+    if (action === "decrease") {
+
+        item.quantity--;
+
+        if (item.quantity <= 0) {
+
+            removeFromCart(productId);
+
+            return;
+
+        }
+
+    }
+
+    saveCart();
+
+    updateCartBadge();
+
+}
 
 
-    // =================================================
-    // CLEAR CART
-    // =================================================
+/* ========================================
+   CLEAR CART
+======================================== */
 
-    const clearCartBtn =
-        document.getElementById("clearCartBtn") ||
-        document.getElementById("clear-cart-btn");
+function clearCart() {
 
-    if (clearCartBtn) {
+    cart = [];
 
-        clearCartBtn.addEventListener(
-            "click",
-            function () {
+    saveCart();
 
-                localStorage.removeItem("cart");
-                localStorage.removeItem("total");
-                localStorage.removeItem("cartItems");
+    updateCartBadge();
 
-                showCartClearedPopup();
+}
 
-                setTimeout(function () {
-                    location.reload();
-                }, 1200);
+/* ========================================
+   BUY NOW SYSTEM
+======================================== */
+
+let selectedProduct = null;
+
+
+/* ========================================
+   BUY NOW
+======================================== */
+
+function buyNow(productId) {
+
+    /* Login Check */
+
+    if (
+        CONFIG.requireLogin &&
+        localStorage.getItem("loggedIn") !== "true"
+    ) {
+
+        alert("Please login first.");
+
+        window.location.href = "login.html";
+
+        return;
+
+    }
+
+    /* Get Product */
+
+    const product = getProductById(productId);
+
+    if (!product) {
+
+        alert("Product not found.");
+
+        return;
+
+    }
+
+    /* Stock Validation */
+
+    if (
+        !product.availability ||
+        product.stock <= 0
+    ) {
+
+        alert("This product is currently out of stock.");
+
+        return;
+
+    }
+
+    /* Save Selected Product */
+
+    selectedProduct = {
+
+        ...product,
+
+        quantity: 1
+
+    };
+
+    /* Open Checkout */
+
+    openCheckout();
+
+}
+
+
+/* ========================================
+   OPEN CHECKOUT
+======================================== */
+
+function openCheckout() {
+
+    const checkoutModal =
+        document.getElementById("checkout-modal");
+
+    if (!checkoutModal) return;
+
+    checkoutModal.classList.add("active");
+
+}
+
+
+/* ========================================
+   CLOSE CHECKOUT
+======================================== */
+
+function closeCheckout() {
+
+    const checkoutModal =
+        document.getElementById("checkout-modal");
+
+    if (!checkoutModal) return;
+
+    checkoutModal.classList.remove("active");
+
+}
+
+
+/* ========================================
+   ORDER SUMMARY
+======================================== */
+
+function updateOrderSummary() {
+
+    const summary =
+        document.getElementById("order-summary");
+
+    if (!summary || !selectedProduct) return;
+
+    summary.innerHTML = `
+
+        <h3>${selectedProduct.name}</h3>
+
+        <p>
+
+            Quantity :
+            ${selectedProduct.quantity}
+
+        </p>
+
+        <p>
+
+            Price :
+            ${CONFIG.currencySymbol}
+            ${selectedProduct.price}
+
+        </p>
+
+        <p>
+
+            Total :
+            ${CONFIG.currencySymbol}
+            ${
+                selectedProduct.price *
+                selectedProduct.quantity
             }
-        );
 
-    }
+        </p>
 
-// ==============================
-// GET CURRENT LOCATION
-// ==============================
+    `;
 
-const getLocationBtn = document.getElementById("get-location");
+}
 
-if (getLocationBtn) {
+/* ========================================
+   DELIVERY INFORMATION
+======================================== */
 
-  getLocationBtn.addEventListener("click", function () {
+const customerName = document.getElementById("customer-name");
+
+const customerMobile = document.getElementById("customer-mobile");
+
+const customerEmail = document.getElementById("customer-email");
+
+const customerAddress = document.getElementById("customer-address");
+
+const customerCity = document.getElementById("customer-city");
+
+const customerState = document.getElementById("customer-state");
+
+const customerPin = document.getElementById("customer-pin");
+
+const getLocationBtn = document.getElementById("get-location-btn");
+
+const confirmOrderBtn = document.getElementById("confirm-order-btn");
+
+
+/* ========================================
+   LIVE LOCATION SYSTEM
+======================================== */
+
+let customerLocation = {
+
+    latitude: null,
+
+    longitude: null,
+
+    googleMapsLink: ""
+
+};
+
+
+function getCurrentLocation() {
 
     if (!navigator.geolocation) {
-      alert("Location is not supported on this device.");
-      return;
-    }
 
-    getLocationBtn.innerText = "Getting Location...";
+        alert("Geolocation is not supported on this device.");
+
+        return;
+
+    }
 
     navigator.geolocation.getCurrentPosition(
 
-      function (position) {
+        function (position) {
 
-        document.getElementById("latitude").value =
-          position.coords.latitude;
+            customerLocation.latitude = position.coords.latitude;
 
-        document.getElementById("longitude").value =
-          position.coords.longitude;
+            customerLocation.longitude = position.coords.longitude;
 
-        getLocationBtn.innerText = "✅ Location Added";
+            customerLocation.googleMapsLink =
+                `https://maps.google.com/?q=${customerLocation.latitude},${customerLocation.longitude}`;
 
-      },
+            alert("Live location captured successfully.");
 
-      function () {
+        },
 
-        alert("Please allow location permission.");
+        function () {
 
-        getLocationBtn.innerText = "📍 Use Current Location";
+            alert("Location permission denied.");
 
-      }
+        }
 
     );
 
-  });
-
-}
-    
-    // =================================================
-    // CHECKOUT
-    // =================================================
-
-    const checkoutBtn =
-        document.getElementById("checkoutBtn");
-
-    const loginModal =
-        document.getElementById("loginModal");
-
-    if (checkoutBtn) {
-
-        checkoutBtn.addEventListener(
-            "click",
-            function () {
-
-                if (
-                    localStorage.getItem("loggedIn")
-                    !== "true"
-                ) {
-
-                    if (loginModal) {
-
-                        loginModal.style.display =
-                            "flex";
-
-                    } else {
-
-                        alert(
-                            "Please Login or Sign Up first."
-                        );
-
-                    }
-
-                    return;
-                }
-
-                if (cartItems.length === 0) {
-
-                    alert(
-                        "🛒 Your cart is empty!"
-                    );
-
-                    return;
-                }
-
-                const name =
-                    document.getElementById("name")
-                    ?.value.trim();
-
-                const phone =
-                    document.getElementById("mobile")
-                    ?.value.trim();
-
-                const address =
-                    document.getElementById("address")
-                    ?.value.trim();
-
-                const city =
-                    document.getElementById("city")
-                    ?.value.trim();
-                
-                const state = 
-                    document.getElementById("state").value.trim();
-                
-                const pincode =
-                    document.getElementById("pin")
-                    ?.value.trim();
-                
-                const latitude =
-                    document.getElementById("latitude").value;
-
-               const longitude =
-                   document.getElementById("longitude").value;
-                
-               const locationError = document.getElementById("location-error");
-                     locationError.style.display = "none";
-
-               document.getElementById("get-location").classList.remove("input-error");
-
-              if (!latitude || !longitude) {
-                     locationError.innerText = "❌ Please add your live location";
-                     locationError.style.display = "block";
-
-               document.getElementById("get-location").classList.add("input-error");
-
-    return;
-}
-                
-               const locationLink =
-                   latitude && longitude
-                   ?
-                   `https://maps.google.com/?q=${latitude},${longitude}`
-                   : "";
-
-                let valid = true;
-
-if (!name) {
-    document.getElementById("name").classList.add("input-error");
-    document.getElementById("name-error").innerText = "❌ Full Name is required";
-    document.getElementById("name-error").style.display = "block";
-    valid = false;
 }
 
-if (!phone) {
-    document.getElementById("mobile").classList.add("input-error");
-    document.getElementById("mobile-error").innerText = "❌ Mobile Number is required";
-    document.getElementById("mobile-error").style.display = "block";
-    valid = false;
-}
 
-if (!address) {
-    document.getElementById("address").classList.add("input-error");
-    document.getElementById("address-error").innerText = "❌ Address is required";
-    document.getElementById("address-error").style.display = "block";
-    valid = false;
-}
+/* ========================================
+   ORDER VALIDATION
+======================================== */
 
-if (!city) {
-    document.getElementById("city").classList.add("input-error");
-    document.getElementById("city-error").innerText = "❌ City is required";
-    document.getElementById("city-error").style.display = "block";
-    valid = false;
-}
-if (!state) {
-    document.getElementById("state").classList.add("input-error");
-    document.getElementById("state-error").innerText = "❌ State is required";
-    document.getElementById("state-error").style.display = "block";
-    valid = false;
-}
+function validateOrder() {
 
-if (!pincode) {
-    document.getElementById("pin").classList.add("input-error");
-    document.getElementById("pin-error").innerText = "❌ PIN Code is required";
-    document.getElementById("pin-error").style.display = "block";
-    valid = false;
-}
+    if (!customerName.value.trim()) {
 
-if (!valid) {
-  return;
-}
+        alert("Please enter your full name.");
 
-                let productList = "";
-
-                cartItems.forEach(function (item) {
-
-                    productList +=
-                        "• " +
-                        item.name +
-                        " x" +
-                        item.qty +
-                        " - ₹" +
-                        (item.price * item.qty) +
-                        "\n";
-
-                });
-
-                const totalItems =
-                    cartItems.reduce(
-                        function (sum, item) {
-                            return sum + item.qty;
-                        },
-                        0
-                    );
-
-                const totalAmount =
-                    cartItems.reduce(
-                        function (sum, item) {
-                            return sum +
-                                (item.price * item.qty);
-                        },
-                        0
-                    );
-
-                if (!locationLink) {
-    const locationBtn = document.getElementById("get-location");
-
-    locationBtn.innerHTML = "❌ Please Add Your Location";
-    locationBtn.style.background = "#ff3b30";
-    locationBtn.style.color = "#fff";
-
-    setTimeout(() => {
-        locationBtn.innerHTML = "📍 Use My Live Location";
-        locationBtn.style.background = "";
-        locationBtn.style.color = "";
-    }, 3000);
-
-    return;
-                }
-                
-                const message = `
-🛍️ *ROYAL STORE ORDER*
-
-👤 Name: ${name}
-📱 Phone: ${phone}
-🏠 Address: ${address}
-🏙️ City: ${city}
-🗺️ State: ${state}
-📮 PIN Code: ${pincode}
-📍 Current Location:
-${locationLink}
-
-🛒 *ORDER DETAILS*
-
-${productList}
-📦 Total Items: ${totalItems}
-💰 Total Price: ₹${totalAmount}
-
-Thank you for shopping with Royal Store! 👑
-`;
-
-                window.open(
-                    "https://wa.me/918791139418?text=" +
-                    encodeURIComponent(message),
-                    "_blank"
-                );
-
-            }
-        );
+        return false;
 
     }
-
-
-    // =================================================
-    // NOTIFICATION
-    // =================================================
-
-    function updateNotification() {
-
-        const badge =
-            document.getElementById("notify-count");
-
-        if (!badge) {
-            return;
-        }
-
-        const items =
-            JSON.parse(
-                localStorage.getItem("cartItems") ||
-                "[]"
-            );
-
-        const totalQty =
-            items.reduce(
-                function (sum, item) {
-                    return sum + Number(item.qty || 0);
-                },
-                0
-            );
-
-        if (totalQty > 0) {
-
-            badge.style.display = "flex";
-            badge.textContent = totalQty;
-
-        } else {
-
-            badge.style.display = "none";
-
-        }
-
-    }
-
-
-    // =================================================
-    // LOGIN SYSTEM
-    // =================================================
-
-    const loginButton =
-        document.querySelector(
-            ".login-card button"
-        );
-
-    if (loginButton) {
-
-        loginButton.addEventListener(
-            "click",
-            function () {
-
-                const email =
-                    document.querySelector(
-                        'input[type="email"]'
-                    )?.value.trim();
-
-                const password =
-                    document.querySelector(
-                        'input[type="password"]'
-                    )?.value.trim();
-
-                if (!email || !password) {
-
-                    alert(
-                        "Please enter Email and Password"
-                    );
-
-                    return;
-                }
-
-                const savedEmail =
-                    localStorage.getItem(
-                        "userEmail"
-                    );
-
-                const savedPassword =
-                    localStorage.getItem(
-                        "userPassword"
-                    );
-
-                if (
-                    (
-                        email ===
-                        "admin@royalstore.com" &&
-                        password === "123456"
-                    ) ||
-                    (
-                        email === savedEmail &&
-                        password === savedPassword
-                    )
-                ) {
-
-                    localStorage.setItem(
-                        "loggedIn",
-                        "true"
-                    );
-
-                    alert(
-                        "Login Successful!"
-                    );
-
-                    window.location.href =
-                        "index.html";
-
-                } else {
-
-                    alert(
-                        "Invalid Email or Password!"
-                    );
-
-                }
-
-            }
-        );
-
-    }
-
-
-    // =================================================
-    // SIDE MENU
-    // =================================================
-
-    const menuBtn =
-        document.getElementById("menu-btn");
-
-    const sideMenu =
-        document.getElementById("side-menu");
-
-    const overlay =
-        document.getElementById("overlay");
 
     if (
-        menuBtn &&
-        sideMenu &&
-        overlay
+        customerMobile.value.trim().length !==
+        CONFIG.mobileLength
     ) {
 
-        menuBtn.addEventListener(
-            "click",
-            function () {
+        alert("Enter a valid mobile number.");
 
-                sideMenu.classList.toggle(
-                    "active"
-                );
-
-                overlay.classList.toggle(
-                    "active"
-                );
-
-            }
-        );
-
-        overlay.addEventListener(
-            "click",
-            function () {
-
-                sideMenu.classList.remove(
-                    "active"
-                );
-
-                overlay.classList.remove(
-                    "active"
-                );
-
-            }
-        );
+        return false;
 
     }
 
+    if (!customerAddress.value.trim()) {
 
-    // =================================================
-    // LOGIN MODAL
-    // =================================================
+        alert("Please enter your address.");
 
-    const loginBtnModal =
-        document.getElementById(
-            "loginBtnModal"
-        );
-
-    const signupBtnModal =
-        document.getElementById(
-            "signupBtnModal"
-        );
-
-        const closeModal =
-        document.getElementById("closeModal");
-
-
-    // LOGIN BUTTON
-    if (loginBtnModal) {
-
-        loginBtnModal.onclick = function () {
-
-            window.location.href = "login.html";
-
-        };
+        return false;
 
     }
 
+    if (!customerCity.value.trim()) {
 
-    // SIGN UP BUTTON
-    if (signupBtnModal) {
+        alert("Please enter your city.");
 
-        signupBtnModal.onclick = function () {
-
-            window.location.href = "signup.html";
-
-        };
+        return false;
 
     }
 
+    if (!customerState.value.trim()) {
 
-    // CLOSE POPUP
-    if (closeModal) {
+        alert("Please enter your state.");
 
-        closeModal.onclick = function () {
-
-            if (loginModal) {
-
-                loginModal.style.display = "none";
-
-            }
-
-        };
+        return false;
 
     }
 
-});
-// =====================================
-// IPHONE STYLE - CART CLEARED POPUP
-// =====================================
+    if (
+        customerPin.value.trim().length !==
+        CONFIG.pinCodeLength
+    ) {
 
-function showCartClearedPopup() {
+        alert("Enter a valid PIN code.");
 
-    const oldPopup =
-    document.getElementById("cart-cleared-popup");
+        return false;
 
-    if (oldPopup) {
-        oldPopup.remove();
     }
 
-    const popup =
-        document.createElement("div");
+    if (
+        CONFIG.requireLiveLocation &&
+        !customerLocation.googleMapsLink
+    ) {
 
-    popup.id = "cart-cleared-popup";
+        alert("Please allow your current location.");
 
-    popup.innerHTML = `
-        <div class="cart-cleared-icon">
-            ✓
-        </div>
+        return false;
 
-        <div class="cart-cleared-content">
-            <div class="cart-cleared-title">
-                Cart Cleared
-            </div>
+    }
 
-            <div class="cart-cleared-text">
-                Your shopping cart is empty
-            </div>
-        </div>
-    `;
+    return true;
 
-    popup.style.cssText = `
-        position: fixed;
-        left: 50%;
-        bottom: 28px;
-        transform: translateX(-50%) translateY(25px) scale(.96);
-
-        width: calc(100% - 32px);
-        max-width: 360px;
-
-        display: flex;
-        align-items: center;
-        gap: 12px;
-
-        padding: 12px 15px;
-
-        background: rgba(28, 28, 30, .94);
-        color: #ffffff;
-
-        border: 1px solid rgba(255,255,255,.12);
-        border-radius: 18px;
-
-        box-shadow:
-            0 12px 35px rgba(0,0,0,.28),
-            0 2px 8px rgba(0,0,0,.15);
-
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
-
-        z-index: 2147483647;
-
-        font-family:
-            -apple-system,
-            BlinkMacSystemFont,
-            "SF Pro Display",
-            "Segoe UI",
-            Arial,
-            sans-serif;
-
-        opacity: 0;
-
-        transition:
-            opacity .35s ease,
-            transform .35s cubic-bezier(.22,1,.36,1);
-
-        box-sizing: border-box;
-    `;
-
-    const icon =
-        popup.querySelector(".cart-cleared-icon");
-
-    icon.style.cssText = `
-        width: 34px;
-        height: 34px;
-
-        flex: 0 0 34px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        border-radius: 50%;
-
-        background: #34C759;
-        color: #ffffff;
-
-        font-size: 18px;
-        font-weight: 700;
-
-        box-shadow:
-            0 3px 10px rgba(52,199,89,.35);
-
-        animation:
-            cartCheck .45s ease;
-    `;
-
-    const content =
-        popup.querySelector(".cart-cleared-content");
-
-    content.style.cssText = `
-        min-width: 0;
-        text-align: left;
-    `;
-
-    const title =
-        popup.querySelector(".cart-cleared-title");
-
-    title.style.cssText = `
-        font-size: 14px;
-        line-height: 18px;
-
-        font-weight: 600;
-
-        color: #ffffff;
-
-        margin-bottom: 2px;
-    `;
-
-    const text =
-        popup.querySelector(".cart-cleared-text");
-
-    text.style.cssText = `
-        font-size: 11px;
-        line-height: 15px;
-
-        font-weight: 400;
-
-        color: #A1A1A6;
-    `;
-
-    document.body.appendChild(popup);
-
-    // iPhone style animation
-    requestAnimationFrame(function () {
-
-        popup.style.opacity = "1";
-
-        popup.style.transform =
-            "translateX(-50%) translateY(0) scale(1)";
-
-    });
-
-    // Hide
-    setTimeout(function () {
-
-        popup.style.opacity = "0";
-
-        popup.style.transform =
-            "translateX(-50%) translateY(20px) scale(.96)";
-
-        setTimeout(function () {
-
-            if (popup.parentNode) {
-                popup.remove();
-            }
-
-        }, 350);
-
-    }, 850);
 }
 
-const cartPopupStyle = document.createElement("style");
+/* ========================================
+   WHATSAPP ORDER SYSTEM
+======================================== */
 
-cartPopupStyle.textContent = `
-@keyframes cartCheck {
-    0% {
-        transform: scale(.5);
-        opacity: 0;
-    }
+function generateOrderId() {
 
-    70% {
-        transform: scale(1.12);
-        opacity: 1;
-    }
+    return `${CONFIG.orderPrefix}${Date.now()}`;
 
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
 }
+
+
+function generateOrderDate() {
+
+    return new Date().toLocaleDateString();
+
+}
+
+
+function generateOrderTime() {
+
+    return new Date().toLocaleTimeString();
+
+}
+
+
+function placeWhatsAppOrder() {
+
+    if (!validateOrder()) return;
+
+    const product = selectedProduct;
+
+    if (!product) {
+
+        alert("No product selected.");
+
+        return;
+
+    }
+
+    if (product.price < CONFIG.minimumOrderAmount) {
+
+        alert(
+            `Minimum order amount is ${CONFIG.currencySymbol}${CONFIG.minimumOrderAmount}.`
+        );
+
+        return;
+
+    }
+
+    const orderId = generateOrderId();
+
+    const orderDate = generateOrderDate();
+
+    const orderTime = generateOrderTime();
+
+    const message = `
+
+🛍️ *Royal Store Order*
+
+━━━━━━━━━━━━━━━━━━
+
+🆔 Order ID : ${orderId}
+
+📅 Date : ${orderDate}
+
+⏰ Time : ${orderTime}
+
+━━━━━━━━━━━━━━━━━━
+
+👤 Customer
+
+Name : ${customerName.value}
+
+Mobile : ${customerMobile.value}
+
+Email : ${customerEmail.value || "N/A"}
+
+Address : ${customerAddress.value}
+
+City : ${customerCity.value}
+
+State : ${customerState.value}
+
+PIN : ${customerPin.value}
+
+━━━━━━━━━━━━━━━━━━
+
+📦 Product
+
+Name : ${product.name}
+
+SKU : ${product.sku}
+
+Quantity : ${product.quantity}
+
+Price : ${CONFIG.currencySymbol}${product.price}
+
+━━━━━━━━━━━━━━━━━━
+
+💰 Total
+
+${CONFIG.currencySymbol}${product.price * product.quantity}
+
+━━━━━━━━━━━━━━━━━━
+
+📍 Live Location
+
+${customerLocation.googleMapsLink}
+
+━━━━━━━━━━━━━━━━━━
+
+Thank You ❤️
+
+Royal Store
+
 `;
 
-document.head.appendChild(cartPopupStyle);
+    window.open(
 
-// ===============================
-// SHIRTS PAGE ADD TO CART
-// ===============================
+        `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`,
 
-document.querySelectorAll(".add-cart").forEach(function(button){
+        "_blank"
 
-    button.addEventListener("click", function(){
+    );
 
-        const card = button.closest(".product");
+}
 
-        const name = card.querySelector("h3").innerText;
 
-        const price = Number(
-            card.querySelector(".price")
-            .innerText.replace("₹","")
-        );
+/* ========================================
+   EVENT LISTENERS
+======================================== */
 
-        let cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+document.addEventListener("click", (event) => {
 
-        const existing = cartItems.find(item => item.name === name);
+    if (event.target.classList.contains("add-cart-btn")) {
 
-        if(existing){
-            existing.qty++;
-        }else{
-            cartItems.push({
-                name:name,
-                price:price,
-                qty:1
-            });
-        }
+        addToCart(Number(event.target.dataset.id));
 
-        localStorage.setItem("cartItems",JSON.stringify(cartItems));
-        localStorage.setItem("cart", cartItems.length);
+    }
 
-let total = 0;
+    if (event.target.classList.contains("buy-now-btn")) {
 
-cartItems.forEach(function(item){
-    total += item.price * item.qty;
-});
+        buyNow(Number(event.target.dataset.id));
 
-localStorage.setItem("total", total);
-        alert(name + " Added to Cart ✅");
+        updateOrderSummary();
 
-    });
+    }
+
+    if (event.target.classList.contains("whatsapp-order-btn")) {
+
+        buyNow(Number(event.target.dataset.id));
+
+        updateOrderSummary();
+
+    }
 
 });
+
+
+if (getLocationBtn) {
+
+    getLocationBtn.addEventListener(
+
+        "click",
+
+        getCurrentLocation
+
+    );
+
+}
+
+
+if (confirmOrderBtn) {
+
+    confirmOrderBtn.addEventListener(
+
+        "click",
+
+        placeWhatsAppOrder
+
+    );
+
+}
+
+
+if (menuButton) {
+
+    menuButton.addEventListener(
+
+        "click",
+
+        () => navigationDrawer.classList.add("active")
+
+    );
+
+}
+
+
+if (closeMenuButton) {
+
+    closeMenuButton.addEventListener(
+
+        "click",
+
+        () => navigationDrawer.classList.remove("active")
+
+    );
+
+}
+
+
+/* ========================================
+   APP INITIALIZATION
+======================================== */
+
+function initializeApp() {
+
+    loadCart();
+
+    loadWishlist();
+
+    loadRecentProducts();
+
+    renderProducts();
+
+    updateCartBadge();
+
+    console.log(
+
+        `${CONFIG.websiteName} ${CONFIG.websiteVersion} Loaded Successfully`
+
+    );
+
+}
+
+
+initializeApp();
