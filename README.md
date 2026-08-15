@@ -27,3 +27,18 @@
 
 ## 12. Project Status
 🔒 Note: The index.html and style.css structures are locked. No major structural changes should be made without updating the project blueprint and documentation.
+
+Royal-Store-V2/
+
+│── README.md
+│── docs/
+│     │── app-js-blueprint.md
+│     │── project-rules.md
+│     │── future-roadmap.md
+│
+│── index.html
+│── style.css
+│── app.js
+│── auth.js
+│── cart.js
+│── images/
