@@ -934,6 +934,81 @@ ul {
 }
 
 /* ========================================
+   CHECKOUT MODAL
+======================================== */
+
+.checkout-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:99999;
+    padding:20px;
+}
+
+.checkout-modal.active{
+    display:flex;
+}
+
+.checkout-box{
+    width:100%;
+    max-width:650px;
+    background:#ffffff;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:var(--shadow-lg);
+    max-height:90vh;
+    overflow-y:auto;
+}
+
+.checkout-box h2{
+    margin-bottom:20px;
+    text-align:center;
+}
+
+.checkout-box input,
+.checkout-box textarea{
+    margin-bottom:15px;
+}
+
+.checkout-buttons{
+    display:flex;
+    gap:15px;
+    margin-top:20px;
+}
+
+.checkout-buttons button{
+    flex:1;
+    padding:15px;
+    border-radius:12px;
+    font-weight:700;
+}
+
+#get-location-btn{
+    background:#0a84ff;
+    color:#fff;
+}
+
+#confirm-order-btn{
+    background:var(--whatsapp-btn);
+    color:#fff;
+}
+
+#close-checkout-btn{
+    background:#444;
+    color:#fff;
+}
+
+#order-summary{
+    background:#f7f7f7;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:20px;
+}
+
+/* ========================================
    RESPONSIVE DESIGN
 ======================================== */
 
@@ -1015,6 +1090,13 @@ ul {
     }
    .nav-drawer {
     width: 280px;
+   }
+   .checkout-box{
+    padding:20px;
+}
+
+   .checkout-buttons{
+    flex-direction:column;
    }
 
 }
