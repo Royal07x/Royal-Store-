@@ -26,6 +26,10 @@ const CART_CONFIG = {
 
     requireLiveLocation: true,
 
+    mobileLength: 10,
+
+    pinCodeLength: 6,
+
     orderPrefix: "RS"
 
 };
@@ -470,32 +474,26 @@ let customerLocation = {
    DELIVERY INFORMATION
 ======================================== */
 
-const customerName = document.getElementById("customer-name");
+const cartCustomerName = document.getElementById("customer-name");
 
-const customerMobile = document.getElementById("customer-mobile");
+const cartCustomerMobile = document.getElementById("customer-mobile");
 
-const customerEmail = document.getElementById("customer-email");
+const cartCustomerEmail = document.getElementById("customer-email");
 
-const customerAddress = document.getElementById("customer-address");
+const cartCustomerAddress = document.getElementById("customer-address");
 
-const customerCity = document.getElementById("customer-city");
+const cartCustomerCity = document.getElementById("customer-city");
 
-const customerState = document.getElementById("customer-state");
+const cartCustomerState = document.getElementById("customer-state");
 
-const customerPin = document.getElementById("customer-pin");
-
-const checkoutModal = document.getElementById("checkout-modal");
-
-const getLocationButton = document.getElementById("get-location-btn");
-
-const confirmOrderButton = document.getElementById("confirm-order-btn");
+const cartCustomerPin = document.getElementById("customer-pin");
 
 
 /* ========================================
    OPEN CHECKOUT
 ======================================== */
 
-function openCheckout() {
+function openCartCheckout() {
 
     if (cart.length === 0) {
 
@@ -530,7 +528,7 @@ function openCheckout() {
    CLOSE CHECKOUT
 ======================================== */
 
-function closeCheckout() {
+function closeCartCheckout() {
 
     if (checkoutModal) {
 
@@ -545,7 +543,7 @@ function closeCheckout() {
    LIVE LOCATION
 ======================================== */
 
-function getCurrentLocation() {
+function getCartCurrentLocation() {
 
     if (!navigator.geolocation) {
 
@@ -587,7 +585,7 @@ function getCurrentLocation() {
 
 function validateCheckout() {
 
-    if (!customerName.value.trim()) {
+    if (!cartCustomerName.value.trim()) {
 
         alert("Enter customer name.");
 
@@ -595,7 +593,7 @@ function validateCheckout() {
 
     }
 
-    if (customerMobile.value.trim().length !== 10) {
+    if (cartCustomerMobile.value.trim().length !== CART_CONFIG.mobileLength) {
 
         alert("Enter valid mobile number.");
 
@@ -603,7 +601,7 @@ function validateCheckout() {
 
     }
 
-    if (!customerAddress.value.trim()) {
+    if (!cartCustomerAddress.value.trim()) {
 
         alert("Enter address.");
 
@@ -611,7 +609,7 @@ function validateCheckout() {
 
     }
 
-    if (!customerCity.value.trim()) {
+    if (!cartCustomerCity.value.trim()) {
 
         alert("Enter city.");
 
@@ -619,7 +617,7 @@ function validateCheckout() {
 
     }
 
-    if (!customerState.value.trim()) {
+    if (!cartCustomerState.value.trim()) {
 
         alert("Enter state.");
 
@@ -627,7 +625,7 @@ function validateCheckout() {
 
     }
 
-    if (customerPin.value.trim().length !== 6) {
+    if (cartCustomerPin.value.trim().length !== CART_CONFIG.pinCodeLength) {
 
         alert("Enter valid PIN code.");
 
@@ -700,19 +698,19 @@ Price : ${CART_CONFIG.currencySymbol}${item.price}
 
 👤 CUSTOMER DETAILS
 
-Name : ${customerName.value}
+Name : ${cartcustomerName.value}
 
-Mobile : ${customerMobile.value}
+Mobile : ${cartcustomerMobile.value}
 
-Email : ${customerEmail.value || "N/A"}
+Email : ${cartcustomerEmail.value || "N/A"}
 
-Address : ${customerAddress.value}
+Address : ${cartcustomerAddress.value}
 
-City : ${customerCity.value}
+City : ${cartcustomerCity.value}
 
-State : ${customerState.value}
+State : ${cartcustomerState.value}
 
-PIN : ${customerPin.value}
+PIN : ${cartcustomerPin.value}
 
 ━━━━━━━━━━━━━━━━━━
 
@@ -742,7 +740,7 @@ Royal Store
 
     window.open(
 
-`https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(message)}`,
+`https://wa.me/918791139418?text=${encodeURIComponent(message)}`,
 
 "_blank"
 
@@ -786,7 +784,7 @@ if (checkoutButton) {
 
         "click",
 
-        openCheckout
+        opencartCheckout
 
     );
 
@@ -825,7 +823,7 @@ if (getLocationButton) {
 
         "click",
 
-        getCurrentLocation
+        getcartCurrentLocation
 
     );
 
