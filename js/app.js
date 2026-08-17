@@ -78,32 +78,6 @@ const CONFIG = {
 
 const PRODUCTS = [
 
-    // Products will be added here.
-
-];
-
-/* ========================================
-   DOM ELEMENTS
-======================================== */
-
-const productContainer = document.getElementById("products-container");
-
-const cartCount = document.getElementById("cart-count");
-
-const menuButton = document.getElementById("menu-btn");
-
-const closeMenuButton = document.getElementById("close-menu");
-
-const navigationDrawer = document.getElementById("nav-drawer");
-
-const searchInput = document.getElementById("search-input");
-
-/* ========================================
-   PRODUCT DATABASE
-======================================== */
-
-const PRODUCTS = [
-
     {
         id: 1,
         sku: "RS-SHIRT-001",
@@ -240,23 +214,15 @@ const PRODUCTS = [
    DOM ELEMENTS
 ======================================== */
 
-const productContainer = document.getElementById("products-container");
+const productContainer = document.getElementById("productsContainer");
 
-const cartCount = document.getElementById("cart-count");
+const cartCount = document.getElementById("cartCount");
 
-const menuButton = document.getElementById("menu-btn");
+const menuButton = document.getElementById("menuBtn");
 
-const closeMenuButton = document.getElementById("close-menu");
+const closeMenuButton = document.getElementById("closeDrawer");
 
-const navigationDrawer = document.getElementById("nav-drawer");
-
-const searchInput = document.getElementById("search-input");
-
-const categoryButtons = document.querySelectorAll("[data-category]");
-
-const sortSelect = document.getElementById("sort-products");
-
-const checkoutButton = document.getElementById("checkout-btn");
+const navigationDrawer = document.getElementById("navDrawer");
 
 
 /* ========================================
