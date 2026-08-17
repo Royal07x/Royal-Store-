@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- ========================================
+     DOCUMENT HEAD
+======================================== -->
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Royal Store Shopping Cart">
+
+    <meta name="theme-color"
+          content="#0A0A0A">
+
+    <title>Shopping Cart | Royal Store</title>
+
+    <!-- GOOGLE FONTS -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Outfit:wght@300;400;500;600&display=swap"
+          rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- MAIN CSS -->
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+<!-- ========================================
+     CART PAGE WRAPPER
+======================================== -->
+
+<div class="cart-page">
+  
+<!-- ========================================
+     CART HEADER
+======================================== -->
+
+<header class="cart-header">
+
+    <!-- BACK BUTTON -->
+
+    <a href="index.html"
+       class="back-button"
+       aria-label="Back to Home">
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+    </a>
+
+    <!-- BRAND LOGO -->
+
+    <div class="cart-brand">
+
+        <i class="fa-solid fa-bag-shopping"></i>
+
+        <div class="brand-text">
+
+            <h1>
+
+                Royal Store
+
+            </h1>
+
+            <p>
+
+                Shopping Cart
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- CART ITEM COUNT -->
+
+    <div class="cart-header-badge">
+
+        <i class="fa-solid fa-cart-shopping"></i>
+
+        <span id="cart-count">
+
+            0
+
+        </span>
+
+    </div>
+
+</header>
+
+
+<!-- ========================================
+     CART ITEMS CONTAINER
+======================================== -->
+
+<main class="cart-content">
+
+    <div
+        id="cart-container"
+        class="cart-container">
+
+    </div>
+
+</main>
+
+<!-- ========================================
+     EMPTY CART
+======================================== -->
+
+<div
+    id="empty-cart"
+    class="empty-cart">
+
+    <div class="empty-cart-icon">
+
+        <i class="fa-solid fa-cart-shopping"></i>
+
+    </div>
+
+    <h2>
+
+        Your Cart is Empty
+
+    </h2>
+
+    <p>
+
+        Looks like you haven't added any products yet.
+
+    </p>
+
+    <a
+        href="index.html"
+        id="continue-shopping-btn"
+        class="continue-shopping-btn">
+
+        Continue Shopping
+
+    </a>
+
+</div>
+
+
+<!-- ========================================
+     CART SUMMARY
+======================================== -->
+
+<section class="cart-summary">
+
+    <h2>
+
+        Order Summary
+
+    </h2>
+
+    <div class="summary-item">
+
+        <span>Total Products</span>
+
+        <span id="total-products">0</span>
+
+    </div>
+
+    <div class="summary-item">
+
+        <span>Total Quantity</span>
+
+        <span id="total-quantity">0</span>
+
+    </div>
+
+    <div class="summary-item">
+
+        <span>Total Price</span>
+
+        <span id="total-price">₹0</span>
+
+    </div>
+
+    <div class="summary-item">
+
+        <span>Delivery Charge</span>
+
+        <span id="delivery-charge">FREE</span>
+
+    </div>
+
+    <div class="summary-item grand-total">
+
+        <strong>Grand Total</strong>
+
+        <strong id="grand-total">
+
+            ₹0
+
+        </strong>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================
+     CHECKOUT BUTTON
+======================================== -->
+
+<div class="checkout-action">
+
+    <button
+        id="checkout-btn"
+        class="checkout-btn">
+
+        Proceed to Checkout
+
+    </button>
+
+</div>
+
+<!-- ========================================
+     CHECKOUT MODAL
+======================================== -->
+
+<div
+    id="checkout-modal"
+    class="checkout-modal">
+
+    <div class="checkout-card">
+
+        <!-- ========================================
+             CHECKOUT TITLE
+        ========================================= -->
+
+        <div class="checkout-header">
+
+            <h2>
+
+                Delivery Information
+
+            </h2>
+
+            <button
+                class="close-checkout"
+                onclick="closeCheckout()">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+        <!-- ========================================
+             DELIVERY FORM
+        ========================================= -->
+
+        <form
+            id="checkout-form"
+            class="checkout-form">
+
+            <!-- CUSTOMER NAME -->
+
+            <div class="input-group">
+
+                <label for="customer-name">
+
+                    Customer Name
+
+                </label>
+
+                <input
+                    type="text"
+                    id="customer-name"
+                    placeholder="Enter Your Name"
+                    required>
+
+            </div>
+
+            <!-- MOBILE NUMBER -->
+
+            <div class="input-group">
+
+                <label for="customer-mobile">
+
+                    Mobile Number
+
+                </label>
+
+                <input
+                    type="tel"
+                    id="customer-mobile"
+                    maxlength="10"
+                    placeholder="Enter Mobile Number"
+                    required>
+
+            </div>
+
+            <!-- EMAIL (OPTIONAL) -->
+
+            <div class="input-group">
+
+                <label for="customer-email">
+
+                    Email (Optional)
+
+                </label>
+
+                <input
+                    type="email"
+                    id="customer-email"
+                    placeholder="Enter Email">
+
+            </div>
+
+            <!-- ADDRESS -->
+
+            <div class="input-group">
+
+                <label for="customer-address">
+
+                    Address
+
+                </label>
+
+                <textarea
+                    id="customer-address"
+                    rows="3"
+                    placeholder="House No., Street, Area"
+                    required></textarea>
+
+            </div>
+
+            <!-- CITY -->
+
+            <div class="input-group">
+
+                <label for="customer-city">
+
+                    City
+
+                </label>
+
+                <input
+                    type="text"
+                    id="customer-city"
+                    placeholder="Enter City"
+                    required>
+
+            </div>
+
+            <!-- STATE -->
+
+            <div class="input-group">
+
+                <label for="customer-state">
+
+                    State
+
+                </label>
+
+                <input
+                    type="text"
+                    id="customer-state"
+                    placeholder="Enter State"
+                    required>
+
+            </div>
+
+            <!-- PIN CODE -->
+
+            <div class="input-group">
+
+                <label for="customer-pin">
+
+                    PIN Code
+
+                </label>
+
+                <input
+                    type="text"
+                    id="customer-pin"
+                    maxlength="6"
+                    placeholder="Enter PIN Code"
+                    required>
+
+            </div>
+
+<!-- ========================================
+     LIVE LOCATION
+======================================== -->
+
+<div class="location-section">
+
+    <h3>
+
+        Live Location
+
+    </h3>
+
+    <p>
+
+        Please share your current location for accurate delivery.
+
+    </p>
+
+    <button
+        type="button"
+        id="get-location-btn"
+        class="location-btn">
+
+        <i class="fa-solid fa-location-crosshairs"></i>
+
+        Get Current Location
+
+    </button>
+
+</div>
+
+<!-- ========================================
+     ORDER SUMMARY CARD
+======================================== -->
+
+<div class="checkout-summary">
+
+    <h3>
+
+        Order Summary
+
+    </h3>
+
+    <div class="summary-row">
+
+        <span>Total Products</span>
+
+        <span id="checkout-total-products">0</span>
+
+    </div>
+
+    <div class="summary-row">
+
+        <span>Total Quantity</span>
+
+        <span id="checkout-total-quantity">0</span>
+
+    </div>
+
+    <div class="summary-row">
+
+        <span>Grand Total</span>
+
+        <strong id="checkout-grand-total">
+
+            ₹0
+
+        </strong>
+
+    </div>
+
+</div>
+
+<!-- ========================================
+     PAYMENT METHOD (FUTURE)
+======================================== -->
+
+<div class="payment-method">
+
+    <h3>
+
+        Payment Method
+
+    </h3>
+
+    <p>
+
+        Cash on Delivery (Available)
+
+    </p>
+
+    <small>
+
+        UPI, Cards & Net Banking Coming Soon
+
+    </small>
+
+</div>
+
+<!-- ========================================
+     DELIVERY STATUS
+======================================== -->
+
+<div class="delivery-status">
+
+    <i class="fa-solid fa-truck-fast"></i>
+
+    <span>
+
+        Estimated Delivery: 2–5 Business Days
+
+    </span>
+
+</div>
+
+<!-- ========================================
+     ORDER ACTIONS
+======================================== -->
+
+<div class="order-actions">
+
+    <button
+        type="button"
+        id="confirm-order-btn"
+        class="confirm-order-btn">
+
+        Confirm Order
+
+    </button>
+
+    <button
+        type="button"
+        class="cancel-order-btn"
+        onclick="closeCheckout()">
+
+        Cancel
+
+    </button>
+
+</div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- ========================================
+     TRUST BADGES
+======================================== -->
+
+<section class="trust-badges">
+
+    <div class="trust-item">
+
+        <i class="fa-solid fa-shield-halved"></i>
+
+        <span>Secure Checkout</span>
+
+    </div>
+
+    <div class="trust-item">
+
+        <i class="fa-solid fa-truck-fast"></i>
+
+        <span>Fast Delivery</span>
+
+    </div>
+
+    <div class="trust-item">
+
+        <i class="fa-solid fa-arrow-rotate-left"></i>
+
+        <span>Easy Returns</span>
+
+    </div>
+
+    <div class="trust-item">
+
+        <i class="fa-solid fa-headset"></i>
+
+        <span>24×7 Support</span>
+
+    </div>
+
+</section>
+
+<!-- ========================================
+     HELP SECTION
+======================================== -->
+
+<section class="help-section">
+
+    <h2>
+
+        Need Help?
+
+    </h2>
+
+    <div class="help-links">
+
+        <a href="tel:+911234567890">
+
+            <i class="fa-solid fa-phone"></i>
+
+            Call Us
+
+        </a>
+
+        <a href="https://wa.me/91XXXXXXXXXX">
+
+            <i class="fa-brands fa-whatsapp"></i>
+
+            WhatsApp
+
+        </a>
+
+        <a href="mailto:support@royalstore.com">
+
+            <i class="fa-solid fa-envelope"></i>
+
+            Email Support
+
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ========================================
+     ORDER PROTECTION (Future)
+======================================== -->
+
+<div class="order-protection">
+
+    <i class="fa-solid fa-lock"></i>
+
+    <span>
+
+        Your order and personal information
+        are securely protected.
+
+    </span>
+
+</div>
+
+<!-- ========================================
+     FOOTER
+======================================== -->
+
+<footer class="cart-footer">
+
+    <p>
+
+        © 2026 Royal Store
+
+    </p>
+
+    <p>
+
+        Premium Shopping Experience
+
+    </p>
+
+</footer>
+
+</div>
+
+<!-- ========================================
+     JAVASCRIPT FILES
+======================================== -->
+
+<script src="app.js"></script>
+
+<script src="cart.js"></script>
+
+</body>
+
+</html>
+
