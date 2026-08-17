@@ -209,6 +209,8 @@ function createAccount() {
     };
 
     saveUser(user);
+   
+   setLoginStatus(false);
 
     alert("Account created successfully.");
 
@@ -316,6 +318,8 @@ function loginAccount() {
     currentUser = savedUser;
 
     setLoginStatus(true);
+   
+   saveUser(savedUser);
 
     alert(`Welcome ${savedUser.name}!`);
 
@@ -354,7 +358,7 @@ function logoutAccount() {
 
     currentUser = null;
 
-    setLoginStatus(false);
+    localStorage.removeItem(AUTH.loginKey);
 
     alert("Logged out successfully.");
 
