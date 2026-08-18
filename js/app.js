@@ -349,6 +349,8 @@ updateCartCount();
 ======================================== */
 
 function addToCart(productId) {
+   
+   console.log("Add To Cart Clicked");
 
     if (
 
