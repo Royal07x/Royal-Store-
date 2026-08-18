@@ -531,6 +531,7 @@ function bindAddToCartButtons() {
 ======================================== */
 
 function buyNow(productId) {
+   console.log("Buy Now Clicked");
 
     if (
 
