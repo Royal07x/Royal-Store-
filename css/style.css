@@ -1419,6 +1419,43 @@ button {
     color:#999;
 
 }
+.product-details{
+
+    padding:22px;
+
+}
+
+.product-details h3{
+
+    font-size:1.35rem;
+
+    margin:12px 0;
+
+}
+
+.product-details h4{
+
+    font-size:1.6rem;
+
+    color:var(--primary);
+
+    margin-bottom:20px;
+
+    font-weight:700;
+
+}
+
+.product-buttons{
+
+    padding:0 22px 22px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
 
 /* ===========================
    BUTTON GROUP
