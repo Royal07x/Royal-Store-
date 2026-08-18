@@ -57,10 +57,10 @@ const STORAGE_KEYS = {
 ======================================== */
 
 const productContainer =
-    document.getElementById("product-container");
+    document.getElementById("productsContainer");
 
 const cartCount =
-    document.getElementById("cart-count");
+    document.getElementById("cartCount");
 
 const searchInput =
     document.getElementById("search-input");
