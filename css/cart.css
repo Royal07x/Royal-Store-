@@ -1,0 +1,1067 @@
+/* ========================================
+   ROYAL STORE V2
+   CART.CSS
+   VERSION : 2.0
+   BUILD : 2026.08.15
+======================================== */
+
+
+/* ========================================
+   GOOGLE FONTS
+======================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap");
+
+
+/* ========================================
+   CSS RESET
+======================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Outfit",sans-serif;
+    background:#f7f7f7;
+    color:#111;
+    overflow-x:hidden;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button,
+input,
+textarea{
+    font-family:inherit;
+    outline:none;
+    border:none;
+}
+
+button{
+    cursor:pointer;
+}
+
+
+/* ========================================
+   ROOT VARIABLES
+======================================== */
+
+:root{
+
+    --primary:#111111;
+
+    --secondary:#ffffff;
+
+    --background:#f7f7f7;
+
+    --card:#ffffff;
+
+    --border:#e8e8e8;
+
+    --text:#111111;
+
+    --light:#666666;
+
+    --success:#1db954;
+
+    --danger:#ff3b30;
+
+    --warning:#ffc107;
+
+    --whatsapp:#128C7E;
+
+    --blue:#0A84FF;
+
+    --radius:18px;
+
+    --radius-small:12px;
+
+    --shadow:
+    0 10px 30px rgba(0,0,0,.08);
+
+    --shadow-hover:
+    0 18px 45px rgba(0,0,0,.12);
+
+    --transition:.30s ease;
+}
+
+
+/* ========================================
+   GLOBAL CONTAINER
+======================================== */
+
+.cart-page{
+
+    width:100%;
+
+    min-height:100vh;
+
+    background:var(--background);
+
+}
+
+.cart-content{
+
+    width:min(1200px,94%);
+
+    margin:auto;
+
+    padding:25px 0;
+
+}
+
+/* ========================================
+   CART HEADER
+======================================== */
+
+.cart-header{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    width:100%;
+
+    padding:16px 20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    background:rgba(255,255,255,.88);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    border-bottom:1px solid var(--border);
+
+}
+
+
+/* ========================================
+   BACK BUTTON
+======================================== */
+
+.back-button{
+
+    width:48px;
+
+    height:48px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--card);
+
+    color:var(--primary);
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+}
+
+.back-button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:var(--shadow-hover);
+
+}
+
+.back-button i{
+
+    font-size:18px;
+
+}
+
+
+/* ========================================
+   BRAND / LOGO
+======================================== */
+
+.cart-brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.cart-brand i{
+
+    font-size:28px;
+
+    color:var(--primary);
+
+}
+
+.brand-text h1{
+
+    font-family:"Playfair Display",serif;
+
+    font-size:24px;
+
+    color:var(--primary);
+
+    line-height:1.1;
+
+}
+
+.brand-text p{
+
+    margin-top:3px;
+
+    font-size:13px;
+
+    color:var(--light);
+
+}
+
+
+/* ========================================
+   CART COUNT BADGE
+======================================== */
+
+.cart-header-badge{
+
+    width:52px;
+
+    height:52px;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--card);
+
+    box-shadow:var(--shadow);
+
+}
+
+.cart-header-badge i{
+
+    font-size:20px;
+
+    color:var(--primary);
+
+}
+
+.cart-header-badge span{
+
+    position:absolute;
+
+    top:-5px;
+
+    right:-5px;
+
+    min-width:22px;
+
+    height:22px;
+
+    padding:0 6px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50px;
+
+    background:var(--danger);
+
+    color:#ffffff;
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+/* ========================================
+   CART CONTAINER
+======================================== */
+
+.cart-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+
+/* ========================================
+   CART ITEM CARD
+======================================== */
+
+.cart-item{
+
+    display:grid;
+
+    grid-template-columns:110px 1fr;
+
+    gap:18px;
+
+    align-items:center;
+
+    padding:18px;
+
+    background:var(--card);
+
+    border-radius:22px;
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+}
+
+.cart-item:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:var(--shadow-hover);
+
+}
+
+
+/* ========================================
+   PRODUCT IMAGE
+======================================== */
+
+.cart-item-image{
+
+    width:110px;
+
+    height:110px;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    background:#f5f5f5;
+
+}
+
+.cart-item-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.35s ease;
+
+}
+
+.cart-item:hover .cart-item-image img{
+
+    transform:scale(1.05);
+
+}
+
+
+/* ========================================
+   PRODUCT DETAILS
+======================================== */
+
+.cart-item-details{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.cart-item-details h3{
+
+    font-size:1.1rem;
+
+    color:var(--primary);
+
+    font-weight:700;
+
+}
+
+.cart-item-details p{
+
+    font-size:1.1rem;
+
+    font-weight:700;
+
+    color:var(--success);
+
+}
+
+
+/* ========================================
+   QUANTITY CONTROLS
+======================================== */
+
+.cart-item-quantity{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-top:5px;
+
+}
+
+.qty-minus,
+
+.qty-plus{
+
+    width:40px;
+
+    height:40px;
+
+    border-radius:50%;
+
+    background:#f2f2f2;
+
+    color:var(--primary);
+
+    font-size:20px;
+
+    font-weight:700;
+
+    transition:var(--transition);
+
+}
+
+.qty-minus:hover,
+
+.qty-plus:hover{
+
+    background:var(--primary);
+
+    color:#ffffff;
+
+}
+
+.cart-item-quantity span{
+
+    min-width:28px;
+
+    text-align:center;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+}
+
+
+/* ========================================
+   PRODUCT TOTAL
+======================================== */
+
+.cart-item-total{
+
+    margin-top:14px;
+
+    font-size:1.15rem;
+
+    font-weight:800;
+
+    color:var(--primary);
+
+}
+
+
+/* ========================================
+   REMOVE BUTTON
+======================================== */
+
+.remove-item{
+
+    margin-top:15px;
+
+    width:fit-content;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:#ffebee;
+
+    color:var(--danger);
+
+    font-weight:700;
+
+    transition:var(--transition);
+
+}
+
+.remove-item:hover{
+
+    background:var(--danger);
+
+    color:#ffffff;
+
+}
+
+/* ========================================
+   CHECKOUT MODAL
+======================================== */
+
+.checkout-modal{
+  
+    position: fixed;
+  
+    inset: 0;
+  
+    background: rgba(0,0,0,.45);
+  
+    backdrop-filter: blur(10px);
+  
+    -webkit-backdrop-filter: blur(10px);
+
+    display: flex;
+  
+    align-items: flex-end;
+  
+    justify-content: center;
+
+    opacity: 0;
+  
+    visibility: hidden;
+
+    transition: .35s ease;
+
+    z-index: 99999;
+}
+
+.checkout-modal.active{
+  
+    opacity: 1;
+  
+    visibility: visible;
+}
+
+.checkout-card{
+  
+    width:100%;
+  
+    max-width:650px;
+
+    background:#ffffff;
+
+    border-radius:28px 28px 0 0;
+
+    padding:28px;
+
+    max-height:90vh;
+  
+    overflow-y:auto;
+
+    transform:translateY(100%);
+  
+    transition:.35s ease;
+
+    box-shadow:0 -15px 40px rgba(0,0,0,.18);
+}
+
+.checkout-modal.active .checkout-card{
+  
+    transform:translateY(0);
+}
+
+.checkout-header{
+  
+    display:flex;
+  
+    justify-content:space-between;
+  
+    align-items:center;
+
+    margin-bottom:25px;
+}
+
+.checkout-header h2{
+  
+    font-size:1.5rem;
+  
+    font-weight:700;
+}
+
+.close-checkout{
+  
+    width:42px;
+  
+    height:42px;
+
+    border-radius:50%;
+
+    background:#f2f2f2;
+
+    display:flex;
+  
+    align-items:center;
+  
+    justify-content:center;
+
+    font-size:1.2rem;
+}
+
+.checkout-form{
+  
+    display:flex;
+  
+    flex-direction:column;
+  
+    gap:18px;
+}
+
+/* ========================================
+   PART 6
+   CHECKOUT POPUP (iPhone Style)
+======================================== */
+
+.checkout-popup {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: -100%;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 28px 28px 0 0;
+    box-shadow: 0 -12px 40px rgba(0,0,0,.18);
+    transition: bottom .35s ease;
+    z-index: 9999;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.checkout-popup.active {
+    bottom: 0;
+}
+
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.45);
+    backdrop-filter: blur(4px);
+    display: none;
+    z-index: 9998;
+}
+
+.popup-overlay.active {
+    display: block;
+}
+
+
+/* ========================================
+   TOAST MESSAGE
+======================================== */
+
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%) translateY(100px);
+    background: #111;
+    color: #fff;
+    padding: 14px 22px;
+    border-radius: 50px;
+    transition: .3s ease;
+    z-index: 10000;
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+}
+
+
+/* ========================================
+   LOADER
+======================================== */
+
+.loader {
+    width: 44px;
+    height: 44px;
+    border: 4px solid #e5e5e5;
+    border-top-color: #111;
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ========================================
+   FUTURE MODULES (LOCKED)
+======================================== */
+
+/*
+01. Coupon System
+02. Wishlist Sync
+03. Save For Later
+04. Delivery Tracker
+05. Order Timeline
+06. Payment Gateway
+07. UPI / Card Payment
+08. Invoice Download
+09. Order Cancellation
+10. Return Request
+11. Exchange Request
+12. Promo Banner
+13. Gift Wrap
+14. Product Recommendation
+15. Dark Mode
+16. Multi Language
+17. Push Notification
+18. Skeleton Loading
+19. Animation Library
+20. Offline Cart Sync
+*/
+
+
+/* ========================================
+   END OF CART.CSS
+   ROYAL STORE V2
+======================================== */
+
+/* ========================================
+   CHECKOUT MODAL
+======================================== */
+
+.checkout-modal{
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    background: rgba(0,0,0,.45);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    padding: 15px;
+}
+
+.checkout-modal.active{
+    display: flex;
+}
+
+.checkout-card{
+    width:100%;
+    max-width:520px;
+    background:#fff;
+    border-radius:28px 28px 0 0;
+    padding:24px;
+    max-height:90vh;
+    overflow-y:auto;
+    animation:slideUp .35s ease;
+}
+
+@keyframes slideUp{
+
+    from{
+        transform:translateY(100%);
+        opacity:0;
+    }
+
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+
+}
+
+.checkout-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:20px;
+}
+
+.close-checkout{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:#f3f3f3;
+    font-size:18px;
+}
+
+.checkout-form{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.input-group{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.input-group label{
+    font-weight:600;
+    color:#222;
+}
+
+.checkout-form input,
+.checkout-form textarea{
+    padding:14px 16px;
+    border:1px solid #ddd;
+    border-radius:14px;
+    font-size:15px;
+    background:#fff;
+}
+
+.checkout-form textarea{
+    resize:none;
+    min-height:90px;
+}
+
+/* ========================================
+   POPUP / TOAST NOTIFICATION
+======================================== */
+
+.toast-popup{
+    position:fixed;
+    left:50%;
+    bottom:20px;
+    transform:translateX(-50%) translateY(120px);
+
+    width:calc(100% - 30px);
+    max-width:420px;
+
+    background:rgba(30,30,30,.95);
+    color:#ffffff;
+
+    border-radius:18px;
+
+    padding:16px 18px;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.30);
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.35s ease;
+
+    z-index:999999;
+}
+
+.toast-popup.show{
+    opacity:1;
+    visibility:visible;
+    transform:translateX(-50%) translateY(0);
+}
+
+.toast-popup i{
+    font-size:20px;
+    color:#25D366;
+}
+
+.toast-message{
+    flex:1;
+    font-size:.95rem;
+    font-weight:500;
+}
+
+.toast-close{
+    background:none;
+    color:#ffffff;
+    font-size:18px;
+}
+
+/* ========================================
+   PART 8
+   POPUP • TOAST • RESPONSIVE
+======================================== */
+
+/* ---------- Bottom iPhone Style Popup ---------- */
+
+.cart-popup{
+    position:fixed;
+    left:50%;
+    bottom:20px;
+    transform:translateX(-50%) translateY(120px);
+
+    width:min(92%,420px);
+
+    background:rgba(20,20,20,.92);
+    color:#ffffff;
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border-radius:18px;
+
+    padding:16px 18px;
+
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.35s ease;
+
+    z-index:99999;
+}
+
+.cart-popup.show{
+    opacity:1;
+    visibility:visible;
+    transform:translateX(-50%) translateY(0);
+}
+
+.cart-popup-icon{
+    width:48px;
+    height:48px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#25D366;
+    color:#ffffff;
+
+    font-size:1.2rem;
+}
+
+.cart-popup-content{
+    flex:1;
+}
+
+.cart-popup-title{
+    font-size:1rem;
+    font-weight:700;
+    margin-bottom:4px;
+}
+
+.cart-popup-text{
+    font-size:.88rem;
+    opacity:.85;
+}
+
+.cart-popup-close{
+    background:none;
+    color:#ffffff;
+    font-size:1rem;
+}
+
+/* ---------- Desktop ---------- */
+
+@media (min-width:1024px){
+
+    .cart-container{
+        max-width:1200px;
+        margin:auto;
+    }
+
+    .checkout-card{
+        max-width:700px;
+    }
+
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width:768px){
+
+    .cart-item{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .cart-item-image img{
+        margin:auto;
+    }
+
+    .order-actions{
+        flex-direction:column;
+    }
+
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width:480px){
+
+    .cart-header{
+        padding:16px;
+    }
+
+    .cart-summary{
+        padding:20px;
+    }
+
+    .checkout-card{
+        border-radius:22px 22px 0 0;
+        width:100%;
+        max-height:90vh;
+    }
+
+    .cart-popup{
+        width:94%;
+        bottom:14px;
+    }
+
+}
+
+/* ========================================
+   END OF CART.CSS
+======================================== */
