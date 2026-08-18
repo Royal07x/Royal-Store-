@@ -57,10 +57,10 @@ const STORAGE_KEYS = {
 ======================================== */
 
 const productContainer =
-    document.getElementById("productsContainer");
+    document.getElementById("product-container");
 
 const cartCount =
-    document.getElementById("cartCount");
+    document.getElementById("cart-count");
 
 const searchInput =
     document.getElementById("search-input");
@@ -1307,17 +1307,78 @@ function initializeApp() {
    DOM READY
 ======================================== */
 
-document.addEventListener(
+function renderProducts(productList = filteredProducts) {
 
-    "DOMContentLoaded",
+    if (!productContainer) return;
 
-    function () {
+    productContainer.innerHTML = "";
 
-        initializeApp();
+    if (productList.length === 0) {
 
+        productContainer.innerHTML =
+            `<h2>No Products Found</h2>`;
+
+        return;
     }
 
-);
+    productList.forEach(product => {
+
+        productContainer.innerHTML += `
+        <div class="product-card">
+
+            <div class="product-image">
+
+                <span class="product-badge">${product.badge}</span>
+
+                <img src="${product.image}" alt="${product.name}">
+
+            </div>
+
+            <div class="product-content">
+
+                <h3 class="product-title">${product.name}</h3>
+
+                <p class="product-description">
+                    Premium Quality Product
+                </p>
+
+                <div class="product-price">
+                    <span class="current-price">
+                        ${formatCurrency(product.price)}
+                    </span>
+                </div>
+
+                <div class="product-buttons">
+
+                    <button
+                        class="add-cart"
+                        data-id="${product.id}">
+                        Add To Cart
+                    </button>
+
+                    <button
+                        class="buy-now"
+                        data-id="${product.id}">
+                        Buy Now
+                    </button>
+
+                    <button
+                        class="whatsapp-order"
+                        onclick="openWhatsAppOrder()">
+                        WhatsApp Order
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+        `;
+
+    });
+
+    initializeProductButtons();
+}
 
 
 /* ========================================
