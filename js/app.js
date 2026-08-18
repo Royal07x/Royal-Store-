@@ -2,378 +2,217 @@
    ROYAL STORE V2
    APP.JS
    VERSION : 2.0
-   BUILD : 2026.08.15
+   BUILD : LOCKED
 ======================================== */
 
 
 /* ========================================
-   PROJECT CONFIGURATION
+   APP CONFIGURATION
 ======================================== */
 
-const CONFIG = {
+const APP_CONFIG = {
 
-    /* Website Settings */
+    appName: "Royal Store",
 
-    websiteName: "Royal Store",
-    websiteVersion: "V2",
-    appVersion: "2.0",
-    buildNumber: "2026.08.15",
+    version: "2.0",
+
     currencySymbol: "₹",
 
+    maximumQuantity: 5,
 
-    /* Business Settings */
-
-    businessName: "Royal Store",
-    supportEmail: "support@royalstore.com",
-    supportPhone: "+91XXXXXXXXXX",
-
-
-    /* Social Media Settings */
-
-    whatsappNumber: "91XXXXXXXXXX",
-    instagramUrl: "https://instagram.com/yourusername",
-    facebookUrl: "https://facebook.com/yourusername",
-
-
-    /* Store Settings */
-
-    freeDelivery: true,
-    deliveryCharge: 0,
     minimumOrderAmount: 299,
-    maintenanceMode: false,
-
-
-    /* Payment Settings */
-
-    cashOnDelivery: true,
-    upiPayment: false,
-    cardPayment: false,
-    netBanking: false,
-
-
-    /* Delivery Settings */
 
     requireLogin: true,
-    requireLiveLocation: true,
 
+    enableBuyNow: true,
 
-    /* Validation Settings */
+    enableWhatsAppOrder: true,
 
-    mobileLength: 10,
-    pinCodeLength: 6,
-    maxProductQuantity: 5,
+    enableWishlist: false,
 
-
-    /* Order Settings */
-
-    orderPrefix: "RS",
-    orderStatus: "Pending"
+    debugMode: false
 
 };
 
 
 /* ========================================
-   PRODUCT DATABASE
+   LOCAL STORAGE KEYS
 ======================================== */
 
-const PRODUCTS = [
+const STORAGE_KEYS = {
 
-    {
-        id: 1,
-        sku: "RS-SHIRT-001",
+    CART: "royalCart",
 
-        name: "Premium Men's Shirt",
+    USER: "royalUser",
 
-        category: "shirts",
+    LOGIN: "royalLoggedIn",
 
-        price: 799,
+    REMEMBER: "royalRemember"
 
-        image: "images/shirt.jpg",
+};
 
-        gallery: [
-            "images/shirt.jpg"
-        ],
-
-        status: "In Stock",
-
-        availability: true,
-
-        stock: 25,
-
-        maxOrder: 5,
-
-        badge: "Premium",
-
-        tags: [
-            "Premium",
-            "Men",
-            "Cotton",
-            "Formal"
-        ],
-
-        featured: true,
-
-        trending: true,
-
-        discount: 0,
-
-        rating: 0,
-
-        reviews: 0
-    },
-
-    {
-        id: 2,
-        sku: "RS-JEANS-001",
-
-        name: "Jeans & Cargo Pants",
-
-        category: "jeans",
-
-        price: 1299,
-
-        image: "images/jeans.jpg",
-
-        gallery: [
-            "images/jeans.jpg"
-        ],
-
-        status: "In Stock",
-
-        availability: true,
-
-        stock: 18,
-
-        maxOrder: 5,
-
-        badge: "Trending",
-
-        tags: [
-            "Jeans",
-            "Cargo",
-            "Men"
-        ],
-
-        featured: true,
-
-        trending: true,
-
-        discount: 0,
-
-        rating: 0,
-
-        reviews: 0
-    },
-
-    {
-        id: 3,
-        sku: "RS-BEAUTY-001",
-
-        name: "Beauty & Personal Care",
-
-        category: "beauty",
-
-        price: 499,
-
-        image: "images/beauty.jpg",
-
-        gallery: [
-            "images/beauty.jpg"
-        ],
-
-        status: "In Stock",
-
-        availability: true,
-
-        stock: 40,
-
-        maxOrder: 5,
-
-        badge: "Best Seller",
-
-        tags: [
-            "Beauty",
-            "Skincare",
-            "Personal Care"
-        ],
-
-        featured: true,
-
-        trending: true,
-
-        discount: 0,
-
-        rating: 0,
-
-        reviews: 0
-    }
-
-];
 
 /* ========================================
    DOM ELEMENTS
 ======================================== */
 
-const productContainer = document.getElementById("productsContainer");
+const productContainer =
+    document.getElementById("product-container");
 
-const cartCount = document.getElementById("cartCount");
+const cartCount =
+    document.getElementById("cart-count");
 
-const menuButton = document.getElementById("menuBtn");
+const searchInput =
+    document.getElementById("search-input");
 
-const closeMenuButton = document.getElementById("closeDrawer");
+const categoryFilter =
+    document.getElementById("category-filter");
 
-const navigationDrawer = document.getElementById("navDrawer");
+const sortProducts =
+    document.getElementById("sort-products");
 
-
-/* ========================================
-   LOCAL STORAGE MANAGER
-======================================== */
-
-let cart = JSON.parse(localStorage.getItem("royalCart")) || [];
-
-let wishlist = JSON.parse(localStorage.getItem("royalWishlist")) || [];
-
-let recentProducts =
-    JSON.parse(localStorage.getItem("royalRecentProducts")) || [];
+const loadingScreen =
+    document.getElementById("loading-screen");
 
 
 /* ========================================
-   LOCAL STORAGE FUNCTIONS
+   GLOBAL VARIABLES
 ======================================== */
 
-function saveCart() {
-    localStorage.setItem(
-        "royalCart",
-        JSON.stringify(cart)
+let products = [];
+
+let cart = [];
+
+let filteredProducts = [];
+
+let selectedCategory = "all";
+
+
+/* ========================================
+   APP READY
+======================================== */
+
+console.log(
+
+    "Royal Store App Loaded"
+
+);
+
+/* ========================================
+   PRODUCT DATABASE
+======================================== */
+
+const PRODUCT_DATABASE = [
+
+    {
+        id: 1,
+        name: "Premium Men's Shirt",
+        category: "shirt",
+        price: 799,
+        image: "images/shirt.jpg",
+        badge: "Best Seller",
+        stock: true
+    },
+
+    {
+        id: 2,
+        name: "Jeans & Cargo Pants",
+        category: "pants",
+        price: 999,
+        image: "images/cargo.jpg",
+        badge: "Trending",
+        stock: true
+    },
+
+    {
+        id: 3,
+        name: "Premium Sneakers",
+        category: "sneakers",
+        price: 1499,
+        image: "images/sneakers.jpg",
+        badge: "New",
+        stock: true
+    },
+
+    {
+        id: 4,
+        name: "Beauty & Personal Care",
+        category: "beauty",
+        price: 499,
+        image: "images/beauty.jpg",
+        badge: "Popular",
+        stock: true
+    }
+
+];
+
+
+/* ========================================
+   PRODUCT LOADER
+======================================== */
+
+function loadProducts() {
+
+    products = [...PRODUCT_DATABASE];
+
+    filteredProducts = [...PRODUCT_DATABASE];
+
+}
+
+
+/* ========================================
+   PRODUCT FINDER
+======================================== */
+
+function getProductById(productId) {
+
+    return products.find(
+
+        product => product.id === productId
+
     );
-}
 
-function loadCart() {
-    cart =
-        JSON.parse(localStorage.getItem("royalCart")) || [];
-}
-
-function saveWishlist() {
-    localStorage.setItem(
-        "royalWishlist",
-        JSON.stringify(wishlist)
-    );
-}
-
-function loadWishlist() {
-    wishlist =
-        JSON.parse(localStorage.getItem("royalWishlist")) || [];
-}
-
-function saveRecentProducts() {
-    localStorage.setItem(
-        "royalRecentProducts",
-        JSON.stringify(recentProducts)
-    );
-}
-
-function loadRecentProducts() {
-    recentProducts =
-        JSON.parse(
-            localStorage.getItem("royalRecentProducts")
-        ) || [];
 }
 
 
 /* ========================================
-   CART HELPERS
+   PRODUCT VALIDATION
 ======================================== */
 
-function getCartCount() {
+function validateProduct(product) {
 
-    return cart.reduce((total, item) => {
+    if (!product) return false;
 
-        return total + item.quantity;
+    if (!product.id) return false;
 
-    }, 0);
+    if (!product.name) return false;
 
-}
+    if (typeof product.price !== "number") return false;
 
-function getCartTotal() {
+    if (!product.image) return false;
 
-    return cart.reduce((total, item) => {
-
-        return total + (item.price * item.quantity);
-
-    }, 0);
+    return true;
 
 }
 
-function updateCartBadge() {
-
-    if (!cartCount) return;
-
-    cartCount.textContent = getCartCount();
-
-}
 
 /* ========================================
-   PRODUCT RENDER ENGINE
+   IMAGE VALIDATION
 ======================================== */
 
-function renderProducts(productList = PRODUCTS) {
+function validateProductImages() {
 
-    if (!productContainer) return;
+    products.forEach(product => {
 
-    productContainer.innerHTML = "";
+        if (!product.image) {
 
-    productList.forEach(product => {
+            console.warn(
 
-        const productCard = document.createElement("div");
+                `Image Missing : ${product.name}`
 
-        productCard.className = "product-card";
+            );
 
-        productCard.innerHTML = `
-
-            <div class="product-image">
-
-                <img src="${product.image}" alt="${product.name}">
-
-            </div>
-
-            <div class="product-info">
-
-                <h3 class="product-name">
-                    ${product.name}
-                </h3>
-
-                <p class="product-price">
-                    ${CONFIG.currencySymbol}${product.price}
-                </p>
-
-                <div class="product-buttons">
-
-                    <button
-                        class="add-cart-btn"
-                        data-id="${product.id}">
-                        Add to Cart
-                    </button>
-
-                    <button
-                        class="buy-now-btn"
-                        data-id="${product.id}">
-                        Buy Now
-                    </button>
-
-                    <button
-                        class="whatsapp-order-btn"
-                        data-id="${product.id}">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        WhatsApp Order
-                    </button>
-
-                </div>
-
-            </div>
-
-        `;
-
-        productContainer.appendChild(productCard);
+        }
 
     });
 
@@ -381,86 +220,382 @@ function renderProducts(productList = PRODUCTS) {
 
 
 /* ========================================
-   PRODUCT HELPERS
+   LOAD DATABASE
 ======================================== */
 
-function getProductById(productId) {
+loadProducts();
 
-    return PRODUCTS.find(product => product.id === productId);
-
-}
-
-function refreshProducts() {
-
-    renderProducts(PRODUCTS);
-
-}
+validateProductImages();
 
 /* ========================================
-   ADD TO CART SYSTEM
+   CART STORAGE MANAGER
+======================================== */
+
+function loadCart() {
+
+    cart = JSON.parse(
+
+        localStorage.getItem(
+
+            STORAGE_KEYS.CART
+
+        )
+
+    ) || [];
+
+}
+
+
+function saveCart() {
+
+    localStorage.setItem(
+
+        STORAGE_KEYS.CART,
+
+        JSON.stringify(cart)
+
+    );
+
+}
+
+
+/* ========================================
+   CART HELPERS
+======================================== */
+
+function getCartItemCount() {
+
+    return cart.reduce(
+
+        (total, item) =>
+
+            total + item.quantity,
+
+        0
+
+    );
+
+}
+
+
+function getCartTotal() {
+
+    return cart.reduce(
+
+        (total, item) =>
+
+            total + (item.price * item.quantity),
+
+        0
+
+    );
+
+}
+
+
+/* ========================================
+   CART COUNT UI
+======================================== */
+
+function updateCartCount() {
+
+    if (!cartCount) return;
+
+    cartCount.textContent =
+
+        getCartItemCount();
+
+}
+
+
+/* ========================================
+   CART REFRESH
+======================================== */
+
+function refreshCart() {
+
+    loadCart();
+
+    updateCartCount();
+
+}
+
+
+/* ========================================
+   CART PRODUCT CHECK
+======================================== */
+
+function getCartProduct(productId) {
+
+    return cart.find(
+
+        item => item.id === productId
+
+    );
+
+}
+
+
+/* ========================================
+   INITIAL CART LOAD
+======================================== */
+
+loadCart();
+
+updateCartCount();
+
+/* ========================================
+   ADD TO CART ENGINE
 ======================================== */
 
 function addToCart(productId) {
 
-    /* Login Check */
+    if (
 
-    if (CONFIG.requireLogin && localStorage.getItem("loggedIn") !== "true") {
+        APP_CONFIG.requireLogin &&
 
-        alert("Please login first.");
+        !RoyalAuth.isLoggedIn()
 
-        window.location.href = "login.html";
+    ) {
 
-        return;
+        showToast(
 
-    }
+            "Please login first."
 
-    const product = getProductById(productId);
+        );
 
-    if (!product) {
+        setTimeout(() => {
 
-        alert("Product not found.");
+            window.location.href =
 
-        return;
+                "login.html";
 
-    }
-
-    /* Stock Validation */
-
-    if (!product.availability || product.stock <= 0) {
-
-        alert("This product is currently out of stock.");
+        }, 800);
 
         return;
 
     }
 
-    /* Check Existing Product */
+    const product =
 
-    const existingProduct = cart.find(item => item.id === productId);
+        getProductById(productId);
 
-    if (existingProduct) {
+    if (
 
-        /* Maximum Quantity Validation */
+        !validateProduct(product)
 
-        if (existingProduct.quantity >= product.maxOrder) {
+    ) {
 
-            alert(`Maximum ${product.maxOrder} quantity allowed.`);
+        showToast(
 
-            return;
+            "Product not found."
 
-        }
+        );
 
-        existingProduct.quantity++;
+        return;
+
+    }
+
+    const existingItem =
+
+        getCartProduct(productId);
+
+    if (existingItem) {
+
+        increaseCartQuantity(
+
+            productId
+
+        );
+
+        return;
+
+    }
+
+    cart.push({
+
+        id: product.id,
+
+        name: product.name,
+
+        price: product.price,
+
+        image: product.image,
+
+        quantity: 1
+
+    });
+
+    saveCart();
+
+    updateCartCount();
+
+    showToast(
+
+        "Added to cart."
+
+    );
+
+}
+
+
+/* ========================================
+   CART QUANTITY
+======================================== */
+
+function increaseCartQuantity(productId) {
+
+    const item =
+
+        getCartProduct(productId);
+
+    if (!item) return;
+
+    if (
+
+        item.quantity >=
+
+        APP_CONFIG.maximumQuantity
+
+    ) {
+
+        showToast(
+
+            "Maximum quantity reached."
+
+        );
+
+        return;
+
+    }
+
+    item.quantity++;
+
+    saveCart();
+
+    updateCartCount();
+
+    showToast(
+
+        "Cart updated."
+
+    );
+
+}
+
+
+/* ========================================
+   ADD TO CART BUTTONS
+======================================== */
+
+function bindAddToCartButtons() {
+
+    const buttons =
+
+        document.querySelectorAll(
+
+            ".add-cart"
+
+        );
+
+    buttons.forEach(button => {
+
+        button.addEventListener(
+
+            "click",
+
+            function () {
+
+                addToCart(
+
+                    Number(
+
+                        this.dataset.id
+
+                    )
+
+                );
+
+            }
+
+        );
+
+    });
+
+}
+
+/* ========================================
+   BUY NOW SYSTEM
+======================================== */
+
+function buyNow(productId) {
+
+    if (
+
+        APP_CONFIG.requireLogin &&
+
+        !RoyalAuth.isLoggedIn()
+
+    ) {
+
+        showToast(
+
+            "Please login first."
+
+        );
+
+        setTimeout(() => {
+
+            window.location.href =
+
+                "login.html";
+
+        }, 800);
+
+        return;
+
+    }
+
+    const product =
+
+        getProductById(productId);
+
+    if (
+
+        !validateProduct(product)
+
+    ) {
+
+        showToast(
+
+            "Product not found."
+
+        );
+
+        return;
+
+    }
+
+    const existingItem =
+
+        getCartProduct(productId);
+
+    if (existingItem) {
+
+        existingItem.quantity = 1;
 
     } else {
 
         cart.push({
 
             id: product.id,
-            sku: product.sku,
+
             name: product.name,
+
             price: product.price,
+
             image: product.image,
+
             quantity: 1
 
         });
@@ -469,503 +604,208 @@ function addToCart(productId) {
 
     saveCart();
 
-    updateCartBadge();
+    updateCartCount();
 
-    alert(`${product.name} added to cart successfully.`);
+    showToast(
 
-}
-
-
-/* ========================================
-   REMOVE FROM CART
-======================================== */
-
-function removeFromCart(productId) {
-
-    cart = cart.filter(item => item.id !== productId);
-
-    saveCart();
-
-    updateCartBadge();
-
-}
-
-
-/* ========================================
-   UPDATE PRODUCT QUANTITY
-======================================== */
-
-function updateQuantity(productId, action) {
-
-    const item = cart.find(product => product.id === productId);
-
-    if (!item) return;
-
-    if (action === "increase") {
-
-        if (item.quantity >= CONFIG.maxProductQuantity) {
-
-            alert("Maximum quantity reached.");
-
-            return;
-
-        }
-
-        item.quantity++;
-
-    }
-
-    if (action === "decrease") {
-
-        item.quantity--;
-
-        if (item.quantity <= 0) {
-
-            removeFromCart(productId);
-
-            return;
-
-        }
-
-    }
-
-    saveCart();
-
-    updateCartBadge();
-
-}
-
-
-/* ========================================
-   CLEAR CART
-======================================== */
-
-function clearCart() {
-
-    cart = [];
-
-    saveCart();
-
-    updateCartBadge();
-
-}
-
-/* ========================================
-   BUY NOW SYSTEM
-======================================== */
-
-let selectedProduct = null;
-
-
-/* ========================================
-   BUY NOW
-======================================== */
-
-function buyNow(productId) {
-
-    /* Login Check */
-
-    if (
-        CONFIG.requireLogin &&
-        localStorage.getItem("loggedIn") !== "true"
-    ) {
-
-        alert("Please login first.");
-
-        window.location.href = "login.html";
-
-        return;
-
-    }
-
-    /* Get Product */
-
-    const product = getProductById(productId);
-
-    if (!product) {
-
-        alert("Product not found.");
-
-        return;
-
-    }
-
-    /* Stock Validation */
-
-    if (
-        !product.availability ||
-        product.stock <= 0
-    ) {
-
-        alert("This product is currently out of stock.");
-
-        return;
-
-    }
-
-    /* Save Selected Product */
-
-    selectedProduct = {
-
-        ...product,
-
-        quantity: 1
-
-    };
-
-    /* Open Checkout */
-
-    openCheckout();
-
-}
-
-
-/* ========================================
-   OPEN CHECKOUT
-======================================== */
-
-function openCheckout() {
-
-    const checkoutModal =
-        document.getElementById("checkout-modal");
-
-    if (!checkoutModal) return;
-
-    checkoutModal.classList.add("active");
-
-}
-
-
-/* ========================================
-   CLOSE CHECKOUT
-======================================== */
-
-function closeCheckout() {
-
-    const checkoutModal =
-        document.getElementById("checkout-modal");
-
-    if (!checkoutModal) return;
-
-    checkoutModal.classList.remove("active");
-
-}
-
-
-/* ========================================
-   ORDER SUMMARY
-======================================== */
-
-function updateOrderSummary() {
-
-    const summary =
-        document.getElementById("order-summary");
-
-    if (!summary || !selectedProduct) return;
-
-    summary.innerHTML = `
-
-        <h3>${selectedProduct.name}</h3>
-
-        <p>
-
-            Quantity :
-            ${selectedProduct.quantity}
-
-        </p>
-
-        <p>
-
-            Price :
-            ${CONFIG.currencySymbol}
-            ${selectedProduct.price}
-
-        </p>
-
-        <p>
-
-            Total :
-            ${CONFIG.currencySymbol}
-            ${
-                selectedProduct.price *
-                selectedProduct.quantity
-            }
-
-        </p>
-
-    `;
-
-}
-
-/* ========================================
-   DELIVERY INFORMATION
-======================================== */
-
-const customerName = document.getElementById("customer-name");
-
-const customerMobile = document.getElementById("customer-mobile");
-
-const customerEmail = document.getElementById("customer-email");
-
-const customerAddress = document.getElementById("customer-address");
-
-const customerCity = document.getElementById("customer-city");
-
-const customerState = document.getElementById("customer-state");
-
-const customerPin = document.getElementById("customer-pin");
-
-const getLocationBtn = document.getElementById("get-location-btn");
-
-const confirmOrderBtn = document.getElementById("confirm-order-btn");
-
-
-/* ========================================
-   LIVE LOCATION SYSTEM
-======================================== */
-
-let customerLocation = {
-
-    latitude: null,
-
-    longitude: null,
-
-    googleMapsLink: ""
-
-};
-
-
-function getCurrentLocation() {
-
-    if (!navigator.geolocation) {
-
-        alert("Geolocation is not supported on this device.");
-
-        return;
-
-    }
-
-    navigator.geolocation.getCurrentPosition(
-
-        function (position) {
-
-            customerLocation.latitude = position.coords.latitude;
-
-            customerLocation.longitude = position.coords.longitude;
-
-            customerLocation.googleMapsLink =
-                `https://maps.google.com/?q=${customerLocation.latitude},${customerLocation.longitude}`;
-
-            alert("Live location captured successfully.");
-
-        },
-
-        function () {
-
-            alert("Location permission denied.");
-
-        }
+        "Redirecting to checkout..."
 
     );
 
+    setTimeout(() => {
+
+        window.location.href =
+
+            "cart.html";
+
+    }, 600);
+
 }
 
 
 /* ========================================
-   ORDER VALIDATION
+   BUY NOW BUTTONS
 ======================================== */
 
-function validateOrder() {
+function bindBuyNowButtons() {
 
-    if (!customerName.value.trim()) {
+    const buttons =
 
-        alert("Please enter your full name.");
+        document.querySelectorAll(
 
-        return false;
+            ".buy-now"
 
-    }
+        );
 
-    if (
-        customerMobile.value.trim().length !==
-        CONFIG.mobileLength
-    ) {
+    buttons.forEach(button => {
 
-        alert("Enter a valid mobile number.");
+        button.addEventListener(
 
-        return false;
+            "click",
 
-    }
+            function () {
 
-    if (!customerAddress.value.trim()) {
+                buyNow(
 
-        alert("Please enter your address.");
+                    Number(
 
-        return false;
+                        this.dataset.id
 
-    }
+                    )
 
-    if (!customerCity.value.trim()) {
+                );
 
-        alert("Please enter your city.");
+            }
 
-        return false;
+        );
 
-    }
-
-    if (!customerState.value.trim()) {
-
-        alert("Please enter your state.");
-
-        return false;
-
-    }
-
-    if (
-        customerPin.value.trim().length !==
-        CONFIG.pinCodeLength
-    ) {
-
-        alert("Enter a valid PIN code.");
-
-        return false;
-
-    }
-
-    if (
-        CONFIG.requireLiveLocation &&
-        !customerLocation.googleMapsLink
-    ) {
-
-        alert("Please allow your current location.");
-
-        return false;
-
-    }
-
-    return true;
+    });
 
 }
+
 
 /* ========================================
-   WHATSAPP ORDER SYSTEM
+   PRODUCT BUTTON INITIALIZER
 ======================================== */
 
-function generateOrderId() {
+function initializeProductButtons() {
 
-    return `${CONFIG.orderPrefix}${Date.now()}`;
+    bindAddToCartButtons();
+
+    bindBuyNowButtons();
+
+}
+/* ========================================
+   WHATSAPP ORDER HELPERS
+======================================== */
+
+function formatCurrency(amount) {
+
+    return `${APP_CONFIG.currencySymbol}${amount}`;
 
 }
 
 
-function generateOrderDate() {
+function generateWhatsAppProductList() {
 
-    return new Date().toLocaleDateString();
+    if (cart.length === 0) {
 
-}
-
-
-function generateOrderTime() {
-
-    return new Date().toLocaleTimeString();
-
-}
-
-
-function placeWhatsAppOrder() {
-
-    if (!validateOrder()) return;
-
-    const product = selectedProduct;
-
-    if (!product) {
-
-        alert("No product selected.");
-
-        return;
+        return "No products";
 
     }
 
-    if (product.price < CONFIG.minimumOrderAmount) {
+    return cart.map(
 
-        alert(
-            `Minimum order amount is ${CONFIG.currencySymbol}${CONFIG.minimumOrderAmount}.`
+        (item, index) =>
+
+`${index + 1}. ${item.name}
+Qty : ${item.quantity}
+Price : ${formatCurrency(item.price)}
+Subtotal : ${formatCurrency(item.price * item.quantity)}`
+
+    ).join("\n\n");
+
+}
+
+
+/* ========================================
+   ORDER INFORMATION
+======================================== */
+
+function generateOrderInformation() {
+
+    return {
+
+        orderId:
+
+            "RS" + Date.now(),
+
+        orderDate:
+
+            new Date().toLocaleDateString(),
+
+        orderTime:
+
+            new Date().toLocaleTimeString(),
+
+        totalItems:
+
+            getCartItemCount(),
+
+        totalPrice:
+
+            getCartTotal()
+
+    };
+
+}
+
+
+/* ========================================
+   WHATSAPP MESSAGE
+======================================== */
+
+function generateWhatsAppMessage() {
+
+    const order =
+
+        generateOrderInformation();
+
+    return `🛍️ *Royal Store Order*
+
+━━━━━━━━━━━━━━━━━━
+
+🆔 Order ID : ${order.orderId}
+
+📅 Date : ${order.orderDate}
+
+⏰ Time : ${order.orderTime}
+
+━━━━━━━━━━━━━━━━━━
+
+📦 PRODUCTS
+
+${generateWhatsAppProductList()}
+
+━━━━━━━━━━━━━━━━━━
+
+🛒 Total Items : ${order.totalItems}
+
+💰 Grand Total : ${formatCurrency(order.totalPrice)}
+
+━━━━━━━━━━━━━━━━━━
+
+Thank You ❤️
+Royal Store`;
+
+}
+
+
+/* ========================================
+   OPEN WHATSAPP
+======================================== */
+
+function openWhatsAppOrder() {
+
+    if (cart.length === 0) {
+
+        showToast(
+
+            "Your cart is empty."
+
         );
 
         return;
 
     }
 
-    const orderId = generateOrderId();
+    const whatsappURL =
 
-    const orderDate = generateOrderDate();
-
-    const orderTime = generateOrderTime();
-
-    const message = `
-
-🛍️ *Royal Store Order*
-
-━━━━━━━━━━━━━━━━━━
-
-🆔 Order ID : ${orderId}
-
-📅 Date : ${orderDate}
-
-⏰ Time : ${orderTime}
-
-━━━━━━━━━━━━━━━━━━
-
-👤 Customer
-
-Name : ${customerName.value}
-
-Mobile : ${customerMobile.value}
-
-Email : ${customerEmail.value || "N/A"}
-
-Address : ${customerAddress.value}
-
-City : ${customerCity.value}
-
-State : ${customerState.value}
-
-PIN : ${customerPin.value}
-
-━━━━━━━━━━━━━━━━━━
-
-📦 Product
-
-Name : ${product.name}
-
-SKU : ${product.sku}
-
-Quantity : ${product.quantity}
-
-Price : ${CONFIG.currencySymbol}${product.price}
-
-━━━━━━━━━━━━━━━━━━
-
-💰 Total
-
-${CONFIG.currencySymbol}${product.price * product.quantity}
-
-━━━━━━━━━━━━━━━━━━
-
-📍 Live Location
-
-${customerLocation.googleMapsLink}
-
-━━━━━━━━━━━━━━━━━━
-
-Thank You ❤️
-
-Royal Store
-
-`;
+`https://wa.me/918791139418?text=${encodeURIComponent(generateWhatsAppMessage())}`;
 
     window.open(
 
-        `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`,
+        whatsappURL,
 
         "_blank"
 
@@ -973,84 +813,242 @@ Royal Store
 
 }
 
-
 /* ========================================
-   EVENT LISTENERS
+   PRODUCT RENDER ENGINE
 ======================================== */
 
-document.addEventListener("click", (event) => {
+function renderProducts(productList = filteredProducts) {
 
-    if (event.target.classList.contains("add-cart-btn")) {
+    if (!productContainer) return;
 
-        addToCart(Number(event.target.dataset.id));
+    productContainer.innerHTML = "";
 
-    }
+    if (productList.length === 0) {
 
-    if (event.target.classList.contains("buy-now-btn")) {
+        productContainer.innerHTML =
 
-        buyNow(Number(event.target.dataset.id));
+            `<div class="no-products">
+                <h3>No Products Found</h3>
+            </div>`;
 
-        updateOrderSummary();
-
-    }
-
-    if (event.target.classList.contains("whatsapp-order-btn")) {
-
-        buyNow(Number(event.target.dataset.id));
-
-        updateOrderSummary();
+        return;
 
     }
 
-});
+    productList.forEach(product => {
 
+        productContainer.innerHTML += `
 
-if (getLocationBtn) {
+        <div class="product-card">
 
-    getLocationBtn.addEventListener(
+            <div class="product-image">
 
-        "click",
+                <img
+                    src="${product.image}"
+                    alt="${product.name}">
 
-        getCurrentLocation
+            </div>
 
-    );
+            <div class="product-details">
+
+                <span class="product-badge">
+
+                    ${product.badge}
+
+                </span>
+
+                <h3>
+
+                    ${product.name}
+
+                </h3>
+
+                <h4>
+
+                    ${formatCurrency(product.price)}
+
+                </h4>
+
+            </div>
+
+            <div class="product-buttons">
+
+                <button
+                    class="add-cart"
+                    data-id="${product.id}">
+
+                    Add To Cart
+
+                </button>
+
+                <button
+                    class="buy-now"
+                    data-id="${product.id}">
+
+                    Buy Now
+
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+    initializeProductButtons();
 
 }
 
 
-if (confirmOrderBtn) {
+/* ========================================
+   SEARCH PRODUCTS
+======================================== */
 
-    confirmOrderBtn.addEventListener(
+function searchProducts(keyword) {
 
-        "click",
+    keyword =
 
-        placeWhatsAppOrder
+        keyword
 
-    );
+        .trim()
+
+        .toLowerCase();
+
+    filteredProducts =
+
+        products.filter(product =>
+
+            product.name
+
+            .toLowerCase()
+
+            .includes(keyword)
+
+        );
+
+    renderProducts();
 
 }
 
 
-if (menuButton) {
+/* ========================================
+   CATEGORY FILTER
+======================================== */
 
-    menuButton.addEventListener(
+function filterProducts(category) {
 
-        "click",
+    selectedCategory = category;
 
-        () => navigationDrawer.classList.add("active")
+    if (category === "all") {
 
-    );
+        filteredProducts =
+
+            [...products];
+
+    }
+
+    else {
+
+        filteredProducts =
+
+            products.filter(
+
+                product =>
+
+                product.category === category
+
+            );
+
+    }
+
+    renderProducts();
+
+}
+
+/* ========================================
+   SORT PRODUCTS
+======================================== */
+
+function sortProductList(sortType) {
+
+    switch (sortType) {
+
+        case "low-high":
+
+            filteredProducts.sort(
+
+                (a, b) => a.price - b.price
+
+            );
+
+            break;
+
+        case "high-low":
+
+            filteredProducts.sort(
+
+                (a, b) => b.price - a.price
+
+            );
+
+            break;
+
+        case "a-z":
+
+            filteredProducts.sort(
+
+                (a, b) =>
+
+                    a.name.localeCompare(b.name)
+
+            );
+
+            break;
+
+        case "z-a":
+
+            filteredProducts.sort(
+
+                (a, b) =>
+
+                    b.name.localeCompare(a.name)
+
+            );
+
+            break;
+
+        default:
+
+            filteredProducts = [...products];
+
+    }
+
+    renderProducts();
 
 }
 
 
-if (closeMenuButton) {
+/* ========================================
+   SEARCH EVENT
+======================================== */
 
-    closeMenuButton.addEventListener(
+if (searchInput) {
 
-        "click",
+    searchInput.addEventListener(
 
-        () => navigationDrawer.classList.remove("active")
+        "input",
+
+        function () {
+
+            searchProducts(
+
+                this.value
+
+            );
+
+        }
 
     );
 
@@ -1058,28 +1056,346 @@ if (closeMenuButton) {
 
 
 /* ========================================
-   APP INITIALIZATION
+   CATEGORY EVENT
+======================================== */
+
+if (categoryFilter) {
+
+    categoryFilter.addEventListener(
+
+        "change",
+
+        function () {
+
+            filterProducts(
+
+                this.value
+
+            );
+
+        }
+
+    );
+
+}
+
+
+/* ========================================
+   SORT EVENT
+======================================== */
+
+if (sortProducts) {
+
+    sortProducts.addEventListener(
+
+        "change",
+
+        function () {
+
+            sortProductList(
+
+                this.value
+
+            );
+
+        }
+
+    );
+
+}
+
+
+/* ========================================
+   UI REFRESH
+======================================== */
+
+function refreshProducts() {
+
+    loadProducts();
+
+    loadCart();
+
+    updateCartCount();
+
+    renderProducts();
+
+}
+
+/* ========================================
+   ERROR HANDLER
+======================================== */
+
+window.addEventListener(
+
+    "error",
+
+    function (event) {
+
+        console.error(
+
+            "Royal Store Error:",
+
+            event.message
+
+        );
+
+        if (APP_CONFIG.debugMode) {
+
+            console.log(event);
+
+        }
+
+    }
+
+);
+
+
+/* ========================================
+   SAFE DOM HELPER
+======================================== */
+
+function getElement(id) {
+
+    return document.getElementById(id);
+
+}
+
+
+function getElements(selector) {
+
+    return document.querySelectorAll(selector);
+
+}
+
+
+/* ========================================
+   PAGE INFORMATION
+======================================== */
+
+function getCurrentPage() {
+
+    return window.location.pathname
+
+        .split("/")
+
+        .pop();
+
+}
+
+
+/* ========================================
+   APPLICATION STATUS
+======================================== */
+
+function isCartEmpty() {
+
+    return cart.length === 0;
+
+}
+
+
+function isUserLoggedIn() {
+
+    return localStorage.getItem(
+
+        STORAGE_KEYS.LOGIN
+
+    ) === "true";
+
+}
+
+
+/* ========================================
+   LOADING SYSTEM
+======================================== */
+
+function showLoader() {
+
+    if (!loadingScreen) return;
+
+    loadingScreen.style.display = "flex";
+
+}
+
+
+function hideLoader() {
+
+    if (!loadingScreen) return;
+
+    loadingScreen.style.display = "none";
+
+}
+
+
+/* ========================================
+   APPLICATION UTILITIES
+======================================== */
+
+function reloadApplication() {
+
+    refreshProducts();
+
+}
+
+
+function resetApplication() {
+
+    loadProducts();
+
+    loadCart();
+
+    filteredProducts = [...products];
+
+    updateCartCount();
+
+    renderProducts();
+
+}
+
+
+/* ========================================
+   DEBUG MODE
+======================================== */
+
+if (APP_CONFIG.debugMode) {
+
+    console.log(
+
+        "Royal Store App Debug Mode Enabled"
+
+    );
+
+    console.log(
+
+        "Current Page:",
+
+        getCurrentPage()
+
+    );
+
+}
+
+/* ========================================
+   APPLICATION INITIALIZATION
 ======================================== */
 
 function initializeApp() {
 
+    loadProducts();
+
     loadCart();
 
-    loadWishlist();
+    filteredProducts = [...products];
 
-    loadRecentProducts();
+    updateCartCount();
 
     renderProducts();
 
-    updateCartBadge();
-
     console.log(
 
-        `${CONFIG.websiteName} ${CONFIG.websiteVersion} Loaded Successfully`
+        `${APP_CONFIG.appName} v${APP_CONFIG.version} Initialized`
 
     );
 
 }
 
 
-initializeApp();
+/* ========================================
+   DOM READY
+======================================== */
+
+document.addEventListener(
+
+    "DOMContentLoaded",
+
+    function () {
+
+        initializeApp();
+
+    }
+
+);
+
+
+/* ========================================
+   GLOBAL APP API
+======================================== */
+
+window.RoyalStore = {
+
+    addToCart,
+
+    buyNow,
+
+    openWhatsAppOrder,
+
+    refreshProducts,
+
+    reloadApplication,
+
+    resetApplication,
+
+    getCartItemCount,
+
+    getCartTotal,
+
+    showToast
+
+};
+
+
+/* ========================================
+   FUTURE MODULES (LOCKED)
+======================================== */
+
+/*
+
+✔ Wishlist System
+
+✔ Recently Viewed Products
+
+✔ Product Comparison
+
+✔ Smart Search
+
+✔ Product Reviews
+
+✔ Product Ratings
+
+✔ Discount Engine
+
+✔ Coupon System
+
+✔ Flash Sale
+
+✔ Recommended Products
+
+✔ Multi Currency
+
+✔ Multi Language
+
+✔ Dark Mode
+
+✔ Push Notifications
+
+✔ Stock Management
+
+✔ Inventory Sync
+
+✔ Payment Gateway
+
+✔ Order Tracking
+
+✔ AI Product Recommendation
+
+✔ Progressive Web App (PWA)
+
+*/
+
+
+/* ========================================
+   END OF APP.JS
+   ROYAL STORE V2
+   VERSION : 2.0
+   BUILD : LOCKED
+======================================== */
