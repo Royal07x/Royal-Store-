@@ -891,6 +891,16 @@ function renderProducts(productList = filteredProducts) {
                     Buy Now
 
                 </button>
+                
+                <button
+                
+                      class="whatsapp-order"
+                      onclick="openWhatsAppOrder()">
+                     <i class="fa-brands fa-whatsapp"></i>
+                     
+                     WhatsApp Order
+                     
+              </button>
 
             </div>
 
