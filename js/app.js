@@ -202,18 +202,7 @@ const PRODUCT_DATABASE = [
 
 products = [...PRODUCT_DATABASE];
 
-if (window.location.pathname.includes("shirt.html")) {
-
-    filteredProducts = PRODUCT_DATABASE.filter(product =>
-        product.category === "shirt"
-    );
-
-} else {
-
-    filteredProducts = [...PRODUCT_DATABASE];
-
-}
-
+filteredProducts = [...PRODUCT_DATABASE];
 
 /* ========================================
    PRODUCT FINDER
