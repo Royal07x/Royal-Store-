@@ -145,6 +145,55 @@ const PRODUCT_DATABASE = [
     }
 
 ];
+{
+    id: 5,
+    name: "Classic Black Shirt",
+    category: "shirt",
+    price: 899,
+    image: "images/shirt2.jpg",
+    badge: "New",
+    stock: true
+},
+
+{
+    id: 6,
+    name: "Sky Blue Shirt",
+    category: "shirt",
+    price: 849,
+    image: "images/shirt3.jpg",
+    badge: "Trending",
+    stock: true
+},
+
+{
+    id: 7,
+    name: "Olive Green Shirt",
+    category: "shirt",
+    price: 949,
+    image: "images/shirt4.jpg",
+    badge: "Premium",
+    stock: true
+},
+
+{
+    id: 8,
+    name: "Formal White Shirt",
+    category: "shirt",
+    price: 999,
+    image: "images/shirt5.jpg",
+    badge: "Best Seller",
+    stock: true
+},
+
+{
+    id: 9,
+    name: "Checked Casual Shirt",
+    category: "shirt",
+    price: 899,
+    image: "images/shirt6.jpg",
+    badge: "Hot",
+    stock: true
+}
 
 
 /* ========================================
