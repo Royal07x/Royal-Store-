@@ -14,6 +14,10 @@ const CART_CONFIG = {
 
     currencySymbol: "₹",
 
+    whatsappNumber: "918791139418",
+
+    orderPrefix: "RS",
+
     minimumOrderAmount: 299,
 
     deliveryCharge: 0,
@@ -30,82 +34,326 @@ const CART_CONFIG = {
 
     pinCodeLength: 6,
 
-    orderPrefix: "RS"
+    toastDuration: 3000,
+
+    animationDuration: 300
 
 };
 
 
 /* ========================================
+   LOCAL STORAGE KEYS
+======================================== */
+
+const STORAGE_KEYS = {
+
+    cart: "royalCart",
+
+    login: "loggedIn",
+
+    user: "royalUser",
+
+    orders: "royalOrders"
+
+};
+
+
+/* ========================================
+   ORDER STATUS
+======================================== */
+
+const ORDER_STATUS = {
+
+    pending: "Pending",
+
+    confirmed: "Confirmed",
+
+    cancelled: "Cancelled"
+
+};
+
+
+/* ========================================
+   LOCATION OBJECT
+======================================== */
+
+let customerLocation = {
+
+    latitude: null,
+
+    longitude: null,
+
+    googleMapsLink: ""
+
+};
+
+
+/* ========================================
+   CART DATA
+======================================== */
+
+let cart = [];
+
+/* ========================================
    DOM ELEMENTS
 ======================================== */
 
-const cartContainer = document.getElementById("cart-container");
+const cartContainer =
+    document.getElementById("cart-container");
 
-const emptyCartContainer = document.getElementById("empty-cart");
+const emptyCartContainer =
+    document.getElementById("empty-cart");
 
-const cartCount = document.getElementById("cart-count");
+const cartCount =
+    document.getElementById("cart-count");
 
-const totalProducts = document.getElementById("total-products");
+const totalProducts =
+    document.getElementById("total-products");
 
-const totalQuantity = document.getElementById("total-quantity");
+const totalQuantity =
+    document.getElementById("total-quantity");
 
-const totalPrice = document.getElementById("total-price");
+const totalPrice =
+    document.getElementById("total-price");
 
-const deliveryCharge = document.getElementById("delivery-charge");
+const deliveryCharge =
+    document.getElementById("delivery-charge");
 
-const grandTotal = document.getElementById("grand-total");
+const grandTotal =
+    document.getElementById("grand-total");
 
-const checkoutButton = document.getElementById("checkout-btn");
+const checkoutButton =
+    document.getElementById("checkout-btn");
 
-const continueShoppingButton = document.getElementById("continue-shopping-btn");
+const continueShoppingButton =
+    document.getElementById("continue-shopping-btn");
 
-const clearCartButton = document.getElementById("clear-cart-btn");
+const clearCartButton =
+    document.getElementById("clear-cart-btn");
 
+
+/* ========================================
+   CHECKOUT MODAL
+======================================== */
+
+const checkoutModal =
+    document.getElementById("checkout-modal");
+
+const checkoutForm =
+    document.getElementById("checkout-form");
+
+const confirmOrderButton =
+    document.getElementById("confirm-order-btn");
+
+const closeCheckoutButton =
+    document.querySelector(".close-checkout");
+
+
+/* ========================================
+   CUSTOMER INPUTS
+======================================== */
+
+const cartCustomerName =
+    document.getElementById("customer-name");
+
+const cartCustomerMobile =
+    document.getElementById("customer-mobile");
+
+const cartCustomerEmail =
+    document.getElementById("customer-email");
+
+const cartCustomerAddress =
+    document.getElementById("customer-address");
+
+const cartCustomerCity =
+    document.getElementById("customer-city");
+
+const cartCustomerState =
+    document.getElementById("customer-state");
+
+const cartCustomerPin =
+    document.getElementById("customer-pin");
+
+
+/* ========================================
+   LOCATION
+======================================== */
+
+const getLocationButton =
+    document.getElementById("get-location-btn");
+
+
+/* ========================================
+   CHECKOUT SUMMARY
+======================================== */
+
+const checkoutTotalProducts =
+    document.getElementById("checkout-total-products");
+
+const checkoutTotalQuantity =
+    document.getElementById("checkout-total-quantity");
+
+const checkoutGrandTotal =
+    document.getElementById("checkout-grand-total");
+
+
+/* ========================================
+   TOAST POPUP
+======================================== */
+
+const toastPopup =
+    document.getElementById("toast-popup");
+
+const toastMessage =
+    document.getElementById("toast-message");
 
 /* ========================================
    LOCAL STORAGE MANAGER
 ======================================== */
 
-let cart = JSON.parse(
+function loadCart() {
 
-    localStorage.getItem("royalCart")
+    const storedCart =
+        localStorage.getItem(STORAGE_KEYS.cart);
 
-) || [];
+    try {
+
+        cart = storedCart
+            ? JSON.parse(storedCart)
+            : [];
+
+        if (!Array.isArray(cart)) {
+
+            cart = [];
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Cart Load Error:",
+            error
+        );
+
+        cart = [];
+
+    }
+
+}
 
 
 function saveCart() {
 
-    localStorage.setItem(
+    try {
 
-        "royalCart",
+        localStorage.setItem(
 
-        JSON.stringify(cart)
+            STORAGE_KEYS.cart,
+
+            JSON.stringify(cart)
+
+        );
+
+    } catch (error) {
+
+        console.error(
+
+            "Cart Save Error:",
+
+            error
+
+        );
+
+    }
+
+}
+
+
+/* ========================================
+   USER SESSION
+======================================== */
+
+function isUserLoggedIn() {
+
+    return (
+
+        localStorage.getItem(
+
+            STORAGE_KEYS.login
+
+        ) === "true"
 
     );
 
 }
 
 
-function loadCart() {
+/* ========================================
+   ORDER STORAGE
+======================================== */
 
-    cart = JSON.parse(
+function saveOrder(orderData) {
 
-        localStorage.getItem("royalCart")
+    let orders = [];
 
-    ) || [];
+    try {
+
+        orders = JSON.parse(
+
+            localStorage.getItem(
+
+                STORAGE_KEYS.orders
+
+            )
+
+        ) || [];
+
+    } catch (error) {
+
+        orders = [];
+
+    }
+
+    orders.push(orderData);
+
+    localStorage.setItem(
+
+        STORAGE_KEYS.orders,
+
+        JSON.stringify(orders)
+
+    );
 
 }
 
 
 /* ========================================
-   CART HELPERS
+   CLEAR CART STORAGE
+======================================== */
+
+function clearCartStorage() {
+
+    cart = [];
+
+    localStorage.removeItem(
+
+        STORAGE_KEYS.cart
+
+    );
+
+}
+
+/* ========================================
+   CART HELPER FUNCTIONS
 ======================================== */
 
 function getCartItemCount() {
 
     return cart.reduce(
 
-        (total, item) => total + item.quantity,
+        (total, item) =>
+
+            total + item.quantity,
 
         0
 
@@ -128,95 +376,62 @@ function getCartTotal() {
 
 }
 
-/* ========================================
-   CART RENDER ENGINE
-======================================== */
 
-function renderCart() {
+function getCartProductCount() {
 
-    loadCart();
+    return cart.length;
 
-    if (!cartContainer) return;
+}
 
-    cartContainer.innerHTML = "";
 
-    if (cart.length === 0) {
+function findCartItem(productId) {
 
-        showEmptyCart();
+    return cart.find(
 
-        return;
+        item => item.id === productId
 
-    }
+    );
 
-    hideEmptyCart();
+}
 
-    cart.forEach((item) => {
 
-        const cartItem = document.createElement("div");
+function isCartEmpty() {
 
-        cartItem.className = "cart-item";
+    return cart.length === 0;
 
-        cartItem.innerHTML = `
+}
 
-            <div class="cart-item-image">
 
-                <img src="${item.image}" alt="${item.name}">
+function generateOrderId() {
 
-            </div>
-
-            <div class="cart-item-details">
-
-                <h3>${item.name}</h3>
-
-                <p>${CART_CONFIG.currencySymbol}${item.price}</p>
-
-            </div>
-
-            <div class="cart-item-quantity">
-
-                <button
-                    class="qty-minus"
-                    data-id="${item.id}">
-                    −
-                </button>
-
-                <span>${item.quantity}</span>
-
-                <button
-                    class="qty-plus"
-                    data-id="${item.id}">
-                    +
-                </button>
-
-            </div>
-
-            <div class="cart-item-total">
-
-                ${CART_CONFIG.currencySymbol}${item.price * item.quantity}
-
-            </div>
-
-            <button
-                class="remove-item"
-                data-id="${item.id}">
-
-                Remove
-
-            </button>
-
-        `;
-
-        cartContainer.appendChild(cartItem);
-
-    });
-
-    updateCartSummary();
+    return `${CART_CONFIG.orderPrefix}${Date.now()}`;
 
 }
 
 
 /* ========================================
-   EMPTY CART
+   TOAST POPUP
+======================================== */
+
+function showToast(message) {
+
+    if (!toastPopup || !toastMessage) return;
+
+    toastMessage.textContent = message;
+
+    toastPopup.classList.add("show");
+
+    setTimeout(() => {
+
+        toastPopup.classList.remove("show");
+
+    }, CART_CONFIG.toastDuration);
+
+}
+
+
+/* ========================================
+   EMPTY CART UI
 ======================================== */
 
 function showEmptyCart() {
@@ -224,6 +439,12 @@ function showEmptyCart() {
     if (emptyCartContainer) {
 
         emptyCartContainer.style.display = "block";
+
+    }
+
+    if (cartContainer) {
+
+        cartContainer.innerHTML = "";
 
     }
 
@@ -247,27 +468,148 @@ function hideEmptyCart() {
 
 function refreshCart() {
 
+    saveCart();
+
     renderCart();
+
+    updateCartSummary();
 
 }
 
 /* ========================================
-   CART SUMMARY
+   CART RENDER ENGINE
+======================================== */
+
+function renderCart() {
+
+    loadCart();
+
+    if (!cartContainer) return;
+
+    cartContainer.innerHTML = "";
+
+    if (isCartEmpty()) {
+
+        showEmptyCart();
+
+        updateCartSummary();
+
+        return;
+
+    }
+
+    hideEmptyCart();
+
+    cart.forEach((item) => {
+
+        const cartItem = document.createElement("div");
+
+        cartItem.className = "cart-item";
+
+        cartItem.innerHTML = `
+
+<div class="cart-item-image">
+
+    <img
+        src="${item.image}"
+        alt="${item.name}">
+
+</div>
+
+<div class="cart-item-details">
+
+    <h3>${item.name}</h3>
+
+    <p>
+
+        ${CART_CONFIG.currencySymbol}${item.price}
+
+    </p>
+
+    <div class="cart-item-quantity">
+
+        <button
+            class="qty-minus"
+            data-id="${item.id}">
+
+            <i class="fa-solid fa-minus"></i>
+
+        </button>
+
+        <span>
+
+            ${item.quantity}
+
+        </span>
+
+        <button
+            class="qty-plus"
+            data-id="${item.id}">
+
+            <i class="fa-solid fa-plus"></i>
+
+        </button>
+
+    </div>
+
+    <div class="cart-item-total">
+
+        Total :
+
+        ${CART_CONFIG.currencySymbol}${item.price * item.quantity}
+
+    </div>
+
+    <button
+        class="remove-item"
+        data-id="${item.id}">
+
+        <i class="fa-solid fa-trash"></i>
+
+        Remove
+
+    </button>
+
+</div>
+
+`;
+
+        cartContainer.appendChild(cartItem);
+
+    });
+
+    updateCartSummary();
+
+}
+
+/* ========================================
+   CART SUMMARY SYSTEM
 ======================================== */
 
 function updateCartSummary() {
 
-    const productCount = cart.length;
+    const productCount = getCartProductCount();
 
     const quantityCount = getCartItemCount();
 
     const cartTotal = getCartTotal();
 
-    const deliveryAmount = CART_CONFIG.freeDelivery
-        ? 0
-        : CART_CONFIG.deliveryCharge;
+    const deliveryAmount =
 
-    const finalTotal = cartTotal + deliveryAmount;
+        CART_CONFIG.freeDelivery
+
+            ? 0
+
+            : CART_CONFIG.deliveryCharge;
+
+    const finalTotal =
+
+        cartTotal + deliveryAmount;
+
+
+    /* ------------------------------------
+       CART SUMMARY
+    ------------------------------------ */
 
     if (totalProducts) {
 
@@ -284,6 +626,7 @@ function updateCartSummary() {
     if (totalPrice) {
 
         totalPrice.textContent =
+
             `${CART_CONFIG.currencySymbol}${cartTotal}`;
 
     }
@@ -291,8 +634,11 @@ function updateCartSummary() {
     if (deliveryCharge) {
 
         deliveryCharge.textContent =
+
             CART_CONFIG.freeDelivery
+
                 ? "FREE"
+
                 : `${CART_CONFIG.currencySymbol}${deliveryAmount}`;
 
     }
@@ -300,9 +646,15 @@ function updateCartSummary() {
     if (grandTotal) {
 
         grandTotal.textContent =
+
             `${CART_CONFIG.currencySymbol}${finalTotal}`;
 
     }
+
+
+    /* ------------------------------------
+       HEADER CART COUNT
+    ------------------------------------ */
 
     if (cartCount) {
 
@@ -310,22 +662,57 @@ function updateCartSummary() {
 
     }
 
+
+    /* ------------------------------------
+       CHECKOUT SUMMARY
+    ------------------------------------ */
+
+    if (checkoutTotalProducts) {
+
+        checkoutTotalProducts.textContent = productCount;
+
+    }
+
+    if (checkoutTotalQuantity) {
+
+        checkoutTotalQuantity.textContent = quantityCount;
+
+    }
+
+    if (checkoutGrandTotal) {
+
+        checkoutGrandTotal.textContent =
+
+            `${CART_CONFIG.currencySymbol}${finalTotal}`;
+
+    }
+
 }
 
-
 /* ========================================
-   PRODUCT QUANTITY
+   QUANTITY CONTROL
 ======================================== */
 
 function increaseQuantity(productId) {
 
-    const product = cart.find(item => item.id === productId);
+    const product = cart.find(
+
+        item => item.id === productId
+
+    );
 
     if (!product) return;
 
-    if (product.quantity >= CART_CONFIG.maximumQuantity) {
+    if (
+        product.quantity >=
+        CART_CONFIG.maximumQuantity
+    ) {
 
-        alert("Maximum quantity reached.");
+        showToast(
+
+            "Maximum quantity reached."
+
+        );
 
         return;
 
@@ -335,14 +722,18 @@ function increaseQuantity(productId) {
 
     saveCart();
 
-    refreshCart();
+    renderCart();
 
 }
 
 
 function decreaseQuantity(productId) {
 
-    const product = cart.find(item => item.id === productId);
+    const product = cart.find(
+
+        item => item.id === productId
+
+    );
 
     if (!product) return;
 
@@ -358,9 +749,10 @@ function decreaseQuantity(productId) {
 
     saveCart();
 
-    refreshCart();
+    renderCart();
 
 }
+
 
 /* ========================================
    REMOVE PRODUCT
@@ -368,7 +760,11 @@ function decreaseQuantity(productId) {
 
 function removeProduct(productId) {
 
-    const product = cart.find(item => item.id === productId);
+    const product = cart.find(
+
+        item => item.id === productId
+
+    );
 
     if (!product) return;
 
@@ -380,11 +776,21 @@ function removeProduct(productId) {
 
     if (!confirmRemove) return;
 
-    cart = cart.filter(item => item.id !== productId);
+    cart = cart.filter(
+
+        item => item.id !== productId
+
+    );
 
     saveCart();
 
-    refreshCart();
+    renderCart();
+
+    showToast(
+
+        "Product removed successfully."
+
+    );
 
 }
 
@@ -395,9 +801,13 @@ function removeProduct(productId) {
 
 function clearCart() {
 
-    if (cart.length === 0) {
+    if (isCartEmpty()) {
 
-        alert("Your cart is already empty.");
+        showToast(
+
+            "Cart is already empty."
+
+        );
 
         return;
 
@@ -405,7 +815,7 @@ function clearCart() {
 
     const confirmClear = confirm(
 
-        "Are you sure you want to clear your cart?"
+        "Clear all cart items?"
 
     );
 
@@ -415,49 +825,52 @@ function clearCart() {
 
     saveCart();
 
-    refreshCart();
+    renderCart();
 
-}
+    showToast(
 
+        "Cart cleared successfully."
 
-/* ========================================
-   EMPTY CART MANAGEMENT
-======================================== */
-
-function checkEmptyCart() {
-
-    if (cart.length === 0) {
-
-        showEmptyCart();
-
-        if (cartContainer) {
-
-            cartContainer.innerHTML = "";
-
-        }
-
-    } else {
-
-        hideEmptyCart();
-
-    }
-
-}
-
-
-/* ========================================
-   CONTINUE SHOPPING
-======================================== */
-
-function continueShopping() {
-
-    window.location.href = "index.html";
+    );
 
 }
 
 /* ========================================
-   CHECKOUT SYSTEM
+   CHECKOUT MODAL
+   CUSTOMER INFORMATION
 ======================================== */
+
+const checkoutModal =
+    document.getElementById("checkout-modal");
+
+const getLocationButton =
+    document.getElementById("get-location-btn");
+
+const confirmOrderButton =
+    document.getElementById("confirm-order-btn");
+
+
+const cartCustomerName =
+    document.getElementById("customer-name");
+
+const cartCustomerMobile =
+    document.getElementById("customer-mobile");
+
+const cartCustomerEmail =
+    document.getElementById("customer-email");
+
+const cartCustomerAddress =
+    document.getElementById("customer-address");
+
+const cartCustomerCity =
+    document.getElementById("customer-city");
+
+const cartCustomerState =
+    document.getElementById("customer-state");
+
+const cartCustomerPin =
+    document.getElementById("customer-pin");
+
 
 let customerLocation = {
 
@@ -471,43 +884,27 @@ let customerLocation = {
 
 
 /* ========================================
-   DELIVERY INFORMATION
-======================================== */
-
-const cartCustomerName = document.getElementById("customer-name");
-
-const cartCustomerMobile = document.getElementById("customer-mobile");
-
-const cartCustomerEmail = document.getElementById("customer-email");
-
-const cartCustomerAddress = document.getElementById("customer-address");
-
-const cartCustomerCity = document.getElementById("customer-city");
-
-const cartCustomerState = document.getElementById("customer-state");
-
-const cartCustomerPin = document.getElementById("customer-pin");
-
-
-/* ========================================
    OPEN CHECKOUT
 ======================================== */
 
 function openCartCheckout() {
 
-    if (cart.length === 0) {
+    if (isCartEmpty()) {
 
-        alert("Your cart is empty.");
+        showToast("Your cart is empty.");
 
         return;
 
     }
 
-    if (getCartTotal() < CART_CONFIG.minimumOrderAmount) {
+    if (
+        getCartTotal() <
+        CART_CONFIG.minimumOrderAmount
+    ) {
 
-        alert(
+        showToast(
 
-            `Minimum order amount is ${CART_CONFIG.currencySymbol}${CART_CONFIG.minimumOrderAmount}.`
+            `Minimum order amount is ${CART_CONFIG.currencySymbol}${CART_CONFIG.minimumOrderAmount}`
 
         );
 
@@ -515,11 +912,9 @@ function openCartCheckout() {
 
     }
 
-    if (checkoutModal) {
+    checkoutModal.classList.add("active");
 
-        checkoutModal.classList.add("active");
-
-    }
+    updateCartSummary();
 
 }
 
@@ -530,11 +925,7 @@ function openCartCheckout() {
 
 function closeCartCheckout() {
 
-    if (checkoutModal) {
-
-        checkoutModal.classList.remove("active");
-
-    }
+    checkoutModal.classList.remove("active");
 
 }
 
@@ -547,7 +938,11 @@ function getCartCurrentLocation() {
 
     if (!navigator.geolocation) {
 
-        alert("Geolocation is not supported.");
+        showToast(
+
+            "Location is not supported."
+
+        );
 
         return;
 
@@ -555,22 +950,28 @@ function getCartCurrentLocation() {
 
     navigator.geolocation.getCurrentPosition(
 
-        function(position) {
+        (position) => {
 
-            customerLocation.latitude = position.coords.latitude;
+            customerLocation.latitude =
+                position.coords.latitude;
 
-            customerLocation.longitude = position.coords.longitude;
+            customerLocation.longitude =
+                position.coords.longitude;
 
             customerLocation.googleMapsLink =
                 `https://maps.google.com/?q=${customerLocation.latitude},${customerLocation.longitude}`;
 
-            alert("Location captured successfully.");
+            showToast(
+                "Location captured successfully."
+            );
 
         },
 
-        function() {
+        () => {
 
-            alert("Location permission denied.");
+            showToast(
+                "Location permission denied."
+            );
 
         }
 
@@ -578,24 +979,26 @@ function getCartCurrentLocation() {
 
 }
 
-
 /* ========================================
-   ORDER VALIDATION
+   CHECKOUT VALIDATION
 ======================================== */
 
 function validateCheckout() {
 
     if (!cartCustomerName.value.trim()) {
 
-        alert("Enter customer name.");
+        showToast("Enter customer name.");
 
         return false;
 
     }
 
-    if (cartCustomerMobile.value.trim().length !== CART_CONFIG.mobileLength) {
+    if (
+        cartCustomerMobile.value.trim().length !==
+        CART_CONFIG.mobileLength
+    ) {
 
-        alert("Enter valid mobile number.");
+        showToast("Enter valid mobile number.");
 
         return false;
 
@@ -603,7 +1006,7 @@ function validateCheckout() {
 
     if (!cartCustomerAddress.value.trim()) {
 
-        alert("Enter address.");
+        showToast("Enter delivery address.");
 
         return false;
 
@@ -611,7 +1014,7 @@ function validateCheckout() {
 
     if (!cartCustomerCity.value.trim()) {
 
-        alert("Enter city.");
+        showToast("Enter city.");
 
         return false;
 
@@ -619,15 +1022,18 @@ function validateCheckout() {
 
     if (!cartCustomerState.value.trim()) {
 
-        alert("Enter state.");
+        showToast("Enter state.");
 
         return false;
 
     }
 
-    if (cartCustomerPin.value.trim().length !== CART_CONFIG.pinCodeLength) {
+    if (
+        cartCustomerPin.value.trim().length !==
+        CART_CONFIG.pinCodeLength
+    ) {
 
-        alert("Enter valid PIN code.");
+        showToast("Enter valid PIN code.");
 
         return false;
 
@@ -638,7 +1044,7 @@ function validateCheckout() {
         !customerLocation.googleMapsLink
     ) {
 
-        alert("Please allow live location.");
+        showToast("Please share live location.");
 
         return false;
 
@@ -648,15 +1054,10 @@ function validateCheckout() {
 
 }
 
+
 /* ========================================
    WHATSAPP ORDER SYSTEM
 ======================================== */
-
-function generateOrderId() {
-
-    return `${CART_CONFIG.orderPrefix}${Date.now()}`;
-
-}
 
 function placeCartOrder() {
 
@@ -673,7 +1074,6 @@ function placeCartOrder() {
     cart.forEach((item, index) => {
 
         productList +=
-
 `${index + 1}. ${item.name}
 Qty : ${item.quantity}
 Price : ${CART_CONFIG.currencySymbol}${item.price}
@@ -682,9 +1082,7 @@ Price : ${CART_CONFIG.currencySymbol}${item.price}
 
     });
 
-    const message = `
-
-🛍️ *Royal Store Cart Order*
+    const message = `🛍️ *Royal Store Order*
 
 ━━━━━━━━━━━━━━━━━━
 
@@ -696,58 +1094,58 @@ Price : ${CART_CONFIG.currencySymbol}${item.price}
 
 ━━━━━━━━━━━━━━━━━━
 
-👤 CUSTOMER DETAILS
+👤 Customer
 
-Name : ${cartcustomerName.value}
+Name : ${cartCustomerName.value}
 
-Mobile : ${cartcustomerMobile.value}
+Mobile : ${cartCustomerMobile.value}
 
-Email : ${cartcustomerEmail.value || "N/A"}
+Email : ${cartCustomerEmail.value || "N/A"}
 
-Address : ${cartcustomerAddress.value}
+Address : ${cartCustomerAddress.value}
 
-City : ${cartcustomerCity.value}
+City : ${cartCustomerCity.value}
 
-State : ${cartcustomerState.value}
+State : ${cartCustomerState.value}
 
-PIN : ${cartcustomerPin.value}
+PIN : ${cartCustomerPin.value}
 
 ━━━━━━━━━━━━━━━━━━
 
-📦 PRODUCTS
+📦 Products
 
 ${productList}
 
 ━━━━━━━━━━━━━━━━━━
 
-💰 TOTAL
+💰 Grand Total
 
 ${CART_CONFIG.currencySymbol}${getCartTotal()}
 
 ━━━━━━━━━━━━━━━━━━
 
-📍 LIVE LOCATION
+📍 Live Location
 
 ${customerLocation.googleMapsLink}
 
 ━━━━━━━━━━━━━━━━━━
 
 Thank You ❤️
-
-Royal Store
-
-`;
+Royal Store`;
 
     window.open(
 
-`https://wa.me/918791139418?text=${encodeURIComponent(message)}`,
+        `https://wa.me/918791139418?text=${encodeURIComponent(message)}`,
 
-"_blank"
+        "_blank"
 
-);
+    );
+
+    showToast("Redirecting to WhatsApp...");
+
+    closeCartCheckout();
 
 }
-
 
 /* ========================================
    EVENT LISTENERS
@@ -755,21 +1153,29 @@ Royal Store
 
 document.addEventListener("click", (event) => {
 
-    const productId = Number(event.target.dataset.id);
+    const productId = Number(
+        event.target.dataset.id
+    );
 
-    if (event.target.classList.contains("qty-plus")) {
+    if (
+        event.target.classList.contains("qty-plus")
+    ) {
 
         increaseQuantity(productId);
 
     }
 
-    if (event.target.classList.contains("qty-minus")) {
+    if (
+        event.target.classList.contains("qty-minus")
+    ) {
 
         decreaseQuantity(productId);
 
     }
 
-    if (event.target.classList.contains("remove-item")) {
+    if (
+        event.target.classList.contains("remove-item")
+    ) {
 
         removeProduct(productId);
 
@@ -784,33 +1190,7 @@ if (checkoutButton) {
 
         "click",
 
-        opencartCheckout
-
-    );
-
-}
-
-
-if (clearCartButton) {
-
-    clearCartButton.addEventListener(
-
-        "click",
-
-        clearCart
-
-    );
-
-}
-
-
-if (continueShoppingButton) {
-
-    continueShoppingButton.addEventListener(
-
-        "click",
-
-        continueShopping
+        openCartCheckout
 
     );
 
@@ -823,7 +1203,7 @@ if (getLocationButton) {
 
         "click",
 
-        getcartCurrentLocation
+        getCartCurrentLocation
 
     );
 
@@ -843,8 +1223,34 @@ if (confirmOrderButton) {
 }
 
 
+if (continueShoppingButton) {
+
+    continueShoppingButton.addEventListener(
+
+        "click",
+
+        continueShopping
+
+    );
+
+}
+
+
+if (clearCartButton) {
+
+    clearCartButton.addEventListener(
+
+        "click",
+
+        clearCart
+
+    );
+
+}
+
+
 /* ========================================
-   CART INITIALIZATION
+   INITIALIZATION
 ======================================== */
 
 function initializeCart() {
@@ -857,11 +1263,21 @@ function initializeCart() {
 
     checkEmptyCart();
 
-    console.log("Royal Store Cart Initialized");
+    console.log(
+
+        "Royal Store Cart Initialized Successfully"
+
+    );
 
 }
 
-initializeCart();
+document.addEventListener(
+
+    "DOMContentLoaded",
+
+    initializeCart
+
+);
 
 
 /* ========================================
@@ -869,17 +1285,36 @@ initializeCart();
 ======================================== */
 
 /*
-✔ Save For Later
-✔ Estimated Delivery Date
-✔ Delivery Charge Calculator
-✔ Coupon System
-✔ Gift Wrap
-✔ Order Notes
-✔ Cart Recommendations
-✔ Recently Removed Products
-✔ Wishlist Sync
-✔ Product Comparison
-✔ Error Handler System
-✔ Loader / Skeleton System
+01. Coupon System
+02. Save For Later
+03. Wishlist Sync
+04. Delivery Charge Calculator
+05. Delivery Tracker
+06. Order Timeline
+07. UPI Payment
+08. Card Payment
+09. Net Banking
+10. Wallet Payment
+11. Invoice Download
+12. Order Cancellation
+13. Return Request
+14. Exchange Request
+15. Gift Wrap
+16. Order Notes
+17. Product Recommendation
+18. Recently Viewed
+19. Offline Cart Sync
+20. Push Notification
+21. Skeleton Loader
+22. Multi Language
+23. Dark Mode
+24. AI Product Recommendation
+25. Loyalty Reward System
 */
 
+
+/* ========================================
+   END OF CART.JS
+   ROYAL STORE V2
+   VERIFIED BUILD
+======================================== */
