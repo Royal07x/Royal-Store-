@@ -1380,6 +1380,39 @@ function renderProducts(productList = filteredProducts) {
     initializeProductButtons();
 }
 
+/* ========================================
+   MENU DRAWER SYSTEM
+======================================== */
+
+const menuBtn = document.getElementById("menu-btn");
+const navDrawer = document.getElementById("nav-drawer");
+const closeDrawer = document.getElementById("close-drawer");
+const drawerOverlay = document.getElementById("drawer-overlay");
+
+function openDrawer() {
+    if (navDrawer) navDrawer.classList.add("active");
+    if (drawerOverlay) drawerOverlay.classList.add("active");
+    document.body.style.overflow = "hidden";
+}
+
+function closeDrawerMenu() {
+    if (navDrawer) navDrawer.classList.remove("active");
+    if (drawerOverlay) drawerOverlay.classList.remove("active");
+    document.body.style.overflow = "";
+}
+
+if (menuBtn) {
+    menuBtn.addEventListener("click", openDrawer);
+}
+
+if (closeDrawer) {
+    closeDrawer.addEventListener("click", closeDrawerMenu);
+}
+
+if (drawerOverlay) {
+    drawerOverlay.addEventListener("click", closeDrawerMenu);
+}
+
 
 /* ========================================
    GLOBAL APP API
