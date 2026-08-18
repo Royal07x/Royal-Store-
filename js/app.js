@@ -144,7 +144,6 @@ const PRODUCT_DATABASE = [
         stock: true
     }
 
-];
 {
     id: 5,
     name: "Classic Black Shirt",
@@ -195,6 +194,7 @@ const PRODUCT_DATABASE = [
     stock: true
 }
 
+];
 
 /* ========================================
    PRODUCT LOADER
