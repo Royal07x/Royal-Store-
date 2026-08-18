@@ -10,74 +10,155 @@
    AUTH CONFIGURATION
 ======================================== */
 
-const AUTH = {
+const AUTH_CONFIG = {
 
-    /* Login Settings */
+    appName: "Royal Store",
 
-    requireLogin: true,
-
-    rememberUser: true,
-
-    autoLogin: true,
-
-
-    /* Validation */
-
-    minimumNameLength: 3,
-
-    mobileLength: 10,
-
-    minimumPasswordLength: 6,
-
-
-    /* Local Storage Keys */
+    loginKey: "royalLoggedIn",
 
     userKey: "royalUser",
 
-    loginKey: "loggedIn"
+    sessionKey: "royalSession",
+
+    rememberKey: "royalRemember",
+
+    redirectPage: "index.html",
+
+    loginPage: "login.html",
+
+    signupPage: "signup.html",
+
+    minimumPasswordLength: 6,
+
+    mobileLength: 10,
+
+    enableRememberMe: true,
+
+    requireEmailVerification: false,
+
+    autoLoginAfterSignup: true
 
 };
 
 
 /* ========================================
-   DOM ELEMENTS
+   LOCAL STORAGE KEYS
 ======================================== */
 
-const loginForm = document.getElementById("login-form");
+const AUTH_KEYS = {
 
-const signupForm = document.getElementById("signup-form");
+    LOGIN: AUTH_CONFIG.loginKey,
 
-const loginMobile = document.getElementById("login-mobile");
+    USER: AUTH_CONFIG.userKey,
 
-const loginPassword = document.getElementById("login-password");
+    SESSION: AUTH_CONFIG.sessionKey,
 
-const signupName = document.getElementById("signup-name");
+    REMEMBER: AUTH_CONFIG.rememberKey
 
-const signupMobile = document.getElementById("signup-mobile");
-
-const signupEmail = document.getElementById("signup-email");
-
-const signupPassword = document.getElementById("signup-password");
-
-const logoutButton = document.getElementById("logout-btn");
+};
 
 
 /* ========================================
-   LOCAL STORAGE MANAGER
+   GLOBAL VARIABLES
 ======================================== */
 
-let currentUser = JSON.parse(
+let currentUser = null;
 
-    localStorage.getItem(AUTH.userKey)
+let isLoggedIn = false;
 
-) || null;
 
+/* ========================================
+   INITIALIZATION
+======================================== */
+
+console.log(
+
+    "Royal Store Auth System Initialized"
+
+);
+
+/* ========================================
+   DOM ELEMENTS
+======================================== */
+
+const loginForm =
+
+    document.getElementById("login-form");
+
+const signupForm =
+
+    document.getElementById("signup-form");
+
+
+const loginEmail =
+
+    document.getElementById("login-email");
+
+const loginPassword =
+
+    document.getElementById("login-password");
+
+const rememberMe =
+
+    document.getElementById("remember-me");
+
+
+const signupName =
+
+    document.getElementById("signup-name");
+
+const signupMobile =
+
+    document.getElementById("signup-mobile");
+
+const signupEmail =
+
+    document.getElementById("signup-email");
+
+const signupPassword =
+
+    document.getElementById("signup-password");
+
+const signupConfirmPassword =
+
+    document.getElementById("signup-confirm-password");
+
+
+const logoutButton =
+
+    document.getElementById("logout-btn");
+
+
+/* ========================================
+   AUTH STATUS
+======================================== */
+
+function loadAuthStatus() {
+
+    currentUser = JSON.parse(
+
+        localStorage.getItem(AUTH_KEYS.USER)
+
+    );
+
+    isLoggedIn =
+
+        localStorage.getItem(AUTH_KEYS.LOGIN)
+
+        === "true";
+
+}
+
+
+/* ========================================
+   AUTH HELPERS
+======================================== */
 
 function saveUser(userData) {
 
     localStorage.setItem(
 
-        AUTH.userKey,
+        AUTH_KEYS.USER,
 
         JSON.stringify(userData)
 
@@ -86,92 +167,79 @@ function saveUser(userData) {
 }
 
 
-function loadUser() {
+function getUser() {
 
     return JSON.parse(
 
-        localStorage.getItem(AUTH.userKey)
+        localStorage.getItem(AUTH_KEYS.USER)
 
     );
-
-}
-
-
-function setLoginStatus(status) {
-
-    localStorage.setItem(
-
-        AUTH.loginKey,
-
-        status
-
-    );
-
-}
-
-
-function isLoggedIn() {
-
-    return localStorage.getItem(
-
-        AUTH.loginKey
-
-    ) === "true";
 
 }
 
 /* ========================================
-   SIGN UP SYSTEM
+   SIGNUP VALIDATION
 ======================================== */
 
 function validateSignup() {
 
-    if (!signupName || !signupMobile || !signupPassword) {
+    if (!signupName.value.trim()) {
 
-        alert("Signup form not found.");
-
-        return false;
-
-    }
-
-    const name = signupName.value.trim();
-
-    const mobile = signupMobile.value.trim();
-
-    const email = signupEmail ? signupEmail.value.trim() : "";
-
-    const password = signupPassword.value.trim();
-
-
-    /* Name Validation */
-
-    if (name.length < AUTH.minimumNameLength) {
-
-        alert("Please enter a valid full name.");
+        showToast("Enter your full name.");
 
         return false;
 
     }
 
+    if (
 
-    /* Mobile Validation */
+        signupMobile.value.trim().length !==
 
-    if (mobile.length !== AUTH.mobileLength || isNaN(mobile)) {
+        AUTH_CONFIG.mobileLength
 
-        alert("Please enter a valid 10-digit mobile number.");
+    ) {
+
+        showToast("Enter a valid mobile number.");
 
         return false;
 
     }
 
+    if (!signupEmail.value.trim()) {
 
-    /* Password Validation */
+        showToast("Enter your email.");
 
-    if (password.length < AUTH.minimumPasswordLength) {
+        return false;
 
-        alert(
-            `Password must be at least ${AUTH.minimumPasswordLength} characters.`
+    }
+
+    if (
+
+        signupPassword.value.length <
+
+        AUTH_CONFIG.minimumPasswordLength
+
+    ) {
+
+        showToast(
+
+            `Password must be at least ${AUTH_CONFIG.minimumPasswordLength} characters.`
+
         );
+
+        return false;
+
+    }
+
+    if (
+
+        signupPassword.value !==
+
+        signupConfirmPassword.value
+
+    ) {
+
+        showToast("Passwords do not match.");
 
         return false;
 
@@ -190,48 +258,81 @@ function createAccount() {
 
     if (!validateSignup()) return;
 
-    const user = {
-
-        id: Date.now(),
+    const userData = {
 
         name: signupName.value.trim(),
 
         mobile: signupMobile.value.trim(),
 
-        email: signupEmail
-            ? signupEmail.value.trim()
-            : "",
+        email: signupEmail.value.trim().toLowerCase(),
 
-        password: signupPassword.value.trim(),
+        password: signupPassword.value,
 
         createdAt: new Date().toISOString()
 
     };
 
-    saveUser(user);
-   
-   setLoginStatus(false);
+    saveUser(userData);
 
-    alert("Account created successfully.");
+    if (AUTH_CONFIG.autoLoginAfterSignup) {
 
-    window.location.href = "login.html";
+        localStorage.setItem(
+
+            AUTH_KEYS.LOGIN,
+
+            "true"
+
+        );
+
+        localStorage.setItem(
+
+            AUTH_KEYS.SESSION,
+
+            Date.now().toString()
+
+        );
+
+        currentUser = userData;
+
+        isLoggedIn = true;
+
+    }
+
+    showToast("Account created successfully.");
+
+    setTimeout(() => {
+
+        window.location.href =
+
+            AUTH_CONFIG.redirectPage;
+
+    }, 1200);
 
 }
 
-
 /* ========================================
-   SIGNUP FORM EVENT
+   LOGIN VALIDATION
 ======================================== */
 
-if (signupForm) {
+function validateLogin() {
 
-    signupForm.addEventListener("submit", function (event) {
+    if (!loginEmail.value.trim()) {
 
-        event.preventDefault();
+        showToast("Enter your email.");
 
-        createAccount();
+        return false;
 
-    });
+    }
+
+    if (!loginPassword.value.trim()) {
+
+        showToast("Enter your password.");
+
+        return false;
+
+    }
+
+    return true;
 
 }
 
@@ -240,107 +341,97 @@ if (signupForm) {
    LOGIN SYSTEM
 ======================================== */
 
-function validateLogin() {
-
-    if (!loginMobile || !loginPassword) {
-
-        alert("Login form not found.");
-
-        return false;
-
-    }
-
-    const mobile = loginMobile.value.trim();
-
-    const password = loginPassword.value.trim();
-
-    /* Mobile Validation */
-
-    if (
-        mobile.length !== AUTH.mobileLength ||
-        isNaN(mobile)
-    ) {
-
-        alert("Please enter a valid 10-digit mobile number.");
-
-        return false;
-
-    }
-
-    /* Password Validation */
-
-    if (
-        password.length < AUTH.minimumPasswordLength
-    ) {
-
-        alert("Invalid password.");
-
-        return false;
-
-    }
-
-    return true;
-
-}
-
-
-/* ========================================
-   LOGIN ACCOUNT
-======================================== */
-
-function loginAccount() {
+function loginUser() {
 
     if (!validateLogin()) return;
 
-    const savedUser = loadUser();
+    const savedUser = getUser();
 
     if (!savedUser) {
 
-        alert("No account found. Please sign up first.");
-
-        window.location.href = "signup.html";
+        showToast("Account not found.");
 
         return;
 
     }
 
     if (
-        loginMobile.value.trim() !== savedUser.mobile ||
-        loginPassword.value.trim() !== savedUser.password
+
+        loginEmail.value.trim().toLowerCase() !==
+
+        savedUser.email
+
     ) {
 
-        alert("Invalid mobile number or password.");
+        showToast("Invalid email.");
 
         return;
+
+    }
+
+    if (
+
+        loginPassword.value !==
+
+        savedUser.password
+
+    ) {
+
+        showToast("Incorrect password.");
+
+        return;
+
+    }
+
+    localStorage.setItem(
+
+        AUTH_KEYS.LOGIN,
+
+        "true"
+
+    );
+
+    localStorage.setItem(
+
+        AUTH_KEYS.SESSION,
+
+        Date.now().toString()
+
+    );
+
+    if (
+
+        AUTH_CONFIG.enableRememberMe &&
+
+        rememberMe &&
+
+        rememberMe.checked
+
+    ) {
+
+        localStorage.setItem(
+
+            AUTH_KEYS.REMEMBER,
+
+            "true"
+
+        );
 
     }
 
     currentUser = savedUser;
 
-    setLoginStatus(true);
-   
-   saveUser(savedUser);
+    isLoggedIn = true;
 
-    alert(`Welcome ${savedUser.name}!`);
+    showToast("Login successful.");
 
-    window.location.href = "index.html";
+    setTimeout(() => {
 
-}
+        window.location.href =
 
+            AUTH_CONFIG.redirectPage;
 
-/* ========================================
-   LOGIN FORM EVENT
-======================================== */
-
-if (loginForm) {
-
-    loginForm.addEventListener("submit", function (event) {
-
-        event.preventDefault();
-
-        loginAccount();
-
-    });
+    }, 1000);
 
 }
 
@@ -348,36 +439,58 @@ if (loginForm) {
    LOGOUT SYSTEM
 ======================================== */
 
-function logoutAccount() {
+function logoutUser() {
 
-    const confirmLogout = confirm(
-        "Are you sure you want to logout?"
+    localStorage.removeItem(
+
+        AUTH_KEYS.LOGIN
+
     );
 
-    if (!confirmLogout) return;
+    localStorage.removeItem(
+
+        AUTH_KEYS.SESSION
+
+    );
+
+    localStorage.removeItem(
+
+        AUTH_KEYS.REMEMBER
+
+    );
 
     currentUser = null;
 
-    localStorage.removeItem(AUTH.loginKey);
+    isLoggedIn = false;
 
-    alert("Logged out successfully.");
+    showToast("Logged out successfully.");
 
-    window.location.href = "login.html";
+    setTimeout(() => {
+
+        window.location.href =
+
+            AUTH_CONFIG.loginPage;
+
+    }, 1000);
 
 }
 
 
 /* ========================================
-   SESSION MANAGER
+   SESSION CHECK
 ======================================== */
 
-function checkSession() {
+function checkLoginSession() {
 
-    if (!AUTH.requireLogin) return true;
+    loadAuthStatus();
 
-    if (!isLoggedIn()) {
+    if (
 
-        window.location.href = "login.html";
+        !isLoggedIn ||
+
+        !currentUser
+
+    ) {
 
         return false;
 
@@ -388,26 +501,102 @@ function checkSession() {
 }
 
 
-function getCurrentUser() {
+/* ========================================
+   PROTECTED PAGE
+======================================== */
 
-    return currentUser;
+function requireLogin() {
+
+    if (
+
+        !checkLoginSession()
+
+    ) {
+
+        showToast(
+
+            "Please login first."
+
+        );
+
+        setTimeout(() => {
+
+            window.location.href =
+
+                AUTH_CONFIG.loginPage;
+
+        }, 1000);
+
+        return false;
+
+    }
+
+    return true;
 
 }
 
 
 /* ========================================
-   AUTO LOGIN CHECK
+   UPDATE USER INTERFACE
 ======================================== */
 
-function autoLoginCheck() {
+function updateAuthUI() {
 
-    if (!AUTH.autoLogin) return;
+    loadAuthStatus();
 
-    const user = loadUser();
+    if (
 
-    if (user && isLoggedIn()) {
+        logoutButton
 
-        currentUser = user;
+    ) {
+
+        logoutButton.style.display =
+
+            isLoggedIn
+
+                ? "inline-flex"
+
+                : "none";
+
+    }
+
+}
+
+/* ========================================
+   REMEMBER ME SYSTEM
+======================================== */
+
+function saveRememberMe() {
+
+    if (
+
+        !AUTH_CONFIG.enableRememberMe ||
+
+        !rememberMe
+
+    ) {
+
+        return;
+
+    }
+
+    if (rememberMe.checked) {
+
+        localStorage.setItem(
+
+            AUTH_KEYS.REMEMBER,
+
+            "true"
+
+        );
+
+    } else {
+
+        localStorage.removeItem(
+
+            AUTH_KEYS.REMEMBER
+
+        );
 
     }
 
@@ -415,18 +604,251 @@ function autoLoginCheck() {
 
 
 /* ========================================
-   EVENT LISTENERS
+   AUTO LOGIN
 ======================================== */
 
-if (logoutButton) {
+function autoLogin() {
 
-    logoutButton.addEventListener(
+    const rememberStatus =
 
-        "click",
+        localStorage.getItem(
 
-        logoutAccount
+            AUTH_KEYS.REMEMBER
 
-    );
+        ) === "true";
+
+    if (
+
+        rememberStatus &&
+
+        checkLoginSession()
+
+    ) {
+
+        currentUser = getUser();
+
+        isLoggedIn = true;
+
+        updateAuthUI();
+
+    }
+
+}
+
+
+/* ========================================
+   USER PROFILE
+======================================== */
+
+function loadUserProfile() {
+
+    if (
+
+        !checkLoginSession()
+
+    ) {
+
+        return;
+
+    }
+
+    currentUser = getUser();
+
+    if (!currentUser) {
+
+        return;
+
+    }
+
+    const profileName =
+
+        document.getElementById("profile-name");
+
+    const profileEmail =
+
+        document.getElementById("profile-email");
+
+    if (profileName) {
+
+        profileName.textContent =
+
+            currentUser.name;
+
+    }
+
+    if (profileEmail) {
+
+        profileEmail.textContent =
+
+            currentUser.email;
+
+    }
+
+}
+
+
+/* ========================================
+   AUTH DASHBOARD
+======================================== */
+
+function initializeUser() {
+
+    loadAuthStatus();
+
+    autoLogin();
+
+    updateAuthUI();
+
+    loadUserProfile();
+
+}
+
+/* ========================================
+   ROUTE PROTECTION
+======================================== */
+
+function protectPage() {
+
+    const protectedPages = [
+
+        "cart.html",
+
+        "orders.html",
+
+        "wishlist.html"
+
+    ];
+
+    const currentPage =
+
+        window.location.pathname
+
+        .split("/")
+
+        .pop();
+
+    if (
+
+        protectedPages.includes(currentPage)
+
+    ) {
+
+        if (!requireLogin()) {
+
+            return;
+
+        }
+
+    }
+
+}
+
+
+/* ========================================
+   ADD TO CART AUTH CHECK
+======================================== */
+
+function canAddToCart() {
+
+    if (!requireLogin()) {
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+
+/* ========================================
+   CHECKOUT AUTH CHECK
+======================================== */
+
+function canCheckout() {
+
+    if (!requireLogin()) {
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+
+/* ========================================
+   LOGIN BUTTON UPDATE
+======================================== */
+
+function updateNavigation() {
+
+    const loginButton =
+
+        document.getElementById("login-btn");
+
+    const signupButton =
+
+        document.getElementById("signup-btn");
+
+    const logoutButton =
+
+        document.getElementById("logout-btn");
+
+    if (checkLoginSession()) {
+
+        if (loginButton) {
+
+            loginButton.style.display =
+
+                "none";
+
+        }
+
+        if (signupButton) {
+
+            signupButton.style.display =
+
+                "none";
+
+        }
+
+        if (logoutButton) {
+
+            logoutButton.style.display =
+
+                "inline-flex";
+
+        }
+
+    } else {
+
+        if (loginButton) {
+
+            loginButton.style.display =
+
+                "inline-flex";
+
+        }
+
+        if (signupButton) {
+
+            signupButton.style.display =
+
+                "inline-flex";
+
+        }
+
+        if (logoutButton) {
+
+            logoutButton.style.display =
+
+                "none";
+
+        }
+
+    }
 
 }
 
@@ -435,95 +857,443 @@ if (logoutButton) {
    AUTH INITIALIZATION
 ======================================== */
 
-function initializeAuth() {
+function initializeAuthProtection() {
 
-    autoLoginCheck();
+    protectPage();
 
-    console.log(
+    updateNavigation();
 
-        "Royal Store Authentication Initialized"
+}
+
+/* ========================================
+   FORM EVENT LISTENERS
+======================================== */
+
+if (signupForm) {
+
+    signupForm.addEventListener(
+
+        "submit",
+
+        function (event) {
+
+            event.preventDefault();
+
+            createAccount();
+
+        }
 
     );
 
 }
 
 
-initializeAuth();
+if (loginForm) {
 
-/* ========================================
-   FORGOT PASSWORD (Future)
-======================================== */
+    loginForm.addEventListener(
 
-function forgotPassword() {
+        "submit",
 
-    console.log("Forgot Password Module");
+        function (event) {
+
+            event.preventDefault();
+
+            loginUser();
+
+        }
+
+    );
+
+}
+
+
+if (logoutButton) {
+
+    logoutButton.addEventListener(
+
+        "click",
+
+        logoutUser
+
+    );
 
 }
 
 
 /* ========================================
-   PASSWORD RESET (Future)
+   PASSWORD VISIBILITY
 ======================================== */
 
-function resetPassword() {
+function togglePassword(inputId, iconId) {
 
-    console.log("Reset Password Module");
+    const input =
+
+        document.getElementById(inputId);
+
+    const icon =
+
+        document.getElementById(iconId);
+
+    if (!input) return;
+
+    if (input.type === "password") {
+
+        input.type = "text";
+
+        if (icon) {
+
+            icon.classList.remove("fa-eye");
+
+            icon.classList.add("fa-eye-slash");
+
+        }
+
+    } else {
+
+        input.type = "password";
+
+        if (icon) {
+
+            icon.classList.remove("fa-eye-slash");
+
+            icon.classList.add("fa-eye");
+
+        }
+
+    }
 
 }
 
 
 /* ========================================
-   OTP VERIFICATION (Future)
+   INPUT VALIDATION
 ======================================== */
 
-function verifyOTP() {
+function numbersOnly(event) {
 
-    console.log("OTP Verification Module");
+    event.target.value =
+
+        event.target.value.replace(
+
+            /\D/g,
+
+            ""
+
+        );
+
+}
+
+
+if (signupMobile) {
+
+    signupMobile.addEventListener(
+
+        "input",
+
+        numbersOnly
+
+    );
+
+}
+
+
+if (cartCustomerMobile) {
+
+    cartCustomerMobile.addEventListener(
+
+        "input",
+
+        numbersOnly
+
+    );
+
+}
+
+
+if (cartCustomerPin) {
+
+    cartCustomerPin.addEventListener(
+
+        "input",
+
+        numbersOnly
+
+    );
+
+}
+
+
+/* ========================================
+   ENTER KEY SUPPORT
+======================================== */
+
+document.addEventListener(
+
+    "keydown",
+
+    function (event) {
+
+        if (
+
+            event.key === "Enter" &&
+
+            loginForm
+
+        ) {
+
+            return;
+
+        }
+
+    }
+
+);
+
+/* ========================================
+   TOAST NOTIFICATION
+======================================== */
+
+function showToast(message) {
+
+    const toast =
+
+        document.getElementById("toast-popup");
+
+    const toastMessage =
+
+        document.getElementById("toast-message");
+
+    if (!toast || !toastMessage) {
+
+        alert(message);
+
+        return;
+
+    }
+
+    toastMessage.textContent = message;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 3000);
+
+}
+
+
+/* ========================================
+   GLOBAL ERROR HANDLER
+======================================== */
+
+window.addEventListener(
+
+    "error",
+
+    function (event) {
+
+        console.error(
+
+            "Royal Store Error:",
+
+            event.message
+
+        );
+
+    }
+
+);
+
+
+/* ========================================
+   SAFE ELEMENT FINDER
+======================================== */
+
+function getElement(id) {
+
+    return document.getElementById(id);
+
+}
+
+
+/* ========================================
+   AUTH UTILITIES
+======================================== */
+
+function isUserLoggedIn() {
+
+    return localStorage.getItem(
+
+        AUTH_KEYS.LOGIN
+
+    ) === "true";
+
+}
+
+
+function getCurrentUser() {
+
+    return JSON.parse(
+
+        localStorage.getItem(
+
+            AUTH_KEYS.USER
+
+        )
+
+    );
+
+}
+
+
+/* ========================================
+   PAGE INFORMATION
+======================================== */
+
+function getCurrentPage() {
+
+    return window.location.pathname
+
+        .split("/")
+
+        .pop();
+
+}
+
+
+/* ========================================
+   DEBUG MODE
+======================================== */
+
+if (AUTH_CONFIG.debugMode) {
+
+    console.log(
+
+        "Royal Store Auth Debug Mode Enabled"
+
+    );
 
 }
 
 /* ========================================
-   ACCOUNT MANAGEMENT (Future)
+   AUTH INITIALIZATION
 ======================================== */
 
-function updateProfile() {
+function initializeAuth() {
 
-    console.log("Update Profile Module");
+    loadAuthStatus();
 
-}
+    autoLogin();
 
-function changePassword() {
+    initializeUser();
 
-    console.log("Change Password Module");
+    initializeAuthProtection();
 
-}
+    updateAuthUI();
 
-function deleteAccount() {
+    console.log(
 
-    console.log("Delete Account Module");
+        "Royal Store Auth Initialized"
+
+    );
 
 }
 
 
 /* ========================================
-   SECURITY (Future)
+   DOM READY
 ======================================== */
 
-function loginAttemptLimit() {
+document.addEventListener(
 
-    console.log("Login Attempt Limit");
+    "DOMContentLoaded",
 
-}
+    function () {
 
-function accountLock() {
+        initializeAuth();
 
-    console.log("Account Lock Module");
+    }
 
-}
+);
 
-function sessionExpiry() {
 
-    console.log("Session Expiry Module");
+/* ========================================
+   GLOBAL AUTH API
+======================================== */
 
-}
+window.RoyalAuth = {
 
+    login: loginUser,
+
+    logout: logoutUser,
+
+    signup: createAccount,
+
+    isLoggedIn: isUserLoggedIn,
+
+    getUser: getCurrentUser,
+
+    requireLogin: requireLogin,
+
+    showToast: showToast
+
+};
+
+
+/* ========================================
+   FUTURE MODULES (LOCKED)
+======================================== */
+
+/*
+
+✔ Forgot Password
+
+✔ Reset Password
+
+✔ OTP Verification
+
+✔ Email Verification
+
+✔ Google Login
+
+✔ Facebook Login
+
+✔ Apple Login
+
+✔ Two Factor Authentication
+
+✔ Device Management
+
+✔ Session History
+
+✔ Login Activity
+
+✔ Profile Management
+
+✔ Change Password
+
+✔ Delete Account
+
+✔ Multi User Support
+
+✔ Admin Authentication
+
+✔ Security Logs
+
+✔ JWT / API Authentication
+
+✔ Firebase Authentication
+
+✔ Cloud Authentication
+
+*/
+
+
+/* ========================================
+   END OF AUTH.JS
+   ROYAL STORE V2
+   VERSION : 2.0
+   BUILD : LOCKED
+======================================== */
