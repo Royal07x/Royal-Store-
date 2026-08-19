@@ -1494,6 +1494,16 @@ window.RoyalStore = {
 
 };
 
+/* ========================================
+   APPLICATION START
+======================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    refreshProducts();
+
+});
+
 
 /* ========================================
    FUTURE MODULES (LOCKED)
