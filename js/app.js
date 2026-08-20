@@ -109,7 +109,7 @@ const PRODUCT_DATABASE = [
         name: "Premium Men's Shirt",
         category: "shirt",
         price: 799,
-        image: "images/shirt.jpg",
+        image: "images/shirt.png",
         badge: "Best Seller",
         stock: true
     },
@@ -119,7 +119,7 @@ const PRODUCT_DATABASE = [
         name: "Jeans & Cargo Pants",
         category: "pants",
         price: 999,
-        image: "images/cargo.jpg",
+        image: "images/cargo.png",
         badge: "Trending",
         stock: true
     },
@@ -129,7 +129,7 @@ const PRODUCT_DATABASE = [
         name: "Premium Sneakers",
         category: "sneakers",
         price: 1499,
-        image: "images/sneakers.jpg",
+        image: "images/sneakers.png",
         badge: "New",
         stock: true
     },
@@ -139,7 +139,7 @@ const PRODUCT_DATABASE = [
         name: "Beauty & Personal Care",
         category: "beauty",
         price: 499,
-        image: "images/beauty.jpg",
+        image: "images/beauty.png",
         badge: "Popular",
         stock: true
     },
@@ -149,7 +149,7 @@ const PRODUCT_DATABASE = [
     name: "Classic Black Shirt",
     category: "shirt",
     price: 899,
-    image: "images/shirt2.jpg",
+    image: "images/shirt2.png",
     badge: "New",
     stock: true
 },
@@ -159,7 +159,7 @@ const PRODUCT_DATABASE = [
     name: "Sky Blue Shirt",
     category: "shirt",
     price: 849,
-    image: "images/shirt3.jpg",
+    image: "images/shirt3.png",
     badge: "Trending",
     stock: true
 },
@@ -169,7 +169,7 @@ const PRODUCT_DATABASE = [
     name: "Olive Green Shirt",
     category: "shirt",
     price: 949,
-    image: "images/shirt4.jpg",
+    image: "images/shirt4.png",
     badge: "Premium",
     stock: true
 },
@@ -179,7 +179,7 @@ const PRODUCT_DATABASE = [
     name: "Formal White Shirt",
     category: "shirt",
     price: 999,
-    image: "images/shirt5.jpg",
+    image: "images/shirt5.png",
     badge: "Best Seller",
     stock: true
 },
@@ -189,7 +189,7 @@ const PRODUCT_DATABASE = [
     name: "Checked Casual Shirt",
     category: "shirt",
     price: 899,
-    image: "images/shirt6.jpg",
+    image: "images/shirt6.png",
     badge: "Hot",
     stock: true
 }
