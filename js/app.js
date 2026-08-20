@@ -87,6 +87,68 @@ let filteredProducts = [];
 
 let selectedCategory = "all";
 
+/* ==========================
+   LOAD PRODUCTS
+========================== */
+
+function loadProducts() {
+
+    products = [
+
+        {
+            id: 1,
+            name: "Premium Black Shirt",
+            price: 799,
+            image: "images/shirt1.jpg",
+            category: "shirt"
+        },
+
+        {
+            id: 2,
+            name: "Classic White Shirt",
+            price: 899,
+            image: "images/shirt2.jpg",
+            category: "shirt"
+        },
+
+        {
+            id: 3,
+            name: "Sky Blue Shirt",
+            price: 999,
+            image: "images/shirt3.jpg",
+            category: "shirt"
+        },
+
+        {
+            id: 4,
+            name: "Olive Green Shirt",
+            price: 849,
+            image: "images/shirt4.jpg",
+            category: "shirt"
+        },
+
+        {
+            id: 5,
+            name: "Maroon Shirt",
+            price: 949,
+            image: "images/shirt5.jpg",
+            category: "shirt"
+        },
+
+        {
+            id: 6,
+            name: "Navy Blue Shirt",
+            price: 1099,
+            image: "images/shirt6.jpg",
+            category: "shirt"
+        }
+
+    ];
+
+    filteredProducts = [...products];
+
+}
+
 
 /* ========================================
    APP READY
