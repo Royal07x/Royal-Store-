@@ -1143,7 +1143,7 @@ function sortProductList(sortType) {
             filteredProducts = [...products];
 
     }
-
+                    alert("renderProducts");
     renderProducts();
 
 }
@@ -1397,6 +1397,7 @@ if (APP_CONFIG.debugMode) {
 /* ========================================
    APPLICATION INITIALIZATION
 ======================================== */
+alert("initializeApp");
 
 function initializeApp() {
 
