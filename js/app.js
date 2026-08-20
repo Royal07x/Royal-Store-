@@ -142,7 +142,7 @@ const PRODUCT_DATABASE = [
         image: "images/beauty.jpg",
         badge: "Popular",
         stock: true
-    }
+    },
 
 {
     id: 5,
