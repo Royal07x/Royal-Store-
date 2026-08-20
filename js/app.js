@@ -1560,10 +1560,8 @@ window.RoyalStore = {
    APPLICATION START
 ======================================== */
 
-document.addEventListener("DOMContentLoaded", () => {
-
-    refreshProducts();
-
+document.addEventListener("DOMContentLoaded", function () {
+    initializeApp();
 });
 
 
