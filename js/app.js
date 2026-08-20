@@ -1614,7 +1614,7 @@ document.addEventListener("DOMContentLoaded", () => {
 ✔ Progressive Web App (PWA)
 
 */
-
+document.addEventListener("DOMContentLoaded", initializeApp);
 
 /* ========================================
    END OF APP.JS
