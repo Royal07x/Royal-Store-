@@ -1,0 +1,1872 @@
+/* ===========================================================
+                    ROYAL STORE V3
+                  FILE : responsive.css
+                  PART : 01
+                 VERSION : 3.0 Locked
+=========================================================== */
+
+
+/* ===========================================================
+                  LARGE DESKTOP
+               1600px AND ABOVE
+=========================================================== */
+
+@media screen and (min-width:1600px){
+
+:root{
+
+    --container:1500px;
+
+}
+
+.container{
+
+    max-width:1500px;
+
+    margin:auto;
+
+}
+
+.hero-title{
+
+    font-size:72px;
+
+}
+
+.hero-description{
+
+    font-size:22px;
+
+}
+
+.hero-image img{
+
+    max-width:760px;
+
+}
+
+.section-title h2{
+
+    font-size:58px;
+
+}
+
+.product-grid{
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:40px;
+
+}
+
+.category-container{
+
+    grid-template-columns:repeat(4,1fr);
+
+}
+
+.review-container{
+
+    grid-template-columns:repeat(3,1fr);
+
+}
+
+.contact-container{
+
+    grid-template-columns:repeat(4,1fr);
+
+}
+
+.footer-container{
+
+    grid-template-columns:repeat(4,1fr);
+
+}
+
+}
+
+
+/* ===========================================================
+                 STANDARD DESKTOP
+               1440px - 1599px
+=========================================================== */
+
+@media screen and (min-width:1440px)
+and (max-width:1599px){
+
+.container{
+
+    max-width:1380px;
+
+}
+
+.hero-title{
+
+    font-size:64px;
+
+}
+
+.hero-image img{
+
+    max-width:680px;
+
+}
+
+.product-grid{
+
+    grid-template-columns:repeat(4,1fr);
+
+}
+
+.category-container{
+
+    grid-template-columns:repeat(4,1fr);
+
+}
+
+}
+
+
+/* ===========================================================
+                  PART 01 END
+=========================================================== */
+
+/* ===========================================================
+                   LAPTOP RESPONSIVE
+                  1200px - 1439px
+=========================================================== */
+
+@media screen and (min-width:1200px)
+and (max-width:1439px){
+
+.container{
+
+    max-width:1140px;
+
+}
+
+
+/* ===========================================================
+                    HEADER
+=========================================================== */
+
+.header{
+
+    padding:18px 4%;
+
+}
+
+.navbar{
+
+    gap:25px;
+
+}
+
+
+/* ===========================================================
+                    HERO SECTION
+=========================================================== */
+
+.hero-container{
+
+    grid-template-columns:1fr 1fr;
+
+    gap:40px;
+
+}
+
+.hero-title{
+
+    font-size:56px;
+
+    line-height:1.2;
+
+}
+
+.hero-description{
+
+    font-size:18px;
+
+}
+
+.hero-image img{
+
+    width:100%;
+
+    max-width:600px;
+
+}
+
+
+/* ===========================================================
+                  CATEGORY SECTION
+=========================================================== */
+
+.category-container{
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:28px;
+
+}
+
+
+/* ===========================================================
+                 TRENDING SECTION
+=========================================================== */
+
+.trending-banner{
+
+    gap:35px;
+
+    padding:45px;
+
+}
+
+.banner-content h2{
+
+    font-size:44px;
+
+}
+
+
+/* ===========================================================
+                 PRODUCT SECTION
+=========================================================== */
+
+.product-grid{
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:30px;
+
+}
+
+.product-image img{
+
+    height:300px;
+
+}
+
+
+/* ===========================================================
+                 REVIEW SECTION
+=========================================================== */
+
+.review-container{
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+
+}
+
+
+/* ===========================================================
+                 CONTACT SECTION
+=========================================================== */
+
+.contact-container{
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+
+}
+
+
+/* ===========================================================
+                  FOOTER
+=========================================================== */
+
+.footer-container{
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+}
+
+}
+
+
+/* ===========================================================
+                  PART 02 END
+=========================================================== */
+
+/* ===========================================================
+                  TABLET LANDSCAPE
+                 992px - 1199px
+=========================================================== */
+
+@media screen and (min-width:992px)
+and (max-width:1199px){
+
+.container{
+
+    max-width:960px;
+
+}
+
+
+/* ===========================================================
+                     HEADER
+=========================================================== */
+
+.header{
+
+    padding:16px 4%;
+
+}
+
+.logo{
+
+    font-size:30px;
+
+}
+
+.navbar{
+
+    gap:18px;
+
+}
+
+
+/* ===========================================================
+                    HERO SECTION
+=========================================================== */
+
+.hero-container{
+
+    grid-template-columns:1fr 1fr;
+
+    gap:30px;
+
+    align-items:center;
+
+}
+
+.hero-title{
+
+    font-size:48px;
+
+    line-height:1.2;
+
+}
+
+.hero-description{
+
+    font-size:17px;
+
+}
+
+.hero-image img{
+
+    max-width:500px;
+
+}
+
+
+/* ===========================================================
+                  FEATURED CATEGORIES
+=========================================================== */
+
+.category-container{
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:25px;
+
+}
+
+
+/* ===========================================================
+                  TRENDING BANNER
+=========================================================== */
+
+.trending-banner{
+
+    grid-template-columns:1fr;
+
+    text-align:center;
+
+    gap:30px;
+
+}
+
+.banner-image{
+
+    order:-1;
+
+}
+
+
+/* ===========================================================
+                  FEATURED PRODUCTS
+=========================================================== */
+
+.product-grid{
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:28px;
+
+}
+
+.product-image img{
+
+    height:290px;
+
+}
+
+
+/* ===========================================================
+                   REVIEW SECTION
+=========================================================== */
+
+.review-container{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+
+/* ===========================================================
+                  CONTACT SECTION
+=========================================================== */
+
+.contact-container{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+
+/* ===========================================================
+                     FOOTER
+=========================================================== */
+
+.footer-container{
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:35px;
+
+}
+
+}
+
+
+/* ===========================================================
+                     PART 03 END
+=========================================================== */
+
+/* ===========================================================
+                 TABLET PORTRAIT
+                 768px - 991px
+=========================================================== */
+
+@media screen and (min-width:768px)
+and (max-width:991px){
+
+.container{
+
+    width:92%;
+
+}
+
+
+/* ===========================================================
+                     HEADER
+=========================================================== */
+
+.header{
+
+    padding:16px 5%;
+
+}
+
+.navbar{
+
+    display:none;
+
+}
+
+.mobile-menu-btn{
+
+    display:flex;
+
+}
+
+
+/* ===========================================================
+                    HERO SECTION
+=========================================================== */
+
+.hero-container{
+
+    grid-template-columns:1fr;
+
+    text-align:center;
+
+    gap:45px;
+
+}
+
+.hero-title{
+
+    font-size:44px;
+
+}
+
+.hero-description{
+
+    max-width:100%;
+
+}
+
+.hero-buttons{
+
+    justify-content:center;
+
+}
+
+.hero-image img{
+
+    max-width:500px;
+
+}
+
+
+/* ===========================================================
+                 FEATURED CATEGORIES
+=========================================================== */
+
+.category-container{
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:22px;
+
+}
+
+
+/* ===========================================================
+                 TRENDING SECTION
+=========================================================== */
+
+.trending-banner{
+
+    grid-template-columns:1fr;
+
+    text-align:center;
+
+    padding:40px;
+
+}
+
+.banner-buttons{
+
+    justify-content:center;
+
+}
+
+
+/* ===========================================================
+                 PRODUCT SECTION
+=========================================================== */
+
+.product-grid{
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:24px;
+
+}
+
+.product-image img{
+
+    height:280px;
+
+}
+
+
+/* ===========================================================
+                 REVIEW SECTION
+=========================================================== */
+
+.review-container{
+
+    grid-template-columns:1fr;
+
+    gap:25px;
+
+}
+
+
+/* ===========================================================
+                 CONTACT SECTION
+=========================================================== */
+
+.contact-container{
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+
+/* ===========================================================
+                     FOOTER
+=========================================================== */
+
+.footer-container{
+
+    grid-template-columns:repeat(2,1fr);
+
+    text-align:left;
+
+}
+
+}
+
+
+/* ===========================================================
+                    PART 04 END
+=========================================================== */
+
+/* ===========================================================
+                   MOBILE LARGE
+                  576px - 767px
+=========================================================== */
+
+@media screen and (min-width:576px)
+and (max-width:767px){
+
+.container{
+
+    width:94%;
+
+}
+
+
+/* ===========================================================
+                      HEADER
+=========================================================== */
+
+.header{
+
+    padding:15px 5%;
+
+}
+
+.logo{
+
+    font-size:28px;
+
+}
+
+.navbar{
+
+    display:none;
+
+}
+
+.mobile-menu-btn{
+
+    display:flex;
+
+}
+
+
+/* ===========================================================
+                    HERO SECTION
+=========================================================== */
+
+.hero-container{
+
+    grid-template-columns:1fr;
+
+    text-align:center;
+
+    gap:40px;
+
+}
+
+.hero-title{
+
+    font-size:38px;
+
+    line-height:1.25;
+
+}
+
+.hero-description{
+
+    font-size:16px;
+
+}
+
+.hero-buttons{
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+.hero-buttons a{
+
+    width:100%;
+
+    max-width:320px;
+
+}
+
+.hero-image img{
+
+    width:100%;
+
+    max-width:420px;
+
+}
+
+
+/* ===========================================================
+                FEATURED CATEGORIES
+=========================================================== */
+
+.category-container{
+
+    grid-template-columns:1fr;
+
+    gap:22px;
+
+}
+
+
+/* ===========================================================
+                 TRENDING SECTION
+=========================================================== */
+
+.trending-banner{
+
+    grid-template-columns:1fr;
+
+    text-align:center;
+
+    padding:30px;
+
+}
+
+.banner-buttons{
+
+    justify-content:center;
+
+    flex-direction:column;
+
+}
+
+
+/* ===========================================================
+                 PRODUCT SECTION
+=========================================================== */
+
+.product-toolbar{
+
+    flex-direction:column;
+
+    align-items:stretch;
+
+}
+
+.product-grid{
+
+    grid-template-columns:1fr;
+
+    gap:24px;
+
+}
+
+.product-image img{
+
+    height:300px;
+
+}
+
+
+/* ===========================================================
+                 CONTACT & FOOTER
+=========================================================== */
+
+.contact-container,
+
+.footer-container{
+
+    grid-template-columns:1fr;
+
+    gap:25px;
+
+}
+
+.footer{
+
+    text-align:center;
+
+}
+
+.social-icons{
+
+    justify-content:center;
+
+}
+
+}
+
+
+/* ===========================================================
+                    PART 05 END
+=========================================================== */
+
+/* ===========================================================
+                    MOBILE SMALL
+                    375px - 575px
+=========================================================== */
+
+@media screen and (min-width:375px)
+and (max-width:575px){
+
+.container{
+
+    width:95%;
+
+}
+
+
+/* ===========================================================
+                      HEADER
+=========================================================== */
+
+.header{
+
+    padding:14px 16px;
+
+}
+
+.logo{
+
+    font-size:24px;
+
+}
+
+.navbar{
+
+    display:none;
+
+}
+
+.mobile-menu-btn{
+
+    display:flex;
+
+}
+
+
+/* ===========================================================
+                     HERO SECTION
+=========================================================== */
+
+.hero-section{
+
+    padding:70px 0;
+
+}
+
+.hero-container{
+
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    text-align:center;
+
+    gap:35px;
+
+}
+
+.hero-title{
+
+    font-size:34px;
+
+    line-height:1.25;
+
+}
+
+.hero-description{
+
+    font-size:15px;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+.hero-buttons a{
+
+    width:100%;
+
+}
+
+.hero-image img{
+
+    width:100%;
+
+    max-width:360px;
+
+}
+
+
+/* ===========================================================
+                 FEATURED CATEGORIES
+=========================================================== */
+
+.category-container{
+
+    grid-template-columns:1fr;
+
+    gap:20px;
+
+}
+
+
+/* ===========================================================
+                   PRODUCT SECTION
+=========================================================== */
+
+.product-toolbar{
+
+    flex-direction:column;
+
+}
+
+.toolbar-search{
+
+    min-width:100%;
+
+}
+
+#category-filter,
+
+#sort-products{
+
+    width:100%;
+
+}
+
+.product-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.product-image img{
+
+    height:280px;
+
+}
+
+
+/* ===========================================================
+                  REVIEW SECTION
+=========================================================== */
+
+.review-container{
+
+    grid-template-columns:1fr;
+
+}
+
+
+/* ===========================================================
+                 CONTACT & FOOTER
+=========================================================== */
+
+.contact-container,
+
+.footer-container{
+
+    grid-template-columns:1fr;
+
+}
+
+.footer{
+
+    text-align:center;
+
+}
+
+.social-icons{
+
+    justify-content:center;
+
+}
+
+
+/* ===========================================================
+                 iPHONE POPUP
+=========================================================== */
+
+.ios-modal-box{
+
+    width:94%;
+
+    padding:28px;
+
+}
+
+.modal-buttons{
+
+    flex-direction:column;
+
+}
+
+.modal-btn{
+
+    width:100%;
+
+}
+
+}
+
+
+/* ===========================================================
+                    PART 06 END
+=========================================================== */
+
+/* ===========================================================
+                    EXTRA SMALL MOBILE
+                     320px - 374px
+=========================================================== */
+
+@media screen and (max-width:374px){
+
+.container{
+
+    width:96%;
+
+}
+
+
+/* ===========================================================
+                      HEADER
+=========================================================== */
+
+.header{
+
+    padding:12px 14px;
+
+}
+
+.logo{
+
+    font-size:22px;
+
+}
+
+.navbar{
+
+    display:none;
+
+}
+
+.mobile-menu-btn{
+
+    width:42px;
+
+    height:42px;
+
+    display:flex;
+
+}
+
+
+/* ===========================================================
+                     HERO SECTION
+=========================================================== */
+
+.hero-section{
+
+    padding:60px 0;
+
+}
+
+.hero-container{
+
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    text-align:center;
+
+    gap:30px;
+
+}
+
+.hero-title{
+
+    font-size:30px;
+
+    line-height:1.25;
+
+}
+
+.hero-description{
+
+    font-size:14px;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+.hero-buttons a{
+
+    width:100%;
+
+    font-size:15px;
+
+}
+
+.hero-image img{
+
+    width:100%;
+
+    max-width:300px;
+
+}
+
+
+/* ===========================================================
+                 FEATURED CATEGORIES
+=========================================================== */
+
+.category-container{
+
+    grid-template-columns:1fr;
+
+    gap:18px;
+
+}
+
+
+/* ===========================================================
+                 PRODUCT SECTION
+=========================================================== */
+
+.product-toolbar{
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+.toolbar-search,
+
+#category-filter,
+
+#sort-products{
+
+    width:100%;
+
+    min-width:100%;
+
+}
+
+.product-grid{
+
+    grid-template-columns:1fr;
+
+    gap:20px;
+
+}
+
+.product-image img{
+
+    height:240px;
+
+}
+
+.product-buttons button{
+
+    height:50px;
+
+    font-size:15px;
+
+}
+
+
+/* ===========================================================
+                 NEWSLETTER
+=========================================================== */
+
+.newsletter-container{
+
+    padding:28px 20px;
+
+}
+
+.newsletter-container h2{
+
+    font-size:30px;
+
+}
+
+.newsletter-form{
+
+    flex-direction:column;
+
+}
+
+.newsletter-form input,
+
+.newsletter-form button{
+
+    width:100%;
+
+}
+
+
+/* ===========================================================
+                 CONTACT & FOOTER
+=========================================================== */
+
+.contact-container,
+
+.footer-container{
+
+    grid-template-columns:1fr;
+
+    text-align:center;
+
+}
+
+.social-icons{
+
+    justify-content:center;
+
+}
+
+
+/* ===========================================================
+                 BACK TO TOP
+=========================================================== */
+
+.back-to-top{
+
+    width:50px;
+
+    height:50px;
+
+    right:16px;
+
+    bottom:16px;
+
+}
+
+
+/* ===========================================================
+                 PART 07 END
+=========================================================== */
+
+}
+
+/* ===========================================================
+                iPHONE & ANDROID FIXES
+=========================================================== */
+
+@media screen and (max-width:767px){
+
+html{
+
+    scroll-behavior:smooth;
+
+    overflow-x:hidden;
+
+}
+
+body{
+
+    overflow-x:hidden;
+
+    padding-bottom:80px;
+
+}
+
+
+/* ===========================================================
+                 SECTION SPACING
+=========================================================== */
+
+section{
+
+    padding:60px 0;
+
+}
+
+.section-title{
+
+    margin-bottom:40px;
+
+}
+
+.section-title h2{
+
+    font-size:34px;
+
+}
+
+.section-title p{
+
+    font-size:15px;
+
+}
+
+
+/* ===========================================================
+                 PRODUCT CARD
+=========================================================== */
+
+.product-card{
+
+    border-radius:22px;
+
+}
+
+.product-image{
+
+    padding:20px;
+
+}
+
+.product-details{
+
+    padding:18px;
+
+}
+
+.product-details h3{
+
+    font-size:20px;
+
+}
+
+.product-details h4{
+
+    font-size:24px;
+
+}
+
+.product-buttons{
+
+    padding:0 18px 18px;
+
+}
+
+
+/* ===========================================================
+                 BUTTON FIXES
+=========================================================== */
+
+.add-cart,
+
+.buy-now,
+
+.whatsapp-order{
+
+    width:100%;
+
+    min-height:52px;
+
+    font-size:15px;
+
+}
+
+
+/* ===========================================================
+                 IOS SAFE AREA
+=========================================================== */
+
+.header{
+
+    padding-top:max(14px,env(safe-area-inset-top));
+
+}
+
+.footer{
+
+    padding-bottom:max(30px,env(safe-area-inset-bottom));
+
+}
+
+
+/* ===========================================================
+                 TOUCH TARGETS
+=========================================================== */
+
+button,
+
+a,
+
+input,
+
+select{
+
+    min-height:44px;
+
+}
+
+
+/* ===========================================================
+                 HORIZONTAL SCROLL FIX
+=========================================================== */
+
+img,
+
+video,
+
+iframe{
+
+    max-width:100%;
+
+    height:auto;
+
+}
+
+table{
+
+    display:block;
+
+    overflow-x:auto;
+
+}
+
+
+/* ===========================================================
+                 POPUP FIX
+=========================================================== */
+
+.ios-modal-box{
+
+    max-width:95%;
+
+    border-radius:24px;
+
+}
+
+
+/* ===========================================================
+                 PART 08 END
+=========================================================== */
+
+}
+
+/* ===========================================================
+                LANDSCAPE MODE OPTIMIZATION
+=========================================================== */
+
+@media screen and (max-height:600px)
+and (orientation:landscape){
+
+.hero-section{
+
+    min-height:auto;
+
+    padding:60px 0;
+
+}
+
+.hero-container{
+
+    align-items:center;
+
+}
+
+.hero-image img{
+
+    max-height:320px;
+
+    width:auto;
+
+}
+
+}
+
+
+/* ===========================================================
+                HIGH RESOLUTION DISPLAY
+=========================================================== */
+
+@media (-webkit-min-device-pixel-ratio:2),
+(min-resolution:192dpi){
+
+img{
+
+    image-rendering:auto;
+
+}
+
+.logo,
+
+.hero-title,
+
+.section-title h2{
+
+    -webkit-font-smoothing:antialiased;
+
+    -moz-osx-font-smoothing:grayscale;
+
+}
+
+}
+
+
+/* ===========================================================
+                REDUCE MOTION
+=========================================================== */
+
+@media (prefers-reduced-motion:reduce){
+
+*{
+
+    animation:none !important;
+
+    transition:none !important;
+
+    scroll-behavior:auto !important;
+
+}
+
+}
+
+
+/* ===========================================================
+                DARK MODE SUPPORT
+=========================================================== */
+
+@media (prefers-color-scheme:dark){
+
+.auto-dark{
+
+    background:#111111;
+
+    color:#ffffff;
+
+}
+
+.auto-dark .product-card,
+
+.auto-dark .category-card,
+
+.auto-dark .review-card{
+
+    background:#1A1A1A;
+
+    border-color:#333333;
+
+}
+
+}
+
+
+/* ===========================================================
+                PRINT MODE
+=========================================================== */
+
+@media print{
+
+.header,
+
+.footer,
+
+.hero-buttons,
+
+.back-to-top,
+
+.whatsapp-order,
+
+.add-cart,
+
+.buy-now{
+
+    display:none !important;
+
+}
+
+body{
+
+    background:#ffffff;
+
+    color:#000000;
+
+}
+
+.product-card{
+
+    box-shadow:none;
+
+    border:1px solid #cccccc;
+
+}
+
+}
+
+
+/* ===========================================================
+                COMMON RESPONSIVE UTILITIES
+=========================================================== */
+
+.hide-mobile{
+
+    display:block;
+
+}
+
+.show-mobile{
+
+    display:none;
+
+}
+
+@media screen and (max-width:767px){
+
+.hide-mobile{
+
+    display:none !important;
+
+}
+
+.show-mobile{
+
+    display:block !important;
+
+}
+
+}
+
+
+/* ===========================================================
+                    PART 09 END
+=========================================================== */
+
+/* ===========================================================
+                 PERFORMANCE OPTIMIZATION
+=========================================================== */
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    overflow-x:hidden;
+
+    text-rendering:optimizeLegibility;
+
+    -webkit-font-smoothing:antialiased;
+
+    -moz-osx-font-smoothing:grayscale;
+
+}
+
+
+/* ===========================================================
+                 GPU ACCELERATION
+=========================================================== */
+
+.product-card,
+
+.category-card,
+
+.review-card,
+
+.why-card,
+
+.contact-card,
+
+.hero-image img,
+
+.shop-btn,
+
+.buy-now,
+
+.add-cart{
+
+    transform:translateZ(0);
+
+    backface-visibility:hidden;
+
+    perspective:1000px;
+
+}
+
+
+/* ===========================================================
+                 IMAGE OPTIMIZATION
+=========================================================== */
+
+img{
+
+    max-width:100%;
+
+    height:auto;
+
+    display:block;
+
+    object-fit:cover;
+
+}
+
+
+/* ===========================================================
+                 FORM RESPONSIVE
+=========================================================== */
+
+input,
+
+select,
+
+textarea,
+
+button{
+
+    width:100%;
+
+    max-width:100%;
+
+    font:inherit;
+
+}
+
+
+/* ===========================================================
+                 FLEX UTILITIES
+=========================================================== */
+
+.flex-wrap{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+}
+
+.flex-center{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+
+/* ===========================================================
+                 RESPONSIVE SPACING
+=========================================================== */
+
+.mt-auto{
+
+    margin-top:auto;
+
+}
+
+.mb-auto{
+
+    margin-bottom:auto;
+
+}
+
+.text-center{
+
+    text-align:center;
+
+}
+
+
+/* ===========================================================
+                 FINAL RESPONSIVE NOTES
+=========================================================== */
+
+/*
+
+ROYAL STORE V3
+
+FILE NAME :
+responsive.css
+
+STATUS :
+100% COMPLETE
+
+SUPPORTED DEVICES
+
+✔ Android Phones
+✔ iPhone (iOS)
+✔ Small Tablets
+✔ Large Tablets
+✔ Laptop
+✔ Desktop
+✔ Full HD Monitor
+✔ 2K Display
+✔ 4K Display
+
+SCREEN SIZES
+
+320px
+375px
+425px
+576px
+768px
+992px
+1200px
+1440px
+1600px+
+
+OPTIMIZED FOR
+
+✔ Chrome
+✔ Edge
+✔ Firefox
+✔ Safari
+✔ Samsung Internet
+
+BUILD :
+LOCKED
+
+DO NOT MODIFY
+WITHOUT VERSION UPDATE
+
+*/
+
+
+/* ===========================================================
+          ROYAL STORE V3 RESPONSIVE.CSS COMPLETE
+=========================================================== */
