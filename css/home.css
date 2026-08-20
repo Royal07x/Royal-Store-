@@ -1,0 +1,2223 @@
+/* ===========================================================
+                    ROYAL STORE V3
+                    FILE : home.css
+                    PART : 01
+                    VERSION : 3.0 Stable
+=========================================================== */
+
+
+/* ===========================================================
+                 HOME PAGE BACKGROUND
+=========================================================== */
+
+body{
+
+    background:linear-gradient(
+
+        180deg,
+
+        #FFF5F7 0%,
+
+        #FFEAF2 40%,
+
+        #FFF7F9 100%
+
+    );
+
+}
+
+
+/* ===========================================================
+                 HERO SECTION BACKGROUND
+=========================================================== */
+
+.hero-section{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* ===========================================================
+                 HERO GLOW EFFECT
+=========================================================== */
+
+.hero-section::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-180px;
+
+    left:-150px;
+
+    width:450px;
+
+    height:450px;
+
+    border-radius:50%;
+
+    background:rgba(255,192,203,.30);
+
+    filter:blur(80px);
+
+    z-index:0;
+
+}
+
+
+/* ===========================================================
+                 HERO GOLD EFFECT
+=========================================================== */
+
+.hero-section::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:-120px;
+
+    bottom:-150px;
+
+    width:380px;
+
+    height:380px;
+
+    border-radius:50%;
+
+    background:rgba(201,162,39,.18);
+
+    filter:blur(90px);
+
+    z-index:0;
+
+}
+
+
+/* ===========================================================
+                 HERO CONTENT
+=========================================================== */
+
+.hero-content,
+
+.hero-image{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+/* ===========================================================
+                 HERO TITLE
+=========================================================== */
+
+.hero-content h1{
+
+    letter-spacing:.5px;
+
+    text-shadow:
+
+    0 8px 30px rgba(0,0,0,.08);
+
+}
+
+
+/* ===========================================================
+                 HERO DESCRIPTION
+=========================================================== */
+
+.hero-content p{
+
+    max-width:620px;
+
+}
+
+
+/* ===========================================================
+                 HERO IMAGE
+=========================================================== */
+
+.hero-image img{
+
+    animation:heroFloat 5s ease-in-out infinite;
+
+    transition:.4s;
+
+}
+
+
+/* ===========================================================
+                 HERO IMAGE HOVER
+=========================================================== */
+
+.hero-image img:hover{
+
+    transform:scale(1.04);
+
+}
+
+
+/* ===========================================================
+                 FLOAT ANIMATION
+=========================================================== */
+
+@keyframes heroFloat{
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-18px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+}
+
+
+/* ===========================================================
+                 HERO BUTTON EFFECT
+=========================================================== */
+
+.shop-btn,
+
+.explore-btn{
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+
+/* ===========================================================
+                 BUTTON SHINE
+=========================================================== */
+
+.shop-btn::before,
+
+.explore-btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-120%;
+
+    top:0;
+
+    width:70%;
+
+    height:100%;
+
+    background:rgba(255,255,255,.35);
+
+    transform:skewX(-25deg);
+
+    transition:.8s;
+
+}
+
+.shop-btn:hover::before,
+
+.explore-btn:hover::before{
+
+    left:140%;
+
+}
+
+
+/* ===========================================================
+                 PART 01 END
+=========================================================== */
+
+/* ===========================================================
+                FEATURED CATEGORIES SECTION
+=========================================================== */
+
+.featured-categories{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:linear-gradient(
+
+        180deg,
+
+        #FFF8FA 0%,
+
+        #FFEFF5 100%
+
+    );
+
+}
+
+
+/* ===========================================================
+                CATEGORY GRID
+=========================================================== */
+
+.category-container{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+/* ===========================================================
+                CATEGORY CARD
+=========================================================== */
+
+.category-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.7);
+
+    backdrop-filter:blur(20px);
+
+}
+
+
+/* ===========================================================
+                CATEGORY IMAGE
+=========================================================== */
+
+.category-card img{
+
+    transition:.45s ease;
+
+}
+
+.category-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+
+/* ===========================================================
+                CATEGORY CONTENT
+=========================================================== */
+
+.category-content{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+/* ===========================================================
+                CATEGORY TITLE
+=========================================================== */
+
+.category-content h3{
+
+    transition:.3s;
+
+}
+
+.category-card:hover h3{
+
+    color:var(--secondary);
+
+}
+
+
+/* ===========================================================
+                EXPLORE TEXT
+=========================================================== */
+
+.category-content span{
+
+    transition:.35s;
+
+}
+
+.category-card:hover span{
+
+    letter-spacing:.6px;
+
+}
+
+
+/* ===========================================================
+                CARD SHINE EFFECT
+=========================================================== */
+
+.category-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-100%;
+
+    left:-40%;
+
+    width:80px;
+
+    height:220%;
+
+    background:rgba(255,255,255,.35);
+
+    transform:rotate(25deg);
+
+    transition:.8s;
+
+}
+
+.category-card:hover::before{
+
+    left:130%;
+
+}
+
+
+/* ===========================================================
+                GOLD BORDER EFFECT
+=========================================================== */
+
+.category-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border:2px solid transparent;
+
+    border-radius:28px;
+
+    transition:.35s;
+
+}
+
+.category-card:hover::after{
+
+    border-color:rgba(201,162,39,.55);
+
+}
+
+
+/* ===========================================================
+                CATEGORY ICON ANIMATION
+=========================================================== */
+
+.category-content i{
+
+    transition:.3s;
+
+}
+
+.category-card:hover i{
+
+    transform:translateX(8px);
+
+}
+
+
+/* ===========================================================
+                CATEGORY SHADOW
+=========================================================== */
+
+.category-card:hover{
+
+    box-shadow:
+
+    0 25px 60px rgba(0,0,0,.12);
+
+}
+
+
+/* ===========================================================
+                PART 02 END
+=========================================================== */
+
+/* ===========================================================
+                 TRENDING SECTION
+=========================================================== */
+
+.trending-section{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* ===========================================================
+                 BACKGROUND GLOW
+=========================================================== */
+
+.trending-section::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-120px;
+
+    right:-120px;
+
+    width:350px;
+
+    height:350px;
+
+    border-radius:50%;
+
+    background:rgba(255,192,203,.28);
+
+    filter:blur(90px);
+
+}
+
+
+/* ===========================================================
+                 TRENDING BANNER
+=========================================================== */
+
+.trending-banner{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:linear-gradient(
+
+        135deg,
+
+        #FFFFFF,
+
+        #FFF5F7
+
+    );
+
+}
+
+
+/* ===========================================================
+                 BANNER SHINE EFFECT
+=========================================================== */
+
+.trending-banner::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:40%;
+
+    height:100%;
+
+    background:rgba(255,255,255,.35);
+
+    transform:skewX(-25deg);
+
+    transition:1s;
+
+}
+
+.trending-banner:hover::before{
+
+    left:150%;
+
+}
+
+
+/* ===========================================================
+                 BANNER IMAGE
+=========================================================== */
+
+.banner-image img{
+
+    transition:.5s ease;
+
+}
+
+.trending-banner:hover .banner-image img{
+
+    transform:scale(1.05);
+
+}
+
+
+/* ===========================================================
+                 FEATURE BOX
+=========================================================== */
+
+.feature-box{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* ===========================================================
+                 FEATURE ICON
+=========================================================== */
+
+.feature-box i{
+
+    transition:.35s;
+
+}
+
+.feature-box:hover i{
+
+    transform:rotate(360deg) scale(1.15);
+
+}
+
+
+/* ===========================================================
+                 FEATURE TITLE
+=========================================================== */
+
+.feature-box h3{
+
+    transition:.3s;
+
+}
+
+.feature-box:hover h3{
+
+    color:var(--secondary);
+
+}
+
+
+/* ===========================================================
+                 FEATURE TOP BORDER
+=========================================================== */
+
+.feature-box::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:0;
+
+    height:4px;
+
+    background:var(--secondary);
+
+    transition:.35s;
+
+}
+
+.feature-box:hover::after{
+
+    width:100%;
+
+}
+
+
+/* ===========================================================
+                 FEATURE HOVER
+=========================================================== */
+
+.feature-box:hover{
+
+    transform:translateY(-10px);
+
+}
+
+
+/* ===========================================================
+                 PART 03 END
+=========================================================== */
+
+/* ===========================================================
+                 FEATURED PRODUCTS
+=========================================================== */
+
+.featured-products{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* ===========================================================
+                 PRODUCT GRID
+=========================================================== */
+
+.product-grid{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+/* ===========================================================
+                 PRODUCT CARD
+=========================================================== */
+
+.product-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:linear-gradient(
+
+        180deg,
+
+        #FFFFFF,
+
+        #FFF9FB
+
+    );
+
+}
+
+
+/* ===========================================================
+                 PRODUCT SHINE
+=========================================================== */
+
+.product-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-100%;
+
+    left:-60%;
+
+    width:80px;
+
+    height:250%;
+
+    background:rgba(255,255,255,.40);
+
+    transform:rotate(25deg);
+
+    transition:.8s;
+
+}
+
+.product-card:hover::before{
+
+    left:150%;
+
+}
+
+
+/* ===========================================================
+                 PRODUCT IMAGE
+=========================================================== */
+
+.product-image{
+
+    background:#FFF5F7;
+
+}
+
+.product-image img{
+
+    transition:.45s ease;
+
+}
+
+.product-card:hover .product-image img{
+
+    transform:scale(1.08);
+
+}
+
+
+/* ===========================================================
+                 PRODUCT BADGE
+=========================================================== */
+
+.product-badge{
+
+    box-shadow:0 6px 18px rgba(201,162,39,.25);
+
+}
+
+
+/* ===========================================================
+                 PRODUCT TITLE
+=========================================================== */
+
+.product-details h3{
+
+    transition:.3s;
+
+}
+
+.product-card:hover .product-details h3{
+
+    color:var(--secondary);
+
+}
+
+
+/* ===========================================================
+                 PRODUCT PRICE
+=========================================================== */
+
+.product-details h4{
+
+    letter-spacing:.5px;
+
+}
+
+
+/* ===========================================================
+                 CARD BORDER
+=========================================================== */
+
+.product-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    border:2px solid transparent;
+
+    border-radius:28px;
+
+    transition:.35s;
+
+}
+
+.product-card:hover::after{
+
+    border-color:rgba(201,162,39,.45);
+
+}
+
+
+/* ===========================================================
+                 PRODUCT HOVER
+=========================================================== */
+
+.product-card:hover{
+
+    transform:translateY(-12px);
+
+}
+
+
+/* ===========================================================
+                 PART 04 END
+=========================================================== */
+
+/* ===========================================================
+                 WHY CHOOSE SECTION
+=========================================================== */
+
+.why-choose{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:linear-gradient(
+
+        180deg,
+
+        #FFF5F7,
+
+        #FFFDFD
+
+    );
+
+}
+
+
+/* ===========================================================
+                 BACKGROUND GLOW
+=========================================================== */
+
+.why-choose::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-120px;
+
+    bottom:-120px;
+
+    width:350px;
+
+    height:350px;
+
+    border-radius:50%;
+
+    background:rgba(255,192,203,.22);
+
+    filter:blur(100px);
+
+}
+
+
+/* ===========================================================
+                 WHY CONTAINER
+=========================================================== */
+
+.why-container{
+
+    position:relative;
+
+    z-index:2;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+    gap:30px;
+
+}
+
+
+/* ===========================================================
+                 WHY CARD
+=========================================================== */
+
+.why-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#ffffff;
+
+    border-radius:28px;
+
+    padding:35px;
+
+    text-align:center;
+
+    transition:.35s;
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+
+/* ===========================================================
+                 WHY ICON
+=========================================================== */
+
+.why-icon{
+
+    width:90px;
+
+    height:90px;
+
+    margin:0 auto 25px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#FFF0F5;
+
+    transition:.35s;
+
+}
+
+.why-icon i{
+
+    font-size:38px;
+
+    color:var(--secondary);
+
+    transition:.35s;
+
+}
+
+
+/* ===========================================================
+                 WHY TITLE
+=========================================================== */
+
+.why-card h3{
+
+    margin-bottom:15px;
+
+    font-family:'Playfair Display',serif;
+
+    font-size:28px;
+
+    color:var(--primary);
+
+    transition:.35s;
+
+}
+
+
+/* ===========================================================
+                 WHY TEXT
+=========================================================== */
+
+.why-card p{
+
+    color:var(--text-light);
+
+    line-height:1.8;
+
+}
+
+
+/* ===========================================================
+                 HOVER EFFECT
+=========================================================== */
+
+.why-card:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.why-card:hover .why-icon{
+
+    background:var(--secondary);
+
+}
+
+.why-card:hover .why-icon i{
+
+    color:#ffffff;
+
+    transform:rotate(360deg);
+
+}
+
+.why-card:hover h3{
+
+    color:var(--secondary);
+
+}
+
+
+/* ===========================================================
+                 SHINE EFFECT
+=========================================================== */
+
+.why-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-100%;
+
+    left:-60%;
+
+    width:80px;
+
+    height:250%;
+
+    background:rgba(255,255,255,.40);
+
+    transform:rotate(25deg);
+
+    transition:.8s;
+
+}
+
+.why-card:hover::before{
+
+    left:150%;
+
+}
+
+
+/* ===========================================================
+                 PART 05 END
+=========================================================== */
+
+/* ===========================================================
+                 CUSTOMER REVIEWS
+=========================================================== */
+
+.customer-reviews{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* ===========================================================
+                 REVIEW CONTAINER
+=========================================================== */
+
+.review-container{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+/* ===========================================================
+                 REVIEW CARD
+=========================================================== */
+
+.review-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:linear-gradient(
+
+        180deg,
+
+        #FFFFFF,
+
+        #FFF9FB
+
+    );
+
+    border:1px solid rgba(255,255,255,.7);
+
+}
+
+
+/* ===========================================================
+                 REVIEW SHINE
+=========================================================== */
+
+.review-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-100%;
+
+    left:-55%;
+
+    width:70px;
+
+    height:240%;
+
+    background:rgba(255,255,255,.40);
+
+    transform:rotate(25deg);
+
+    transition:.8s;
+
+}
+
+.review-card:hover::before{
+
+    left:150%;
+
+}
+
+
+/* ===========================================================
+                 REVIEW USER IMAGE
+=========================================================== */
+
+.review-user img{
+
+    border:3px solid var(--secondary);
+
+    transition:.35s;
+
+}
+
+.review-card:hover .review-user img{
+
+    transform:scale(1.08);
+
+}
+
+
+/* ===========================================================
+                 REVIEW STARS
+=========================================================== */
+
+.review-stars i{
+
+    transition:.3s;
+
+}
+
+.review-card:hover .review-stars i{
+
+    transform:scale(1.15);
+
+}
+
+
+/* ===========================================================
+                 REVIEW TITLE
+=========================================================== */
+
+.review-user h4{
+
+    transition:.3s;
+
+}
+
+.review-card:hover .review-user h4{
+
+    color:var(--secondary);
+
+}
+
+
+/* ===========================================================
+                 NEWSLETTER
+=========================================================== */
+
+.newsletter-section{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* ===========================================================
+                 NEWSLETTER BOX
+=========================================================== */
+
+.newsletter-container{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* ===========================================================
+                 NEWSLETTER GLOW
+=========================================================== */
+
+.newsletter-container::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-150px;
+
+    right:-150px;
+
+    width:300px;
+
+    height:300px;
+
+    border-radius:50%;
+
+    background:rgba(255,192,203,.28);
+
+    filter:blur(80px);
+
+}
+
+
+/* ===========================================================
+                 EMAIL INPUT
+=========================================================== */
+
+.newsletter-form input{
+
+    transition:.35s;
+
+}
+
+.newsletter-form input:focus{
+
+    border-color:var(--secondary);
+
+    box-shadow:0 0 18px rgba(201,162,39,.25);
+
+}
+
+
+/* ===========================================================
+                 SUBSCRIBE BUTTON
+=========================================================== */
+
+.newsletter-form button{
+
+    transition:.35s;
+
+}
+
+.newsletter-form button:hover{
+
+    background:var(--secondary);
+
+    color:#111111;
+
+}
+
+
+/* ===========================================================
+                 PART 06 END
+=========================================================== */
+
+/* ===========================================================
+                 CONTACT SECTION
+=========================================================== */
+
+.contact-section{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:linear-gradient(
+
+        180deg,
+
+        #FFF7F9,
+
+        #FFF0F5
+
+    );
+
+}
+
+
+/* ===========================================================
+                 CONTACT CONTAINER
+=========================================================== */
+
+.contact-container{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+/* ===========================================================
+                 CONTACT CARD
+=========================================================== */
+
+.contact-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#ffffff;
+
+    border:1px solid rgba(255,255,255,.70);
+
+}
+
+
+/* ===========================================================
+                 CONTACT SHINE EFFECT
+=========================================================== */
+
+.contact-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-100%;
+
+    left:-60%;
+
+    width:75px;
+
+    height:240%;
+
+    background:rgba(255,255,255,.45);
+
+    transform:rotate(25deg);
+
+    transition:.8s;
+
+}
+
+.contact-card:hover::before{
+
+    left:150%;
+
+}
+
+
+/* ===========================================================
+                 CONTACT ICON
+=========================================================== */
+
+.contact-card i{
+
+    transition:.35s;
+
+}
+
+.contact-card:hover i{
+
+    color:var(--secondary);
+
+    transform:scale(1.15) rotate(360deg);
+
+}
+
+
+/* ===========================================================
+                 CONTACT TITLE
+=========================================================== */
+
+.contact-card h3{
+
+    transition:.35s;
+
+}
+
+.contact-card:hover h3{
+
+    color:var(--secondary);
+
+}
+
+
+/* ===========================================================
+                 CONTACT LINK
+=========================================================== */
+
+.contact-card a{
+
+    transition:.35s;
+
+}
+
+.contact-card a:hover{
+
+    color:var(--secondary);
+
+}
+
+
+/* ===========================================================
+                 CONTACT CARD HOVER
+=========================================================== */
+
+.contact-card:hover{
+
+    transform:translateY(-12px);
+
+}
+
+
+/* ===========================================================
+                 FOOTER
+=========================================================== */
+
+.footer{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* ===========================================================
+                 FOOTER GLOW
+=========================================================== */
+
+.footer::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-200px;
+
+    left:-200px;
+
+    width:420px;
+
+    height:420px;
+
+    border-radius:50%;
+
+    background:rgba(201,162,39,.08);
+
+    filter:blur(100px);
+
+}
+
+
+/* ===========================================================
+                 FOOTER LINKS
+=========================================================== */
+
+.footer-box a{
+
+    transition:.30s;
+
+}
+
+.footer-box a:hover{
+
+    color:var(--secondary);
+
+}
+
+
+/* ===========================================================
+                 SOCIAL ICONS
+=========================================================== */
+
+.social-icons a{
+
+    transition:.35s;
+
+}
+
+.social-icons a:hover{
+
+    transform:translateY(-8px) scale(1.08);
+
+}
+
+
+/* ===========================================================
+                 COPYRIGHT
+=========================================================== */
+
+.footer-bottom{
+
+    letter-spacing:.5px;
+
+}
+
+
+/* ===========================================================
+                 PART 07 END
+=========================================================== */
+
+/* ===========================================================
+                 iPHONE STYLE POPUP
+=========================================================== */
+
+.ios-modal{
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.35s ease;
+
+}
+
+.ios-modal.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+
+/* ===========================================================
+                 POPUP BOX
+=========================================================== */
+
+.ios-modal-box{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:rgba(255,255,255,.92);
+
+    backdrop-filter:blur(30px);
+
+    -webkit-backdrop-filter:blur(30px);
+
+    border:1px solid rgba(255,255,255,.45);
+
+}
+
+
+/* ===========================================================
+                 POPUP ICON
+=========================================================== */
+
+.ios-modal-icon{
+
+    width:90px;
+
+    height:90px;
+
+    margin:0 auto 25px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#EAFBF1;
+
+}
+
+.ios-modal-icon i{
+
+    font-size:42px;
+
+    color:#34C759;
+
+}
+
+
+/* ===========================================================
+                 POPUP TITLE
+=========================================================== */
+
+#modal-title{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:32px;
+
+    color:var(--primary);
+
+    margin-bottom:12px;
+
+}
+
+
+/* ===========================================================
+                 POPUP MESSAGE
+=========================================================== */
+
+#modal-message{
+
+    color:var(--text-light);
+
+    line-height:1.8;
+
+    margin-bottom:30px;
+
+}
+
+
+/* ===========================================================
+                 POPUP BUTTONS
+=========================================================== */
+
+.modal-buttons{
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+
+/* ===========================================================
+                 COMMON BUTTON
+=========================================================== */
+
+.modal-btn{
+
+    flex:1;
+
+    height:54px;
+
+    border-radius:18px;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    transition:.35s;
+
+}
+
+
+/* ===========================================================
+                 CANCEL BUTTON
+=========================================================== */
+
+.cancel-btn{
+
+    background:#F2F2F7;
+
+    color:#111111;
+
+}
+
+.cancel-btn:hover{
+
+    background:#E5E5EA;
+
+}
+
+
+/* ===========================================================
+                 CONFIRM BUTTON
+=========================================================== */
+
+.confirm-btn{
+
+    background:var(--secondary);
+
+    color:#111111;
+
+}
+
+.confirm-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+
+/* ===========================================================
+                 GLOBAL ANIMATIONS
+=========================================================== */
+
+.fade-up{
+
+    animation:fadeUp .7s ease both;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/* ===========================================================
+                 PART 08 END
+=========================================================== */
+
+/* ===========================================================
+                 SCROLL ANIMATIONS
+=========================================================== */
+
+.reveal{
+
+    opacity:0;
+
+    transform:translateY(60px);
+
+    transition:all .8s ease;
+
+}
+
+.reveal.active{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+
+/* ===========================================================
+                 CUSTOM SCROLLBAR
+=========================================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#FFEAF2;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:linear-gradient(
+
+        180deg,
+
+        #F7C8D8,
+
+        #C9A227
+
+    );
+
+    border-radius:50px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#C9A227;
+
+}
+
+
+/* ===========================================================
+                 TEXT SELECTION
+=========================================================== */
+
+::selection{
+
+    background:#C9A227;
+
+    color:#ffffff;
+
+}
+
+
+/* ===========================================================
+                 PAGE OVERLAY
+=========================================================== */
+
+.page-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.35);
+
+    backdrop-filter:blur(6px);
+
+    -webkit-backdrop-filter:blur(6px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.35s;
+
+    z-index:1500;
+
+}
+
+.page-overlay.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+
+/* ===========================================================
+                 GLASS EFFECT
+=========================================================== */
+
+.glass{
+
+    background:rgba(255,255,255,.65);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.45);
+
+}
+
+
+/* ===========================================================
+                 COMMON HOVER SCALE
+=========================================================== */
+
+.hover-scale{
+
+    transition:.35s;
+
+}
+
+.hover-scale:hover{
+
+    transform:scale(1.05);
+
+}
+
+
+/* ===========================================================
+                 COMMON FLOAT
+=========================================================== */
+
+.float{
+
+    animation:floatAnimation 4s ease-in-out infinite;
+
+}
+
+@keyframes floatAnimation{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-12px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/* ===========================================================
+                 COMMON FADE
+=========================================================== */
+
+.fade{
+
+    animation:fadeAnimation .8s ease;
+
+}
+
+@keyframes fadeAnimation{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+
+/* ===========================================================
+                 LUXURY GOLD BORDER
+=========================================================== */
+
+.gold-border{
+
+    border:2px solid rgba(201,162,39,.45);
+
+}
+
+
+/* ===========================================================
+                 PART 09 END
+=========================================================== */
+
+/* ===========================================================
+                 MOBILE OPTIMIZATION
+=========================================================== */
+
+html{
+
+    -webkit-tap-highlight-color:transparent;
+
+}
+
+button,
+
+a,
+
+input,
+
+select{
+
+    touch-action:manipulation;
+
+}
+
+
+/* ===========================================================
+                 IMAGE OPTIMIZATION
+=========================================================== */
+
+img{
+
+    image-rendering:auto;
+
+    user-select:none;
+
+    -webkit-user-drag:none;
+
+}
+
+
+/* ===========================================================
+                 PERFORMANCE HELPERS
+=========================================================== */
+
+.product-card,
+
+.category-card,
+
+.review-card,
+
+.why-card,
+
+.contact-card{
+
+    will-change:transform;
+
+}
+
+
+/* ===========================================================
+                 SMOOTH TRANSITIONS
+=========================================================== */
+
+*{
+
+    transition:
+
+    background-color .30s ease,
+
+    color .30s ease,
+
+    border-color .30s ease,
+
+    transform .30s ease,
+
+    box-shadow .30s ease;
+
+}
+
+
+/* ===========================================================
+                 FOCUS ACCESSIBILITY
+=========================================================== */
+
+button:focus,
+
+input:focus,
+
+select:focus,
+
+textarea:focus,
+
+a:focus{
+
+    outline:2px solid var(--secondary);
+
+    outline-offset:4px;
+
+}
+
+
+/* ===========================================================
+                 HIDE SCROLLBAR UTILITY
+=========================================================== */
+
+.hide-scrollbar{
+
+    -ms-overflow-style:none;
+
+    scrollbar-width:none;
+
+}
+
+.hide-scrollbar::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+/* ===========================================================
+                 PREMIUM GLASS CARD
+=========================================================== */
+
+.glass-card{
+
+    background:rgba(255,255,255,.72);
+
+    backdrop-filter:blur(20px);
+
+    -webkit-backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.45);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+
+/* ===========================================================
+                 PREMIUM GRADIENT
+=========================================================== */
+
+.luxury-gradient{
+
+    background:linear-gradient(
+
+        135deg,
+
+        #FFF5F7 0%,
+
+        #FFDCE8 45%,
+
+        #FFF8FB 100%
+
+    );
+
+}
+
+
+/* ===========================================================
+                 DISABLE TEXT SELECTION
+=========================================================== */
+
+.no-select{
+
+    user-select:none;
+
+    -webkit-user-select:none;
+
+}
+
+
+/* ===========================================================
+                 HIDE ELEMENT
+=========================================================== */
+
+.hidden{
+
+    display:none !important;
+
+}
+
+
+/* ===========================================================
+                 FLEX CENTER
+=========================================================== */
+
+.flex-center{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+
+/* ===========================================================
+                 FINAL COMMENT
+=========================================================== */
+
+/*
+
+ROYAL STORE V3
+
+FILE           : home.css
+
+STATUS         : VERIFIED
+
+VERSION        : 3.0
+
+THEME          : Luxury Pink + Black + Gold
+
+DEVICE         : Android ✔
+                 iPhone ✔
+                 Tablet ✔
+                 Desktop ✔
+
+DESIGN         : Premium Luxury Brand
+
+BUILD          : LOCKED
+
+DO NOT MODIFY
+WITHOUT VERSION UPDATE.
+
+*/
+
+
+/* ===========================================================
+              ROYAL STORE V3 HOME.CSS COMPLETE
+=========================================================== */
