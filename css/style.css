@@ -927,16 +927,12 @@ section{
                    HERO TITLE
 =========================================================== */
 
-.hero-content h1{
-
+.hero-content h1,
+.hero-title{
     font-family:'Playfair Display',serif;
-
     font-size:65px;
-
     line-height:1.15;
-
     color:var(--primary);
-
 }
 
 
