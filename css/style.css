@@ -752,21 +752,11 @@ section{
 
 #loading-screen{
 
-    position:fixed;
-
-    inset:0;
-
-    background:#FFF5F7;
-
-    display:none;
-
-    align-items:center;
-
-    justify-content:center;
-
-    z-index:9999;
-
-}
+    body{
+    visibility:visible !important;
+    opacity:1 !important;
+    overflow-x:hidden;
+    }
 
 .loader-box{
 
