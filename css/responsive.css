@@ -1,14 +1,16 @@
+css/responsive.css — Part 1
+
 /* ===========================================================
-                    ROYAL STORE V3
-                  FILE : responsive.css
+                    ROYAL STORE V4
+                FILE : responsive.css
                   PART : 01
-                 VERSION : 3.0 Locked
+                VERSION : 4.0
 =========================================================== */
 
 
 /* ===========================================================
                   LARGE DESKTOP
-               1600px AND ABOVE
+                1600px AND ABOVE
 =========================================================== */
 
 @media screen and (min-width:1600px){
@@ -26,6 +28,11 @@
     margin:auto;
 
 }
+
+
+/* ===========================================================
+                    HERO
+=========================================================== */
 
 .hero-title{
 
@@ -45,11 +52,34 @@
 
 }
 
+
+/* ===========================================================
+                SECTION TITLE
+=========================================================== */
+
 .section-title h2{
 
     font-size:58px;
 
 }
+
+
+/* ===========================================================
+                FEATURED CATEGORIES
+=========================================================== */
+
+.category-container{
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:40px;
+
+}
+
+
+/* ===========================================================
+                PRODUCT GRID
+=========================================================== */
 
 .product-grid{
 
@@ -59,11 +89,21 @@
 
 }
 
-.category-container{
+
+/* ===========================================================
+                WHY CHOOSE
+=========================================================== */
+
+.why-container{
 
     grid-template-columns:repeat(4,1fr);
 
 }
+
+
+/* ===========================================================
+                REVIEWS
+=========================================================== */
 
 .review-container{
 
@@ -71,11 +111,21 @@
 
 }
 
+
+/* ===========================================================
+                CONTACT
+=========================================================== */
+
 .contact-container{
 
     grid-template-columns:repeat(4,1fr);
 
 }
+
+
+/* ===========================================================
+                FOOTER
+=========================================================== */
 
 .footer-container{
 
@@ -87,8 +137,8 @@
 
 
 /* ===========================================================
-                 STANDARD DESKTOP
-               1440px - 1599px
+                STANDARD DESKTOP
+              1440px - 1599px
 =========================================================== */
 
 @media screen and (min-width:1440px)
@@ -112,27 +162,52 @@ and (max-width:1599px){
 
 }
 
-.product-grid{
-
-    grid-template-columns:repeat(4,1fr);
-
-}
-
 .category-container{
 
     grid-template-columns:repeat(4,1fr);
 
 }
 
+.product-grid{
+
+    grid-template-columns:repeat(4,1fr);
+
+}
+
+.why-container{
+
+    grid-template-columns:repeat(4,1fr);
+
+}
+
+.review-container{
+
+    grid-template-columns:repeat(3,1fr);
+
+}
+
+.contact-container{
+
+    grid-template-columns:repeat(4,1fr);
+
+}
+
+.footer-container{
+
+    grid-template-columns:repeat(4,1fr);
+
+}
+
 }
 
 
 /* ===========================================================
-                  PART 01 END
+                    PART 01 END
 =========================================================== */
+css/responsive.css — Part 2
 
 /* ===========================================================
-                   LAPTOP RESPONSIVE
+                  LAPTOP RESPONSIVE
                   1200px - 1439px
 =========================================================== */
 
@@ -143,6 +218,8 @@ and (max-width:1439px){
 
     max-width:1140px;
 
+    padding:0 20px;
+
 }
 
 
@@ -150,207 +227,52 @@ and (max-width:1439px){
                     HEADER
 =========================================================== */
 
-.header{
+.header-container{
 
-    padding:18px 4%;
-
-}
-
-.navbar{
-
-    gap:25px;
-
-}
-
-
-/* ===========================================================
-                    HERO SECTION
-=========================================================== */
-
-.hero-container{
-
-    grid-template-columns:1fr 1fr;
-
-    gap:40px;
-
-}
-
-.hero-title{
-
-    font-size:56px;
-
-    line-height:1.2;
-
-}
-
-.hero-description{
-
-    font-size:18px;
-
-}
-
-.hero-image img{
-
-    width:100%;
-
-    max-width:600px;
-
-}
-
-
-/* ===========================================================
-                  CATEGORY SECTION
-=========================================================== */
-
-.category-container{
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:28px;
-
-}
-
-
-/* ===========================================================
-                 TRENDING SECTION
-=========================================================== */
-
-.trending-banner{
-
-    gap:35px;
-
-    padding:45px;
-
-}
-
-.banner-content h2{
-
-    font-size:44px;
-
-}
-
-
-/* ===========================================================
-                 PRODUCT SECTION
-=========================================================== */
-
-.product-grid{
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:30px;
-
-}
-
-.product-image img{
-
-    height:300px;
-
-}
-
-
-/* ===========================================================
-                 REVIEW SECTION
-=========================================================== */
-
-.review-container{
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:25px;
-
-}
-
-
-/* ===========================================================
-                 CONTACT SECTION
-=========================================================== */
-
-.contact-container{
-
-    grid-template-columns:repeat(4,1fr);
-
-    gap:25px;
-
-}
-
-
-/* ===========================================================
-                  FOOTER
-=========================================================== */
-
-.footer-container{
-
-    grid-template-columns:repeat(4,1fr);
-
-    gap:30px;
-
-}
-
-}
-
-
-/* ===========================================================
-                  PART 02 END
-=========================================================== */
-
-/* ===========================================================
-                  TABLET LANDSCAPE
-                 992px - 1199px
-=========================================================== */
-
-@media screen and (min-width:992px)
-and (max-width:1199px){
-
-.container{
-
-    max-width:960px;
-
-}
-
-
-/* ===========================================================
-                     HEADER
-=========================================================== */
-
-.header{
-
-    padding:16px 4%;
+    gap:20px;
 
 }
 
 .logo{
 
-    font-size:30px;
+    font-size:28px;
 
 }
 
-.navbar{
+.navbar ul{
 
-    gap:18px;
+    gap:22px;
+
+}
+
+.search-box{
+
+    width:240px;
 
 }
 
 
 /* ===========================================================
-                    HERO SECTION
+                    HERO
 =========================================================== */
+
+.hero-section{
+
+    padding-top:140px;
+
+    padding-bottom:90px;
+
+}
 
 .hero-container{
 
-    grid-template-columns:1fr 1fr;
-
-    gap:30px;
-
-    align-items:center;
+    gap:50px;
 
 }
 
 .hero-title{
 
-    font-size:48px;
-
-    line-height:1.2;
+    font-size:54px;
 
 }
 
@@ -362,26 +284,234 @@ and (max-width:1199px){
 
 .hero-image img{
 
-    max-width:500px;
+    max-width:560px;
 
 }
 
 
 /* ===========================================================
-                  FEATURED CATEGORIES
+                    CATEGORY
+=========================================================== */
+
+.category-container{
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:24px;
+
+}
+
+.category-card img{
+
+    height:280px;
+
+}
+
+
+/* ===========================================================
+                    PRODUCTS
+=========================================================== */
+
+.product-grid{
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:24px;
+
+}
+
+.product-image img{
+
+    height:260px;
+
+}
+
+.product-details h3{
+
+    font-size:22px;
+
+}
+
+
+/* ===========================================================
+                    WHY CHOOSE
+=========================================================== */
+
+.why-container{
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:24px;
+
+}
+
+
+/* ===========================================================
+                    REVIEWS
+=========================================================== */
+
+.review-container{
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:24px;
+
+}
+
+
+/* ===========================================================
+                    CONTACT
+=========================================================== */
+
+.contact-container{
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:24px;
+
+}
+
+
+/* ===========================================================
+                    FOOTER
+=========================================================== */
+
+.footer-container{
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+}
+
+}
+
+
+/* ===========================================================
+                    PART 02 END
+=========================================================== */
+css/responsive.css — Part 3
+
+/* ===========================================================
+                TABLET LANDSCAPE
+                992px - 1199px
+=========================================================== */
+
+@media screen and (min-width:992px)
+and (max-width:1199px){
+
+.container{
+
+    max-width:960px;
+
+    padding:0 20px;
+
+}
+
+
+/* ===========================================================
+                    HEADER
+=========================================================== */
+
+.header-container{
+
+    gap:16px;
+
+}
+
+.logo{
+
+    font-size:26px;
+
+}
+
+.navbar ul{
+
+    gap:16px;
+
+}
+
+.navbar a{
+
+    font-size:14px;
+
+}
+
+.search-box{
+
+    width:200px;
+
+}
+
+
+/* ===========================================================
+                    HERO
+=========================================================== */
+
+.hero-section{
+
+    padding-top:130px;
+
+    padding-bottom:80px;
+
+}
+
+.hero-container{
+
+    grid-template-columns:1fr 1fr;
+
+    gap:35px;
+
+}
+
+.hero-title{
+
+    font-size:46px;
+
+}
+
+.hero-description{
+
+    font-size:16px;
+
+}
+
+.hero-buttons{
+
+    gap:14px;
+
+    flex-wrap:wrap;
+
+}
+
+.hero-image img{
+
+    max-width:470px;
+
+}
+
+
+/* ===========================================================
+                FEATURED CATEGORIES
 =========================================================== */
 
 .category-container{
 
     grid-template-columns:repeat(2,1fr);
 
-    gap:25px;
+    gap:24px;
+
+}
+
+.category-card img{
+
+    height:260px;
 
 }
 
 
 /* ===========================================================
-                  TRENDING BANNER
+                TRENDING SECTION
 =========================================================== */
 
 .trending-banner{
@@ -390,7 +520,15 @@ and (max-width:1199px){
 
     text-align:center;
 
-    gap:30px;
+    gap:35px;
+
+    padding:45px;
+
+}
+
+.banner-buttons{
+
+    justify-content:center;
 
 }
 
@@ -402,178 +540,7 @@ and (max-width:1199px){
 
 
 /* ===========================================================
-                  FEATURED PRODUCTS
-=========================================================== */
-
-.product-grid{
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:28px;
-
-}
-
-.product-image img{
-
-    height:290px;
-
-}
-
-
-/* ===========================================================
-                   REVIEW SECTION
-=========================================================== */
-
-.review-container{
-
-    grid-template-columns:repeat(2,1fr);
-
-}
-
-
-/* ===========================================================
-                  CONTACT SECTION
-=========================================================== */
-
-.contact-container{
-
-    grid-template-columns:repeat(2,1fr);
-
-}
-
-
-/* ===========================================================
-                     FOOTER
-=========================================================== */
-
-.footer-container{
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:35px;
-
-}
-
-}
-
-
-/* ===========================================================
-                     PART 03 END
-=========================================================== */
-
-/* ===========================================================
-                 TABLET PORTRAIT
-                 768px - 991px
-=========================================================== */
-
-@media screen and (min-width:768px)
-and (max-width:991px){
-
-.container{
-
-    width:92%;
-
-}
-
-
-/* ===========================================================
-                     HEADER
-=========================================================== */
-
-.header{
-
-    padding:16px 5%;
-
-}
-
-.navbar{
-
-    display:none;
-
-}
-
-.mobile-menu-btn{
-
-    display:flex;
-
-}
-
-
-/* ===========================================================
-                    HERO SECTION
-=========================================================== */
-
-.hero-container{
-
-    grid-template-columns:1fr;
-
-    text-align:center;
-
-    gap:45px;
-
-}
-
-.hero-title{
-
-    font-size:44px;
-
-}
-
-.hero-description{
-
-    max-width:100%;
-
-}
-
-.hero-buttons{
-
-    justify-content:center;
-
-}
-
-.hero-image img{
-
-    max-width:500px;
-
-}
-
-
-/* ===========================================================
-                 FEATURED CATEGORIES
-=========================================================== */
-
-.category-container{
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:22px;
-
-}
-
-
-/* ===========================================================
-                 TRENDING SECTION
-=========================================================== */
-
-.trending-banner{
-
-    grid-template-columns:1fr;
-
-    text-align:center;
-
-    padding:40px;
-
-}
-
-.banner-buttons{
-
-    justify-content:center;
-
-}
-
-
-/* ===========================================================
-                 PRODUCT SECTION
+                PRODUCTS
 =========================================================== */
 
 .product-grid{
@@ -592,38 +559,53 @@ and (max-width:991px){
 
 
 /* ===========================================================
-                 REVIEW SECTION
+                WHY CHOOSE
 =========================================================== */
 
-.review-container{
+.why-container{
 
-    grid-template-columns:1fr;
+    grid-template-columns:repeat(2,1fr);
 
-    gap:25px;
+    gap:24px;
 
 }
 
 
 /* ===========================================================
-                 CONTACT SECTION
+                REVIEWS
+=========================================================== */
+
+.review-container{
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:24px;
+
+}
+
+
+/* ===========================================================
+                CONTACT
 =========================================================== */
 
 .contact-container{
 
     grid-template-columns:repeat(2,1fr);
 
+    gap:24px;
+
 }
 
 
 /* ===========================================================
-                     FOOTER
+                FOOTER
 =========================================================== */
 
 .footer-container{
 
     grid-template-columns:repeat(2,1fr);
 
-    text-align:left;
+    gap:30px;
 
 }
 
@@ -631,37 +613,48 @@ and (max-width:991px){
 
 
 /* ===========================================================
-                    PART 04 END
+                    PART 03 END
 =========================================================== */
+css/responsive.css — Part 4
 
 /* ===========================================================
-                   MOBILE LARGE
-                  576px - 767px
+                TABLET PORTRAIT
+                 768px - 991px
 =========================================================== */
 
-@media screen and (min-width:576px)
-and (max-width:767px){
+@media screen and (min-width:768px)
+and (max-width:991px){
 
 .container{
 
-    width:94%;
+    width:100%;
+
+    max-width:740px;
+
+    padding:0 18px;
 
 }
 
 
 /* ===========================================================
-                      HEADER
+                    HEADER
 =========================================================== */
 
-.header{
+#main-header{
 
-    padding:15px 5%;
+    height:72px;
+
+}
+
+.header-container{
+
+    gap:12px;
 
 }
 
 .logo{
 
-    font-size:28px;
+    font-size:24px;
 
 }
 
@@ -671,7 +664,13 @@ and (max-width:767px){
 
 }
 
-.mobile-menu-btn{
+.search-box{
+
+    display:none;
+
+}
+
+.menu-btn{
 
     display:flex;
 
@@ -679,8 +678,16 @@ and (max-width:767px){
 
 
 /* ===========================================================
-                    HERO SECTION
+                    HERO
 =========================================================== */
+
+.hero-section{
+
+    padding-top:120px;
+
+    padding-bottom:70px;
+
+}
 
 .hero-container{
 
@@ -692,15 +699,21 @@ and (max-width:767px){
 
 }
 
+.hero-content{
+
+    align-items:center;
+
+}
+
 .hero-title{
 
-    font-size:38px;
-
-    line-height:1.25;
+    font-size:42px;
 
 }
 
 .hero-description{
+
+    max-width:620px;
 
     font-size:16px;
 
@@ -708,27 +721,29 @@ and (max-width:767px){
 
 .hero-buttons{
 
-    flex-direction:column;
+    justify-content:center;
 
-    align-items:center;
-
-    gap:16px;
+    flex-wrap:wrap;
 
 }
 
-.hero-buttons a{
+.hero-features{
 
-    width:100%;
+    justify-content:center;
 
-    max-width:320px;
+    flex-wrap:wrap;
+
+}
+
+.hero-image{
+
+    order:-1;
 
 }
 
 .hero-image img{
 
-    width:100%;
-
-    max-width:420px;
+    max-width:460px;
 
 }
 
@@ -739,15 +754,259 @@ and (max-width:767px){
 
 .category-container{
 
-    grid-template-columns:1fr;
+    grid-template-columns:repeat(2,1fr);
 
-    gap:22px;
+    gap:20px;
 
 }
 
 
 /* ===========================================================
-                 TRENDING SECTION
+                TRENDING SECTION
+=========================================================== */
+
+.trending-banner{
+
+    grid-template-columns:1fr;
+
+    text-align:center;
+
+    padding:40px;
+
+}
+
+.banner-content h2{
+
+    font-size:38px;
+
+}
+
+.banner-buttons{
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+}
+
+.banner-image{
+
+    order:-1;
+
+}
+
+
+/* ===========================================================
+                PRODUCTS
+=========================================================== */
+
+.product-grid{
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+.product-image img{
+
+    height:240px;
+
+}
+
+
+/* ===========================================================
+                WHY / REVIEW / CONTACT
+=========================================================== */
+
+.why-container,
+
+.review-container,
+
+.contact-container,
+
+.footer-container{
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+.newsletter-form{
+
+    flex-direction:column;
+
+}
+
+.newsletter-form button{
+
+    width:100%;
+
+}
+
+}
+
+
+/* ===========================================================
+                    PART 04 END
+=========================================================== */
+css/responsive.css — Part 5
+
+/* ===========================================================
+                    LARGE MOBILE
+                    576px - 767px
+=========================================================== */
+
+@media screen and (min-width:576px)
+and (max-width:767px){
+
+.container{
+
+    width:100%;
+
+    padding:0 16px;
+
+}
+
+
+/* ===========================================================
+                    HEADER
+=========================================================== */
+
+#main-header{
+
+    height:68px;
+
+}
+
+.logo{
+
+    font-size:22px;
+
+}
+
+.navbar,
+
+.search-box{
+
+    display:none;
+
+}
+
+.menu-btn{
+
+    display:flex;
+
+    width:44px;
+
+    height:44px;
+
+}
+
+
+/* ===========================================================
+                    HERO
+=========================================================== */
+
+.hero-section{
+
+    padding-top:110px;
+
+    padding-bottom:60px;
+
+}
+
+.hero-container{
+
+    grid-template-columns:1fr;
+
+    text-align:center;
+
+    gap:35px;
+
+}
+
+.hero-content{
+
+    align-items:center;
+
+}
+
+.hero-title{
+
+    font-size:36px;
+
+}
+
+.hero-description{
+
+    font-size:15px;
+
+}
+
+.hero-buttons{
+
+    width:100%;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+.hero-buttons a{
+
+    width:100%;
+
+    justify-content:center;
+
+}
+
+.hero-features{
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:18px;
+
+}
+
+.hero-image{
+
+    order:-1;
+
+}
+
+.hero-image img{
+
+    max-width:360px;
+
+}
+
+
+/* ===========================================================
+                CATEGORY
+=========================================================== */
+
+.category-container{
+
+    grid-template-columns:1fr;
+
+    gap:20px;
+
+}
+
+.category-card img{
+
+    height:300px;
+
+}
+
+
+/* ===========================================================
+                TRENDING
 =========================================================== */
 
 .trending-banner{
@@ -758,47 +1017,63 @@ and (max-width:767px){
 
     padding:30px;
 
+    gap:30px;
+
+}
+
+.banner-content h2{
+
+    font-size:34px;
+
 }
 
 .banner-buttons{
 
-    justify-content:center;
-
     flex-direction:column;
+
+    gap:14px;
+
+}
+
+.banner-buttons a{
+
+    width:100%;
 
 }
 
 
 /* ===========================================================
-                 PRODUCT SECTION
+                PRODUCTS
 =========================================================== */
-
-.product-toolbar{
-
-    flex-direction:column;
-
-    align-items:stretch;
-
-}
 
 .product-grid{
 
     grid-template-columns:1fr;
 
-    gap:24px;
+    gap:20px;
 
 }
 
 .product-image img{
 
-    height:300px;
+    height:260px;
+
+}
+
+.product-buttons{
+
+    gap:12px;
 
 }
 
 
 /* ===========================================================
-                 CONTACT & FOOTER
+                WHY / REVIEW / CONTACT
 =========================================================== */
+
+.why-container,
+
+.review-container,
 
 .contact-container,
 
@@ -806,9 +1081,47 @@ and (max-width:767px){
 
     grid-template-columns:1fr;
 
-    gap:25px;
+    gap:20px;
 
 }
+
+
+/* ===========================================================
+                NEWSLETTER
+=========================================================== */
+
+.newsletter-container{
+
+    padding:45px 25px;
+
+}
+
+.newsletter-container h2{
+
+    font-size:34px;
+
+}
+
+.newsletter-form{
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+.newsletter-form input,
+
+.newsletter-form button{
+
+    width:100%;
+
+}
+
+
+/* ===========================================================
+                FOOTER
+=========================================================== */
 
 .footer{
 
@@ -828,9 +1141,10 @@ and (max-width:767px){
 /* ===========================================================
                     PART 05 END
 =========================================================== */
+css/responsive.css — Part 6
 
 /* ===========================================================
-                    MOBILE SMALL
+                    SMALL MOBILE
                     375px - 575px
 =========================================================== */
 
@@ -839,255 +1153,44 @@ and (max-width:575px){
 
 .container{
 
-    width:95%;
-
-}
-
-
-/* ===========================================================
-                      HEADER
-=========================================================== */
-
-.header{
-
-    padding:14px 16px;
-
-}
-
-.logo{
-
-    font-size:24px;
-
-}
-
-.navbar{
-
-    display:none;
-
-}
-
-.mobile-menu-btn{
-
-    display:flex;
-
-}
-
-
-/* ===========================================================
-                     HERO SECTION
-=========================================================== */
-
-.hero-section{
-
-    padding:70px 0;
-
-}
-
-.hero-container{
-
-    display:grid;
-
-    grid-template-columns:1fr;
-
-    text-align:center;
-
-    gap:35px;
-
-}
-
-.hero-title{
-
-    font-size:34px;
-
-    line-height:1.25;
-
-}
-
-.hero-description{
-
-    font-size:15px;
-
-}
-
-.hero-buttons{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:15px;
-
-}
-
-.hero-buttons a{
-
     width:100%;
 
-}
-
-.hero-image img{
-
-    width:100%;
-
-    max-width:360px;
+    padding:0 14px;
 
 }
 
 
 /* ===========================================================
-                 FEATURED CATEGORIES
-=========================================================== */
-
-.category-container{
-
-    grid-template-columns:1fr;
-
-    gap:20px;
-
-}
-
-
-/* ===========================================================
-                   PRODUCT SECTION
-=========================================================== */
-
-.product-toolbar{
-
-    flex-direction:column;
-
-}
-
-.toolbar-search{
-
-    min-width:100%;
-
-}
-
-#category-filter,
-
-#sort-products{
-
-    width:100%;
-
-}
-
-.product-grid{
-
-    grid-template-columns:1fr;
-
-}
-
-.product-image img{
-
-    height:280px;
-
-}
-
-
-/* ===========================================================
-                  REVIEW SECTION
-=========================================================== */
-
-.review-container{
-
-    grid-template-columns:1fr;
-
-}
-
-
-/* ===========================================================
-                 CONTACT & FOOTER
-=========================================================== */
-
-.contact-container,
-
-.footer-container{
-
-    grid-template-columns:1fr;
-
-}
-
-.footer{
-
-    text-align:center;
-
-}
-
-.social-icons{
-
-    justify-content:center;
-
-}
-
-
-/* ===========================================================
-                 iPHONE POPUP
-=========================================================== */
-
-.ios-modal-box{
-
-    width:94%;
-
-    padding:28px;
-
-}
-
-.modal-buttons{
-
-    flex-direction:column;
-
-}
-
-.modal-btn{
-
-    width:100%;
-
-}
-
-}
-
-
-/* ===========================================================
-                    PART 06 END
-=========================================================== */
-
-/* ===========================================================
-                    EXTRA SMALL MOBILE
-                     320px - 374px
-=========================================================== */
-
-@media screen and (max-width:374px){
-
-.container{
-
-    width:96%;
-
-}
-
-
-/* ===========================================================
-                      HEADER
+                    HEADER
 =========================================================== */
 
 #main-header{
 
-    padding:12px 14px;
+    height:64px;
+
+}
+
+.header-container{
+
+    padding:0 14px;
 
 }
 
 .logo{
 
-    font-size:22px;
+    font-size:20px;
 
 }
 
-.navbar{
+.navbar,
+
+.search-box{
 
     display:none;
 
 }
 
-.mobile-menu-btn{
+.menu-btn{
 
     width:42px;
 
@@ -1097,26 +1200,46 @@ and (max-width:575px){
 
 }
 
+.header-actions{
+
+    gap:8px;
+
+}
+
+.header-icon{
+
+    width:42px;
+
+    height:42px;
+
+}
+
 
 /* ===========================================================
-                     HERO SECTION
+                    HERO
 =========================================================== */
 
 .hero-section{
 
-    padding:60px 0;
+    padding-top:100px;
+
+    padding-bottom:50px;
 
 }
 
 .hero-container{
-
-    display:grid;
 
     grid-template-columns:1fr;
 
     text-align:center;
 
     gap:30px;
+
+}
+
+.hero-content{
+
+    align-items:center;
 
 }
 
@@ -1136,11 +1259,11 @@ and (max-width:575px){
 
 .hero-buttons{
 
-    display:flex;
+    width:100%;
 
     flex-direction:column;
 
-    gap:14px;
+    gap:12px;
 
 }
 
@@ -1148,13 +1271,25 @@ and (max-width:575px){
 
     width:100%;
 
-    font-size:15px;
+    justify-content:center;
+
+}
+
+.hero-features{
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+.hero-image{
+
+    order:-1;
 
 }
 
 .hero-image img{
-
-    width:100%;
 
     max-width:300px;
 
@@ -1162,7 +1297,30 @@ and (max-width:575px){
 
 
 /* ===========================================================
-                 FEATURED CATEGORIES
+                    SECTION TITLE
+=========================================================== */
+
+.section-title{
+
+    margin-bottom:45px;
+
+}
+
+.section-title h2{
+
+    font-size:30px;
+
+}
+
+.section-title p{
+
+    font-size:14px;
+
+}
+
+
+/* ===========================================================
+                    CATEGORY
 =========================================================== */
 
 .category-container{
@@ -1173,36 +1331,57 @@ and (max-width:575px){
 
 }
 
+.category-card img{
+
+    height:260px;
+
+}
+
 
 /* ===========================================================
-                 PRODUCT SECTION
+                    TRENDING
 =========================================================== */
 
-.product-toolbar{
+.trending-banner{
+
+    grid-template-columns:1fr;
+
+    padding:24px;
+
+    gap:24px;
+
+    text-align:center;
+
+}
+
+.banner-content h2{
+
+    font-size:28px;
+
+}
+
+.banner-buttons{
 
     flex-direction:column;
 
-    gap:15px;
-
 }
 
-.toolbar-search,
-
-#category-filter,
-
-#sort-products{
+.banner-buttons a{
 
     width:100%;
 
-    min-width:100%;
-
 }
+
+
+/* ===========================================================
+                    PRODUCTS
+=========================================================== */
 
 .product-grid{
 
     grid-template-columns:1fr;
 
-    gap:20px;
+    gap:18px;
 
 }
 
@@ -1212,34 +1391,53 @@ and (max-width:575px){
 
 }
 
-.product-buttons button{
+.product-buttons{
 
-    height:50px;
-
-    font-size:15px;
+    gap:10px;
 
 }
 
 
 /* ===========================================================
-                 NEWSLETTER
+                WHY / REVIEW / CONTACT
+=========================================================== */
+
+.why-container,
+
+.review-container,
+
+.contact-container,
+
+.footer-container{
+
+    grid-template-columns:1fr;
+
+    gap:18px;
+
+}
+
+
+/* ===========================================================
+                    NEWSLETTER
 =========================================================== */
 
 .newsletter-container{
 
-    padding:28px 20px;
+    padding:35px 18px;
 
 }
 
 .newsletter-container h2{
 
-    font-size:30px;
+    font-size:28px;
 
 }
 
 .newsletter-form{
 
     flex-direction:column;
+
+    gap:12px;
 
 }
 
@@ -1253,14 +1451,10 @@ and (max-width:575px){
 
 
 /* ===========================================================
-                 CONTACT & FOOTER
+                    FOOTER
 =========================================================== */
 
-.contact-container,
-
-.footer-container{
-
-    grid-template-columns:1fr;
+.footer{
 
     text-align:center;
 
@@ -1272,16 +1466,11 @@ and (max-width:575px){
 
 }
 
-
-/* ===========================================================
-                 BACK TO TOP
-=========================================================== */
-
 .back-to-top{
 
-    width:50px;
+    width:48px;
 
-    height:50px;
+    height:48px;
 
     right:16px;
 
@@ -1289,38 +1478,182 @@ and (max-width:575px){
 
 }
 
+}
+
 
 /* ===========================================================
-                 PART 07 END
+                    PART 06 END
+=========================================================== */
+css/responsive.css — Part 7
+
+/* ===========================================================
+                  EXTRA SMALL MOBILE
+                     0px - 374px
 =========================================================== */
 
+@media screen and (max-width:374px){
+
+.container{
+
+    width:100%;
+
+    padding:0 12px;
+
 }
 
+
 /* ===========================================================
-                iPHONE & ANDROID FIXES
+                    HEADER
 =========================================================== */
 
-@media screen and (max-width:767px){
+#main-header{
 
-html{
-
-    scroll-behavior:smooth;
-
-    overflow-x:hidden;
+    height:60px;
 
 }
 
-body{
+.header-container{
 
-    overflow-x:hidden;
+    padding:0 12px;
 
-    padding-bottom:80px;
+}
+
+.logo{
+
+    font-size:18px;
+
+}
+
+.navbar,
+
+.search-box{
+
+    display:none;
+
+}
+
+.menu-btn{
+
+    width:40px;
+
+    height:40px;
+
+    display:flex;
+
+}
+
+.header-actions{
+
+    gap:6px;
+
+}
+
+.header-icon{
+
+    width:40px;
+
+    height:40px;
+
+}
+
+#cart-count{
+
+    width:18px;
+
+    height:18px;
+
+    font-size:10px;
 
 }
 
 
 /* ===========================================================
-                 SECTION SPACING
+                    HERO
+=========================================================== */
+
+.hero-section{
+
+    padding-top:90px;
+
+    padding-bottom:45px;
+
+}
+
+.hero-container{
+
+    grid-template-columns:1fr;
+
+    text-align:center;
+
+    gap:24px;
+
+}
+
+.hero-content{
+
+    align-items:center;
+
+}
+
+.hero-title{
+
+    font-size:26px;
+
+    line-height:1.25;
+
+}
+
+.hero-description{
+
+    font-size:13px;
+
+    line-height:1.7;
+
+}
+
+.hero-buttons{
+
+    width:100%;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.hero-buttons a{
+
+    width:100%;
+
+    justify-content:center;
+
+    font-size:14px;
+
+}
+
+.hero-features{
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.hero-image{
+
+    order:-1;
+
+}
+
+.hero-image img{
+
+    max-width:250px;
+
+}
+
+
+/* ===========================================================
+                SECTION TITLE
 =========================================================== */
 
 section{
@@ -1331,458 +1664,141 @@ section{
 
 .section-title{
 
-    margin-bottom:40px;
+    margin-bottom:35px;
 
 }
 
 .section-title h2{
-
-    font-size:34px;
-
-}
-
-.section-title p{
-
-    font-size:15px;
-
-}
-
-
-/* ===========================================================
-                 PRODUCT CARD
-=========================================================== */
-
-.product-card{
-
-    border-radius:22px;
-
-}
-
-.product-image{
-
-    padding:20px;
-
-}
-
-.product-details{
-
-    padding:18px;
-
-}
-
-.product-details h3{
-
-    font-size:20px;
-
-}
-
-.product-details h4{
 
     font-size:24px;
 
 }
 
-.product-buttons{
+.section-title p{
 
-    padding:0 18px 18px;
+    font-size:13px;
 
 }
 
 
 /* ===========================================================
-                 BUTTON FIXES
+        CATEGORY / PRODUCTS / OTHER GRIDS
 =========================================================== */
 
-.add-cart,
+.category-container,
 
-.buy-now,
+.product-grid,
 
-.whatsapp-order{
+.why-container,
+
+.review-container,
+
+.contact-container,
+
+.footer-container{
+
+    grid-template-columns:1fr;
+
+    gap:16px;
+
+}
+
+.category-card img{
+
+    height:220px;
+
+}
+
+.product-image img{
+
+    height:210px;
+
+}
+
+
+/* ===========================================================
+                TRENDING
+=========================================================== */
+
+.trending-banner{
+
+    grid-template-columns:1fr;
+
+    padding:20px;
+
+    gap:20px;
+
+    text-align:center;
+
+}
+
+.banner-content h2{
+
+    font-size:24px;
+
+}
+
+.banner-buttons{
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.banner-buttons a{
 
     width:100%;
 
-    min-height:52px;
+}
 
-    font-size:15px;
+
+/* ===========================================================
+                NEWSLETTER
+=========================================================== */
+
+.newsletter-container{
+
+    padding:30px 16px;
+
+}
+
+.newsletter-container h2{
+
+    font-size:24px;
+
+}
+
+.newsletter-form{
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.newsletter-form input,
+
+.newsletter-form button{
+
+    width:100%;
 
 }
 
 
 /* ===========================================================
-                 IOS SAFE AREA
+                FOOTER
 =========================================================== */
-
-.header{
-
-    padding-top:max(14px,env(safe-area-inset-top));
-
-}
 
 .footer{
 
-    padding-bottom:max(30px,env(safe-area-inset-bottom));
+    text-align:center;
+
+    padding:60px 0 25px;
 
 }
 
-
-/* ===========================================================
-                 TOUCH TARGETS
-=========================================================== */
-
-button,
-
-a,
-
-input,
-
-select{
-
-    min-height:44px;
-
-}
-
-
-/* ===========================================================
-                 HORIZONTAL SCROLL FIX
-=========================================================== */
-
-img,
-
-video,
-
-iframe{
-
-    max-width:100%;
-
-    height:auto;
-
-}
-
-table{
-
-    display:block;
-
-    overflow-x:auto;
-
-}
-
-
-/* ===========================================================
-                 POPUP FIX
-=========================================================== */
-
-.ios-modal-box{
-
-    max-width:95%;
-
-    border-radius:24px;
-
-}
-
-
-/* ===========================================================
-                 PART 08 END
-=========================================================== */
-
-}
-
-/* ===========================================================
-                LANDSCAPE MODE OPTIMIZATION
-=========================================================== */
-
-@media screen and (max-height:600px)
-and (orientation:landscape){
-
-.hero-section{
-
-    min-height:auto;
-
-    padding:60px 0;
-
-}
-
-.hero-container{
-
-    align-items:center;
-
-}
-
-.hero-image img{
-
-    max-height:320px;
-
-    width:auto;
-
-}
-
-}
-
-
-/* ===========================================================
-                HIGH RESOLUTION DISPLAY
-=========================================================== */
-
-@media (-webkit-min-device-pixel-ratio:2),
-(min-resolution:192dpi){
-
-img{
-
-    image-rendering:auto;
-
-}
-
-.logo,
-
-.hero-title,
-
-.section-title h2{
-
-    -webkit-font-smoothing:antialiased;
-
-    -moz-osx-font-smoothing:grayscale;
-
-}
-
-}
-
-
-/* ===========================================================
-                REDUCE MOTION
-=========================================================== */
-
-@media (prefers-reduced-motion:reduce){
-
-*{
-
-    animation:none !important;
-
-    transition:none !important;
-
-    scroll-behavior:auto !important;
-
-}
-
-}
-
-
-/* ===========================================================
-                DARK MODE SUPPORT
-=========================================================== */
-
-@media (prefers-color-scheme:dark){
-
-.auto-dark{
-
-    background:#111111;
-
-    color:#ffffff;
-
-}
-
-.auto-dark .product-card,
-
-.auto-dark .category-card,
-
-.auto-dark .review-card{
-
-    background:#1A1A1A;
-
-    border-color:#333333;
-
-}
-
-}
-
-
-/* ===========================================================
-                PRINT MODE
-=========================================================== */
-
-@media print{
-
-.header,
-
-.footer,
-
-.hero-buttons,
-
-.back-to-top,
-
-.whatsapp-order,
-
-.add-cart,
-
-.buy-now{
-
-    display:none !important;
-
-}
-
-body{
-
-    background:#ffffff;
-
-    color:#000000;
-
-}
-
-.product-card{
-
-    box-shadow:none;
-
-    border:1px solid #cccccc;
-
-}
-
-}
-
-
-/* ===========================================================
-                COMMON RESPONSIVE UTILITIES
-=========================================================== */
-
-.hide-mobile{
-
-    display:block;
-
-}
-
-.show-mobile{
-
-    display:none;
-
-}
-
-@media screen and (max-width:767px){
-
-.hide-mobile{
-
-    display:none !important;
-
-}
-
-.show-mobile{
-
-    display:block !important;
-
-}
-
-}
-
-
-/* ===========================================================
-                    PART 09 END
-=========================================================== */
-
-/* ===========================================================
-                 PERFORMANCE OPTIMIZATION
-=========================================================== */
-
-html{
-
-    scroll-behavior:smooth;
-
-}
-
-body{
-
-    overflow-x:hidden;
-
-    text-rendering:optimizeLegibility;
-
-    -webkit-font-smoothing:antialiased;
-
-    -moz-osx-font-smoothing:grayscale;
-
-}
-
-
-/* ===========================================================
-                 GPU ACCELERATION
-=========================================================== */
-
-.product-card,
-
-.category-card,
-
-.review-card,
-
-.why-card,
-
-.contact-card,
-
-.hero-image img,
-
-.shop-btn,
-
-.buy-now,
-
-.add-cart{
-
-    transform:translateZ(0);
-
-    backface-visibility:hidden;
-
-    perspective:1000px;
-
-}
-
-
-/* ===========================================================
-                 IMAGE OPTIMIZATION
-=========================================================== */
-
-img{
-
-    max-width:100%;
-
-    height:auto;
-
-    display:block;
-
-    object-fit:cover;
-
-}
-
-
-/* ===========================================================
-                 FORM RESPONSIVE
-=========================================================== */
-
-input,
-
-select,
-
-textarea,
-
-button{
-
-    width:100%;
-
-    max-width:100%;
-
-    font:inherit;
-
-}
-
-
-/* ===========================================================
-                 FLEX UTILITIES
-=========================================================== */
-
-.flex-wrap{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-}
-
-.flex-center{
-
-    display:flex;
-
-    align-items:center;
+.social-icons{
 
     justify-content:center;
 
@@ -1790,83 +1806,65 @@ button{
 
 
 /* ===========================================================
-                 RESPONSIVE SPACING
+                TOAST & MODAL
 =========================================================== */
 
-.mt-auto{
+.toast{
 
-    margin-top:auto;
+    min-width:auto;
+
+    width:calc(100% - 24px);
+
+    left:12px;
+
+    right:12px;
+
+    top:12px;
 
 }
 
-.mb-auto{
+.ios-modal-box{
 
-    margin-bottom:auto;
+    width:95%;
 
-}
-
-.text-center{
-
-    text-align:center;
+    padding:24px;
 
 }
 
 
 /* ===========================================================
-                 FINAL RESPONSIVE NOTES
+                BACK TO TOP
+=========================================================== */
+
+.back-to-top{
+
+    width:44px;
+
+    height:44px;
+
+    right:12px;
+
+    bottom:12px;
+
+    font-size:18px;
+
+}
+
+}
+
+/* ===========================================================
+                RESPONSIVE.CSS COMPLETE
 =========================================================== */
 
 /*
+✔ Desktop (1600+)
+✔ Desktop (1440–1599)
+✔ Laptop (1200–1439)
+✔ Tablet Landscape (992–1199)
+✔ Tablet Portrait (768–991)
+✔ Large Mobile (576–767)
+✔ Small Mobile (375–575)
+✔ Extra Small Mobile (0–374)
 
-ROYAL STORE V3
-
-FILE NAME :
-responsive.css
-
-STATUS :
-100% COMPLETE
-
-SUPPORTED DEVICES
-
-✔ Android Phones
-✔ iPhone (iOS)
-✔ Small Tablets
-✔ Large Tablets
-✔ Laptop
-✔ Desktop
-✔ Full HD Monitor
-✔ 2K Display
-✔ 4K Display
-
-SCREEN SIZES
-
-320px
-375px
-425px
-576px
-768px
-992px
-1200px
-1440px
-1600px+
-
-OPTIMIZED FOR
-
-✔ Chrome
-✔ Edge
-✔ Firefox
-✔ Safari
-✔ Samsung Internet
-
-BUILD :
-LOCKED
-
-DO NOT MODIFY
-WITHOUT VERSION UPDATE
-
+ROYAL STORE V4 RESPONSIVE COMPLETE
 */
-
-
-/* ===========================================================
-          ROYAL STORE V3 RESPONSIVE.CSS COMPLETE
-=========================================================== */
