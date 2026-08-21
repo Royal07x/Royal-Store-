@@ -753,8 +753,6 @@ section{
 #loading-screen{
 
     position:fixed;
-  
-    display: none;
 
     inset:0;
 
