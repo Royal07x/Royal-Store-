@@ -2074,7 +2074,20 @@ href="css/responsive.css">
 <!-- ========================================================= -->
 <!--                  JAVASCRIPT FILES END                     -->
 <!-- ========================================================= -->
+<script>
+window.addEventListener("load", function () {
 
+    const loader = document.getElementById("loading-screen");
+
+    if(loader){
+        loader.style.display = "none";
+    }
+
+    document.body.style.visibility = "visible";
+    document.body.style.opacity = "1";
+
+});
+</script>
 
 <!-- ========================================================= -->
 <!--                     BODY END                              -->
