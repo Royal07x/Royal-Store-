@@ -1,25 +1,29 @@
+index.html — Part 1
+
 <!DOCTYPE html>
 
 <!-- ========================================================= -->
-<!--                  HTML5 DOCUMENT START                      -->
+<!--                 ROYAL STORE V4                            -->
+<!--                 INDEX.HTML                                -->
+<!--                 PART : 01                                 -->
 <!-- ========================================================= -->
 
 <html lang="en">
 
 <!-- ========================================================= -->
-<!--                     HEAD START                             -->
+<!--                    HEAD START                             -->
 <!-- ========================================================= -->
 
 <head>
 
 <!-- ========================================================= -->
-<!--                  CHARACTER ENCODING                        -->
+<!--                  CHARACTER ENCODING                       -->
 <!-- ========================================================= -->
 
 <meta charset="UTF-8">
 
 <!-- ========================================================= -->
-<!--                  RESPONSIVE VIEWPORT                       -->
+<!--                  RESPONSIVE VIEWPORT                      -->
 <!-- ========================================================= -->
 
 <meta
@@ -27,46 +31,50 @@
     content="width=device-width, initial-scale=1.0">
 
 <!-- ========================================================= -->
-<!--                     SEO META TAGS                          -->
+<!--                     SEO META TAGS                         -->
 <!-- ========================================================= -->
 
 <meta
     name="description"
-    content="Royal Store - Premium Fashion & Beauty Shopping">
+    content="Royal Store - Premium Fashion & Beauty Shopping Website">
 
 <meta
     name="keywords"
-    content="Royal Store, Men's Shirts, Cargo Pants, Sneakers, Beauty">
+    content="Royal Store, Fashion, Cargo Pants, Shirts, Sneakers, Beauty">
 
 <meta
     name="author"
     content="Royal Store">
 
+<meta
+    name="robots"
+    content="index, follow">
+
 <!-- ========================================================= -->
-<!--                   BROWSER THEME COLOR                      -->
+<!--                    THEME COLOR                            -->
 <!-- ========================================================= -->
 
 <meta
     name="theme-color"
-    content="#FFF4F8">
+    content="#FFF5F7">
 
 <!-- ========================================================= -->
-<!--                     WEBSITE TITLE                          -->
+<!--                     PAGE TITLE                            -->
 <!-- ========================================================= -->
 
 <title>Royal Store | Premium Fashion Store</title>
 
 <!-- ========================================================= -->
-<!--                        FAVICON                             -->
+<!--                      FAVICON                              -->
 <!-- ========================================================= -->
 
 <link
     rel="icon"
     type="image/png"
-    href="images/favicon.png">
+    href="images/logo/favicon.png">
 
 <!-- ========================================================= -->
-<!--                     GOOGLE FONTS                           -->
+<!--                   GOOGLE FONTS                            -->
 <!-- ========================================================= -->
 
 <link
@@ -79,11 +87,11 @@
     crossorigin>
 
 <link
-href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap"
+href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap"
 rel="stylesheet">
 
 <!-- ========================================================= -->
-<!--                     FONT AWESOME                           -->
+<!--                  FONT AWESOME                             -->
 <!-- ========================================================= -->
 
 <link
@@ -91,41 +99,47 @@ rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 <!-- ========================================================= -->
-<!--                       CSS FILES                            -->
+<!--                     CSS FILES                             -->
 <!-- ========================================================= -->
 
-<link
-rel="stylesheet"
-href="css/style.css">
+<link rel="stylesheet" href="css/variables.css">
 
-<link
-rel="stylesheet"
-href="css/home.css">
+<link rel="stylesheet" href="css/style.css">
 
-<link
-rel="stylesheet"
-href="css/responsive.css">
+<link rel="stylesheet" href="css/header.css">
+
+<link rel="stylesheet" href="css/footer.css">
+
+<link rel="stylesheet" href="css/components.css">
+
+<link rel="stylesheet" href="css/forms.css">
+
+<link rel="stylesheet" href="css/loader.css">
+
+<link rel="stylesheet" href="css/animations.css">
+
+<link rel="stylesheet" href="css/responsive.css">
 
 <!-- ========================================================= -->
-<!--                      HEAD END                              -->
+<!--                     HEAD END                              -->
 <!-- ========================================================= -->
 
 </head>
 
 <!-- ========================================================= -->
-<!--                      BODY START                            -->
+<!--                     BODY START                            -->
 <!-- ========================================================= -->
 
 <body>
 
 <!-- ========================================================= -->
-<!--                  WEBSITE WRAPPER START                     -->
+<!--                WEBSITE WRAPPER START                      -->
 <!-- ========================================================= -->
 
-<div class="website-wrapper">
+<div id="website-wrapper">
 
 <!-- ========================================================= -->
-<!--                iPHONE STYLE LOADING SCREEN                 -->
+<!--                  iPHONE LOADER                            -->
 <!-- ========================================================= -->
 
 <div id="loading-screen">
@@ -143,27 +157,33 @@ href="css/responsive.css">
 </div>
 
 <!-- ========================================================= -->
-<!--                    HEADER START                            -->
+<!--                  PAGE OVERLAY                             -->
 <!-- ========================================================= -->
 
-
-
-<!-- ========================================================= -->
-<!--                     PART 1 END                             -->
-<!-- ========================================================= -->
-
-<!-- DO NOT CLOSE BODY OR HTML HERE -->
+<div id="page-overlay"></div>
 
 <!-- ========================================================= -->
-<!--                  HEADER NAVIGATION START                   -->
+<!--                 HEADER START                              -->
 <!-- ========================================================= -->
 
 <header id="main-header">
 
-    <div class="header-container">
+<!-- Header Part 2 -->
+
+</header>
+
+End of Part 1
+
+index.html — Part 2
+
+<!-- ========================================================= -->
+<!--                  HEADER CONTAINER START                    -->
+<!-- ========================================================= -->
+
+<div class="header-container">
 
     <!-- ===================================================== -->
-    <!--                      LOGO                             -->
+    <!--                        LOGO                           -->
     <!-- ===================================================== -->
 
     <a href="index.html" class="logo">
@@ -184,70 +204,44 @@ href="css/responsive.css">
 
             <li>
                 <a href="index.html" class="active">
-
                     Home
-
                 </a>
             </li>
 
             <li>
-
                 <a href="#categories">
-
                     Categories
-
                 </a>
-
             </li>
 
             <li>
-
-                <a href="shirts.html">
-
-                    Shirts
-
+                <a href="#featured-products">
+                    Products
                 </a>
-
             </li>
 
             <li>
-
-                <a href="pants.html">
-
-                    Cargo Pants
-
+                <a href="#reviews">
+                    Reviews
                 </a>
-
             </li>
 
             <li>
-
-                <a href="sneakers.html">
-
-                    Sneakers
-
+                <a href="wishlist.html">
+                    Wishlist
                 </a>
-
             </li>
 
             <li>
-
-                <a href="beauty.html">
-
-                    Beauty
-
+                <a href="orders.html">
+                    Orders
                 </a>
-
             </li>
 
             <li>
-
                 <a href="contact.html">
-
                     Contact
-
                 </a>
-
             </li>
 
         </ul>
@@ -263,17 +257,14 @@ href="css/responsive.css">
         <i class="fa-solid fa-magnifying-glass"></i>
 
         <input
-
             type="search"
-
             id="search-input"
-
             placeholder="Search Premium Products...">
 
     </div>
 
     <!-- ===================================================== -->
-    <!--                   HEADER ACTIONS                      -->
+    <!--                  HEADER ACTIONS                       -->
     <!-- ===================================================== -->
 
     <div class="header-actions">
@@ -281,10 +272,9 @@ href="css/responsive.css">
         <!-- Login -->
 
         <a
-
             href="login.html"
-
-            class="header-icon">
+            class="header-icon"
+            title="Login">
 
             <i class="fa-regular fa-user"></i>
 
@@ -293,10 +283,9 @@ href="css/responsive.css">
         <!-- Wishlist -->
 
         <a
-
             href="wishlist.html"
-
-            class="header-icon">
+            class="header-icon"
+            title="Wishlist">
 
             <i class="fa-regular fa-heart"></i>
 
@@ -305,10 +294,9 @@ href="css/responsive.css">
         <!-- Orders -->
 
         <a
-
             href="orders.html"
-
-            class="header-icon">
+            class="header-icon"
+            title="Orders">
 
             <i class="fa-solid fa-bag-shopping"></i>
 
@@ -317,16 +305,13 @@ href="css/responsive.css">
         <!-- Cart -->
 
         <a
-
             href="cart.html"
-
-            class="header-icon cart-icon">
+            class="header-icon cart-icon"
+            title="Cart">
 
             <i class="fa-solid fa-cart-shopping"></i>
 
-            <span
-
-                id="cart-count">
+            <span id="cart-count">
 
                 0
 
@@ -337,9 +322,7 @@ href="css/responsive.css">
         <!-- Mobile Menu -->
 
         <button
-
             id="menu-btn"
-
             class="menu-btn">
 
             <i class="fa-solid fa-bars"></i>
@@ -351,13 +334,11 @@ href="css/responsive.css">
 </div>
 
 <!-- ========================================================= -->
-<!--                   MOBILE SIDEBAR MENU                     -->
+<!--                 MOBILE SIDEBAR MENU                       -->
 <!-- ========================================================= -->
 
 <aside
-
     id="mobile-menu"
-
     class="mobile-menu">
 
     <div class="mobile-menu-header">
@@ -369,7 +350,6 @@ href="css/responsive.css">
         </h2>
 
         <button
-
             id="close-menu">
 
             <i class="fa-solid fa-xmark"></i>
@@ -382,13 +362,11 @@ href="css/responsive.css">
 
         <li><a href="index.html">Home</a></li>
 
-        <li><a href="shirts.html">Shirts</a></li>
+        <li><a href="#categories">Categories</a></li>
 
-        <li><a href="pants.html">Cargo Pants</a></li>
+        <li><a href="#featured-products">Products</a></li>
 
-        <li><a href="sneakers.html">Sneakers</a></li>
-
-        <li><a href="beauty.html">Beauty</a></li>
+        <li><a href="wishlist.html">Wishlist</a></li>
 
         <li><a href="cart.html">Cart</a></li>
 
@@ -407,386 +385,380 @@ href="css/responsive.css">
 <!-- ========================================================= -->
 
 <div
-
     id="menu-overlay"
-
     class="menu-overlay">
 
 </div>
 
 <!-- ========================================================= -->
-<!--                  HEADER NAVIGATION END                    -->
+<!--                    HEADER END                             -->
 <!-- ========================================================= -->
 
+</header>
+
 <!-- ========================================================= -->
-<!--                   HERO SECTION START                       -->
+<!--                 HERO SECTION START                        -->
 <!-- ========================================================= -->
 
 <section class="hero-section">
 
-    <div class="hero-container">
-
-        <!-- ================================================= -->
-        <!--                 HERO CONTENT START                 -->
-        <!-- ================================================= -->
-
-        <div class="hero-content">
-
-            <span class="hero-tag">
-
-                👑 Premium Fashion Brand
-
-            </span>
-
-            <h1 class="hero-title">
-                
-                 Discover Luxury Fashion
-                
-             <br>
-                
-                 With Royal Store
-                
-             </h1>
-
-            <p class="hero-description">
-                
-                  Upgrade your lifestyle with premium shirts,
-                
-                  cargo pants, sneakers and beauty products.
-                
-                   Experience luxury shopping with the latest
-                
-                   collections at the best prices.
-                
-            </p>
-
-            <!-- ============================================= -->
-            <!--                 HERO BUTTONS                   -->
-            <!-- ============================================= -->
-
-            <div class="hero-buttons">
-
-                <a
-
-                    href="#featured-products"
-
-                    class="shop-btn">
-
-                    Shop Now
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </a>
-
-                <a
-
-                    href="#categories"
-
-                    class="explore-btn">
-
-                    Explore Collection
-
-                </a>
-
-            </div>
-
-            <!-- ============================================= -->
-            <!--                HERO FEATURES                   -->
-            <!-- ============================================= -->
-
-            <div class="hero-features">
-
-                <div class="feature-item">
-
-                    <i class="fa-solid fa-truck-fast"></i>
-
-                    <span>
-
-                        Fast Delivery
-
-                    </span>
-
-                </div>
-
-                <div class="feature-item">
-
-                    <i class="fa-solid fa-shield-halved"></i>
-
-                    <span>
-
-                        Secure Shopping
-
-                    </span>
-
-                </div>
-
-                <div class="feature-item">
-
-                    <i class="fa-solid fa-medal"></i>
-
-                    <span>
-
-                        Premium Quality
-
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- ================================================= -->
-        <!--                 HERO IMAGE START                  -->
-        <!-- ================================================= -->
-
-        <div class="hero-image">
-
-            <img
-
-                src="images/banner.png"
-
-                alt="Royal Store Banner">
-
-        </div>
-
-    </div>
+<!-- Hero Section Part 3 -->
 
 </section>
 
-<!-- ========================================================= -->
-<!--                    HERO SECTION END                        -->
-<!-- ========================================================= -->
+End of Part 2
+
+Next → Part 3 (Premium Hero Section)
+
+index.html — Part 3
 
 <!-- ========================================================= -->
-<!--              FEATURED CATEGORIES START                     -->
+<!--                    HERO CONTAINER                         -->
 <!-- ========================================================= -->
 
-<section
-
-    id="categories"
-
-    class="featured-categories">
+<div class="hero-container">
 
     <!-- ===================================================== -->
-    <!--                  SECTION HEADING                      -->
+    <!--                  HERO CONTENT                         -->
     <!-- ===================================================== -->
 
-    <div class="section-title">
+    <div class="hero-content">
 
-        <span>
+        <span class="hero-tag">
 
-            Shop By Category
+            👑 Premium Luxury Fashion
 
         </span>
 
-        <h2>
+        <h1 class="hero-title">
 
-            Featured Categories
+            Elevate Your Style
 
-        </h2>
+            <br>
 
-        <p>
+            With Royal Store
 
-            Discover premium collections carefully selected
-            for modern fashion lovers.
+        </h1>
+
+        <p class="hero-description">
+
+            Discover premium shirts, cargo pants, sneakers
+            and beauty essentials designed for modern fashion
+            lovers. Experience luxury shopping with trusted
+            quality and fast delivery.
 
         </p>
 
+        <!-- ================================================= -->
+        <!--                  HERO BUTTONS                     -->
+        <!-- ================================================= -->
+
+        <div class="hero-buttons">
+
+            <a
+                href="#featured-products"
+                class="shop-btn">
+
+                Shop Now
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+            <a
+                href="#categories"
+                class="explore-btn">
+
+                Explore Collection
+
+            </a>
+
+        </div>
+
+        <!-- ================================================= -->
+        <!--                 HERO FEATURES                     -->
+        <!-- ================================================= -->
+
+        <div class="hero-features">
+
+            <div class="feature-item">
+
+                <i class="fa-solid fa-truck-fast"></i>
+
+                <span>
+
+                    Fast Delivery
+
+                </span>
+
+            </div>
+
+            <div class="feature-item">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                <span>
+
+                    Secure Shopping
+
+                </span>
+
+            </div>
+
+            <div class="feature-item">
+
+                <i class="fa-solid fa-medal"></i>
+
+                <span>
+
+                    Premium Quality
+
+                </span>
+
+            </div>
+
+        </div>
+
     </div>
 
     <!-- ===================================================== -->
-    <!--                 CATEGORY CONTAINER                    -->
+    <!--                    HERO IMAGE                         -->
     <!-- ===================================================== -->
 
-    <div class="category-container">
-
-        <!-- ================================================= -->
-        <!--                MEN'S SHIRTS CARD                  -->
-        <!-- ================================================= -->
-
-        <a
-
-            href="shirts.html"
-
-            class="category-card">
-
-            <img
-
-                src="images/shirt-category.png"
-
-                alt="Premium Men's Shirts">
-
-            <div class="category-content">
-
-                <h3>
-
-                    Premium Men's Shirts
-
-                </h3>
-
-                <p>
-
-                    Luxury Formal & Casual Collection
-
-                </p>
-
-                <span>
-
-                    Explore Now
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </span>
-
-            </div>
-
-        </a>
-
-        <!-- ================================================= -->
-        <!--             JEANS & CARGO PANTS CARD              -->
-        <!-- ================================================= -->
-
-        <a
-
-            href="pants.html"
-
-            class="category-card">
-
-            <img
-
-                src="images/cargo-category.png"
-
-                alt="Cargo Pants">
-
-            <div class="category-content">
-
-                <h3>
-
-                    Jeans & Cargo Pants
-
-                </h3>
-
-                <p>
-
-                    Premium Comfort Collection
-
-                </p>
-
-                <span>
-
-                    Explore Now
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </span>
-
-            </div>
-
-        </a>
-
-        <!-- ================================================= -->
-        <!--               PREMIUM SNEAKERS CARD               -->
-        <!-- ================================================= -->
-
-        <a
-
-            href="sneakers.html"
-
-            class="category-card">
-
-            <img
-
-                src="images/sneakers-category.png"
-
-                alt="Premium Sneakers">
-
-            <div class="category-content">
-
-                <h3>
-
-                    Premium Sneakers
-
-                </h3>
-
-                <p>
-
-                    Luxury Street Fashion
-
-                </p>
-
-                <span>
-
-                    Explore Now
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </span>
-
-            </div>
-
-        </a>
-
-        <!-- ================================================= -->
-        <!--             BEAUTY & PERSONAL CARE CARD           -->
-        <!-- ================================================= -->
-
-        <a
-
-            href="beauty.html"
-
-            class="category-card">
-
-            <img
-
-                src="images/beauty-category.png"
-
-                alt="Beauty Products">
-
-            <div class="category-content">
-
-                <h3>
-
-                    Beauty & Personal Care
-
-                </h3>
-
-                <p>
-
-                    Premium Beauty Essentials
-
-                </p>
-
-                <span>
-
-                    Explore Now
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </span>
-
-            </div>
-
-        </a>
+    <div class="hero-image">
+
+        <img
+            src="images/banners/hero-banner.png"
+            alt="Royal Store Premium Fashion">
 
     </div>
+
+</div>
+
+<!-- ========================================================= -->
+<!--                    HERO SECTION END                       -->
+<!-- ========================================================= -->
 
 </section>
 
 <!-- ========================================================= -->
-<!--               FEATURED CATEGORIES END                      -->
-<!-- ========================================================= -->
-
-<!-- ========================================================= -->
-<!--              TRENDING COLLECTION START                     -->
+<!--             FEATURED CATEGORIES START                     -->
 <!-- ========================================================= -->
 
 <section
+    id="categories"
+    class="featured-categories">
 
+<!-- Categories Part 4 -->
+
+</section>
+
+End of Part 3
+
+index.html — Part 4
+
+<!-- ========================================================= -->
+<!--                  SECTION TITLE START                      -->
+<!-- ========================================================= -->
+
+<div class="section-title">
+
+    <span>
+
+        Shop By Category
+
+    </span>
+
+    <h2>
+
+        Featured Categories
+
+    </h2>
+
+    <p>
+
+        Discover premium collections carefully selected
+        for modern fashion lovers.
+
+    </p>
+
+</div>
+
+<!-- ========================================================= -->
+<!--                CATEGORY CONTAINER START                   -->
+<!-- ========================================================= -->
+
+<div class="category-container">
+
+    <!-- ===================================================== -->
+    <!--              PREMIUM MEN'S SHIRTS                     -->
+    <!-- ===================================================== -->
+
+    <a
+        href="shirts.html"
+        class="category-card">
+
+        <img
+            src="images/categories/shirt-category.png"
+            alt="Premium Shirts">
+
+        <div class="category-content">
+
+            <h3>
+
+                Premium Men's Shirts
+
+            </h3>
+
+            <p>
+
+                Luxury Formal & Casual Collection
+
+            </p>
+
+            <span>
+
+                Explore Now
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </span>
+
+        </div>
+
+    </a>
+
+    <!-- ===================================================== -->
+    <!--              JEANS & CARGO PANTS                      -->
+    <!-- ===================================================== -->
+
+    <a
+        href="pants.html"
+        class="category-card">
+
+        <img
+            src="images/categories/cargo-category.png"
+            alt="Cargo Pants">
+
+        <div class="category-content">
+
+            <h3>
+
+                Jeans & Cargo Pants
+
+            </h3>
+
+            <p>
+
+                Premium Comfort Collection
+
+            </p>
+
+            <span>
+
+                Explore Now
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </span>
+
+        </div>
+
+    </a>
+
+    <!-- ===================================================== -->
+    <!--                 PREMIUM SNEAKERS                      -->
+    <!-- ===================================================== -->
+
+    <a
+        href="sneakers.html"
+        class="category-card">
+
+        <img
+            src="images/categories/sneakers-category.png"
+            alt="Premium Sneakers">
+
+        <div class="category-content">
+
+            <h3>
+
+                Premium Sneakers
+
+            </h3>
+
+            <p>
+
+                Luxury Street Collection
+
+            </p>
+
+            <span>
+
+                Explore Now
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </span>
+
+        </div>
+
+    </a>
+
+    <!-- ===================================================== -->
+    <!--             BEAUTY & PERSONAL CARE                    -->
+    <!-- ===================================================== -->
+
+    <a
+        href="beauty.html"
+        class="category-card">
+
+        <img
+            src="images/categories/beauty-category.png"
+            alt="Beauty Products">
+
+        <div class="category-content">
+
+            <h3>
+
+                Beauty & Personal Care
+
+            </h3>
+
+            <p>
+
+                Premium Beauty Essentials
+
+            </p>
+
+            <span>
+
+                Explore Now
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </span>
+
+        </div>
+
+    </a>
+
+</div>
+
+<!-- ========================================================= -->
+<!--               FEATURED CATEGORIES END                     -->
+<!-- ========================================================= -->
+
+</section>
+
+<!-- ========================================================= -->
+<!--               TRENDING COLLECTION START                   -->
+<!-- ========================================================= -->
+
+<section
     class="trending-section">
 
     <!-- ===================================================== -->
-    <!--                  SECTION HEADING                      -->
+    <!--                  SECTION TITLE                        -->
     <!-- ===================================================== -->
 
     <div class="section-title">
@@ -805,56 +777,45 @@ href="css/responsive.css">
 
         <p>
 
-            Discover the newest premium fashion collection
-            specially selected for Royal Store customers.
+            Discover the latest premium fashion collection
+            exclusively selected for Royal Store.
 
         </p>
 
     </div>
 
     <!-- ===================================================== -->
-    <!--                 TRENDING BANNER                       -->
+    <!--                TRENDING BANNER                        -->
     <!-- ===================================================== -->
 
     <div class="trending-banner">
-
-        <!-- ================================================= -->
-        <!--                LEFT CONTENT                        -->
-        <!-- ================================================= -->
 
         <div class="banner-content">
 
             <span class="banner-tag">
 
-                🔥 Limited Time Collection
+                🔥 Limited Edition
 
             </span>
 
             <h2>
 
-                Elevate Your Style
+                Upgrade Your Premium Lifestyle
 
             </h2>
 
             <p>
 
-                Premium quality shirts, cargo pants,
-                sneakers and beauty essentials.
-
-                Designed for modern fashion lovers.
+                Premium Shirts, Cargo Pants,
+                Sneakers and Beauty Collection
+                at exclusive prices.
 
             </p>
-
-            <!-- ============================================= -->
-            <!--                 BANNER BUTTONS                 -->
-            <!-- ============================================= -->
 
             <div class="banner-buttons">
 
                 <a
-
                     href="#featured-products"
-
                     class="shop-btn">
 
                     Shop Collection
@@ -862,9 +823,7 @@ href="css/responsive.css">
                 </a>
 
                 <a
-
                     href="shirts.html"
-
                     class="view-btn">
 
                     View Products
@@ -875,503 +834,521 @@ href="css/responsive.css">
 
         </div>
 
-        <!-- ================================================= -->
-        <!--                RIGHT IMAGE                         -->
-        <!-- ================================================= -->
-
         <div class="banner-image">
 
             <img
-
-                src="images/trending-banner.png"
-
+                src="images/banners/trending-banner.png"
                 alt="Trending Collection">
 
         </div>
 
     </div>
 
-    <!-- ===================================================== -->
-    <!--                HIGHLIGHT FEATURES                     -->
-    <!-- ===================================================== -->
-
-    <div class="trending-features">
-
-        <div class="feature-box">
-
-            <i class="fa-solid fa-star"></i>
-
-            <h3>
-
-                Premium Quality
-
-            </h3>
-
-            <p>
-
-                Carefully selected premium products.
-
-            </p>
-
-        </div>
-
-        <div class="feature-box">
-
-            <i class="fa-solid fa-truck-fast"></i>
-
-            <h3>
-
-                Fast Delivery
-
-            </h3>
-
-            <p>
-
-                Safe & quick delivery across India.
-
-            </p>
-
-        </div>
-
-        <div class="feature-box">
-
-            <i class="fa-solid fa-shield-halved"></i>
-
-            <h3>
-
-                Secure Shopping
-
-            </h3>
-
-            <p>
-
-                Trusted shopping experience with Royal Store.
-
-            </p>
-
-        </div>
-
-        <div class="feature-box">
-
-            <i class="fa-solid fa-headset"></i>
-
-            <h3>
-
-                24×7 Support
-
-            </h3>
-
-            <p>
-
-                Friendly customer support whenever you need it.
-
-            </p>
-
-        </div>
-
-    </div>
-
 </section>
 
 <!-- ========================================================= -->
-<!--               TRENDING COLLECTION END                      -->
-<!-- ========================================================= -->
-
-<!-- ========================================================= -->
-<!--              FEATURED PRODUCTS START                       -->
+<!--             FEATURED PRODUCTS START                       -->
 <!-- ========================================================= -->
 
 <section
-
     id="featured-products"
-
     class="featured-products">
 
+<!-- Featured Products Part 5 -->
+
+</section>
+
+End of Part 4
+
+index.html — Part 5
+
+<!-- ========================================================= -->
+<!--                 SECTION TITLE START                       -->
+<!-- ========================================================= -->
+
+<div class="section-title">
+
+    <span>
+
+        Premium Collection
+
+    </span>
+
+    <h2>
+
+        Featured Products
+
+    </h2>
+
+    <p>
+
+        Explore our handpicked premium fashion collection.
+
+    </p>
+
+</div>
+
+<!-- ========================================================= -->
+<!--                PRODUCT GRID START                         -->
+<!-- ========================================================= -->
+
+<div class="product-grid">
+
     <!-- ===================================================== -->
-    <!--                  SECTION HEADING                      -->
+    <!--                   PRODUCT 01                          -->
     <!-- ===================================================== -->
 
-    <div class="section-title">
+    <article class="product-card">
 
-        <span>
+        <span class="product-badge">
 
-            Premium Collection
+            Best Seller
 
         </span>
 
-        <h2>
+        <div class="product-image">
 
-            Featured Products
+            <img
+                src="images/shirts/shirt-1.png"
+                alt="Premium Shirt">
 
-        </h2>
+        </div>
+
+        <div class="product-details">
+
+            <h3>
+
+                Premium Men's Shirt
+
+            </h3>
+
+            <p>
+
+                Luxury Cotton Collection
+
+            </p>
+
+            <h4>
+
+                ₹799
+
+            </h4>
+
+        </div>
+
+        <div class="product-buttons">
+
+            <button
+                class="add-cart">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                Add To Cart
+
+            </button>
+
+            <button
+                class="buy-now">
+
+                Buy Now
+
+            </button>
+
+            <button
+                class="whatsapp-order">
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+                WhatsApp Order
+
+            </button>
+
+        </div>
+
+    </article>
+
+    <!-- ===================================================== -->
+    <!--                   PRODUCT 02                          -->
+    <!-- ===================================================== -->
+
+    <article class="product-card">
+
+        <span class="product-badge">
+
+            Trending
+
+        </span>
+
+        <div class="product-image">
+
+            <img
+                src="images/cargo/cargo-1.png"
+                alt="Cargo Pants">
+
+        </div>
+
+        <div class="product-details">
+
+            <h3>
+
+                Premium Cargo Pants
+
+            </h3>
+
+            <p>
+
+                Relaxed Fit Collection
+
+            </p>
+
+            <h4>
+
+                ₹999
+
+            </h4>
+
+        </div>
+
+        <div class="product-buttons">
+
+            <button class="add-cart">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                Add To Cart
+
+            </button>
+
+            <button class="buy-now">
+
+                Buy Now
+
+            </button>
+
+            <button class="whatsapp-order">
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+                WhatsApp Order
+
+            </button>
+
+        </div>
+
+    </article>
+
+    <!-- ===================================================== -->
+    <!--                   PRODUCT 03                          -->
+    <!-- ===================================================== -->
+
+    <article class="product-card">
+
+        <span class="product-badge">
+
+            New
+
+        </span>
+
+        <div class="product-image">
+
+            <img
+                src="images/sneakers/sneaker-1.png"
+                alt="Sneakers">
+
+        </div>
+
+        <div class="product-details">
+
+            <h3>
+
+                Premium Sneakers
+
+            </h3>
+
+            <p>
+
+                Luxury Street Fashion
+
+            </p>
+
+            <h4>
+
+                ₹1,499
+
+            </h4>
+
+        </div>
+
+        <div class="product-buttons">
+
+            <button class="add-cart">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                Add To Cart
+
+            </button>
+
+            <button class="buy-now">
+
+                Buy Now
+
+            </button>
+
+            <button class="whatsapp-order">
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+                WhatsApp Order
+
+            </button>
+
+        </div>
+
+    </article>
+
+    <!-- ===================================================== -->
+    <!--                   PRODUCT 04                          -->
+    <!-- ===================================================== -->
+
+    <article class="product-card">
+
+        <span class="product-badge">
+
+            Popular
+
+        </span>
+
+        <div class="product-image">
+
+            <img
+                src="images/beauty/beauty-1.png"
+                alt="Beauty Kit">
+
+        </div>
+
+        <div class="product-details">
+
+            <h3>
+
+                Beauty Essentials Kit
+
+            </h3>
+
+            <p>
+
+                Premium Personal Care
+
+            </p>
+
+            <h4>
+
+                ₹499
+
+            </h4>
+
+        </div>
+
+        <div class="product-buttons">
+
+            <button class="add-cart">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                Add To Cart
+
+            </button>
+
+            <button class="buy-now">
+
+                Buy Now
+
+            </button>
+
+            <button class="whatsapp-order">
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+                WhatsApp Order
+
+            </button>
+
+        </div>
+
+    </article>
+
+</div>
+
+<!-- ========================================================= -->
+<!--                 VIEW ALL BUTTON                           -->
+<!-- ========================================================= -->
+
+<div class="view-all-products">
+
+    <a
+        href="products.html"
+        class="view-all-btn">
+
+        View All Products
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </a>
+
+</div>
+
+<!-- ========================================================= -->
+<!--              FEATURED PRODUCTS END                        -->
+<!-- ========================================================= -->
+
+</section>
+
+<!-- ========================================================= -->
+<!--            WHY CHOOSE ROYAL STORE START                   -->
+<!-- ========================================================= -->
+
+<section
+    class="why-choose-section">
+
+<!-- Part 6 -->
+
+</section>
+
+End of Part 5
+
+index.html — Part 6
+
+<!-- ========================================================= -->
+<!--                 WHY CHOOSE SECTION                        -->
+<!-- ========================================================= -->
+
+<div class="section-title">
+
+    <span>
+
+        Why Choose Us
+
+    </span>
+
+    <h2>
+
+        Why Choose Royal Store
+
+    </h2>
+
+    <p>
+
+        Premium quality products with trusted service,
+        secure shopping and fast delivery.
+
+    </p>
+
+</div>
+
+<!-- ========================================================= -->
+<!--                 WHY CHOOSE CONTAINER                      -->
+<!-- ========================================================= -->
+
+<div class="why-container">
+
+    <!-- Card 1 -->
+
+    <div class="why-card">
+
+        <i class="fa-solid fa-medal"></i>
+
+        <h3>
+
+            Premium Quality
+
+        </h3>
 
         <p>
 
-            Explore our best-selling premium fashion
-            collection with exclusive offers.
+            Carefully selected premium fashion products.
 
         </p>
 
     </div>
 
-    <!-- ===================================================== -->
-    <!--                PRODUCT TOOLBAR START                  -->
-    <!-- ===================================================== -->
+    <!-- Card 2 -->
 
-    <div class="product-toolbar">
+    <div class="why-card">
 
-        <!-- Search -->
+        <i class="fa-solid fa-truck-fast"></i>
 
-        <div class="toolbar-search">
+        <h3>
 
-            <i class="fa-solid fa-magnifying-glass"></i>
+            Fast Delivery
 
-            <input
-
-                type="search"
-
-                id="product-search"
-
-                placeholder="Search Products...">
-
-        </div>
-
-        <!-- Category -->
-
-        <select id="category-filter">
-
-            <option value="all">
-
-                All Categories
-
-            </option>
-
-            <option value="shirt">
-
-                Shirts
-
-            </option>
-
-            <option value="pants">
-
-                Cargo Pants
-
-            </option>
-
-            <option value="sneakers">
-
-                Sneakers
-
-            </option>
-
-            <option value="beauty">
-
-                Beauty
-
-            </option>
-
-        </select>
-
-        <!-- Sort -->
-
-        <select id="sort-products">
-
-            <option value="default">
-
-                Sort By
-
-            </option>
-
-            <option value="low-high">
-
-                Price : Low to High
-
-            </option>
-
-            <option value="high-low">
-
-                Price : High to Low
-
-            </option>
-
-            <option value="a-z">
-
-                Name : A-Z
-
-            </option>
-
-            <option value="z-a">
-
-                Name : Z-A
-
-            </option>
-
-        </select>
-
-    </div>
-
-    <!-- ===================================================== -->
-    <!--             DYNAMIC PRODUCT GRID START                -->
-    <!-- ===================================================== -->
-
-    <div
-
-        id="product-container"
-
-        class="product-grid">
-
-        <!-- Products will be loaded automatically -->
-
-    </div>
-
-    <!-- ===================================================== -->
-    <!--               VIEW ALL PRODUCTS BUTTON                -->
-    <!-- ===================================================== -->
-
-    <div class="view-all-products">
-
-        <a
-
-            href="shirts.html"
-
-            class="view-all-btn">
-
-            View All Products
-
-            <i class="fa-solid fa-arrow-right"></i>
-
-        </a>
-
-    </div>
-
-</section>
-
-<!-- ========================================================= -->
-<!--               FEATURED PRODUCTS END                        -->
-<!-- ========================================================= -->
-
-<!-- ========================================================= -->
-<!--              WHY CHOOSE ROYAL STORE START                 -->
-<!-- ========================================================= -->
-
-<section
-
-    class="why-choose">
-
-    <!-- ===================================================== -->
-    <!--                  SECTION HEADING                      -->
-    <!-- ===================================================== -->
-
-    <div class="section-title">
-
-        <span>
-
-            Why Choose Us
-
-        </span>
-
-        <h2>
-
-            Why Shop With Royal Store?
-
-        </h2>
+        </h3>
 
         <p>
 
-            We are committed to delivering premium quality,
-            trusted service and an exceptional shopping
-            experience.
+            Quick and reliable delivery across India.
 
         </p>
 
     </div>
 
-    <!-- ===================================================== -->
-    <!--                  FEATURE CONTAINER                    -->
-    <!-- ===================================================== -->
+    <!-- Card 3 -->
 
-    <div class="why-container">
+    <div class="why-card">
 
-        <!-- ================================================= -->
-        <!--               PREMIUM QUALITY CARD                -->
-        <!-- ================================================= -->
+        <i class="fa-solid fa-lock"></i>
 
-        <div class="why-card">
+        <h3>
 
-            <div class="why-icon">
+            Secure Shopping
 
-                <i class="fa-solid fa-gem"></i>
+        </h3>
 
-            </div>
+        <p>
 
-            <h3>
+            Safe checkout with customer privacy protection.
 
-                Premium Quality
-
-            </h3>
-
-            <p>
-
-                Carefully selected premium fashion products
-                made with high quality materials.
-
-            </p>
-
-        </div>
-
-        <!-- ================================================= -->
-        <!--               FAST DELIVERY CARD                  -->
-        <!-- ================================================= -->
-
-        <div class="why-card">
-
-            <div class="why-icon">
-
-                <i class="fa-solid fa-truck-fast"></i>
-
-            </div>
-
-            <h3>
-
-                Fast Delivery
-
-            </h3>
-
-            <p>
-
-                Quick and secure delivery service across India
-                with safe packaging.
-
-            </p>
-
-        </div>
-
-        <!-- ================================================= -->
-        <!--              SECURE PAYMENT CARD                  -->
-        <!-- ================================================= -->
-
-        <div class="why-card">
-
-            <div class="why-icon">
-
-                <i class="fa-solid fa-credit-card"></i>
-
-            </div>
-
-            <h3>
-
-                Secure Payment
-
-            </h3>
-
-            <p>
-
-                Safe checkout process with trusted payment
-                methods and customer protection.
-
-            </p>
-
-        </div>
-
-        <!-- ================================================= -->
-        <!--               EASY RETURN CARD                    -->
-        <!-- ================================================= -->
-
-        <div class="why-card">
-
-            <div class="why-icon">
-
-                <i class="fa-solid fa-rotate-left"></i>
-
-            </div>
-
-            <h3>
-
-                Easy Returns
-
-            </h3>
-
-            <p>
-
-                Hassle-free return policy for eligible
-                products with customer support.
-
-            </p>
-
-        </div>
-
-        <!-- ================================================= -->
-        <!--              CUSTOMER SUPPORT CARD                -->
-        <!-- ================================================= -->
-
-        <div class="why-card">
-
-            <div class="why-icon">
-
-                <i class="fa-solid fa-headset"></i>
-
-            </div>
-
-            <h3>
-
-                24×7 Support
-
-            </h3>
-
-            <p>
-
-                Friendly customer support ready to help you
-                whenever you need assistance.
-
-            </p>
-
-        </div>
-
-        <!-- ================================================= -->
-        <!--              TRUSTED BRAND CARD                   -->
-        <!-- ================================================= -->
-
-        <div class="why-card">
-
-            <div class="why-icon">
-
-                <i class="fa-solid fa-shield-halved"></i>
-
-            </div>
-
-            <h3>
-
-                Trusted Brand
-
-            </h3>
-
-            <p>
-
-                Royal Store focuses on quality, trust,
-                customer satisfaction and premium service.
-
-            </p>
-
-        </div>
+        </p>
 
     </div>
+
+    <!-- Card 4 -->
+
+    <div class="why-card">
+
+        <i class="fa-solid fa-headset"></i>
+
+        <h3>
+
+            24×7 Support
+
+        </h3>
+
+        <p>
+
+            Dedicated customer support whenever you need.
+
+        </p>
+
+    </div>
+
+</div>
+
+<!-- ========================================================= -->
+<!--                WHY CHOOSE SECTION END                     -->
+<!-- ========================================================= -->
 
 </section>
 
 <!-- ========================================================= -->
-<!--               WHY CHOOSE ROYAL STORE END                  -->
-<!-- ========================================================= -->
-
-<!-- ========================================================= -->
-<!--               CUSTOMER REVIEWS START                      -->
+<!--              CUSTOMER REVIEWS START                       -->
 <!-- ========================================================= -->
 
 <section
-
-    class="customer-reviews">
+    id="reviews"
+    class="reviews-section">
 
     <!-- ===================================================== -->
-    <!--                  SECTION HEADING                      -->
+    <!--                 SECTION TITLE                         -->
     <!-- ===================================================== -->
 
     <div class="section-title">
@@ -1390,49 +1367,39 @@ href="css/responsive.css">
 
         <p>
 
-            Thousands of happy customers trust Royal Store
-            for premium fashion and quality service.
+            Trusted by fashion lovers across India.
 
         </p>
 
     </div>
 
     <!-- ===================================================== -->
-    <!--                  REVIEW CONTAINER                     -->
+    <!--               REVIEW CONTAINER                        -->
     <!-- ===================================================== -->
 
     <div class="review-container">
 
-        <!-- ================================================= -->
-        <!--                  REVIEW CARD 1                    -->
-        <!-- ================================================= -->
+        <!-- Review 1 -->
 
-        <div class="review-card">
+        <article class="review-card">
 
             <div class="review-stars">
 
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
+                ⭐⭐⭐⭐⭐
 
             </div>
 
             <p>
 
-                Amazing quality and premium packaging.
-                I will definitely shop again from
-                Royal Store.
+                Amazing product quality and very fast delivery.
+                Highly recommended.
 
             </p>
 
             <div class="review-user">
 
                 <img
-
-                    src="images/user1.png"
-
+                    src="images/ui/user-1.png"
                     alt="Customer">
 
                 <div>
@@ -1445,7 +1412,7 @@ href="css/responsive.css">
 
                     <span>
 
-                        Verified Customer
+                        Verified Buyer
 
                     </span>
 
@@ -1453,37 +1420,28 @@ href="css/responsive.css">
 
             </div>
 
-        </div>
+        </article>
 
-        <!-- ================================================= -->
-        <!--                  REVIEW CARD 2                    -->
-        <!-- ================================================= -->
+        <!-- Review 2 -->
 
-        <div class="review-card">
+        <article class="review-card">
 
             <div class="review-stars">
 
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
+                ⭐⭐⭐⭐⭐
 
             </div>
 
             <p>
 
-                The cargo pants are stylish, comfortable,
-                and exactly as shown in the photos.
+                Premium quality cargo pants with perfect fitting.
 
             </p>
 
             <div class="review-user">
 
                 <img
-
-                    src="images/user2.png"
-
+                    src="images/ui/user-2.png"
                     alt="Customer">
 
                 <div>
@@ -1496,7 +1454,7 @@ href="css/responsive.css">
 
                     <span>
 
-                        Verified Customer
+                        Verified Buyer
 
                     </span>
 
@@ -1504,27 +1462,21 @@ href="css/responsive.css">
 
             </div>
 
-        </div>
+        </article>
 
-        <!-- ================================================= -->
-        <!--                  REVIEW CARD 3                    -->
-        <!-- ================================================= -->
+        <!-- Review 3 -->
 
-        <div class="review-card">
+        <article class="review-card">
 
             <div class="review-stars">
 
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
+                ⭐⭐⭐⭐⭐
 
             </div>
 
             <p>
 
-                Fast delivery, premium products,
+                Luxury shopping experience. Beautiful packaging
                 and excellent customer support.
 
             </p>
@@ -1532,9 +1484,7 @@ href="css/responsive.css">
             <div class="review-user">
 
                 <img
-
-                    src="images/user3.png"
-
+                    src="images/ui/user-3.png"
                     alt="Customer">
 
                 <div>
@@ -1547,7 +1497,7 @@ href="css/responsive.css">
 
                     <span>
 
-                        Verified Customer
+                        Verified Buyer
 
                     </span>
 
@@ -1555,88 +1505,87 @@ href="css/responsive.css">
 
             </div>
 
-        </div>
+        </article>
 
     </div>
 
 </section>
 
 <!-- ========================================================= -->
-<!--                CUSTOMER REVIEWS END                       -->
-<!-- ========================================================= -->
-
-
-<!-- ========================================================= -->
-<!--                NEWSLETTER START                           -->
+<!--               NEWSLETTER START                            -->
 <!-- ========================================================= -->
 
 <section
-
     class="newsletter-section">
 
-    <div class="newsletter-container">
-
-        <span>
-
-            Stay Updated
-
-        </span>
-
-        <h2>
-
-            Join Royal Store Newsletter
-
-        </h2>
-
-        <p>
-
-            Subscribe to receive the latest collections,
-            exclusive offers and premium fashion updates.
-
-        </p>
-
-        <form
-
-            class="newsletter-form">
-
-            <input
-
-                type="email"
-
-                placeholder="Enter Your Email"
-
-                required>
-
-            <button
-
-                type="submit">
-
-                Subscribe
-
-            </button>
-
-        </form>
-
-    </div>
+<!-- Newsletter Part 7 -->
 
 </section>
+
+End of Part 6
+
+index.html — Part 7
+
+<!-- ========================================================= -->
+<!--                 NEWSLETTER SECTION                        -->
+<!-- ========================================================= -->
+
+<div class="newsletter-container">
+
+    <span>
+
+        Stay Updated
+
+    </span>
+
+    <h2>
+
+        Subscribe To Royal Store
+
+    </h2>
+
+    <p>
+
+        Get exclusive offers, premium collections,
+        discount coupons and latest fashion updates.
+
+    </p>
+
+    <form
+        class="newsletter-form">
+
+        <input
+            type="email"
+            placeholder="Enter Your Email"
+            required>
+
+        <button
+            type="submit">
+
+            Subscribe
+
+        </button>
+
+    </form>
+
+</div>
 
 <!-- ========================================================= -->
 <!--                 NEWSLETTER END                            -->
 <!-- ========================================================= -->
+
+</section>
 
 <!-- ========================================================= -->
 <!--                 CONTACT SECTION START                     -->
 <!-- ========================================================= -->
 
 <section
-
     id="contact"
-
     class="contact-section">
 
     <!-- ===================================================== -->
-    <!--                  SECTION HEADING                      -->
+    <!--                  SECTION TITLE                        -->
     <!-- ===================================================== -->
 
     <div class="section-title">
@@ -1649,14 +1598,13 @@ href="css/responsive.css">
 
         <h2>
 
-            Get In Touch
+            We're Here To Help
 
         </h2>
 
         <p>
 
-            Need help? Our support team is always ready
-            to assist you with your shopping experience.
+            Contact our support team anytime.
 
         </p>
 
@@ -1668,9 +1616,7 @@ href="css/responsive.css">
 
     <div class="contact-container">
 
-        <!-- ================================================= -->
-        <!--                  CONTACT CARD 1                   -->
-        <!-- ================================================= -->
+        <!-- Phone -->
 
         <div class="contact-card">
 
@@ -1678,21 +1624,19 @@ href="css/responsive.css">
 
             <h3>
 
-                Call Us
+                Phone
 
             </h3>
 
             <p>
 
-                +91 87911 39418
+                +91 XXXXX XXXXX
 
             </p>
 
         </div>
 
-        <!-- ================================================= -->
-        <!--                  CONTACT CARD 2                   -->
-        <!-- ================================================= -->
+        <!-- Email -->
 
         <div class="contact-card">
 
@@ -1706,15 +1650,13 @@ href="css/responsive.css">
 
             <p>
 
-                support@royalstore.in
+                support@royalstore.com
 
             </p>
 
         </div>
 
-        <!-- ================================================= -->
-        <!--                  CONTACT CARD 3                   -->
-        <!-- ================================================= -->
+        <!-- WhatsApp -->
 
         <div class="contact-card">
 
@@ -1726,21 +1668,15 @@ href="css/responsive.css">
 
             </h3>
 
-            <a
+            <p>
 
-                href="https://wa.me/918791139418"
+                Chat With Us
 
-                target="_blank">
-
-                Chat Now
-
-            </a>
+            </p>
 
         </div>
 
-        <!-- ================================================= -->
-        <!--                  CONTACT CARD 4                   -->
-        <!-- ================================================= -->
+        <!-- Location -->
 
         <div class="contact-card">
 
@@ -1765,11 +1701,6 @@ href="css/responsive.css">
 </section>
 
 <!-- ========================================================= -->
-<!--                  CONTACT SECTION END                      -->
-<!-- ========================================================= -->
-
-
-<!-- ========================================================= -->
 <!--                    FOOTER START                           -->
 <!-- ========================================================= -->
 
@@ -1777,11 +1708,9 @@ href="css/responsive.css">
 
     <div class="footer-container">
 
-        <!-- ================================================= -->
-        <!--                    BRAND INFO                     -->
-        <!-- ================================================= -->
+        <!-- Logo -->
 
-        <div class="footer-box">
+        <div class="footer-column">
 
             <h2>
 
@@ -1791,19 +1720,15 @@ href="css/responsive.css">
 
             <p>
 
-                Premium Fashion & Beauty Shopping
-                with luxury experience, trusted quality
-                and fast delivery.
+                Premium Fashion & Lifestyle Brand.
 
             </p>
 
         </div>
 
-        <!-- ================================================= -->
-        <!--                  QUICK LINKS                      -->
-        <!-- ================================================= -->
+        <!-- Quick Links -->
 
-        <div class="footer-box">
+        <div class="footer-column">
 
             <h3>
 
@@ -1815,51 +1740,43 @@ href="css/responsive.css">
 
                 <li><a href="index.html">Home</a></li>
 
-                <li><a href="shirts.html">Shirts</a></li>
+                <li><a href="#categories">Categories</a></li>
 
-                <li><a href="pants.html">Cargo Pants</a></li>
+                <li><a href="cart.html">Cart</a></li>
 
-                <li><a href="sneakers.html">Sneakers</a></li>
-
-                <li><a href="beauty.html">Beauty</a></li>
+                <li><a href="contact.html">Contact</a></li>
 
             </ul>
 
         </div>
 
-        <!-- ================================================= -->
-        <!--                  CUSTOMER SUPPORT                 -->
-        <!-- ================================================= -->
+        <!-- Customer -->
 
-        <div class="footer-box">
+        <div class="footer-column">
 
             <h3>
 
-                Support
+                Customer
 
             </h3>
 
             <ul>
 
-                <li><a href="contact.html">Contact Us</a></li>
-
                 <li><a href="login.html">Login</a></li>
-
-                <li><a href="signup.html">Sign Up</a></li>
 
                 <li><a href="orders.html">Orders</a></li>
 
-                <li><a href="cart.html">Cart</a></li>
+                <li><a href="wishlist.html">Wishlist</a></li>
+
+                <li><a href="privacy.html">Privacy Policy</a></li>
 
             </ul>
 
         </div>
 
-        <!-- ================================================= -->
-        <!--                 SOCIAL MEDIA                      -->
-        <!-- ================================================= -->
+        <!-- Social -->
 
-        <div class="footer-box">
+        <div class="footer-column">
 
             <h3>
 
@@ -1869,29 +1786,13 @@ href="css/responsive.css">
 
             <div class="social-icons">
 
-                <a href="#">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
 
-                    <i class="fa-brands fa-facebook-f"></i>
+                <a href="#"><i class="fab fa-instagram"></i></a>
 
-                </a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
 
-                <a href="#">
-
-                    <i class="fa-brands fa-instagram"></i>
-
-                </a>
-
-                <a href="#">
-
-                    <i class="fa-brands fa-x-twitter"></i>
-
-                </a>
-
-                <a href="#">
-
-                    <i class="fa-brands fa-youtube"></i>
-
-                </a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
 
             </div>
 
@@ -1899,118 +1800,128 @@ href="css/responsive.css">
 
     </div>
 
-    <!-- ===================================================== -->
-    <!--                  COPYRIGHT AREA                       -->
-    <!-- ===================================================== -->
+    <!-- Copyright -->
 
-    <div class="footer-bottom">
+    <div class="copyright">
 
-        <p>
-
-            © 2026 Royal Store.
-            All Rights Reserved.
-
-        </p>
+        © 2026 Royal Store. All Rights Reserved.
 
     </div>
 
 </footer>
 
 <!-- ========================================================= -->
-<!--                     FOOTER END                            -->
+<!--                    FOOTER END                             -->
 <!-- ========================================================= -->
 
 <!-- ========================================================= -->
-<!--                  BACK TO TOP BUTTON START                 -->
+<!--              BACK TO TOP BUTTON                           -->
 <!-- ========================================================= -->
 
 <button
-
     id="back-to-top"
-
-    class="back-to-top"
-
-    aria-label="Back To Top">
+    class="back-to-top">
 
     <i class="fa-solid fa-arrow-up"></i>
 
 </button>
 
 <!-- ========================================================= -->
-<!--                   BACK TO TOP BUTTON END                  -->
+<!--                  PART 07 END                              -->
 <!-- ========================================================= -->
 
+<!-- Toast + iPhone Popup + JS Files -->
+<!-- Part 8 -->
+
+index.html — Part 8
 
 <!-- ========================================================= -->
-<!--                 GLOBAL TOAST CONTAINER START              -->
+<!--                  TOAST NOTIFICATION                       -->
 <!-- ========================================================= -->
 
 <div
+    id="toast"
+    class="toast">
 
-    id="toast-container"
+    <div class="toast-icon">
 
-    class="toast-container">
+        <i class="fa-solid fa-circle-check"></i>
+
+    </div>
+
+    <div class="toast-content">
+
+        <h4>
+
+            Success
+
+        </h4>
+
+        <p id="toast-message">
+
+            Action completed successfully.
+
+        </p>
+
+    </div>
+
+    <button
+        id="toast-close"
+        class="toast-close">
+
+        <i class="fa-solid fa-xmark"></i>
+
+    </button>
 
 </div>
 
 <!-- ========================================================= -->
-<!--                  GLOBAL TOAST CONTAINER END               -->
-<!-- ========================================================= -->
-
-
-<!-- ========================================================= -->
-<!--                 iPHONE POPUP MODAL START                  -->
+<!--                iPHONE STYLE POPUP                         -->
 <!-- ========================================================= -->
 
 <div
-
     id="ios-modal"
-
     class="ios-modal">
 
     <div class="ios-modal-box">
 
-        <div class="ios-modal-icon">
+        <div class="modal-icon">
 
-            <i class="fa-solid fa-circle-check"></i>
+            <i
+                id="modal-icon"
+                class="fa-solid fa-circle-info">
+
+            </i>
 
         </div>
 
-        <h2
+        <h2 id="modal-title">
 
-            id="modal-title">
-
-            Success
+            Royal Store
 
         </h2>
 
-        <p
+        <p id="modal-message">
 
-            id="modal-message">
-
-            Your action completed successfully.
+            Welcome to Royal Store.
 
         </p>
 
         <div class="modal-buttons">
 
             <button
-
                 id="modal-cancel"
-
-                class="modal-btn cancel-btn">
+                class="modal-btn secondary-btn">
 
                 Cancel
 
             </button>
 
             <button
-
                 id="modal-confirm"
+                class="modal-btn primary-btn">
 
-                class="modal-btn confirm-btn">
-
-                OK
+                Continue
 
             </button>
 
@@ -2021,73 +1932,66 @@ href="css/responsive.css">
 </div>
 
 <!-- ========================================================= -->
-<!--                  iPHONE POPUP MODAL END                   -->
-<!-- ========================================================= -->
-
-
-<!-- ========================================================= -->
-<!--                 PAGE OVERLAY START                        -->
-<!-- ========================================================= -->
-
-<div
-
-    id="page-overlay"
-
-    class="page-overlay">
-
-</div>
-
-<!-- ========================================================= -->
-<!--                  PAGE OVERLAY END                         -->
-<!-- ========================================================= -->
-
-
-<!-- ========================================================= -->
-<!--                  WEBSITE WRAPPER END                      -->
+<!--                    WEBSITE WRAPPER END                    -->
 <!-- ========================================================= -->
 
 </div>
 
-
 <!-- ========================================================= -->
-<!--                 JAVASCRIPT FILES START                    -->
+<!--                   JAVASCRIPT FILES                        -->
 <!-- ========================================================= -->
-
-<script src="js/products.js"></script>
-
-<script src="js/cart.js"></script>
-
-<script src="js/auth.js"></script>
-
-<script src="js/search.js"></script>
-
-<script src="js/filter.js"></script>
-
-<script src="js/whatsapp.js"></script>
-
-<script src="js/checkout.js"></script>
-
-<script src="js/ui.js"></script>
 
 <script src="js/app.js"></script>
 
-<!-- ========================================================= -->
-<!--                  JAVASCRIPT FILES END                     -->
-<!-- ========================================================= -->
-<script>
-window.addEventListener("load", function () {
+<script src="js/ui.js"></script>
 
-    const loader = document.getElementById("loading-screen");
+<script src="js/products.js"></script>
 
-    if(loader){
-        loader.style.display = "none";
-    }
+<script src="js/auth.js"></script>
 
-    document.body.style.visibility = "visible";
-    document.body.style.opacity = "1";
+<script src="js/cart.js"></script>
 
-});
-</script>
+<script src="js/checkout.js"></script>
+
+<script src="js/location.js"></script>
+
+<script src="js/wishlist.js"></script>
+
+<script src="js/orders.js"></script>
+
+<script src="js/search.js"></script>
+
+<script src="js/security.js"></script>
+
+<script src="js/database.js"></script>
+
+<script src="js/api.js"></script>
+
+<script src="js/cloudsync.js"></script>
+
+<script src="js/backup.js"></script>
+
+<script src="js/invoice.js"></script>
+
+<script src="js/seller.js"></script>
+
+<script src="js/affiliate.js"></script>
+
+<script src="js/returns.js"></script>
+
+<script src="js/wallet.js"></script>
+
+<script src="js/subscription.js"></script>
+
+<script src="js/giftcard.js"></script>
+
+<script src="js/coupon-engine.js"></script>
+
+<script src="js/recommendation-ai.js"></script>
+
+<script src="js/seo.js"></script>
+
+<script src="js/performance.js"></script>
 
 <!-- ========================================================= -->
 <!--                     BODY END                              -->
@@ -2100,7 +2004,3 @@ window.addEventListener("load", function () {
 <!-- ========================================================= -->
 
 </html>
-
-<!-- ========================================================= -->
-<!--               ROYAL STORE V3 - INDEX COMPLETE             -->
-<!-- ========================================================= -->
