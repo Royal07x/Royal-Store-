@@ -1,20 +1,15 @@
+css/style.css — Part 1
+
 /* ===========================================================
-                    ROYAL STORE V3
-                    FILE : style.css
-                    PART : 01
-                    VERSION : 3.0 Stable
+                    ROYAL STORE V4
+                  FILE : style.css
+                  PART : 01
+                  VERSION : 4.0
 =========================================================== */
 
 
 /* ===========================================================
-                     GOOGLE FONTS
-=========================================================== */
-
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800;900&display=swap');
-
-
-/* ===========================================================
-                     CSS RESET
+                    CSS RESET
 =========================================================== */
 
 *{
@@ -27,74 +22,11 @@
 
 }
 
+*::before,
 
-/* ===========================================================
-                    ROOT VARIABLES
-=========================================================== */
+*::after{
 
-:root{
-
-    /* Background */
-
-    --background:#FFF5F7;
-
-    --surface:#FFFFFF;
-
-    --card:#FFFFFF;
-
-    /* Text */
-
-    --text:#111111;
-
-    --text-light:#555555;
-
-    --text-white:#FFFFFF;
-
-    /* Brand */
-
-    --primary:#111111;
-
-    --secondary:#C9A227;
-
-    --accent:#F7C8D8;
-
-    --whatsapp:#128C7E;
-
-    --danger:#E53935;
-
-    --success:#2E7D32;
-
-    /* Border */
-
-    --border:#ECECEC;
-
-    /* Shadow */
-
-    --shadow-sm:0 5px 15px rgba(0,0,0,.08);
-
-    --shadow-md:0 10px 25px rgba(0,0,0,.12);
-
-    --shadow-lg:0 25px 50px rgba(0,0,0,.18);
-
-    /* Radius */
-
-    --radius-sm:10px;
-
-    --radius-md:18px;
-
-    --radius-lg:28px;
-
-    --radius-xl:40px;
-
-    /* Animation */
-
-    --transition:.30s ease;
-
-    /* Layout */
-
-    --container:1400px;
-
-    --header-height:80px;
+    box-sizing:border-box;
 
 }
 
@@ -107,7 +39,7 @@ html{
 
     scroll-behavior:smooth;
 
-    font-size:16px;
+    overflow-x:hidden;
 
 }
 
@@ -118,28 +50,57 @@ html{
 
 body{
 
-    background:var(--background);
+    font-family:var(--body-font);
+
+    font-size:var(--font-md);
+
+    font-weight:var(--weight-regular);
+
+    line-height:var(--line-normal);
 
     color:var(--text);
 
-    font-family:'Outfit',sans-serif;
+    background:var(--background);
 
     overflow-x:hidden;
 
-    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+
+    -moz-osx-font-smoothing:grayscale;
 
 }
 
 
 /* ===========================================================
-                 WEBSITE WRAPPER
+                WEBSITE WRAPPER
 =========================================================== */
 
-.website-wrapper{
+#website-wrapper{
 
     width:100%;
 
     min-height:100vh;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+/* ===========================================================
+                    CONTAINER
+=========================================================== */
+
+.container{
+
+    width:100%;
+
+    max-width:var(--container);
+
+    margin:auto;
+
+    padding:0 20px;
 
 }
 
@@ -156,7 +117,7 @@ img{
 
     max-width:100%;
 
-    user-select:none;
+    height:auto;
 
 }
 
@@ -167,9 +128,9 @@ img{
 
 a{
 
-    text-decoration:none;
-
     color:inherit;
+
+    text-decoration:none;
 
     transition:var(--transition);
 
@@ -177,10 +138,12 @@ a{
 
 
 /* ===========================================================
-                     LIST
+                    LIST
 =========================================================== */
 
-ul{
+ul,
+
+ol{
 
     list-style:none;
 
@@ -188,7 +151,7 @@ ul{
 
 
 /* ===========================================================
-                     BUTTONS
+                    BUTTON
 =========================================================== */
 
 button{
@@ -197,30 +160,68 @@ button{
 
     outline:none;
 
+    background:none;
+
     cursor:pointer;
 
-    font-family:'Outfit',sans-serif;
-
-    transition:var(--transition);
+    font-family:inherit;
 
 }
 
 
 /* ===========================================================
-                     INPUTS
+                    INPUT
 =========================================================== */
 
 input,
 
-select,
+textarea,
 
-textarea{
-
-    outline:none;
+select{
 
     border:none;
 
-    font-family:'Outfit',sans-serif;
+    outline:none;
+
+    font-family:inherit;
+
+    background:transparent;
+
+}
+
+
+/* ===========================================================
+                    HEADINGS
+=========================================================== */
+
+h1,
+
+h2,
+
+h3,
+
+h4,
+
+h5,
+
+h6{
+
+    font-family:var(--heading-font);
+
+    font-weight:var(--weight-bold);
+
+    color:var(--primary);
+
+}
+
+
+/* ===========================================================
+                    PARAGRAPH
+=========================================================== */
+
+p{
+
+    color:var(--text-light);
 
 }
 
@@ -231,32 +232,64 @@ textarea{
 
 section{
 
-    padding:90px 7%;
+    position:relative;
+
+    padding:100px 0;
 
 }
 
 
 /* ===========================================================
-                 COMMON CONTAINER
+                    TEXT SELECTION
 =========================================================== */
 
-.container{
+::selection{
 
-    width:100%;
+    background:var(--secondary);
 
-    max-width:var(--container);
-
-    margin:auto;
+    color:var(--white);
 
 }
 
 
 /* ===========================================================
-                  PART 01 END
+                    SCROLLBAR
 =========================================================== */
 
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#f4f4f4;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--secondary);
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--primary);
+
+}
+
+
 /* ===========================================================
-                    HEADER START
+                    PART 01 END
+=========================================================== */
+css/style.css — Part 2
+
+/* ===========================================================
+                    HEADER
 =========================================================== */
 
 #main-header{
@@ -271,15 +304,15 @@ section{
 
     height:var(--header-height);
 
-    background:rgba(255,245,247,.90);
+    z-index:var(--z-header);
 
-    backdrop-filter:blur(20px);
+    background:rgba(255,255,255,.85);
 
-    -webkit-backdrop-filter:blur(20px);
+    backdrop-filter:var(--glass-blur);
 
-    border-bottom:1px solid var(--border);
+    -webkit-backdrop-filter:var(--glass-blur);
 
-    z-index:1000;
+    border-bottom:1px solid var(--border-light);
 
     transition:var(--transition);
 
@@ -287,7 +320,7 @@ section{
 
 
 /* ===========================================================
-                  HEADER CONTAINER
+                HEADER CONTAINER
 =========================================================== */
 
 .header-container{
@@ -300,19 +333,19 @@ section{
 
     margin:auto;
 
+    padding:0 20px;
+
     display:flex;
 
     align-items:center;
 
     justify-content:space-between;
 
-    padding:0 25px;
-
 }
 
 
 /* ===========================================================
-                       LOGO
+                    LOGO
 =========================================================== */
 
 .logo{
@@ -323,11 +356,11 @@ section{
 
     gap:10px;
 
-    font-family:'Playfair Display',serif;
+    font-family:var(--heading-font);
 
     font-size:30px;
 
-    font-weight:700;
+    font-weight:var(--weight-bold);
 
     color:var(--primary);
 
@@ -337,13 +370,11 @@ section{
 
     color:var(--secondary);
 
-    font-size:28px;
-
 }
 
 
 /* ===========================================================
-                    DESKTOP NAVBAR
+                    NAVBAR
 =========================================================== */
 
 .navbar ul{
@@ -358,13 +389,13 @@ section{
 
 .navbar a{
 
-    position:relative;
+    font-size:15px;
 
-    font-size:16px;
-
-    font-weight:600;
+    font-weight:var(--weight-medium);
 
     color:var(--text);
+
+    transition:var(--transition-fast);
 
 }
 
@@ -376,58 +407,32 @@ section{
 
 }
 
-.navbar a::after{
-
-    content:"";
-
-    position:absolute;
-
-    left:0;
-
-    bottom:-6px;
-
-    width:0;
-
-    height:2px;
-
-    background:var(--secondary);
-
-    transition:var(--transition);
-
-}
-
-.navbar a:hover::after,
-
-.navbar a.active::after{
-
-    width:100%;
-
-}
-
 
 /* ===========================================================
-                     SEARCH BOX
+                  SEARCH BOX
 =========================================================== */
 
 .search-box{
+
+    width:280px;
+
+    height:48px;
 
     display:flex;
 
     align-items:center;
 
-    gap:10px;
+    gap:12px;
 
-    background:#ffffff;
+    padding:0 18px;
+
+    border-radius:var(--radius-round);
+
+    background:var(--surface);
 
     border:1px solid var(--border);
 
-    border-radius:50px;
-
-    padding:12px 18px;
-
-    min-width:280px;
-
-    box-shadow:var(--shadow-sm);
+    box-shadow:var(--shadow-xs);
 
 }
 
@@ -441,17 +446,15 @@ section{
 
     width:100%;
 
-    background:transparent;
+    font-size:15px;
 
     color:var(--text);
-
-    font-size:15px;
 
 }
 
 
 /* ===========================================================
-                  HEADER ACTIONS
+                HEADER ACTIONS
 =========================================================== */
 
 .header-actions{
@@ -460,24 +463,15 @@ section{
 
     align-items:center;
 
-    gap:14px;
+    gap:12px;
 
 }
 
-
-/* ===========================================================
-                   HEADER ICONS
-=========================================================== */
-
 .header-icon{
-
-    position:relative;
 
     width:48px;
 
     height:48px;
-
-    border-radius:50%;
 
     display:flex;
 
@@ -485,11 +479,13 @@ section{
 
     justify-content:center;
 
-    background:#ffffff;
+    border-radius:50%;
 
-    box-shadow:var(--shadow-sm);
+    background:var(--surface);
 
-    color:var(--text);
+    box-shadow:var(--shadow-xs);
+
+    position:relative;
 
     transition:var(--transition);
 
@@ -497,346 +493,79 @@ section{
 
 .header-icon:hover{
 
-    transform:translateY(-4px);
+    transform:translateY(-3px);
 
-    color:var(--secondary);
+    background:var(--secondary);
+
+    color:var(--white);
 
 }
 
 
 /* ===========================================================
-                    CART COUNT
+                    CART BADGE
 =========================================================== */
 
 #cart-count{
 
     position:absolute;
 
-    top:-5px;
+    top:-6px;
 
-    right:-5px;
+    right:-4px;
 
     width:22px;
 
     height:22px;
 
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
     border-radius:50%;
 
     background:var(--danger);
 
-    color:#ffffff;
+    color:var(--white);
 
     font-size:12px;
 
     font-weight:700;
 
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
 }
 
 
 /* ===========================================================
-                   MOBILE MENU BUTTON
+                  MOBILE MENU BUTTON
 =========================================================== */
 
 .menu-btn{
+
+    display:none;
 
     width:48px;
 
     height:48px;
 
-    border-radius:50%;
-
-    background:#ffffff;
-
-    display:none;
-
     align-items:center;
 
     justify-content:center;
 
-    box-shadow:var(--shadow-sm);
-
-}
-
-.menu-btn i{
-
-    font-size:20px;
-
-    color:var(--primary);
-
-}
-
-
-/* ===========================================================
-                     HEADER END
-=========================================================== */
-
-/* ===========================================================
-                  MOBILE SIDEBAR MENU
-=========================================================== */
-
-.mobile-menu{
-
-    position:fixed;
-
-    top:0;
-
-    right:-100%;
-
-    width:330px;
-
-    max-width:85%;
-
-    height:100vh;
-
-    background:#ffffff;
-
-    box-shadow:var(--shadow-lg);
-
-    z-index:2000;
-
-    transition:.40s ease;
-
-    overflow-y:auto;
-
-}
-
-.mobile-menu.active{
-
-    right:0;
-
-}
-
-
-/* ===========================================================
-                MOBILE MENU HEADER
-=========================================================== */
-
-.mobile-menu-header{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    padding:25px;
-
-    border-bottom:1px solid var(--border);
-
-}
-
-.mobile-menu-header h2{
-
-    font-family:'Playfair Display',serif;
-
-    font-size:28px;
-
-    color:var(--primary);
-
-}
-
-.mobile-menu-header button{
-
-    width:45px;
-
-    height:45px;
-
     border-radius:50%;
 
-    background:var(--accent);
+    background:var(--surface);
 
-    color:var(--primary);
-
-    font-size:20px;
+    box-shadow:var(--shadow-xs);
 
 }
 
 
 /* ===========================================================
-                  MOBILE MENU LINKS
+                    PART 02 END
 =========================================================== */
-
-.mobile-menu ul{
-
-    padding:20px;
-
-}
-
-.mobile-menu ul li{
-
-    margin-bottom:12px;
-
-}
-
-.mobile-menu ul li a{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    padding:16px 18px;
-
-    background:#ffffff;
-
-    border:1px solid var(--border);
-
-    border-radius:16px;
-
-    font-size:16px;
-
-    font-weight:600;
-
-    color:var(--primary);
-
-    transition:var(--transition);
-
-}
-
-.mobile-menu ul li a:hover{
-
-    background:var(--accent);
-
-    color:var(--primary);
-
-    transform:translateX(6px);
-
-}
-
-
-/* ===========================================================
-                    MENU OVERLAY
-=========================================================== */
-
-.menu-overlay{
-
-    position:fixed;
-
-    inset:0;
-
-    background:rgba(0,0,0,.45);
-
-    backdrop-filter:blur(4px);
-
-    -webkit-backdrop-filter:blur(4px);
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transition:var(--transition);
-
-    z-index:1500;
-
-}
-
-.menu-overlay.active{
-
-    opacity:1;
-
-    visibility:visible;
-
-}
-
-
-/* ===========================================================
-                    LOADING SCREEN
-=========================================================== */
-
-    #loading-screen{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:#ffffff;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    z-index:999999;
-    }
-
-.loader-box{
-
-    text-align:center;
-
-}
-
-.loader-box h2{
-
-    margin-top:20px;
-
-    font-family:'Playfair Display',serif;
-
-    font-size:34px;
-
-    color:var(--primary);
-
-}
-
-.loader-box p{
-
-    margin-top:8px;
-
-    color:var(--text-light);
-
-}
-
-
-/* ===========================================================
-                    LOADER CIRCLE
-=========================================================== */
-
-.loader-circle{
-
-    width:70px;
-
-    height:70px;
-
-    margin:auto;
-
-    border-radius:50%;
-
-    border:6px solid #f3d8e2;
-
-    border-top-color:var(--secondary);
-
-    animation:loaderSpin 1s linear infinite;
-
-}
-
-
-/* ===========================================================
-                  LOADER ANIMATION
-=========================================================== */
-
-@keyframes loaderSpin{
-
-    0%{
-
-        transform:rotate(0deg);
-
-    }
-
-    100%{
-
-        transform:rotate(360deg);
-
-    }
-
-}
-
-
-/* ===========================================================
-                    PART 03 END
-=========================================================== */
+css/style.css — Part 3
 
 /* ===========================================================
                     HERO SECTION
@@ -846,24 +575,30 @@ section{
 
     width:100%;
 
-    padding-top:140px;
+    padding-top:160px;
 
     padding-bottom:100px;
 
-    background:linear-gradient(180deg,#FFF5F7 0%,#FFEAF1 100%);
+    background:var(--gradient-hero);
+
+    overflow:hidden;
 
 }
 
 
 /* ===========================================================
-                  HERO CONTAINER
+                    HERO CONTAINER
 =========================================================== */
 
 .hero-container{
 
+    width:100%;
+
     max-width:var(--container);
 
     margin:auto;
+
+    padding:0 20px;
 
     display:grid;
 
@@ -871,13 +606,13 @@ section{
 
     align-items:center;
 
-    gap:60px;
+    gap:70px;
 
 }
 
 
 /* ===========================================================
-                   HERO CONTENT
+                    HERO CONTENT
 =========================================================== */
 
 .hero-content{
@@ -886,7 +621,7 @@ section{
 
     flex-direction:column;
 
-    gap:25px;
+    align-items:flex-start;
 
 }
 
@@ -899,57 +634,67 @@ section{
 
     display:inline-flex;
 
-    width:max-content;
+    align-items:center;
 
-    padding:10px 22px;
+    gap:8px;
 
-    background:#ffffff;
+    padding:10px 20px;
 
-    border-radius:50px;
+    margin-bottom:24px;
+
+    border-radius:var(--radius-round);
+
+    background:var(--surface);
 
     color:var(--secondary);
 
-    font-size:15px;
+    font-size:14px;
 
-    font-weight:700;
+    font-weight:var(--weight-semibold);
 
-    box-shadow:var(--shadow-sm);
+    box-shadow:var(--shadow-xs);
 
 }
 
 
 /* ===========================================================
-                   HERO TITLE
+                    HERO TITLE
 =========================================================== */
 
-.hero-content h1,
 .hero-title{
-    font-family:'Playfair Display',serif;
-    font-size:65px;
+
+    font-size:64px;
+
     line-height:1.15;
+
+    margin-bottom:24px;
+
     color:var(--primary);
+
 }
 
 
 /* ===========================================================
-                HERO DESCRIPTION
+                  HERO DESCRIPTION
 =========================================================== */
 
-.hero-content p{
+.hero-description{
 
-    max-width:650px;
+    max-width:580px;
 
     font-size:18px;
 
+    line-height:1.8;
+
     color:var(--text-light);
 
-    line-height:1.8;
+    margin-bottom:35px;
 
 }
 
 
 /* ===========================================================
-                  HERO BUTTON GROUP
+                    HERO BUTTONS
 =========================================================== */
 
 .hero-buttons{
@@ -960,16 +705,20 @@ section{
 
     gap:18px;
 
-    flex-wrap:wrap;
+    margin-bottom:40px;
 
 }
 
 
 /* ===========================================================
-                   SHOP NOW BUTTON
+                    SHOP BUTTON
 =========================================================== */
 
 .shop-btn{
+
+    height:56px;
+
+    padding:0 30px;
 
     display:inline-flex;
 
@@ -977,32 +726,36 @@ section{
 
     gap:12px;
 
-    padding:16px 34px;
+    border-radius:var(--radius-round);
 
-    border-radius:50px;
+    background:var(--gradient-primary);
 
-    background:var(--primary);
+    color:var(--white);
 
-    color:var(--text-white);
-
-    font-weight:700;
+    font-weight:var(--weight-semibold);
 
     box-shadow:var(--shadow-md);
+
+    transition:var(--transition);
 
 }
 
 .shop-btn:hover{
 
-    transform:translateY(-5px);
+    transform:translateY(-4px);
 
 }
 
 
 /* ===========================================================
-                EXPLORE BUTTON
+                    EXPLORE BUTTON
 =========================================================== */
 
 .explore-btn{
+
+    height:56px;
+
+    padding:0 30px;
 
     display:inline-flex;
 
@@ -1010,40 +763,38 @@ section{
 
     justify-content:center;
 
-    padding:16px 34px;
+    border:2px solid var(--primary);
 
-    border-radius:50px;
-
-    border:2px solid var(--secondary);
+    border-radius:var(--radius-round);
 
     color:var(--primary);
 
-    font-weight:700;
+    font-weight:var(--weight-semibold);
+
+    transition:var(--transition);
 
 }
 
 .explore-btn:hover{
 
-    background:var(--secondary);
+    background:var(--primary);
 
-    color:#ffffff;
+    color:var(--white);
 
 }
 
 
 /* ===========================================================
-                 HERO FEATURES
+                  HERO FEATURES
 =========================================================== */
 
 .hero-features{
 
     display:flex;
 
-    flex-wrap:wrap;
+    align-items:center;
 
-    gap:18px;
-
-    margin-top:10px;
+    gap:30px;
 
 }
 
@@ -1055,13 +806,9 @@ section{
 
     gap:10px;
 
-    padding:14px 18px;
+    color:var(--text);
 
-    background:#ffffff;
-
-    border-radius:18px;
-
-    box-shadow:var(--shadow-sm);
+    font-weight:var(--weight-medium);
 
 }
 
@@ -1069,11 +816,13 @@ section{
 
     color:var(--secondary);
 
+    font-size:20px;
+
 }
 
 
 /* ===========================================================
-                  HERO IMAGE
+                    HERO IMAGE
 =========================================================== */
 
 .hero-image{
@@ -1082,34 +831,46 @@ section{
 
     justify-content:center;
 
+    align-items:center;
+
 }
 
 .hero-image img{
 
     width:100%;
 
-    max-width:560px;
+    max-width:650px;
 
-    border-radius:30px;
-
-    box-shadow:var(--shadow-lg);
+    animation:floatImage 4s ease-in-out infinite;
 
 }
 
 
 /* ===========================================================
-                    PART 04 END
+                    PART 03 END
 =========================================================== */
+css/style.css — Part 4
 
 /* ===========================================================
-                 SECTION TITLE
+                FEATURED CATEGORIES
+=========================================================== */
+
+.featured-categories{
+
+    background:var(--surface);
+
+}
+
+
+/* ===========================================================
+                  SECTION TITLE
 =========================================================== */
 
 .section-title{
 
     text-align:center;
 
-    margin-bottom:60px;
+    margin-bottom:70px;
 
 }
 
@@ -1117,29 +878,27 @@ section{
 
     display:inline-block;
 
-    padding:10px 24px;
+    padding:10px 22px;
 
-    background:#ffffff;
+    margin-bottom:18px;
+
+    border-radius:var(--radius-round);
+
+    background:var(--accent);
 
     color:var(--secondary);
 
-    border-radius:50px;
+    font-size:14px;
 
-    font-size:15px;
-
-    font-weight:700;
-
-    box-shadow:var(--shadow-sm);
+    font-weight:var(--weight-semibold);
 
 }
 
 .section-title h2{
 
-    margin-top:20px;
+    font-size:52px;
 
-    font-family:'Playfair Display',serif;
-
-    font-size:48px;
+    margin-bottom:18px;
 
     color:var(--primary);
 
@@ -1147,13 +906,13 @@ section{
 
 .section-title p{
 
-    max-width:700px;
+    max-width:650px;
 
-    margin:18px auto 0;
-
-    color:var(--text-light);
+    margin:auto;
 
     font-size:17px;
+
+    color:var(--text-light);
 
     line-height:1.8;
 
@@ -1161,14 +920,18 @@ section{
 
 
 /* ===========================================================
-               CATEGORY CONTAINER
+                CATEGORY CONTAINER
 =========================================================== */
 
 .category-container{
 
+    width:100%;
+
     max-width:var(--container);
 
     margin:auto;
+
+    padding:0 20px;
 
     display:grid;
 
@@ -1180,14 +943,14 @@ section{
 
 
 /* ===========================================================
-                 CATEGORY CARD
+                  CATEGORY CARD
 =========================================================== */
 
 .category-card{
 
-    background:#ffffff;
+    background:var(--surface);
 
-    border-radius:28px;
+    border-radius:var(--radius-lg);
 
     overflow:hidden;
 
@@ -1207,14 +970,14 @@ section{
 
 
 /* ===========================================================
-               CATEGORY IMAGE
+                 CATEGORY IMAGE
 =========================================================== */
 
 .category-card img{
 
     width:100%;
 
-    height:280px;
+    height:320px;
 
     object-fit:cover;
 
@@ -1222,32 +985,28 @@ section{
 
 
 /* ===========================================================
-               CATEGORY CONTENT
+                CATEGORY CONTENT
 =========================================================== */
 
 .category-content{
 
-    padding:25px;
+    padding:24px;
+
+    text-align:center;
 
 }
 
 .category-content h3{
 
-    font-family:'Playfair Display',serif;
+    font-size:24px;
 
-    font-size:26px;
-
-    color:var(--primary);
+    margin-bottom:12px;
 
 }
 
 .category-content p{
 
-    margin:12px 0;
-
-    color:var(--text-light);
-
-    line-height:1.7;
+    margin-bottom:18px;
 
 }
 
@@ -1257,66 +1016,53 @@ section{
 
     align-items:center;
 
-    gap:10px;
+    gap:8px;
 
     color:var(--secondary);
 
-    font-weight:700;
+    font-weight:var(--weight-semibold);
 
 }
 
 
 /* ===========================================================
-               CATEGORY HOVER EFFECT
-=========================================================== */
-
-.category-card:hover .category-content span{
-
-    gap:16px;
-
-}
-
-
-/* ===========================================================
-               PART 05 END
-=========================================================== */
-
-/* ===========================================================
-                 TRENDING SECTION
+                TRENDING SECTION
 =========================================================== */
 
 .trending-section{
 
-    background:#FFF0F5;
+    background:var(--gradient-section);
 
 }
 
 
 /* ===========================================================
-               TRENDING BANNER
+                TRENDING BANNER
 =========================================================== */
 
 .trending-banner{
+
+    width:100%;
 
     max-width:var(--container);
 
     margin:auto;
 
+    padding:60px;
+
     display:grid;
 
     grid-template-columns:1fr 1fr;
 
-    gap:60px;
-
     align-items:center;
 
-    padding:60px;
+    gap:60px;
 
-    background:#ffffff;
+    border-radius:var(--radius-xl);
 
-    border-radius:35px;
+    background:var(--gradient-card);
 
-    box-shadow:var(--shadow-lg);
+    box-shadow:var(--shadow-md);
 
 }
 
@@ -1325,68 +1071,29 @@ section{
                 BANNER CONTENT
 =========================================================== */
 
-.banner-content{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:22px;
-
-}
-
-
-/* ===========================================================
-                 BANNER TAG
-=========================================================== */
-
 .banner-tag{
 
     display:inline-block;
 
-    width:max-content;
+    margin-bottom:20px;
 
-    padding:10px 22px;
+    color:var(--secondary);
 
-    background:var(--accent);
-
-    color:var(--primary);
-
-    border-radius:50px;
-
-    font-size:15px;
-
-    font-weight:700;
+    font-weight:var(--weight-semibold);
 
 }
-
-
-/* ===========================================================
-                BANNER TITLE
-=========================================================== */
 
 .banner-content h2{
 
-    font-family:'Playfair Display',serif;
+    font-size:50px;
 
-    font-size:54px;
-
-    color:var(--primary);
-
-    line-height:1.2;
+    margin-bottom:20px;
 
 }
 
-
-/* ===========================================================
-              BANNER DESCRIPTION
-=========================================================== */
-
 .banner-content p{
 
-    color:var(--text-light);
-
-    font-size:17px;
+    margin-bottom:30px;
 
     line-height:1.8;
 
@@ -1401,16 +1108,9 @@ section{
 
     display:flex;
 
-    flex-wrap:wrap;
-
     gap:18px;
 
 }
-
-
-/* ===========================================================
-                 VIEW BUTTON
-=========================================================== */
 
 .view-btn{
 
@@ -1420,17 +1120,15 @@ section{
 
     justify-content:center;
 
-    padding:16px 34px;
+    padding:16px 30px;
 
-    background:#ffffff;
+    border-radius:var(--radius-round);
 
-    border:2px solid var(--secondary);
+    border:2px solid var(--primary);
 
     color:var(--primary);
 
-    border-radius:50px;
-
-    font-weight:700;
+    font-weight:var(--weight-semibold);
 
     transition:var(--transition);
 
@@ -1438,15 +1136,15 @@ section{
 
 .view-btn:hover{
 
-    background:var(--secondary);
+    background:var(--primary);
 
-    color:#ffffff;
+    color:var(--white);
 
 }
 
 
 /* ===========================================================
-                 BANNER IMAGE
+                BANNER IMAGE
 =========================================================== */
 
 .banner-image{
@@ -1467,189 +1165,17 @@ section{
 
 
 /* ===========================================================
-              TRENDING FEATURES
+                    PART 04 END
 =========================================================== */
-
-.trending-features{
-
-    max-width:var(--container);
-
-    margin:50px auto 0;
-
-    display:grid;
-
-    grid-template-columns:repeat(4,1fr);
-
-    gap:25px;
-
-}
-
+css/style.css — Part 5
 
 /* ===========================================================
-                  FEATURE BOX
-=========================================================== */
-
-.feature-box{
-
-    background:#ffffff;
-
-    padding:35px 25px;
-
-    border-radius:25px;
-
-    text-align:center;
-
-    box-shadow:var(--shadow-sm);
-
-    transition:var(--transition);
-
-}
-
-.feature-box:hover{
-
-    transform:translateY(-8px);
-
-    box-shadow:var(--shadow-lg);
-
-}
-
-.feature-box i{
-
-    font-size:38px;
-
-    color:var(--secondary);
-
-    margin-bottom:18px;
-
-}
-
-.feature-box h3{
-
-    font-family:'Playfair Display',serif;
-
-    font-size:24px;
-
-    margin-bottom:12px;
-
-    color:var(--primary);
-
-}
-
-.feature-box p{
-
-    color:var(--text-light);
-
-    line-height:1.7;
-
-}
-
-
-/* ===========================================================
-                  PART 06 END
-=========================================================== */
-
-/* ===========================================================
-                 FEATURED PRODUCTS SECTION
+                  FEATURED PRODUCTS
 =========================================================== */
 
 .featured-products{
 
-    background:var(--background);
-
-}
-
-
-/* ===========================================================
-                 PRODUCT TOOLBAR
-=========================================================== */
-
-.product-toolbar{
-
-    max-width:var(--container);
-
-    margin:0 auto 45px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:20px;
-
-    flex-wrap:wrap;
-
-}
-
-
-/* ===========================================================
-                 SEARCH INPUT
-=========================================================== */
-
-.toolbar-search{
-
-    flex:1;
-
-    min-width:280px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    background:#ffffff;
-
-    padding:16px 20px;
-
-    border-radius:50px;
-
-    border:1px solid var(--border);
-
-    box-shadow:var(--shadow-sm);
-
-}
-
-.toolbar-search i{
-
-    color:var(--secondary);
-
-}
-
-.toolbar-search input{
-
-    width:100%;
-
-    background:transparent;
-
-    font-size:16px;
-
-}
-
-
-/* ===========================================================
-                  SELECT BOXES
-=========================================================== */
-
-#category-filter,
-
-#sort-products{
-
-    min-width:220px;
-
-    padding:16px 22px;
-
-    border-radius:50px;
-
-    background:#ffffff;
-
-    border:1px solid var(--border);
-
-    box-shadow:var(--shadow-sm);
-
-    font-size:15px;
-
-    cursor:pointer;
+    background:var(--surface);
 
 }
 
@@ -1660,15 +1186,19 @@ section{
 
 .product-grid{
 
+    width:100%;
+
     max-width:var(--container);
 
     margin:auto;
 
+    padding:0 20px;
+
     display:grid;
 
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    grid-template-columns:repeat(4,1fr);
 
-    gap:35px;
+    gap:30px;
 
 }
 
@@ -1679,9 +1209,11 @@ section{
 
 .product-card{
 
-    background:#ffffff;
+    position:relative;
 
-    border-radius:28px;
+    background:var(--surface);
+
+    border-radius:var(--radius-lg);
 
     overflow:hidden;
 
@@ -1701,91 +1233,102 @@ section{
 
 
 /* ===========================================================
-                 PRODUCT IMAGE
+                  PRODUCT BADGE
+=========================================================== */
+
+.product-badge{
+
+    position:absolute;
+
+    top:18px;
+
+    left:18px;
+
+    padding:8px 14px;
+
+    background:var(--gradient-primary);
+
+    color:var(--white);
+
+    border-radius:var(--radius-round);
+
+    font-size:13px;
+
+    font-weight:var(--weight-semibold);
+
+    z-index:2;
+
+}
+
+
+/* ===========================================================
+                  PRODUCT IMAGE
 =========================================================== */
 
 .product-image{
 
-    position:relative;
+    padding:24px;
 
-    overflow:hidden;
+    background:var(--surface-2);
 
 }
 
 .product-image img{
 
-    height:340px;
+    width:100%;
 
-    object-fit:cover;
+    height:300px;
 
-    transition:.45s ease;
+    object-fit:contain;
+
+    transition:var(--transition);
 
 }
 
 .product-card:hover .product-image img{
 
-    transform:scale(1.08);
+    transform:scale(1.05);
 
 }
 
 
 /* ===========================================================
-                 PRODUCT DETAILS
+                  PRODUCT DETAILS
 =========================================================== */
 
 .product-details{
 
-    padding:25px;
-
-}
-
-.product-badge{
-
-    display:inline-block;
-
-    padding:8px 18px;
-
-    background:var(--accent);
-
-    color:var(--primary);
-
-    border-radius:50px;
-
-    font-size:13px;
-
-    font-weight:700;
-
-    margin-bottom:15px;
+    padding:24px;
 
 }
 
 .product-details h3{
 
-    font-family:'Playfair Display',serif;
-
-    font-size:26px;
+    font-size:24px;
 
     margin-bottom:10px;
 
 }
 
+.product-details p{
+
+    margin-bottom:18px;
+
+    line-height:1.6;
+
+}
+
 .product-details h4{
 
+    font-size:28px;
+
     color:var(--secondary);
-
-    font-size:26px;
-
-    font-weight:800;
 
 }
 
 
 /* ===========================================================
-                  PART 07 END
-=========================================================== */
-
-/* ===========================================================
-                 PRODUCT BUTTONS
+                  PRODUCT BUTTONS
 =========================================================== */
 
 .product-buttons{
@@ -1796,87 +1339,18 @@ section{
 
     gap:14px;
 
-    padding:0 25px 25px;
+    padding:0 24px 24px;
 
 }
 
 
 /* ===========================================================
-                 COMMON BUTTON STYLE
-=========================================================== */
-
-.product-buttons button{
-
-    width:100%;
-
-    height:56px;
-
-    border:none;
-
-    border-radius:18px;
-
-    font-size:16px;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:var(--transition);
-
-}
-
-
-/* ===========================================================
-                 ADD TO CART BUTTON
+                  ADD TO CART
 =========================================================== */
 
 .add-cart{
 
-    background:#111111;
-
-    color:#ffffff;
-
-    box-shadow:var(--shadow-sm);
-
-}
-
-.add-cart:hover{
-
-    transform:translateY(-4px);
-
-    box-shadow:var(--shadow-md);
-
-}
-
-
-/* ===========================================================
-                 BUY NOW BUTTON
-=========================================================== */
-
-.buy-now{
-
-    background:#FFD54F;
-
-    color:#111111;
-
-    box-shadow:var(--shadow-sm);
-
-}
-
-.buy-now:hover{
-
-    transform:translateY(-4px);
-
-    box-shadow:var(--shadow-md);
-
-}
-
-
-/* ===========================================================
-                 WHATSAPP BUTTON
-=========================================================== */
-
-.whatsapp-order{
+    height:54px;
 
     display:flex;
 
@@ -1884,33 +1358,91 @@ section{
 
     justify-content:center;
 
-    gap:12px;
+    gap:10px;
 
-    background:#128C7E;
+    border-radius:var(--radius-round);
 
-    color:#ffffff;
+    background:var(--gradient-secondary);
 
-    box-shadow:var(--shadow-sm);
+    color:var(--white);
 
-}
+    font-weight:var(--weight-semibold);
 
-.whatsapp-order i{
-
-    font-size:20px;
+    transition:var(--transition);
 
 }
 
-.whatsapp-order:hover{
+.add-cart:hover{
 
-    transform:translateY(-4px);
-
-    box-shadow:var(--shadow-md);
+    transform:translateY(-2px);
 
 }
 
 
 /* ===========================================================
-                 VIEW ALL BUTTON
+                  BUY NOW
+=========================================================== */
+
+.buy-now{
+
+    height:54px;
+
+    border-radius:var(--radius-round);
+
+    background:#FFD600;
+
+    color:var(--black);
+
+    font-weight:var(--weight-bold);
+
+    transition:var(--transition);
+
+}
+
+.buy-now:hover{
+
+    transform:translateY(-2px);
+
+}
+
+
+/* ===========================================================
+                  WHATSAPP ORDER
+=========================================================== */
+
+.whatsapp-order{
+
+    height:54px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    border-radius:var(--radius-round);
+
+    background:#128C7E;
+
+    color:var(--white);
+
+    font-weight:var(--weight-semibold);
+
+    transition:var(--transition);
+
+}
+
+.whatsapp-order:hover{
+
+    transform:translateY(-2px);
+
+}
+
+
+/* ===========================================================
+                  VIEW ALL BUTTON
 =========================================================== */
 
 .view-all-products{
@@ -1929,94 +1461,159 @@ section{
 
     gap:12px;
 
-    padding:18px 42px;
+    padding:18px 36px;
 
-    background:#111111;
+    border-radius:var(--radius-round);
 
-    color:#ffffff;
+    background:var(--gradient-primary);
 
-    border-radius:50px;
+    color:var(--white);
 
-    font-weight:700;
-
-    box-shadow:var(--shadow-md);
-
-}
-
-.view-all-btn:hover{
-
-    transform:translateY(-5px);
-
-}
-
-.view-all-btn i{
+    font-weight:var(--weight-semibold);
 
     transition:var(--transition);
 
 }
 
-.view-all-btn:hover i{
+.view-all-btn:hover{
 
-    transform:translateX(6px);
+    transform:translateY(-3px);
 
 }
 
 
 /* ===========================================================
-                 NO PRODUCT FOUND
+                    PART 05 END
+=========================================================== */
+css/style.css — Part 6
+
+/* ===========================================================
+                WHY CHOOSE ROYAL STORE
 =========================================================== */
 
-.no-products{
+.why-choose-section{
+
+    background:var(--gradient-section);
+
+}
+
+
+/* ===========================================================
+                WHY CONTAINER
+=========================================================== */
+
+.why-container{
 
     width:100%;
-
-    padding:80px 30px;
-
-    background:#ffffff;
-
-    border-radius:25px;
-
-    text-align:center;
-
-    box-shadow:var(--shadow-sm);
-
-}
-
-.no-products h3{
-
-    font-family:'Playfair Display',serif;
-
-    font-size:34px;
-
-    color:var(--primary);
-
-}
-
-
-/* ===========================================================
-                    PART 08 END
-=========================================================== */
-
-/* ===========================================================
-                  CUSTOMER REVIEWS SECTION
-=========================================================== */
-
-.customer-reviews{
-
-    background:#FFF5F7;
-
-}
-
-
-/* ===========================================================
-                  REVIEW CONTAINER
-=========================================================== */
-
-.review-container{
 
     max-width:var(--container);
 
     margin:auto;
+
+    padding:0 20px;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+}
+
+
+/* ===========================================================
+                WHY CARD
+=========================================================== */
+
+.why-card{
+
+    background:var(--surface);
+
+    padding:40px 30px;
+
+    text-align:center;
+
+    border-radius:var(--radius-lg);
+
+    box-shadow:var(--shadow-sm);
+
+    transition:var(--transition);
+
+}
+
+.why-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.why-card i{
+
+    width:80px;
+
+    height:80px;
+
+    margin:auto;
+
+    margin-bottom:25px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--gradient-primary);
+
+    color:var(--white);
+
+    font-size:34px;
+
+}
+
+.why-card h3{
+
+    font-size:24px;
+
+    margin-bottom:15px;
+
+}
+
+.why-card p{
+
+    line-height:1.8;
+
+}
+
+
+/* ===========================================================
+                CUSTOMER REVIEWS
+=========================================================== */
+
+.reviews-section{
+
+    background:var(--surface);
+
+}
+
+
+/* ===========================================================
+                REVIEW CONTAINER
+=========================================================== */
+
+.review-container{
+
+    width:100%;
+
+    max-width:var(--container);
+
+    margin:auto;
+
+    padding:0 20px;
 
     display:grid;
 
@@ -2028,16 +1625,16 @@ section{
 
 
 /* ===========================================================
-                    REVIEW CARD
+                REVIEW CARD
 =========================================================== */
 
 .review-card{
 
-    background:#ffffff;
+    background:var(--surface);
 
     padding:35px;
 
-    border-radius:28px;
+    border-radius:var(--radius-lg);
 
     box-shadow:var(--shadow-sm);
 
@@ -2047,7 +1644,7 @@ section{
 
 .review-card:hover{
 
-    transform:translateY(-10px);
+    transform:translateY(-8px);
 
     box-shadow:var(--shadow-lg);
 
@@ -2055,45 +1652,35 @@ section{
 
 
 /* ===========================================================
-                    REVIEW STARS
+                REVIEW STARS
 =========================================================== */
 
 .review-stars{
 
-    display:flex;
+    color:#FFD700;
 
-    gap:6px;
+    font-size:22px;
 
-    margin-bottom:18px;
-
-}
-
-.review-stars i{
-
-    color:#FFC107;
-
-    font-size:18px;
+    margin-bottom:20px;
 
 }
 
 
 /* ===========================================================
-                   REVIEW TEXT
+                REVIEW TEXT
 =========================================================== */
 
 .review-card p{
 
-    color:var(--text-light);
+    line-height:1.9;
 
-    line-height:1.8;
-
-    margin-bottom:25px;
+    margin-bottom:30px;
 
 }
 
 
 /* ===========================================================
-                    REVIEW USER
+                REVIEW USER
 =========================================================== */
 
 .review-user{
@@ -2120,51 +1707,51 @@ section{
 
 .review-user h4{
 
-    font-size:18px;
+    font-size:20px;
 
-    color:var(--primary);
+    margin-bottom:6px;
 
 }
 
 .review-user span{
 
-    font-size:14px;
+    color:var(--text-light);
 
-    color:var(--secondary);
+    font-size:14px;
 
 }
 
 
 /* ===========================================================
-                  NEWSLETTER SECTION
+                    PART 06 END
+=========================================================== */
+css/style.css — Part 7
+
+/* ===========================================================
+                    NEWSLETTER SECTION
 =========================================================== */
 
 .newsletter-section{
 
-    background:linear-gradient(135deg,#FFDCE8,#FFF5F7);
-
-    padding:90px 7%;
+    background:var(--gradient-hero);
 
 }
 
-
-/* ===========================================================
-                NEWSLETTER CONTAINER
-=========================================================== */
-
 .newsletter-container{
+
+    width:100%;
 
     max-width:900px;
 
     margin:auto;
 
-    padding:60px;
+    padding:70px 50px;
 
     text-align:center;
 
-    background:#ffffff;
+    background:var(--surface);
 
-    border-radius:35px;
+    border-radius:var(--radius-xl);
 
     box-shadow:var(--shadow-lg);
 
@@ -2172,25 +1759,31 @@ section{
 
 .newsletter-container span{
 
+    display:inline-block;
+
+    margin-bottom:18px;
+
     color:var(--secondary);
 
-    font-weight:700;
+    font-size:15px;
+
+    font-weight:var(--weight-semibold);
 
 }
 
 .newsletter-container h2{
 
-    margin:18px 0;
-
     font-size:48px;
 
-    font-family:'Playfair Display',serif;
+    margin-bottom:18px;
 
 }
 
 .newsletter-container p{
 
-    color:var(--text-light);
+    max-width:600px;
+
+    margin:0 auto 35px;
 
     line-height:1.8;
 
@@ -2198,20 +1791,16 @@ section{
 
 
 /* ===========================================================
-                  NEWSLETTER FORM
+                    NEWSLETTER FORM
 =========================================================== */
 
 .newsletter-form{
 
-    margin-top:35px;
-
     display:flex;
 
-    gap:15px;
+    gap:18px;
 
     justify-content:center;
-
-    flex-wrap:wrap;
 
 }
 
@@ -2219,63 +1808,64 @@ section{
 
     flex:1;
 
-    min-width:280px;
+    height:56px;
 
-    padding:18px 22px;
+    padding:0 22px;
 
     border:1px solid var(--border);
 
-    border-radius:50px;
+    border-radius:var(--radius-round);
 
-    background:#FAFAFA;
+    background:var(--surface-2);
+
+    font-size:16px;
 
 }
 
 .newsletter-form button{
 
-    padding:18px 40px;
+    height:56px;
 
-    border-radius:50px;
+    padding:0 34px;
 
-    background:#111111;
+    border-radius:var(--radius-round);
 
-    color:#ffffff;
+    background:var(--gradient-primary);
 
-    font-weight:700;
+    color:var(--white);
+
+    font-weight:var(--weight-semibold);
+
+    transition:var(--transition);
 
 }
 
 .newsletter-form button:hover{
 
-    transform:translateY(-4px);
+    transform:translateY(-2px);
 
 }
 
 
 /* ===========================================================
-                    PART 09 END
-=========================================================== */
-
-/* ===========================================================
-                  CONTACT SECTION
+                    CONTACT SECTION
 =========================================================== */
 
 .contact-section{
 
-    background:#FFF5F7;
+    background:var(--surface);
 
 }
 
-
-/* ===========================================================
-                  CONTACT CONTAINER
-=========================================================== */
-
 .contact-container{
+
+    width:100%;
 
     max-width:var(--container);
 
     margin:auto;
+
+    padding:0 20px;
 
     display:grid;
 
@@ -2285,20 +1875,15 @@ section{
 
 }
 
-
-/* ===========================================================
-                    CONTACT CARD
-=========================================================== */
-
 .contact-card{
 
-    background:#ffffff;
-
-    padding:40px 25px;
+    padding:35px 25px;
 
     text-align:center;
 
-    border-radius:28px;
+    background:var(--surface);
+
+    border-radius:var(--radius-lg);
 
     box-shadow:var(--shadow-sm);
 
@@ -2308,7 +1893,7 @@ section{
 
 .contact-card:hover{
 
-    transform:translateY(-10px);
+    transform:translateY(-8px);
 
     box-shadow:var(--shadow-lg);
 
@@ -2316,54 +1901,46 @@ section{
 
 .contact-card i{
 
-    font-size:42px;
+    font-size:36px;
 
     color:var(--secondary);
 
-    margin-bottom:18px;
+    margin-bottom:20px;
 
 }
 
 .contact-card h3{
 
-    font-family:'Playfair Display',serif;
-
-    font-size:26px;
+    font-size:24px;
 
     margin-bottom:12px;
 
 }
 
-.contact-card p,
-
-.contact-card a{
-
-    color:var(--text-light);
-
-    font-weight:500;
-
-}
-
 
 /* ===========================================================
-                      FOOTER
+                    FOOTER
 =========================================================== */
 
 .footer{
 
-    background:#111111;
+    background:var(--primary);
 
-    color:#ffffff;
+    color:var(--white);
 
-    padding:80px 7% 20px;
+    padding:80px 0 30px;
 
 }
 
 .footer-container{
 
+    width:100%;
+
     max-width:var(--container);
 
     margin:auto;
+
+    padding:0 20px;
 
     display:grid;
 
@@ -2373,68 +1950,49 @@ section{
 
 }
 
-.footer-box h2,
+.footer-column h2,
 
-.footer-box h3{
+.footer-column h3{
 
-    font-family:'Playfair Display',serif;
+    color:var(--white);
 
     margin-bottom:20px;
 
 }
 
-.footer-box p{
+.footer-column p,
 
-    color:#cccccc;
+.footer-column a{
 
-    line-height:1.8;
+    color:#D8D8D8;
 
-}
+    line-height:2;
 
-.footer-box ul li{
-
-    margin-bottom:14px;
+    transition:var(--transition-fast);
 
 }
 
-.footer-box ul li a{
-
-    color:#cccccc;
-
-    transition:var(--transition);
-
-}
-
-.footer-box ul li a:hover{
+.footer-column a:hover{
 
     color:var(--secondary);
 
-    padding-left:8px;
-
 }
-
-
-/* ===========================================================
-                   SOCIAL ICONS
-=========================================================== */
 
 .social-icons{
 
     display:flex;
 
-    gap:15px;
+    gap:14px;
+
+    margin-top:20px;
 
 }
 
 .social-icons a{
 
-    width:50px;
+    width:46px;
 
-    height:50px;
-
-    border-radius:50%;
-
-    background:#222222;
+    height:46px;
 
     display:flex;
 
@@ -2442,7 +2000,9 @@ section{
 
     justify-content:center;
 
-    color:#ffffff;
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
 
     transition:var(--transition);
 
@@ -2452,53 +2012,53 @@ section{
 
     background:var(--secondary);
 
-    color:#111111;
-
-    transform:translateY(-5px);
+    color:var(--white);
 
 }
 
-
-/* ===========================================================
-                   FOOTER BOTTOM
-=========================================================== */
-
-.footer-bottom{
-
-    text-align:center;
-
-    border-top:1px solid rgba(255,255,255,.12);
+.copyright{
 
     margin-top:60px;
 
     padding-top:25px;
 
-    color:#bbbbbb;
+    text-align:center;
+
+    border-top:1px solid rgba(255,255,255,.10);
+
+    color:#CFCFCF;
 
 }
 
 
 /* ===========================================================
-                 BACK TO TOP BUTTON
+                    PART 07 END
+=========================================================== */
+css/style.css — Part 8
+
+/* ===========================================================
+                    BACK TO TOP
 =========================================================== */
 
 .back-to-top{
 
     position:fixed;
 
-    right:25px;
+    right:30px;
 
-    bottom:25px;
+    bottom:30px;
 
     width:58px;
 
     height:58px;
 
+    border:none;
+
     border-radius:50%;
 
-    background:var(--secondary);
+    background:var(--gradient-primary);
 
-    color:#111111;
+    color:var(--white);
 
     display:flex;
 
@@ -2506,13 +2066,17 @@ section{
 
     justify-content:center;
 
-    font-size:20px;
+    font-size:22px;
+
+    cursor:pointer;
 
     box-shadow:var(--shadow-lg);
 
     opacity:0;
 
     visibility:hidden;
+
+    transform:translateY(20px);
 
     transition:var(--transition);
 
@@ -2526,34 +2090,124 @@ section{
 
     visibility:visible;
 
+    transform:translateY(0);
+
+}
+
+.back-to-top:hover{
+
+    transform:translateY(-6px);
+
 }
 
 
 /* ===========================================================
-                     TOAST
+                    TOAST NOTIFICATION
 =========================================================== */
 
-.toast-container{
+.toast{
 
     position:fixed;
 
-    top:100px;
+    top:30px;
 
-    right:25px;
+    right:30px;
+
+    min-width:340px;
+
+    padding:18px;
+
+    background:var(--surface);
+
+    border-radius:20px;
+
+    box-shadow:var(--shadow-lg);
 
     display:flex;
 
-    flex-direction:column;
+    align-items:center;
 
-    gap:15px;
+    gap:16px;
 
-    z-index:3000;
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateX(120%);
+
+    transition:var(--transition);
+
+    z-index:5000;
+
+}
+
+.toast.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateX(0);
+
+}
+
+.toast-icon{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:var(--success);
+
+    color:var(--white);
+
+    font-size:22px;
+
+}
+
+.toast-content{
+
+    flex:1;
+
+}
+
+.toast-content h4{
+
+    font-size:20px;
+
+    margin-bottom:4px;
+
+}
+
+.toast-close{
+
+    width:38px;
+
+    height:38px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
 
 }
 
 
 /* ===========================================================
-                  iPHONE STYLE MODAL
+                    iPHONE STYLE MODAL
 =========================================================== */
 
 .ios-modal{
@@ -2570,9 +2224,9 @@ section{
 
     background:rgba(0,0,0,.45);
 
-    backdrop-filter:blur(10px);
+    backdrop-filter:blur(12px);
 
-    z-index:5000;
+    z-index:6000;
 
 }
 
@@ -2588,35 +2242,104 @@ section{
 
     max-width:420px;
 
-    background:#ffffff;
+    padding:36px;
 
-    border-radius:30px;
+    background:var(--surface);
 
-    padding:35px;
+    border-radius:32px;
 
     text-align:center;
 
+    box-shadow:var(--shadow-xl);
+
     animation:popupScale .25s ease;
 
-    box-shadow:var(--shadow-lg);
+}
+
+.modal-icon{
+
+    width:80px;
+
+    height:80px;
+
+    margin:auto auto 20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:var(--gradient-primary);
+
+    color:var(--white);
+
+    font-size:34px;
 
 }
+
+.modal-buttons{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:30px;
+
+}
+
+.modal-btn{
+
+    flex:1;
+
+    height:52px;
+
+    border-radius:999px;
+
+    font-weight:600;
+
+    transition:var(--transition);
+
+}
+
+.primary-btn{
+
+    background:var(--gradient-primary);
+
+    color:var(--white);
+
+}
+
+.secondary-btn{
+
+    background:#F3F3F3;
+
+    color:var(--primary);
+
+}
+
+
+/* ===========================================================
+                    POPUP ANIMATION
+=========================================================== */
 
 @keyframes popupScale{
 
     from{
 
-        transform:scale(.85);
-
         opacity:0;
+
+        transform:scale(.85);
 
     }
 
     to{
 
-        transform:scale(1);
-
         opacity:1;
+
+        transform:scale(1);
 
     }
 
@@ -2624,9 +2347,5 @@ section{
 
 
 /* ===========================================================
-                    PART 10 END
-=========================================================== */
-
-/* ===========================================================
-            ROYAL STORE V3 STYLE.CSS COMPLETE
+                    PART 08 END
 =========================================================== */
