@@ -1,5 +1,3 @@
-css/variables.css — Part 1
-
 /* ===========================================================
                     ROYAL STORE V4
                   FILE : variables.css
@@ -110,13 +108,6 @@ rgba(255,255,255,.35);
 
 --glass-blur:
 blur(20px);
-
-End of Part 1
-
-Next:
-Part 2
-
-css/variables.css — Part 2
 
 /* ===========================================================
                   BORDER RADIUS
@@ -241,13 +232,6 @@ css/variables.css — Part 2
 --z-modal:11000;
 
 }
-
-End of Part 2
-
-Next:
-Part 3
-
-css/variables.css — Part 3
 
 /* ===========================================================
                     FONT SIZES
@@ -378,5 +362,3 @@ rgba(20,20,20,.08);
 /* ===========================================================
                   VARIABLES COMPLETE
 =========================================================== */
-
-End of Part 3
