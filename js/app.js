@@ -880,13 +880,10 @@ function showLoader(){
 
 
 function hideLoader(){
-
-    if(!loader) return;
-
-    loader.style.display =
-
-    "none";
-
+    const loader = document.getElementById("loading-screen");
+    if(loader){
+        loader.style.display = "none";
+    }
 }
 
 
