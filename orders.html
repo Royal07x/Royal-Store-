@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order History | Royal Store</title>
+  <link rel="icon" href="images/logo/favicon.png">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/loader.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="rs-loader">
+    <div class="rs-loader__mark"></div>
+    <div class="rs-loader__label">Royal Store</div>
+    <div class="rs-loader__bar"></div>
+  </div>
+  <header class="site-header">
+    <div class="container site-header__row">
+      <a href="index.html" class="brand"><span class="brand__mark"></span> Royal Store</a>
+      <nav class="nav">
+        <ul class="nav__links">
+          <li><a href="index.html" data-nav="home">Home</a></li>
+          <li><a href="index.html#categories" data-nav="categories">Categories</a></li>
+          <li><a href="index.html#trending" data-nav="trending">Trending</a></li>
+          <li><a href="about.html" data-nav="about">About</a></li>
+          <li><a href="contact.html" data-nav="contact">Contact</a></li>
+        </ul>
+        <div class="nav__search">
+          <input type="text" placeholder="Search products..." data-search-input>
+        </div>
+        <div class="nav__icons">
+          <a href="wishlist.html" class="nav__icon-btn" title="Wishlist">♡<span class="nav__badge" data-wishlist-count>0</span></a>
+          <a href="cart.html" class="nav__icon-btn" title="Cart">🛍<span class="nav__badge" data-cart-count>0</span></a>
+          <a href="profile.html" class="nav__icon-btn" title="Account" data-auth-name>Sign in</a>
+        </div>
+        <button class="nav__toggle" data-menu-toggle aria-label="Open menu">☰</button>
+      </nav>
+      <div class="rs-search-results" data-search-results></div>
+    </div>
+  </header>
+
+  <div class="scrim"></div>
+  <aside class="mobile-menu">
+    <button class="mobile-menu__close" data-menu-close aria-label="Close menu">✕</button>
+    <ul class="mobile-menu__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#categories">Categories</a></li>
+      <li><a href="wishlist.html">Wishlist</a></li>
+      <li><a href="cart.html">Cart</a></li>
+      <li><a href="orders.html">Orders</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </aside>
+
+  <div class="popup-scrim"></div>
+  <div class="popup-card">
+    <div class="popup-card__icon"></div>
+    <h3>Add Royal Store to your Home Screen</h3>
+    <p>Get the app-like experience — faster access to drops, orders and your wishlist.</p>
+    <button class="btn btn--gold btn--block" data-popup-close>Got it</button>
+  </div>
+
+  <main>
+    <div class="page-head container">
+      <h1>Your Orders</h1>
+      <p>Track your past purchases and download invoices.</p>
+    </div>
+    <div class="page-body container" data-auth-only>
+      <div data-orders-list></div>
+    </div>
+    <div class="page-body container" data-guest-only>
+      <div class="empty-state"><h3>Sign in to see your orders</h3><p>Your order history is tied to your account.</p><a href="login.html" class="btn btn--gold mt-4">Sign In</a></div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand"><span class="brand__mark"></span> Royal Store</a>
+          <p>Premium fashion and lifestyle essentials, curated for those who dress with intention.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="index.html#categories">Shirts</a></li>
+            <li><a href="index.html#categories">Cargo</a></li>
+            <li><a href="index.html#categories">Sneakers</a></li>
+            <li><a href="index.html#categories">Beauty</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Account</h4>
+          <ul>
+            <li><a href="profile.html">My Profile</a></li>
+            <li><a href="orders.html">Order History</a></li>
+            <li><a href="wishlist.html">Wishlist</a></li>
+            <li><a href="cart.html">Cart</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Help</h4>
+          <ul>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Royal Store. All rights reserved.</span>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Facebook">FB</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="js/database.js"></script>
+  <script src="js/security.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/wallet.js"></script>
+  <script src="js/coupon-engine.js"></script>
+  <script src="js/invoice.js"></script>
+  <script src="js/orders.js"></script>
+  <script src="js/returns.js"></script>
+  <script src="js/giftcard.js"></script>
+  <script src="js/subscription.js"></script>
+  <script src="js/seller.js"></script>
+  <script src="js/affiliate.js"></script>
+  <script src="js/recommendation-ai.js"></script>
+  <script src="js/location.js"></script>
+  <script src="js/cloudsync.js"></script>
+  <script src="js/backup.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/seo.js"></script>
+  <script src="js/performance.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async function () {
+      if (!RS.Auth.isLoggedIn()) return;
+      var host = document.querySelector("[data-orders-list]");
+      var orders = await RS.Orders.forCurrentUser();
+      if (!orders.length) {
+        host.innerHTML = '<div class="empty-state"><h3>No orders yet</h3><p>Once you place an order, it will show up here.</p><a href="index.html" class="btn btn--gold mt-4">Start shopping</a></div>';
+        return;
+      }
+      host.innerHTML = orders.map(function (o) {
+        var rows = o.items.map(function (i) {
+          return '<tr><td>' + i.name + '</td><td>' + i.qty + '</td><td>₹' + i.price + '</td></tr>';
+        }).join("");
+        return (
+          '<div class="checkout-summary mt-6">' +
+            '<div class="section__head"><h3>' + o.id + '</h3><span class="badge badge--gold">' + o.status + '</span></div>' +
+            '<p class="text-muted" style="margin-bottom:var(--rs-space-4);">Placed ' + new Date(o.placedAt).toLocaleString() + '</p>' +
+            '<table class="rs-table"><thead><tr><th>Item</th><th>Qty</th><th>Price</th></tr></thead><tbody>' + rows + '</tbody></table>' +
+            '<div class="checkout-summary__row total mt-4"><span>Total</span><span>₹' + o.total + '</span></div>' +
+            '<button class="btn btn--outline btn--sm mt-4" data-print="' + o.id + '">Print invoice</button> ' +
+            '<button class="btn btn--ghost btn--sm mt-4" data-return="' + o.id + '">Request return</button>' +
+          '</div>'
+        );
+      }).join("");
+
+      document.querySelectorAll("[data-print]").forEach(function (btn) {
+        btn.addEventListener("click", async function () {
+          var order = await RS.Orders.getById(btn.dataset.print);
+          if (order) RS.Invoice.print(order);
+        });
+      });
+      document.querySelectorAll("[data-return]").forEach(function (btn) {
+        btn.addEventListener("click", async function () {
+          var reason = prompt("Tell us why you're returning this order:");
+          if (reason !== null) await RS.Returns.request(btn.dataset.return, reason);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

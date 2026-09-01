@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart | Royal Store</title>
+  <link rel="icon" href="images/logo/favicon.png">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/loader.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="rs-loader">
+    <div class="rs-loader__mark"></div>
+    <div class="rs-loader__label">Royal Store</div>
+    <div class="rs-loader__bar"></div>
+  </div>
+  <header class="site-header">
+    <div class="container site-header__row">
+      <a href="index.html" class="brand"><span class="brand__mark"></span> Royal Store</a>
+      <nav class="nav">
+        <ul class="nav__links">
+          <li><a href="index.html" data-nav="home">Home</a></li>
+          <li><a href="index.html#categories" data-nav="categories">Categories</a></li>
+          <li><a href="index.html#trending" data-nav="trending">Trending</a></li>
+          <li><a href="about.html" data-nav="about">About</a></li>
+          <li><a href="contact.html" data-nav="contact">Contact</a></li>
+        </ul>
+        <div class="nav__search">
+          <input type="text" placeholder="Search products..." data-search-input>
+        </div>
+        <div class="nav__icons">
+          <a href="wishlist.html" class="nav__icon-btn" title="Wishlist">♡<span class="nav__badge" data-wishlist-count>0</span></a>
+          <a href="cart.html" class="nav__icon-btn" title="Cart">🛍<span class="nav__badge" data-cart-count>0</span></a>
+          <a href="profile.html" class="nav__icon-btn" title="Account" data-auth-name>Sign in</a>
+        </div>
+        <button class="nav__toggle" data-menu-toggle aria-label="Open menu">☰</button>
+      </nav>
+      <div class="rs-search-results" data-search-results></div>
+    </div>
+  </header>
+
+  <div class="scrim"></div>
+  <aside class="mobile-menu">
+    <button class="mobile-menu__close" data-menu-close aria-label="Close menu">✕</button>
+    <ul class="mobile-menu__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#categories">Categories</a></li>
+      <li><a href="wishlist.html">Wishlist</a></li>
+      <li><a href="cart.html">Cart</a></li>
+      <li><a href="orders.html">Orders</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </aside>
+
+  <div class="popup-scrim"></div>
+  <div class="popup-card">
+    <div class="popup-card__icon"></div>
+    <h3>Add Royal Store to your Home Screen</h3>
+    <p>Get the app-like experience — faster access to drops, orders and your wishlist.</p>
+    <button class="btn btn--gold btn--block" data-popup-close>Got it</button>
+  </div>
+
+  <main>
+    <div class="page-head container">
+      <h1>Your Cart</h1>
+      <p>Add to cart needs no login. You'll sign in at checkout.</p>
+    </div>
+    <div class="page-body container">
+      <div class="checkout-grid">
+        <div>
+          <div data-cart-items></div>
+          <div class="field mt-6" style="max-width:320px;">
+            <label for="coupon-code">Coupon code</label>
+            <input type="text" id="coupon-code" placeholder="e.g. ROYAL10">
+          </div>
+          <button class="btn btn--outline btn--sm" data-apply-coupon>Apply coupon</button>
+
+          <h3 class="mt-6">Delivery information</h3>
+          <div class="form-grid-2 mt-4">
+            <div class="field">
+              <label for="deliv-name">Full name</label>
+              <input type="text" id="deliv-name">
+            </div>
+            <div class="field">
+              <label for="deliv-phone">Phone</label>
+              <input type="text" id="deliv-phone">
+            </div>
+          </div>
+          <div class="field">
+            <label for="deliv-address">Address</label>
+            <textarea id="deliv-address" rows="3"></textarea>
+          </div>
+          <button class="btn btn--outline btn--sm" data-detect-location>📍 Use my current location</button>
+          <p class="text-muted mt-4" data-location-result style="font-size:var(--rs-size-xs);"></p>
+        </div>
+
+        <aside class="checkout-summary">
+          <h3 class="mt-4" style="margin-bottom:var(--rs-space-4);">Order Summary</h3>
+          <div class="checkout-summary__row"><span>Subtotal</span><span data-sum-subtotal>₹0</span></div>
+          <div class="checkout-summary__row"><span>Discount</span><span data-sum-discount>-₹0</span></div>
+          <div class="checkout-summary__row"><span>Delivery</span><span data-sum-delivery>₹0</span></div>
+          <div class="checkout-summary__row total"><span>Total</span><span data-sum-total>₹0</span></div>
+          <button class="btn btn--gold btn--block mt-4" data-buy-now>Buy Now (Login required)</button>
+          <a class="btn btn--outline btn--block mt-4" data-whatsapp-order href="#" target="_blank" rel="noopener">Order via WhatsApp</a>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand"><span class="brand__mark"></span> Royal Store</a>
+          <p>Premium fashion and lifestyle essentials, curated for those who dress with intention.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="index.html#categories">Shirts</a></li>
+            <li><a href="index.html#categories">Cargo</a></li>
+            <li><a href="index.html#categories">Sneakers</a></li>
+            <li><a href="index.html#categories">Beauty</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Account</h4>
+          <ul>
+            <li><a href="profile.html">My Profile</a></li>
+            <li><a href="orders.html">Order History</a></li>
+            <li><a href="wishlist.html">Wishlist</a></li>
+            <li><a href="cart.html">Cart</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Help</h4>
+          <ul>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Royal Store. All rights reserved.</span>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Facebook">FB</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="js/database.js"></script>
+  <script src="js/security.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/wallet.js"></script>
+  <script src="js/coupon-engine.js"></script>
+  <script src="js/invoice.js"></script>
+  <script src="js/orders.js"></script>
+  <script src="js/returns.js"></script>
+  <script src="js/giftcard.js"></script>
+  <script src="js/subscription.js"></script>
+  <script src="js/seller.js"></script>
+  <script src="js/affiliate.js"></script>
+  <script src="js/recommendation-ai.js"></script>
+  <script src="js/location.js"></script>
+  <script src="js/cloudsync.js"></script>
+  <script src="js/backup.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/seo.js"></script>
+  <script src="js/performance.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var itemsHost = document.querySelector("[data-cart-items]");
+      var appliedCoupon = null;
+
+      function itemRow(i) {
+        return (
+          '<div class="product-card" style="flex-direction:row;align-items:center;gap:var(--rs-space-4);padding:var(--rs-space-4);margin-bottom:var(--rs-space-3);">' +
+            '<div style="flex:1;">' +
+              '<div class="product-card__name">' + i.product.name + "</div>" +
+              '<div class="product-card__meta">₹' + i.product.price + " each</div>" +
+            "</div>" +
+            '<div class="qty-stepper">' +
+              '<button data-qty-minus="' + i.productId + '">−</button>' +
+              "<span>" + i.qty + "</span>" +
+              '<button data-qty-plus="' + i.productId + '">+</button>' +
+            "</div>" +
+            '<button class="btn btn--ghost btn--sm" data-remove="' + i.productId + '">Remove</button>' +
+          "</div>"
+        );
+      }
+
+      function renderTotals() {
+        var subtotal = RS.Cart.subtotal();
+        var discount = 0;
+        if (appliedCoupon) {
+          try { discount = RS.Coupons.apply(appliedCoupon, subtotal); } catch (e) { discount = 0; }
+        }
+        var delivery = subtotal > 3000 || subtotal === 0 ? 0 : 149;
+        var total = Math.max(0, subtotal - discount + delivery);
+        document.querySelector("[data-sum-subtotal]").textContent = "₹" + subtotal;
+        document.querySelector("[data-sum-discount]").textContent = "-₹" + discount;
+        document.querySelector("[data-sum-delivery]").textContent = delivery ? "₹" + delivery : "Free";
+        document.querySelector("[data-sum-total]").textContent = "₹" + total;
+      }
+
+      function render() {
+        var items = RS.Cart.detailedItems();
+        itemsHost.innerHTML = items.length
+          ? items.map(itemRow).join("")
+          : '<div class="empty-state"><h3>Your cart is empty</h3><p>Browse products and add something you love.</p><a href="index.html" class="btn btn--gold mt-4">Continue shopping</a></div>';
+
+        document.querySelectorAll("[data-qty-plus]").forEach(function (b) {
+          b.addEventListener("click", function () {
+            var it = RS.Cart.getItems().find(function (x) { return x.productId === b.dataset.qtyPlus; });
+            RS.Cart.setQty(b.dataset.qtyPlus, (it ? it.qty : 1) + 1);
+            render(); renderTotals();
+          });
+        });
+        document.querySelectorAll("[data-qty-minus]").forEach(function (b) {
+          b.addEventListener("click", function () {
+            var it = RS.Cart.getItems().find(function (x) { return x.productId === b.dataset.qtyMinus; });
+            RS.Cart.setQty(b.dataset.qtyMinus, Math.max(1, (it ? it.qty : 1) - 1));
+            render(); renderTotals();
+          });
+        });
+        document.querySelectorAll("[data-remove]").forEach(function (b) {
+          b.addEventListener("click", function () { RS.Cart.remove(b.dataset.remove); render(); renderTotals(); });
+        });
+        renderTotals();
+      }
+
+      document.querySelector("[data-apply-coupon]").addEventListener("click", function () {
+        var code = document.getElementById("coupon-code").value;
+        try {
+          RS.Coupons.apply(code, RS.Cart.subtotal());
+          appliedCoupon = code;
+          RS.UI.toast("Coupon applied", "success");
+        } catch (err) {
+          appliedCoupon = null;
+          RS.UI.toast(err.message, "error");
+        }
+        renderTotals();
+      });
+
+      document.querySelector("[data-detect-location]").addEventListener("click", function () {
+        var out = document.querySelector("[data-location-result]");
+        out.textContent = "Detecting location...";
+        RS.Location.detect().then(function (loc) {
+          document.getElementById("deliv-address").value =
+            (document.getElementById("deliv-address").value ? document.getElementById("deliv-address").value + "\n" : "") +
+            "GPS: " + loc.lat.toFixed(5) + ", " + loc.lng.toFixed(5);
+          out.innerHTML = 'Location added. <a class="text-gold" target="_blank" href="' + RS.Location.mapsLink(loc.lat, loc.lng) + '">View on map</a>';
+        }).catch(function (err) {
+          out.textContent = err.message;
+        });
+      });
+
+      document.querySelector("[data-buy-now]").addEventListener("click", async function () {
+        if (!RS.Cart.getItems().length) { RS.UI.toast("Your cart is empty", "error"); return; }
+        if (!RS.Auth.isLoggedIn()) { RS.Auth.requireLogin("cart.html"); return; }
+        var address = {
+          name: document.getElementById("deliv-name").value,
+          phone: document.getElementById("deliv-phone").value,
+          address: document.getElementById("deliv-address").value
+        };
+        try {
+          var order = await RS.Checkout.placeOrder({ address: address, paymentMethod: "cod", couponCode: appliedCoupon });
+          if (order) {
+            RS.UI.toast("Order placed! " + order.id, "success");
+            window.location.href = "orders.html";
+          }
+        } catch (err) {
+          RS.UI.toast(err.message, "error");
+        }
+      });
+
+      var wa = document.querySelector("[data-whatsapp-order]");
+      wa.addEventListener("click", function () {
+        var lines = RS.Cart.detailedItems().map(function (i) { return i.qty + "x " + i.product.name; }).join(", ");
+        wa.href = "https://wa.me/919999999999?text=" + encodeURIComponent("Hi Royal Store, I'd like to order: " + lines);
+      });
+
+      render();
+    });
+  </script>
+</body>
+</html>

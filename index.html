@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Royal Store | Premium Fashion & Lifestyle</title>
+  <meta name="description" content="Royal Store — premium shirts, cargo, sneakers and beauty essentials with fast delivery.">
+  <link rel="icon" href="images/logo/favicon.png">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/loader.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="rs-loader">
+    <div class="rs-loader__mark"></div>
+    <div class="rs-loader__label">Royal Store</div>
+    <div class="rs-loader__bar"></div>
+  </div>
+  <header class="site-header">
+    <div class="container site-header__row">
+      <a href="index.html" class="brand"><span class="brand__mark"></span> Royal Store</a>
+      <nav class="nav">
+        <ul class="nav__links">
+          <li><a href="index.html" data-nav="home">Home</a></li>
+          <li><a href="index.html#categories" data-nav="categories">Categories</a></li>
+          <li><a href="index.html#trending" data-nav="trending">Trending</a></li>
+          <li><a href="about.html" data-nav="about">About</a></li>
+          <li><a href="contact.html" data-nav="contact">Contact</a></li>
+        </ul>
+        <div class="nav__search">
+          <input type="text" placeholder="Search products..." data-search-input>
+        </div>
+        <div class="nav__icons">
+          <a href="wishlist.html" class="nav__icon-btn" title="Wishlist">♡<span class="nav__badge" data-wishlist-count>0</span></a>
+          <a href="cart.html" class="nav__icon-btn" title="Cart">🛍<span class="nav__badge" data-cart-count>0</span></a>
+          <a href="profile.html" class="nav__icon-btn" title="Account" data-auth-name>Sign in</a>
+        </div>
+        <button class="nav__toggle" data-menu-toggle aria-label="Open menu">☰</button>
+      </nav>
+      <div class="rs-search-results" data-search-results></div>
+    </div>
+  </header>
+
+  <div class="scrim"></div>
+  <aside class="mobile-menu">
+    <button class="mobile-menu__close" data-menu-close aria-label="Close menu">✕</button>
+    <ul class="mobile-menu__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#categories">Categories</a></li>
+      <li><a href="wishlist.html">Wishlist</a></li>
+      <li><a href="cart.html">Cart</a></li>
+      <li><a href="orders.html">Orders</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </aside>
+
+  <div class="popup-scrim"></div>
+  <div class="popup-card">
+    <div class="popup-card__icon"></div>
+    <h3>Add Royal Store to your Home Screen</h3>
+    <p>Get the app-like experience — faster access to drops, orders and your wishlist.</p>
+    <button class="btn btn--gold btn--block" data-popup-close>Got it</button>
+  </div>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero container">
+      <div class="hero__copy">
+        <p class="hero__eyebrow">New season, new staples</p>
+        <h1 class="hero__title">Dress like the details matter.</h1>
+        <p class="hero__subtitle">Tailored shirts, utility cargo, court-ready sneakers and skin-first beauty — curated in one wardrobe, delivered to your door.</p>
+        <div class="hero__actions">
+          <a href="#trending" class="btn btn--gold">Shop trending</a>
+          <a href="#categories" class="btn btn--outline">Browse categories</a>
+        </div>
+      </div>
+      <div class="hero__visual"></div>
+    </section>
+
+    <!-- Categories -->
+    <section class="section container" id="categories">
+      <div class="section__head">
+        <h2 class="section__title">Shop by category</h2>
+      </div>
+      <div class="categories">
+        <a class="category-tile" href="#products" data-filter="shirts"><span>Shirts</span></a>
+        <a class="category-tile" href="#products" data-filter="cargo"><span>Cargo</span></a>
+        <a class="category-tile" href="#products" data-filter="sneakers"><span>Sneakers</span></a>
+        <a class="category-tile" href="#products" data-filter="beauty"><span>Beauty</span></a>
+      </div>
+    </section>
+
+    <!-- Trending -->
+    <section class="section container" id="trending">
+      <div class="section__head">
+        <h2 class="section__title">Trending now</h2>
+        <a href="#products" class="section__link">View all →</a>
+      </div>
+      <div class="product-grid" data-trending-grid></div>
+    </section>
+
+    <!-- All products -->
+    <section class="section container" id="products">
+      <div class="section__head">
+        <h2 class="section__title">All products</h2>
+      </div>
+      <div class="product-grid" data-products-grid></div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="section container">
+      <div class="section__head">
+        <h2 class="section__title">What customers say</h2>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p>The Oxford shirt fits exactly like the size guide promised — first online shirt that's actually worked for me.</p>
+          <div class="review-card__name">Aarav M.</div>
+        </div>
+        <div class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p>Sneakers arrived in two days and the packaging alone felt premium. Will be back for the cargo pants next.</p>
+          <div class="review-card__name">Priya S.</div>
+        </div>
+        <div class="review-card">
+          <div class="review-card__stars">★★★★☆</div>
+          <p>Good quality serum, noticeable glow within a week. Wish it came in a travel size too.</p>
+          <div class="review-card__name">Neha R.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact strip -->
+    <section class="section container" id="contact">
+      <div class="section__head">
+        <h2 class="section__title">Need help deciding?</h2>
+      </div>
+      <p>Message us on WhatsApp for sizing help and order support, or visit our <a href="contact.html" class="text-gold">contact page</a>.</p>
+      <a class="btn btn--outline mt-4" data-whatsapp-link href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand"><span class="brand__mark"></span> Royal Store</a>
+          <p>Premium fashion and lifestyle essentials, curated for those who dress with intention.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="index.html#categories">Shirts</a></li>
+            <li><a href="index.html#categories">Cargo</a></li>
+            <li><a href="index.html#categories">Sneakers</a></li>
+            <li><a href="index.html#categories">Beauty</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Account</h4>
+          <ul>
+            <li><a href="profile.html">My Profile</a></li>
+            <li><a href="orders.html">Order History</a></li>
+            <li><a href="wishlist.html">Wishlist</a></li>
+            <li><a href="cart.html">Cart</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Help</h4>
+          <ul>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Royal Store. All rights reserved.</span>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="Facebook">FB</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="js/database.js"></script>
+  <script src="js/security.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/wallet.js"></script>
+  <script src="js/coupon-engine.js"></script>
+  <script src="js/invoice.js"></script>
+  <script src="js/orders.js"></script>
+  <script src="js/returns.js"></script>
+  <script src="js/giftcard.js"></script>
+  <script src="js/subscription.js"></script>
+  <script src="js/seller.js"></script>
+  <script src="js/affiliate.js"></script>
+  <script src="js/recommendation-ai.js"></script>
+  <script src="js/location.js"></script>
+  <script src="js/cloudsync.js"></script>
+  <script src="js/backup.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/seo.js"></script>
+  <script src="js/performance.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var trendingGrid = document.querySelector("[data-trending-grid]");
+      var productsGrid = document.querySelector("[data-products-grid]");
+      var whatsappLink = document.querySelector("[data-whatsapp-link]");
+
+      function cardHTML(p) {
+        var wasHTML = p.was ? '<span class="was">₹' + p.was + '</span>' : "";
+        var wished = RS.Wishlist.has(p.id) ? " is-active" : "";
+        return (
+          '<article class="product-card" id="product-' + p.id + '">' +
+            '<div class="product-card__media">' +
+              '<button class="product-card__wishlist' + wished + '" data-wishlist-btn="' + p.id + '">♡</button>' +
+            "</div>" +
+            '<div class="product-card__body">' +
+              '<div class="product-card__name">' + p.name + "</div>" +
+              '<div class="product-card__meta">' + p.category + " · ★" + p.rating + "</div>" +
+              '<div class="product-card__price"><span class="now">₹' + p.price + "</span>" + wasHTML + "</div>" +
+            "</div>" +
+            '<div class="product-card__actions">' +
+              '<button class="btn btn--outline btn--sm btn--block" data-add-cart="' + p.id + '">Add to cart</button>' +
+            "</div>" +
+          "</article>"
+        );
+      }
+
+      function render() {
+        trendingGrid.innerHTML = RS.Products.trending(4).map(cardHTML).join("");
+        productsGrid.innerHTML = RS.Products.getAll().map(cardHTML).join("");
+        document.querySelectorAll("[data-add-cart]").forEach(function (btn) {
+          btn.addEventListener("click", function () { RS.Cart.add(btn.dataset.addCart, 1); });
+        });
+        document.querySelectorAll("[data-wishlist-btn]").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            RS.Wishlist.toggle(btn.dataset.wishlistBtn);
+            btn.classList.toggle("is-active");
+          });
+        });
+      }
+
+      document.querySelectorAll(".category-tile").forEach(function (tile) {
+        tile.addEventListener("click", function (e) {
+          e.preventDefault();
+          var cat = tile.dataset.filter;
+          document.getElementById("products").scrollIntoView({ behavior: "smooth" });
+          productsGrid.innerHTML = RS.Products.getByCategory(cat).map(cardHTML).join("");
+          document.querySelectorAll("[data-add-cart]").forEach(function (btn) {
+            btn.addEventListener("click", function () { RS.Cart.add(btn.dataset.addCart, 1); });
+          });
+          document.querySelectorAll("[data-wishlist-btn]").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              RS.Wishlist.toggle(btn.dataset.wishlistBtn);
+              btn.classList.toggle("is-active");
+            });
+          });
+        });
+      });
+
+      if (whatsappLink) {
+        whatsappLink.href = "https://wa.me/919999999999?text=" + encodeURIComponent("Hi Royal Store, I need help choosing a product.");
+      }
+
+      render();
+    });
+  </script>
+</body>
+</html>
