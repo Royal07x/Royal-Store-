@@ -1,0 +1,64 @@
+/* ==========================================================
+   ROYAL STORE — RESPONSIVE
+   Breakpoints: >1200 desktop, 900–1200 tablet-lg,
+   600–900 tablet, <600 mobile (iPhone/Android)
+   ========================================================== */
+
+/* ---- Tablet (large) ---- */
+@media (max-width: 1200px) {
+  .product-grid { grid-template-columns: repeat(3, 1fr); }
+  .categories { grid-template-columns: repeat(3, 1fr); }
+  .footer-grid { grid-template-columns: 1.2fr 1fr 1fr; }
+}
+
+/* ---- Tablet ---- */
+@media (max-width: 900px) {
+  .nav__links, .nav__search { display: none; }
+  .nav__toggle { display: block; }
+
+  .hero { grid-template-columns: 1fr; text-align: left; }
+  .hero__title { font-size: var(--rs-size-2xl); }
+
+  .categories { grid-template-columns: repeat(2, 1fr); grid-template-rows: 180px 180px 180px; }
+  .categories a:first-child { grid-column: span 2; grid-row: span 1; }
+
+  .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: var(--rs-space-6) var(--rs-space-5); }
+}
+
+/* ---- Mobile (iPhone / Android) ---- */
+@media (max-width: 600px) {
+  .container { padding: 0 var(--rs-space-4); }
+
+  .site-header__row { height: 64px; }
+
+  .hero { padding: var(--rs-space-6) 0; }
+  .hero__title { font-size: var(--rs-size-xl); }
+  .hero__actions { flex-direction: column; align-items: stretch; }
+
+  .section { padding: var(--rs-space-6) 0; }
+  .section__head { flex-direction: column; align-items: flex-start; gap: var(--rs-space-2); }
+
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: var(--rs-space-3); }
+  .categories { grid-template-columns: 1fr; grid-template-rows: repeat(3, 160px); }
+  .categories a:first-child { grid-column: span 1; }
+
+  .reviews-grid { grid-template-columns: 1fr; }
+
+  .footer-grid { grid-template-columns: 1fr; gap: var(--rs-space-5); }
+  .footer-bottom { flex-direction: column; gap: var(--rs-space-3); align-items: flex-start; }
+
+  .checkout-grid { grid-template-columns: 1fr; }
+  .form-grid-2 { grid-template-columns: 1fr; }
+
+  .popup-card { width: 94vw; }
+
+  .toast-stack { left: var(--rs-space-4); right: var(--rs-space-4); }
+  .toast { min-width: 0; width: 100%; }
+}
+
+/* ---- Small Android / compact iPhone ---- */
+@media (max-width: 380px) {
+  .hero__title { font-size: var(--rs-size-lg); }
+  .product-grid { grid-template-columns: 1fr 1fr; gap: var(--rs-space-2); }
+}

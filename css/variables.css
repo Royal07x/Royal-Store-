@@ -1,0 +1,81 @@
+/* ==========================================================
+   ROYAL STORE — DESIGN TOKENS
+   A dark, velvet-and-gold boutique palette. Gold is used like
+   jewelry: sparingly, on things that deserve attention.
+   ========================================================== */
+
+:root {
+  /* ---- Color: base ---- */
+  --rs-bg: #0e0e10;
+  --rs-bg-raised: #17171a;
+  --rs-surface: #1d1d21;
+  --rs-surface-2: #26262b;
+  --rs-border: rgba(201, 162, 75, 0.16);
+  --rs-border-strong: rgba(201, 162, 75, 0.32);
+
+  /* ---- Color: accent (royal gold) ---- */
+  --rs-gold: #c9a24b;
+  --rs-gold-light: #e4c77a;
+  --rs-gold-dim: #8a6f34;
+
+  /* ---- Color: text ---- */
+  --rs-text: #f1eee6;
+  --rs-text-muted: #a5a29a;
+  --rs-text-faint: #6f6d67;
+  --rs-on-gold: #14120a;
+
+  /* ---- Color: state ---- */
+  --rs-success: #6fae7a;
+  --rs-danger: #c9645a;
+  --rs-warning: #d9a441;
+
+  /* ---- Typography ---- */
+  --rs-font-display: "Fraunces", "Iowan Old Style", serif;
+  --rs-font-body: "Manrope", "Segoe UI", sans-serif;
+
+  --rs-size-xs: 0.75rem;
+  --rs-size-sm: 0.875rem;
+  --rs-size-base: 1rem;
+  --rs-size-md: 1.125rem;
+  --rs-size-lg: 1.375rem;
+  --rs-size-xl: 1.875rem;
+  --rs-size-2xl: 2.5rem;
+  --rs-size-3xl: 3.5rem;
+
+  /* ---- Spacing (4px base) ---- */
+  --rs-space-1: 0.25rem;
+  --rs-space-2: 0.5rem;
+  --rs-space-3: 0.75rem;
+  --rs-space-4: 1rem;
+  --rs-space-5: 1.5rem;
+  --rs-space-6: 2rem;
+  --rs-space-7: 3rem;
+  --rs-space-8: 4.5rem;
+  --rs-space-9: 6rem;
+
+  /* ---- Layout ---- */
+  --rs-max-width: 1240px;
+  --rs-radius-sm: 4px;
+  --rs-radius-md: 8px;
+  --rs-radius-lg: 14px;
+  --rs-radius-pill: 999px;
+
+  /* ---- Motion ---- */
+  --rs-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --rs-duration: 220ms;
+
+  /* ---- Elevation ---- */
+  --rs-shadow-card: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --rs-shadow-pop: 0 20px 60px rgba(0, 0, 0, 0.5);
+
+  /* ---- Glass ---- */
+  --rs-glass-bg: rgba(29, 29, 33, 0.72);
+  --rs-glass-border: rgba(201, 162, 75, 0.22);
+  --rs-glass-blur: 14px;
+
+  /* ---- Z-index scale ---- */
+  --rs-z-header: 100;
+  --rs-z-popup: 200;
+  --rs-z-loader: 300;
+  --rs-z-toast: 400;
+}

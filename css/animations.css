@@ -1,0 +1,71 @@
+/* ==========================================================
+   ROYAL STORE — ANIMATIONS
+   ========================================================== */
+
+@keyframes rs-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rs-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes rs-toast-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.toast { animation: rs-toast-in 260ms var(--rs-ease); }
+
+/* ---- iPhone-style popup ---- */
+.popup-scrim {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: calc(var(--rs-z-popup) - 1);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 260ms var(--rs-ease);
+}
+
+.popup-scrim.is-visible { opacity: 1; pointer-events: auto; }
+
+.popup-card {
+  position: fixed;
+  left: 50%;
+  bottom: -100%;
+  transform: translateX(-50%);
+  width: min(360px, 92vw);
+  background: var(--rs-glass-bg);
+  backdrop-filter: blur(var(--rs-glass-blur));
+  -webkit-backdrop-filter: blur(var(--rs-glass-blur));
+  border: 1px solid var(--rs-glass-border);
+  border-radius: var(--rs-radius-lg);
+  padding: var(--rs-space-6);
+  z-index: var(--rs-z-popup);
+  text-align: center;
+  transition: bottom 380ms var(--rs-ease);
+}
+
+.popup-card.is-open { bottom: 12vh; }
+
+.popup-card__icon {
+  width: 56px; height: 56px;
+  margin: 0 auto var(--rs-space-4);
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--rs-gold-light), var(--rs-gold-dim));
+}
+
+.popup-card h3 { color: var(--rs-text); margin-bottom: var(--rs-space-2); }
+.popup-card p { margin-bottom: var(--rs-space-5); }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

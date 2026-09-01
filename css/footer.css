@@ -1,0 +1,56 @@
+/* ==========================================================
+   ROYAL STORE — FOOTER
+   ========================================================== */
+
+.site-footer {
+  border-top: 1px solid var(--rs-border);
+  padding: var(--rs-space-8) 0 var(--rs-space-6);
+  margin-top: var(--rs-space-8);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: var(--rs-space-6);
+}
+
+.footer-brand p {
+  max-width: 34ch;
+  margin-top: var(--rs-space-3);
+}
+
+.footer-col h4 {
+  font-size: var(--rs-size-sm);
+  color: var(--rs-text);
+  margin-bottom: var(--rs-space-4);
+}
+
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: var(--rs-space-3); }
+
+.footer-col a {
+  color: var(--rs-text-muted);
+  font-size: var(--rs-size-sm);
+  transition: color var(--rs-duration) var(--rs-ease);
+}
+
+.footer-col a:hover { color: var(--rs-gold); }
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--rs-space-8);
+  padding-top: var(--rs-space-5);
+  border-top: 1px solid var(--rs-border);
+  font-size: var(--rs-size-xs);
+  color: var(--rs-text-faint);
+}
+
+.footer-socials { display: flex; gap: var(--rs-space-3); }
+
+.footer-socials a {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--rs-border);
+  display: flex; align-items: center; justify-content: center;
+}
