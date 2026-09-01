@@ -1,1 +1,0 @@
-form{display:grid;gap:14px}label{display:grid;gap:6px;font-weight:700}input,textarea,select{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--card);color:var(--ink)}.auth-card{max-width:500px;margin:80px auto}.auth-card .btn{width:100%}
