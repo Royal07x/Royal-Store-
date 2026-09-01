@@ -1,1 +1,0 @@
-window.Affiliate={code(){return "ROYAL-"+(Auth.current()?.id||"GUEST")}};

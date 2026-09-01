@@ -1,1 +1,0 @@
-window.Wallet={balance(){return DB.get("wallet",0)},add(v){DB.set("wallet",this.balance()+Math.max(0,Number(v)||0))}};

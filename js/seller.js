@@ -1,1 +1,0 @@
-window.Seller={stats(){return{products:PRODUCTS.length,orders:DB.get("orders",[]).length}}};

@@ -1,1 +1,0 @@
-window.Security={requireLogin(){if(!Auth.current()){location.href="login.html?next="+encodeURIComponent(location.pathname);return false}return true}};

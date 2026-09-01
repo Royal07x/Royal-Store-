@@ -1,1 +1,0 @@
-window.RecommendationAI={similar(c){return PRODUCTS.filter(p=>p.category===c).slice(0,4)}};

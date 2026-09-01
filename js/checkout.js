@@ -1,4 +1,0 @@
-window.Checkout={start(){if(!Security.requireLogin())return;let address=prompt("Delivery address:");if(!address)return;let o={id:"RS"+Date.now(),items:Cart.items(),total:Cart.total(),address,status:"Placed",date:new Date().toISOString()};let a=DB.get("orders",[]);a.unshift(o);DB.set("orders",a);DB.remove("cart");UI.count();UI.toast("Order placed");setTimeout(()=>location.href="orders.html",500)},whatsapp(){if(!Cart.items().length)return UI.toast("Cart is empty");let t="Royal Store Order
-"+Cart.items().map(x=>{let p=PRODUCTS.find(p=>p.id===x.id);return p.name+" x "+x.qty}).join("
-")+"
-Total: ₹"+Cart.total();open("https://wa.me/?text="+encodeURIComponent(t),"_blank")}};

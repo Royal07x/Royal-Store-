@@ -1,1 +1,0 @@
-window.GiftCard={redeem(c){let v={ROYAL500:500,ROYAL1000:1000}[String(c).toUpperCase()];if(!v)return UI.toast("Invalid gift card");DB.set("giftBalance",v);UI.toast("Gift card applied")}};
