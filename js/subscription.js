@@ -1,0 +1,1 @@
+window.Subscription={get(){return DB.get("subscription",null)},activate(){DB.set("subscription",{active:true,date:new Date().toISOString()});UI.toast("Demo subscription activated")}};

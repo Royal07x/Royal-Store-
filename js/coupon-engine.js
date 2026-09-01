@@ -1,0 +1,1 @@
+window.Coupons={discount(code,total){let r={ROYAL10:.1,ROYAL20:.2}[String(code).toUpperCase()]||0;return Math.round(total*(1-r))}};

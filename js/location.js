@@ -1,0 +1,1 @@
+window.LocationService={get(){if(!navigator.geolocation)return UI.toast("Geolocation unavailable");navigator.geolocation.getCurrentPosition(p=>UI.toast("Location ready: "+p.coords.latitude.toFixed(4)+", "+p.coords.longitude.toFixed(4)),()=>UI.toast("Location permission denied"))}};

@@ -1,0 +1,1 @@
+window.API={async get(u){let r=await fetch(u);if(!r.ok)throw Error("API error");return r.json()},async post(u,d){return fetch(u,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)})}};

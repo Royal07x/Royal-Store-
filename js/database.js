@@ -1,0 +1,1 @@
+window.DB={get(k,f=null){try{let v=localStorage.getItem("royal_v4_"+k);return v===null?f:JSON.parse(v)}catch{return f}},set(k,v){localStorage.setItem("royal_v4_"+k,JSON.stringify(v));return v},remove(k){localStorage.removeItem("royal_v4_"+k)}};
