@@ -2,6 +2,8 @@ import express from 'express';
 import { connectDatabase, disconnectDatabase } from './config/database.js';
 import { env } from './config/env.js';
 import { errorHandler, notFound } from './middleware/error.js';
+import authRoutes from './routes/auth.routes.js';
+import userRoutes from './routes/user.routes.js';
 import healthRoutes from './routes/health.routes.js';
 import categoryRoutes from './routes/category.routes.js';
 import productRoutes from './routes/product.routes.js';
@@ -16,6 +18,8 @@ app.get('/', (_req, res) => {
   res.json({ service: 'Royal Store V2 API', status: 'ok' });
 });
 
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
 app.use('/api/health', healthRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/products', productRoutes);
