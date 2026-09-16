@@ -9,6 +9,7 @@ import couponRoutes from './coupon.routes.js';
 import reviewRoutes from './review.routes.js';
 import adminRoutes from './admin.routes.js';
 import adminCouponRoutes from './admin-coupon.routes.js';
+import adminReviewRoutes from './admin-review.routes.js';
 import aiRoutes from './ai.routes.js';
 
 const r = express.Router();
@@ -22,6 +23,7 @@ r.use('/coupons', couponRoutes);
 r.use('/reviews', reviewRoutes);
 r.use('/admin', adminRoutes);
 r.use('/admin/coupons', adminCouponRoutes);
+r.use('/admin/reviews', adminReviewRoutes);
 r.use('/ai', aiRoutes);
 
 export default r;
