@@ -1,65 +1,7 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Secure Royal Store V2 checkout.">
-  <title>Checkout | Royal Store V2</title>
-  <link rel="stylesheet" href="./css/styles.css">
-</head>
-<body>
-  <main class="page-shell">
-    <section class="section" style="padding-top:8vh">
-      <div class="glass about-card">
-        <p class="eyebrow">SECURE CHECKOUT</p>
-        <h1>Delivery details</h1>
-        <p>Your account is required for checkout. The server calculates the order total from current product data.</p>
-        <form id="checkout-form" style="display:grid;gap:14px;max-width:620px">
-          <input name="fullName" placeholder="Full name" autocomplete="name" required maxlength="100">
-          <input name="phone" placeholder="Phone" autocomplete="tel" required maxlength="20">
-          <input name="line1" placeholder="Address" autocomplete="street-address" required maxlength="200">
-          <input name="city" placeholder="City" autocomplete="address-level2" required maxlength="80">
-          <input name="state" placeholder="State" autocomplete="address-level1" required maxlength="80">
-          <input name="postalCode" placeholder="PIN code" autocomplete="postal-code" required maxlength="10">
-          <button class="primary-button" type="submit">Create order & continue to payment <span>→</span></button>
-          <p id="message" role="alert"></p>
-        </form>
-      </div>
-    </section>
-  </main>
-  <script type="module">
-    import { authFetch, isLoggedIn } from './js/auth.js';
-
-    if (!isLoggedIn()) {
-      location.href = `./auth.html?next=${encodeURIComponent('./checkout.html')}`;
-    } else {
-      const form = document.querySelector('#checkout-form');
-      const message = document.querySelector('#message');
-
-      form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        message.textContent = 'Creating secure order…';
-        const button = form.querySelector('button');
-        button.disabled = true;
-
-        try {
-          const shippingAddress = Object.fromEntries(new FormData(form));
-          const response = await authFetch('/api/orders', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ shippingAddress })
-          });
-          const payload = await response.json().catch(() => ({}));
-          if (!response.ok) throw new Error(payload.message || 'Unable to create order.');
-          const orderId = payload.data?.order?._id;
-          if (!orderId) throw new Error('The server did not return an order ID.');
-          location.href = `./payment.html?order=${encodeURIComponent(orderId)}`;
-        } catch (error) {
-          message.textContent = error.message || 'Unable to create order.';
-          button.disabled = false;
-        }
-      });
-    }
-  </script>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Secure Royal Store V2 checkout."><title>Checkout | Royal Store V2</title><link rel="stylesheet" href="./css/styles.css"></head><body><main class="page-shell"><section class="section" style="padding-top:8vh"><div class="glass about-card"><p class="eyebrow">SECURE CHECKOUT</p><h1>Delivery details</h1><p>Your account is required for checkout. Product prices, stock and coupon discounts are recalculated by the server.</p><form id="checkout-form" style="display:grid;gap:14px;max-width:620px"><input name="fullName" placeholder="Full name" autocomplete="name" required maxlength="100"><input name="phone" placeholder="Phone" autocomplete="tel" required maxlength="20"><input name="line1" placeholder="Address" autocomplete="street-address" required maxlength="160"><input name="city" placeholder="City" autocomplete="address-level2" required maxlength="80"><input name="state" placeholder="State" autocomplete="address-level1" required maxlength="80"><input name="postalCode" placeholder="PIN code" autocomplete="postal-code" required maxlength="12"><div style="display:grid;grid-template-columns:1fr auto;gap:10px"><input id="coupon-code" placeholder="Coupon code" maxlength="40" autocomplete="off"><button id="apply-coupon" class="secondary-button" type="button">Apply</button></div><p id="coupon-message" role="status" aria-live="polite"></p><button class="primary-button" type="submit">Create order & continue to payment <span>→</span></button><p id="message" role="alert"></p></form></div></section></main><script type="module">
+import {authFetch,isLoggedIn} from './js/auth.js';
+if(!isLoggedIn()){location.href=`./auth.html?next=${encodeURIComponent('./checkout.html')}`;}else{const form=document.querySelector('#checkout-form'),msg=document.querySelector('#message'),coupon=document.querySelector('#coupon-code'),couponMsg=document.querySelector('#coupon-message'),apply=document.querySelector('#apply-coupon');let couponCode='';
+const getSubtotal=async()=>{const r=await authFetch('/api/cart'),d=await r.json();if(!r.ok)throw Error(d.message||'Could not load cart.');return (d.data?.cart?.items||[]).reduce((sum,i)=>sum+Number(i.product?.price||0)*Number(i.quantity||0),0)};
+apply.onclick=async()=>{apply.disabled=true;couponMsg.textContent='Checking coupon…';try{const subtotal=await getSubtotal(),r=await authFetch('/api/coupons/validate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:coupon.value,subtotal})}),d=await r.json();if(!r.ok)throw Error(d.message||'Coupon is not valid.');couponCode=d.data.coupon.code;couponMsg.textContent=`Coupon applied. Discount: ₹${Number(d.data.coupon.discount).toFixed(2)}`;}catch(e){couponCode='';couponMsg.textContent=e.message}finally{apply.disabled=false}};
+form.addEventListener('submit',async e=>{e.preventDefault();msg.textContent='Creating secure order…';const b=form.querySelector('button[type="submit"]');b.disabled=true;try{const shippingAddress=Object.fromEntries(new FormData(form));const r=await authFetch('/api/orders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({shippingAddress,couponCode})});const d=await r.json();if(!r.ok)throw Error(d.message||'Unable to create order.');const id=d.data?.order?._id;if(!id)throw Error('The server did not return an order ID.');location.href=`./payment.html?order=${encodeURIComponent(id)}`}catch(x){msg.textContent=x.message;b.disabled=false}})}
+</script></body></html>
