@@ -42,7 +42,7 @@ test('payment page uses server-created attempts and server verification', async 
   assert.ok(source.includes('razorpay_signature'));
   assert.ok(source.includes('/api/payments/orders/${encodeURIComponent(orderId)}/qr'));
   assert.ok(source.includes('QR expires in'));
-  assert.ok(source.includes("status === 'paid'"));
+  assert.ok(source.includes("p.status==='paid'"));
   assert.doesNotMatch(source, /fake payment|payment successful without verification/i);
 });
 
