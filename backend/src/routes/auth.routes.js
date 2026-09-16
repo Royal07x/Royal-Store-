@@ -4,11 +4,12 @@ import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 import { requireAuth } from '../middleware/auth.js';
 import { rateLimit } from '../middleware/rateLimit.js';
+import { env } from '../config/env.js';
 
 const r = express.Router();
 const email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const authLimit = rateLimit({ windowMs: 15 * 60_000, max: 10 });
-const token = (u) => jwt.sign({ sub: u._id.toString(), role: u.role }, process.env.JWT_SECRET, { expiresIn: '15m', issuer: 'royal-store-v2' });
+const token = (u) => jwt.sign({ sub: u._id.toString(), role: u.role }, env.JWT_SECRET, { expiresIn: '15m', issuer: 'royal-store-v2' });
 
 r.post('/signup', authLimit, async (q, s, n) => {
   try {
