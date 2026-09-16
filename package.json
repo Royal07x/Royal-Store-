@@ -10,7 +10,8 @@
     "start": "node backend/src/server.js",
     "seed": "node database/seed/seed.js",
     "test": "node --import ./tests/setup.js --test",
-    "test:watch": "node --import ./tests/setup.js --test --watch"
+    "test:watch": "node --import ./tests/setup.js --test --watch",
+    "test:integration": "node tests/integration/smoke.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
