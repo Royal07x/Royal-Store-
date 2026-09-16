@@ -11,6 +11,7 @@ test('required frontend pages and assets exist', async () => {
     'frontend/category.html',
     'frontend/auth.html',
     'frontend/cart.html',
+    'frontend/wishlist.html',
     'frontend/checkout.html',
     'frontend/payment.html',
     'frontend/orders.html',
@@ -44,6 +45,14 @@ test('payment page uses server-created attempts and server verification', async 
   assert.ok(source.includes('QR expires in'));
   assert.ok(source.includes("p.status==='paid'"));
   assert.doesNotMatch(source, /fake payment|payment successful without verification/i);
+});
+
+test('wishlist page uses authenticated server endpoints', async () => {
+  const source = await read('frontend/wishlist.html');
+  assert.ok(source.includes("isLoggedIn()"));
+  assert.ok(source.includes("authFetch('/api/wishlist')"));
+  assert.ok(source.includes('/api/wishlist/items/'));
+  assert.ok(source.includes('View product'));
 });
 
 test('admin and AI routes are mounted behind their route modules', async () => {
