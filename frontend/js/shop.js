@@ -1,4 +1,4 @@
-import { products, renderProductGrid } from './catalog-ui.js';
+import { loadProducts, renderProductGrid } from './catalog-ui.js';
 
 const grid = document.querySelector('#all-products-grid');
-renderProductGrid(grid, products);
+loadProducts().then((items) => renderProductGrid(grid, items));
