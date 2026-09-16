@@ -14,60 +14,29 @@
 <body>
   <div class="page-shell">
     <header class="site-header glass" id="site-header">
-      <a class="brand" href="#top" aria-label="Royal Store home">
-        <span class="brand-mark">R</span>
-        <span><strong>ROYAL</strong><small>STORE V2</small></span>
-      </a>
-      <nav class="desktop-nav" aria-label="Primary navigation">
-        <a href="#top">Home</a>
-        <a href="#featured">Featured</a>
-        <a href="#about">About</a>
-      </nav>
-      <div class="header-actions">
-        <button class="icon-button" type="button" aria-label="Search">⌕</button>
-        <button class="icon-button" type="button" aria-label="Shopping cart">🛒<span class="badge">0</span></button>
-        <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
-      </div>
+      <a class="brand" href="#top" aria-label="Royal Store home"><span class="brand-mark">R</span><span><strong>ROYAL</strong><small>STORE V2</small></span></a>
+      <nav class="desktop-nav" aria-label="Primary navigation"><a href="#top">Home</a><a href="#categories">Categories</a><a href="./shop.html">Shop</a><a href="#about">About</a></nav>
+      <div class="header-actions"><button class="icon-button" type="button" aria-label="Search">⌕</button><button class="icon-button" type="button" aria-label="Shopping cart">🛒<span class="badge">0</span></button><button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false">☰</button></div>
     </header>
 
     <main id="top">
       <section class="hero glass reveal">
-        <div class="hero-copy">
-          <p class="eyebrow">ROYAL STORE V2</p>
-          <h1>Everyday style,<br><span>made royal.</span></h1>
-          <p class="hero-text">A clean, premium shopping experience built for mobile and desktop. More products and real commerce features will arrive in the next build steps.</p>
-          <div class="hero-actions">
-            <a class="primary-button" href="#featured">Explore store <span>→</span></a>
-            <button class="secondary-button" type="button" data-demo-toast>Coming soon</button>
-          </div>
-        </div>
+        <div class="hero-copy"><p class="eyebrow">ROYAL STORE V2</p><h1>Everyday style,<br><span>made royal.</span></h1><p class="hero-text">Discover the five approved Royal Store V2 categories through a clean, premium shopping experience built for mobile and desktop.</p><div class="hero-actions"><a class="primary-button" href="#categories">Explore categories <span>→</span></a><a class="secondary-button" href="./shop.html">View all products</a></div></div>
         <div class="hero-orb" aria-hidden="true"><div class="orb-inner">R</div></div>
       </section>
 
-      <section class="section reveal" id="featured">
-        <div class="section-heading">
-          <div><p class="eyebrow">DESIGN FOUNDATION</p><h2>Built to feel smooth.</h2></div>
-          <span class="status-pill">● Step 2</span>
-        </div>
-        <div class="feature-grid">
-          <article class="feature-card glass"><span>✨</span><h3>Premium motion</h3><p>Soft entrance, hover and glass effects without heavy animation libraries.</p></article>
-          <article class="feature-card glass"><span>📱</span><h3>Mobile first</h3><p>Touch-friendly controls and responsive layouts from small screens upward.</p></article>
-          <article class="feature-card glass"><span>🔐</span><h3>Security ready</h3><p>The UI stays separate from future authentication, payments and private backend logic.</p></article>
-        </div>
+      <section class="section reveal" id="categories">
+        <div class="section-heading"><div><p class="eyebrow">SHOP BY CATEGORY</p><h2>Choose your style.</h2></div><span class="status-pill">● Step 3</span></div>
+        <div class="category-grid" id="categories-grid"></div>
       </section>
 
-      <section class="section about reveal" id="about">
-        <div class="glass about-card">
-          <p class="eyebrow">NEXT</p>
-          <h2>Products come next.</h2>
-          <p>The five approved categories — Pants, Shirt, Beauty, Sneakers and Kid’s Toy — will be connected in Step 3. No extra categories will be added without approval.</p>
-        </div>
-      </section>
+      <section class="section reveal" id="featured"><div class="about-card glass"><p class="eyebrow">CATALOG</p><h2>Products are now organized.</h2><p>Each approved category opens its own shop page and shows every product assigned to it. Live database products will be connected in the backend step.</p><a class="primary-button inline-button" href="./shop.html">Browse catalog <span>→</span></a></div></section>
+      <section class="section about reveal" id="about"><div class="glass about-card"><p class="eyebrow">NEXT</p><h2>Real commerce comes next.</h2><p>Step 3 provides the frontend catalog architecture only. Authentication, MongoDB, cart persistence and payments stay locked for their later build steps.</p></div></section>
     </main>
-
-    <footer class="site-footer"><span>© Royal Store V2</span><span>Clean rebuild • Step 2</span></footer>
+    <footer class="site-footer"><span>© Royal Store V2</span><span>Catalog • Step 3</span></footer>
   </div>
   <div class="toast" role="status" aria-live="polite" aria-hidden="true"></div>
   <script src="./js/app.js" defer></script>
+  <script type="module" src="./js/home.js"></script>
 </body>
 </html>

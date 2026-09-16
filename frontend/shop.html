@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Browse all Royal Store V2 products by approved category.">
+  <meta name="theme-color" content="#f7b6cf">
+  <title>Shop | Royal Store V2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header glass" id="site-header">
+      <a class="brand" href="./index.html" aria-label="Royal Store home"><span class="brand-mark">R</span><span><strong>ROYAL</strong><small>STORE V2</small></span></a>
+      <nav class="desktop-nav" aria-label="Primary navigation"><a href="./index.html#top">Home</a><a href="./shop.html">Shop</a><a href="./index.html#about">About</a></nav>
+      <div class="header-actions"><button class="icon-button" type="button" aria-label="Search">⌕</button><button class="icon-button" type="button" aria-label="Shopping cart">🛒<span class="badge">0</span></button><button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false">☰</button></div>
+    </header>
+    <main>
+      <section class="section page-heading reveal"><p class="eyebrow">ROYAL CATALOG</p><h1>Shop all products.</h1><p class="hero-text">The development catalog for the five approved Royal Store V2 categories.</p></section>
+      <section class="section reveal"><div id="all-products-grid" class="product-grid"></div></section>
+    </main>
+    <footer class="site-footer"><span>© Royal Store V2</span><span>Catalog • Step 3</span></footer>
+  </div>
+  <script src="./js/app.js" defer></script>
+  <script type="module" src="./js/shop.js"></script>
+</body>
+</html>
