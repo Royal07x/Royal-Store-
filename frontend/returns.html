@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Manage Royal Store V2 return requests."><title>Returns | Royal Store V2</title><link rel="stylesheet" href="./css/styles.css"></head>
+<body><main class="page-shell"><section class="section" style="padding-top:8vh"><div class="glass about-card"><p class="eyebrow">ROYAL STORE • RETURNS</p><h1>Return requests</h1><p id="message" aria-live="polite">Loading your return requests…</p><div id="requests" style="display:grid;gap:14px"></div></div></section></main>
+<script type="module">
+import { authFetch, isLoggedIn } from './js/auth.js';
+if (!isLoggedIn()) location.href = `./auth.html?next=${encodeURIComponent('./returns.html')}`;
+const message = document.querySelector('#message');
+const requests = document.querySelector('#requests');
+const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+try {
+  const response = await authFetch('/api/returns');
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(payload.message || 'Unable to load return requests.');
+  const list = payload.data?.returnRequests || [];
+  if (!list.length) { message.textContent = 'No return requests yet.'; return; }
+  message.textContent = `${list.length} return request${list.length === 1 ? '' : 's'}.`;
+  requests.innerHTML = list.map(item => `<article class="glass" style="padding:18px"><strong>Order: ${escapeHtml(item.order)}</strong><p>Status: ${escapeHtml(item.status)}</p><p>Reason: ${escapeHtml(item.reason)}</p>${item.adminNote ? `<p>Admin note: ${escapeHtml(item.adminNote)}</p>` : ''}${item.refundId ? `<p>Refund processed: Yes</p>` : ''}</article>`).join('');
+} catch (error) { message.textContent = error.message; }
+</script></body></html>
