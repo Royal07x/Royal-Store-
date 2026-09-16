@@ -1,4 +1,5 @@
 import express from 'express';
+import { fileURLToPath } from 'node:url';
 import apiRoutes from './routes/api.routes.js';
 import { connectDatabase, disconnectDatabase } from './config/database.js';
 import { env } from './config/env.js';
@@ -17,7 +18,12 @@ app.use(rateLimit({ windowMs: 60_000, max: 120 }));
 app.use((req, res, next) => {
   const origin = req.get('origin');
   if (origin && env.CORS_ORIGIN && origin !== env.CORS_ORIGIN) return res.status(403).json({ success: false, message: 'Origin not allowed.' });
-  if (origin) { res.set('Access-Control-Allow-Origin', origin); res.set('Vary', 'Origin'); res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Razorpay-Signature'); res.set('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE,OPTIONS'); }
+  if (origin) {
+    res.set('Access-Control-Allow-Origin', origin);
+    res.set('Vary', 'Origin');
+    res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Razorpay-Signature');
+    res.set('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE,OPTIONS');
+  }
   if (req.method === 'OPTIONS') return res.sendStatus(204);
   next();
 });
@@ -29,7 +35,6 @@ app.use((req, res, next) => {
   res.set('Content-Security-Policy', "default-src 'none'; frame-ancestors 'none'; base-uri 'none'");
   next();
 });
-// Webhook signature verification requires the original raw request bytes.
 app.use('/api/payments/webhook', express.raw({ type: 'application/json', limit: '1mb' }));
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: false, limit: '100kb' }));
@@ -41,12 +46,20 @@ app.use('/api', apiRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
-const start = async () => {
+export async function startServer() {
   await connectDatabase();
   const server = app.listen(env.PORT, () => console.log(`Royal Store API listening on port ${env.PORT}`));
-  const shutdown = async (signal) => { console.log(`${signal}: shutting down`); server.close(async () => { await disconnectDatabase(); process.exit(0); }); };
+  const shutdown = async (signal) => {
+    console.log(`${signal}: shutting down`);
+    server.close(async () => { await disconnectDatabase(); process.exit(0); });
+  };
   process.once('SIGINT', () => shutdown('SIGINT'));
   process.once('SIGTERM', () => shutdown('SIGTERM'));
-};
-start().catch((error) => { console.error('Failed to start API:', error.message); process.exit(1); });
+  return server;
+}
+
+if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
+  startServer().catch((error) => { console.error('Failed to start API:', error.message); process.exit(1); });
+}
+
 export { app };
