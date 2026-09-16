@@ -1,0 +1,14 @@
+{
+  "name": "royal-store-v2",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Royal Store V2 — clean full-stack ecommerce foundation.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node backend/src/server.js",
+    "start": "node backend/src/server.js"
+  }
+}
