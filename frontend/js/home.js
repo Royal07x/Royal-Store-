@@ -1,4 +1,4 @@
-import { renderCategoryCards } from './catalog-ui.js';
+import { loadCategories, renderCategoryCards } from './catalog-ui.js';
 
 const categoriesGrid = document.querySelector('#categories-grid');
-renderCategoryCards(categoriesGrid);
+loadCategories().then((categories) => renderCategoryCards(categoriesGrid, categories));
