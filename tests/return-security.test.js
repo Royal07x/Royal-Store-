@@ -6,16 +6,16 @@ const read = (path) => readFile(new URL(`../${path}`, import.meta.url), 'utf8');
 
 test('return flow requires delivered paid orders and blocks duplicate requests', async () => {
   const source = await read('backend/src/routes/return.routes.js');
-  assert.match(source, /order\.status !== ['"]delivered['"]/);
-  assert.match(source, /order\.paymentStatus !== ['"]paid['"]/);
-  assert.match(source, /ReturnRequest\.findOne\(\{ order: order\._id \}\)/);
+  assert.match(source, /order\.status\s*!==\s*['"]delivered['"]/);
+  assert.match(source, /order\.paymentStatus\s*!==\s*['"]paid['"]/);
+  assert.match(source, /ReturnRequest\.findOne\(\{\s*order:\s*order\._id\s*\}\)/);
 });
 
 test('refund flow requires admin approval and a captured gateway payment', async () => {
   const source = await read('backend/src/routes/admin.routes.js');
-  assert.match(source, /requireRole\(['"]admin['"]\)/);
-  assert.match(source, /request\.status !== ['"]approved['"]/);
+  assert.match(source, /requireRole\(\s*['"]admin['"]\s*\)/);
+  assert.match(source, /request\.status\s*!==\s*['"]approved['"]/);
   assert.match(source, /payment\.gatewayPaymentId/);
   assert.match(source, /createRefund\(/);
-  assert.match(source, /payment\.status = ['"]refunded['"]/);
+  assert.match(source, /payment\.status\s*=\s*['"]refunded['"]/);
 });
