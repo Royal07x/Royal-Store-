@@ -1,7 +1,28 @@
-# Step 8 — Admin Panel
-
-Admin access is protected by server-side authentication and the `admin` role.
-
-Included now: dashboard metrics, recent orders, customers, and order-status management. Product management, coupons, reviews, returns/refunds, notifications, health monitoring, and audit logs remain planned admin modules for their respective hardening increments.
-
-Never place admin credentials or secrets in frontend code.
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Royal Store V2 secure admin dashboard.">
+  <title>Royal Store V2 — Admin</title>
+  <link rel="stylesheet" href="./css/admin.css">
+</head>
+<body>
+  <main class="shell">
+    <section id="auth" class="card auth-card">
+      <p class="eyebrow">ROYAL STORE V2</p><h1>Admin Login</h1>
+      <p>Admin access is protected by the backend admin role.</p>
+      <form id="login-form"><input id="email" type="email" placeholder="Admin email" autocomplete="username" required><input id="password" type="password" placeholder="Password" autocomplete="current-password" required><button type="submit">Sign in</button></form>
+      <p id="message" class="message" role="alert"></p>
+    </section>
+    <section id="dashboard" hidden>
+      <header class="topbar"><div><p class="eyebrow">ROYAL STORE V2</p><h1>Admin Dashboard</h1></div><button id="logout" class="secondary">Logout</button></header>
+      <div id="metrics" class="metrics"></div>
+      <section class="card"><div class="section-head"><h2>Orders</h2><button id="refresh" class="secondary">Refresh</button></div><div class="table-wrap"><table><thead><tr><th>Order</th><th>Customer</th><th>Total</th><th>Status</th><th>Update</th></tr></thead><tbody id="orders"></tbody></table></div></section>
+      <section class="card"><h2>Return & Refund Requests</h2><div class="table-wrap"><table><thead><tr><th>Order</th><th>Customer</th><th>Reason</th><th>Status</th><th>Action</th></tr></thead><tbody id="returns"></tbody></table></div></section>
+      <section class="card"><h2>Customers</h2><div class="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Status</th></tr></thead><tbody id="customers"></tbody></table></div></section>
+      <p id="dashboard-message" class="message" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+  <script type="module" src="./js/admin.js"></script>
+</body>
+</html>
