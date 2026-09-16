@@ -1,14 +1,12 @@
 import { Router } from 'express';
-import { databaseState } from '../config/database.js';
+import { collectHealth } from '../services/health.service.js';
 
 const router = Router();
 
 router.get('/', (_req, res) => {
-  const db = databaseState();
-  res.status(db.connected ? 200 : 503).json({
-    status: db.connected ? 'ok' : 'degraded',
-    services: { api: 'ok', mongodb: db.connected ? 'ok' : 'unavailable' }
-  });
+  const health = collectHealth();
+  // Public health output intentionally contains no secrets, customer data, or payment identifiers.
+  res.status(health.status === 'ok' ? 200 : 503).json(health);
 });
 
 export default router;
