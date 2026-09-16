@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Royal Store V2 account login and signup.">
+  <title>Account | Royal Store V2</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <style>
+    .auth-shell{max-width:520px;margin:8vh auto;padding:24px}.auth-card{padding:32px}.auth-tabs{display:flex;gap:8px;margin:20px 0}.auth-tab{flex:1}.auth-form{display:grid;gap:14px}.auth-form label{font-weight:600}.auth-form input{width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid rgba(0,0,0,.12);border-radius:14px;background:#fff}.auth-message{min-height:24px}.auth-switch{margin-top:18px;text-align:center}
+  </style>
+</head>
+<body>
+  <main class="auth-shell">
+    <section class="auth-card glass">
+      <a class="brand" href="./index.html"><span class="brand-mark">R</span><span><strong>ROYAL</strong><small>STORE V2</small></span></a>
+      <p class="eyebrow">ACCOUNT</p><h1 id="auth-title">Login</h1><p>Sign in to continue to checkout. Browsing remains available without an account.</p>
+      <div class="auth-tabs"><button class="secondary-button auth-tab" id="login-tab" type="button">Login</button><button class="secondary-button auth-tab" id="signup-tab" type="button">Sign up</button></div>
+      <form class="auth-form" id="auth-form">
+        <label id="name-label" hidden>Name<input id="name" autocomplete="name" maxlength="80"></label>
+        <label>Email<input id="email" type="email" autocomplete="email" required></label>
+        <label>Password<input id="password" type="password" autocomplete="current-password" minlength="8" maxlength="128" required></label>
+        <button class="primary-button" type="submit" id="submit-button">Login <span>→</span></button>
+        <p class="auth-message" id="auth-message" role="alert"></p>
+      </form>
+      <p class="auth-switch"><a href="./shop.html">Continue browsing</a></p>
+    </section>
+  </main>
+  <script type="module">
+    import { login, signup, getCurrentUser } from './js/auth.js';
+    const form=document.querySelector('#auth-form'), nameLabel=document.querySelector('#name-label'), nameInput=document.querySelector('#name');
+    const title=document.querySelector('#auth-title'), submit=document.querySelector('#submit-button'), message=document.querySelector('#auth-message');
+    let mode='login';
+    const setMode=(next)=>{mode=next; const signupMode=mode==='signup'; title.textContent=signupMode?'Create account':'Login'; nameLabel.hidden=!signupMode; nameInput.required=signupMode; submit.innerHTML=signupMode?'Create account <span>→</span>':'Login <span>→</span>'; message.textContent='';};
+    document.querySelector('#login-tab').onclick=()=>setMode('login'); document.querySelector('#signup-tab').onclick=()=>setMode('signup');
+    getCurrentUser().then((user)=>{if(user) location.href='./shop.html';}).catch(()=>{});
+    form.addEventListener('submit',async(e)=>{e.preventDefault();message.textContent='';submit.disabled=true;try{if(mode==='signup') await signup(nameInput.value,document.querySelector('#email').value,document.querySelector('#password').value);else await login(document.querySelector('#email').value,document.querySelector('#password').value);location.href=new URLSearchParams(location.search).get('next')||'./shop.html';}catch(error){message.textContent=error.message;}finally{submit.disabled=false;}});
+  </script>
+</body>
+</html>
