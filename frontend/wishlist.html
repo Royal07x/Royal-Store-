@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Your saved Royal Store V2 products.">
+  <title>Wishlist | Royal Store V2</title>
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="section" style="padding-top:8vh">
+      <a class="secondary-button" href="./shop.html">← Continue shopping</a>
+      <div class="glass about-card" style="margin-top:24px">
+        <p class="eyebrow">YOUR WISHLIST</p>
+        <h1>Saved products</h1>
+        <p id="wishlist-status" role="status" aria-live="polite">Loading wishlist…</p>
+        <div id="wishlist-items"></div>
+      </div>
+    </section>
+  </main>
+  <script type="module">
+    import { authFetch, isLoggedIn } from './js/auth.js';
+
+    const itemsEl = document.querySelector('#wishlist-items');
+    const statusEl = document.querySelector('#wishlist-status');
+    const money = (value) => `₹${Number(value || 0).toLocaleString('en-IN')}`;
+    const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[c]);
+
+    if (!isLoggedIn()) {
+      location.href = `./auth.html?next=${encodeURIComponent('./wishlist.html')}`;
+      throw new Error('Authentication required');
+    }
+
+    async function loadWishlist() {
+      statusEl.textContent = 'Loading wishlist…';
+      const response = await authFetch('/api/wishlist');
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        statusEl.textContent = payload.message || 'Unable to load wishlist.';
+        return;
+      }
+
+      const products = payload.data?.wishlist?.products || [];
+      if (!products.length) {
+        statusEl.textContent = 'Your wishlist is empty.';
+        itemsEl.innerHTML = '<a class="primary-button" href="./shop.html">Browse products <span>→</span></a>';
+        return;
+      }
+
+      statusEl.textContent = `${products.length} saved product${products.length === 1 ? '' : 's'}`;
+      itemsEl.innerHTML = products.map((product) => {
+        const id = product._id;
+        const stock = Number(product.stock || 0);
+        return `<article class="glass" style="padding:16px;margin:12px 0;display:grid;gap:8px"><strong>${esc(product.name)}</strong><span>${money(product.price)}</span><span>${stock > 0 ? `In stock: ${stock}` : 'Currently out of stock'}</span><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="secondary-button" href="./product.html?id=${encodeURIComponent(id)}">View product</a><button class="secondary-button" type="button" data-remove="${esc(id)}">Remove</button></div></article>`;
+      }).join('');
+
+      itemsEl.querySelectorAll('[data-remove]').forEach((button) => {
+        button.addEventListener('click', async () => {
+          button.disabled = true;
+          const response = await authFetch(`/api/wishlist/items/${encodeURIComponent(button.dataset.remove)}`, { method: 'DELETE' });
+          if (!response.ok) button.disabled = false;
+          await loadWishlist();
+        });
+      });
+    }
+
+    loadWishlist().catch((error) => {
+      statusEl.textContent = error.message || 'Unable to load wishlist.';
+    });
+  </script>
+</body>
+</html>
