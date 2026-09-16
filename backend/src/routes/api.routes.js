@@ -1,1 +1,11 @@
-import express from'express';import User from'../models/User.js';import{signAccessToken}from'../utils/jwt.js';const r=express.Router(),email=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;r.post('/signup',async(q,s,n)=>{try{const name=String(q.body.name??'').trim(),e=String(q.body.email??'').trim().toLowerCase(),p=String(q.body.password??'');if(name.length<2||name.length>80||!email.test(e)||p.length<8||p.length>128)return s.status(400).json({success:false,message:'Enter a valid name, email, and password (8–128 characters).'});if(await User.exists({email:e}))return s.status(409).json({success:false,message:'An account with this email already exists.'});const u=await User.create({name,email:e,passwordHash:await User.hashPassword(p)});s.status(201).json({success:true,data:{token:signAccessToken(u),user:{id:u._id,name:u.name,email:u.email,role:u.role}}})}catch(e){n(e)}});r.post('/login',async(q,s,n)=>{try{const e=String(q.body.email??'').trim().toLowerCase(),p=String(q.body.password??'');if(!email.test(e)||!p)return s.status(400).json({success:false,message:'Email and password are required.'});const u=await User.findOne({email:e}).select('+passwordHash');if(!u||!u.isActive||!(await u.verifyPassword(p)))return s.status(401).json({success:false,message:'Invalid email or password.'});s.json({success:true,data:{token:signAccessToken(u),user:{id:u._id,name:u.name,email:u.email,role:u.role}}})}catch(e){n(e)}});export default r;
+import express from 'express';
+import authRoutes from './auth.routes.js';
+import cartRoutes from './cart.routes.js';
+import wishlistRoutes from './wishlist.routes.js';
+import orderRoutes from './order.routes.js';
+import paymentRoutes from './payment.routes.js';
+import adminRoutes from './admin.routes.js';
+import aiRoutes from './ai.routes.js';
+const r=express.Router();
+r.use('/auth',authRoutes);r.use('/cart',cartRoutes);r.use('/wishlist',wishlistRoutes);r.use('/orders',orderRoutes);r.use('/payments',paymentRoutes);r.use('/admin',adminRoutes);r.use('/ai',aiRoutes);
+export default r;
