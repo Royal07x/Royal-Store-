@@ -7,6 +7,7 @@ import Product from '../models/Product.js';
 import Coupon from '../models/Coupon.js';
 import { requireAuth } from '../middleware/auth.js';
 import { findValidCoupon } from './coupon.routes.js';
+import { notifyOrderCreated, notifyOrderCancelled } from '../services/notification.service.js';
 
 const r = express.Router();
 r.use(requireAuth);
@@ -27,8 +28,7 @@ r.post('/', async (q, s, n) => {
       const line = p.price * ci.quantity; subtotal += line;
       items.push({ product: p._id, sku: p.sku, name: p.name, unitPrice: p.price, quantity: ci.quantity, lineTotal: line });
     }
-    let couponCode = '';
-    let discount = 0;
+    let couponCode = '', discount = 0;
     const requestedCode = String(q.body?.couponCode ?? '').trim();
     if (requestedCode) {
       const result = await findValidCoupon(requestedCode, subtotal);
@@ -40,11 +40,12 @@ r.post('/', async (q, s, n) => {
     const fee = subtotal >= 999 ? 0 : 49;
     const total = Math.max(0, subtotal - discount + fee);
     const o = await Order.create({ orderNumber: `RS-${Date.now()}-${crypto.randomBytes(3).toString('hex').toUpperCase()}`, user: q.user._id, items, shippingAddress: a, subtotal, couponCode, discount, shippingFee: fee, total });
+    await notifyOrderCreated(o);
     s.status(201).json({ success: true, data: { order: o } });
   } catch (e) { n(e); }
 });
 
 r.get('/', async (q, s, n) => { try { s.json({ success: true, data: { orders: await Order.find({ user: q.user._id }).sort({ createdAt: -1 }) } }); } catch (e) { n(e); } });
 r.get('/:id', async (q, s, n) => { try { if (!mongoose.Types.ObjectId.isValid(q.params.id)) return s.status(400).json({ success: false, message: 'Invalid order ID.' }); const o = await Order.findOne({ _id: q.params.id, user: q.user._id }); if (!o) return s.status(404).json({ success: false, message: 'Order not found.' }); s.json({ success: true, data: { order: o } }); } catch (e) { n(e); } });
-r.post('/:id/cancel', async (q, s, n) => { try { if (!mongoose.Types.ObjectId.isValid(q.params.id)) return s.status(400).json({ success: false, message: 'Invalid order ID.' }); const o = await Order.findOne({ _id: q.params.id, user: q.user._id }); if (!o) return s.status(404).json({ success: false, message: 'Order not found.' }); if (o.paymentStatus === 'paid') return s.status(409).json({ success: false, message: 'Paid orders require the refund/return flow and cannot be cancelled here.' }); if (o.status !== 'pending') return s.status(409).json({ success: false, message: 'This order can no longer be cancelled at this stage.' }); o.status = 'cancelled'; await o.save(); s.json({ success: true, data: { order: o } }); } catch (e) { n(e); } });
+r.post('/:id/cancel', async (q, s, n) => { try { if (!mongoose.Types.ObjectId.isValid(q.params.id)) return s.status(400).json({ success: false, message: 'Invalid order ID.' }); const o = await Order.findOne({ _id: q.params.id, user: q.user._id }); if (!o) return s.status(404).json({ success: false, message: 'Order not found.' }); if (o.paymentStatus === 'paid') return s.status(409).json({ success: false, message: 'Paid orders require the refund/return flow and cannot be cancelled here.' }); if (o.status !== 'pending') return s.status(409).json({ success: false, message: 'This order can no longer be cancelled at this stage.' }); o.status = 'cancelled'; await o.save(); await notifyOrderCancelled(o); s.json({ success: true, data: { order: o } }); } catch (e) { n(e); } });
 export default r;
