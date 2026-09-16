@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Royal Store V2 — modern fashion, beauty, sneakers and lifestyle shopping.">
+  <meta name="theme-color" content="#f7b6cf">
+  <title>Royal Store V2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header glass" id="site-header">
+      <a class="brand" href="#top" aria-label="Royal Store home">
+        <span class="brand-mark">R</span>
+        <span><strong>ROYAL</strong><small>STORE V2</small></span>
+      </a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#top">Home</a>
+        <a href="#featured">Featured</a>
+        <a href="#about">About</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" type="button" aria-label="Search">⌕</button>
+        <button class="icon-button" type="button" aria-label="Shopping cart">🛒<span class="badge">0</span></button>
+        <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero glass reveal">
+        <div class="hero-copy">
+          <p class="eyebrow">ROYAL STORE V2</p>
+          <h1>Everyday style,<br><span>made royal.</span></h1>
+          <p class="hero-text">A clean, premium shopping experience built for mobile and desktop. More products and real commerce features will arrive in the next build steps.</p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#featured">Explore store <span>→</span></a>
+            <button class="secondary-button" type="button" data-demo-toast>Coming soon</button>
+          </div>
+        </div>
+        <div class="hero-orb" aria-hidden="true"><div class="orb-inner">R</div></div>
+      </section>
+
+      <section class="section reveal" id="featured">
+        <div class="section-heading">
+          <div><p class="eyebrow">DESIGN FOUNDATION</p><h2>Built to feel smooth.</h2></div>
+          <span class="status-pill">● Step 2</span>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card glass"><span>✨</span><h3>Premium motion</h3><p>Soft entrance, hover and glass effects without heavy animation libraries.</p></article>
+          <article class="feature-card glass"><span>📱</span><h3>Mobile first</h3><p>Touch-friendly controls and responsive layouts from small screens upward.</p></article>
+          <article class="feature-card glass"><span>🔐</span><h3>Security ready</h3><p>The UI stays separate from future authentication, payments and private backend logic.</p></article>
+        </div>
+      </section>
+
+      <section class="section about reveal" id="about">
+        <div class="glass about-card">
+          <p class="eyebrow">NEXT</p>
+          <h2>Products come next.</h2>
+          <p>The five approved categories — Pants, Shirt, Beauty, Sneakers and Kid’s Toy — will be connected in Step 3. No extra categories will be added without approval.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><span>© Royal Store V2</span><span>Clean rebuild • Step 2</span></footer>
+  </div>
+  <div class="toast" role="status" aria-live="polite" aria-hidden="true"></div>
+  <script src="./js/app.js" defer></script>
+</body>
+</html>
