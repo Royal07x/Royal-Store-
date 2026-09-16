@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Royal Store V2 product details."><title>Product | Royal Store V2</title><link rel="stylesheet" href="./css/styles.css"></head>
+<body><main class="page-shell"><section class="section reveal" style="padding-top:8vh"><a class="secondary-button" href="./shop.html">← Back to shop</a><div id="product-detail" class="glass about-card" style="margin-top:24px"><p class="eyebrow">PRODUCT</p><h1>Loading product…</h1></div></section></main>
+<script type="module">
+import { loadProduct, getProductFromUrl } from './js/catalog-ui.js';
+import { isLoggedIn } from './js/auth.js';
+const root=document.querySelector('#product-detail');
+const product=await loadProduct(getProductFromUrl());
+if(!product){root.innerHTML='<p class="eyebrow">PRODUCT</p><h1>Product not found</h1><a class="primary-button" href="./shop.html">Back to shop <span>→</span></a>';}else{const id=product._id||product.id;root.innerHTML=`<p class="eyebrow">${product.category||'ROYAL STORE'}</p><h1>${product.name}</h1><p>${product.description}</p><h2>₹${Number(product.price).toLocaleString('en-IN')}</h2><p>Stock: ${Number(product.stock ?? 0)}</p><button class="primary-button" id="buy-now" type="button">Buy Now <span>→</span></button>`;document.querySelector('#buy-now').onclick=()=>{if(!isLoggedIn()){location.href=`./auth.html?next=${encodeURIComponent(`./checkout.html?product=${id}`)}`;return;}location.href=`./checkout.html?product=${encodeURIComponent(id)}`;};}
+</script></body></html>
