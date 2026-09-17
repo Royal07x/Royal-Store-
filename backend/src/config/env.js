@@ -27,5 +27,7 @@ export const env = Object.freeze({
   CLOUD_AI_BASE_URL: valueOf('CLOUD_AI_BASE_URL'),
   CLOUD_AI_MODEL: valueOf('CLOUD_AI_MODEL'),
   WHATSAPP_NUMBER: valueOf('WHATSAPP_NUMBER'),
+  RESET_URL: valueOf('RESET_URL', 'http://localhost:5500/reset-password.html'),
+  RESET_DELIVERY_MODE: valueOf('RESET_DELIVERY_MODE', nodeEnv === 'production' ? 'email' : 'console'),
   BACKUP_LAST_SUCCESS_AT: valueOf('BACKUP_LAST_SUCCESS_AT'),
 });
