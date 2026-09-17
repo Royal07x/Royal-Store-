@@ -8,8 +8,11 @@ export async function requireAuth(req, res, next) {
 
   try {
     const payload = jwt.verify(header.slice(7), env.JWT_SECRET, { issuer: 'royal-store-v2' });
-    const user = await User.findById(payload.sub).select('_id name email role isActive');
+    const user = await User.findById(payload.sub).select('_id name email role isActive passwordChangedAt');
     if (!user || !user.isActive) return res.status(401).json({ success: false, message: 'Authentication required.' });
+    if (user.passwordChangedAt && payload.iat && payload.iat * 1000 <= user.passwordChangedAt.getTime()) {
+      return res.status(401).json({ success: false, message: 'Session expired. Please sign in again.' });
+    }
     req.user = user;
     next();
   } catch {
