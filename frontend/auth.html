@@ -7,7 +7,7 @@
   <title>Account | Royal Store V2</title>
   <link rel="stylesheet" href="./css/styles.css">
   <style>
-    .auth-shell{max-width:520px;margin:8vh auto;padding:24px}.auth-card{padding:32px}.auth-tabs{display:flex;gap:8px;margin:20px 0}.auth-tab{flex:1}.auth-form{display:grid;gap:14px}.auth-form label{font-weight:600}.auth-form input{width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid rgba(0,0,0,.12);border-radius:14px;background:#fff}.auth-message{min-height:24px}.auth-switch{margin-top:18px;text-align:center}
+    .auth-shell{max-width:520px;margin:8vh auto;padding:24px}.auth-card{padding:32px}.auth-tabs{display:flex;gap:8px;margin:20px 0}.auth-tab{flex:1}.auth-form{display:grid;gap:14px}.auth-form label{font-weight:600}.auth-form input{width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid rgba(0,0,0,.12);border-radius:14px;background:#fff}.auth-message{min-height:24px}.auth-switch{margin-top:18px;text-align:center}.forgot-link{display:block;margin-top:-4px;text-align:right;color:#8b7145;font-size:.82rem;font-weight:700}
   </style>
 </head>
 <body>
@@ -20,6 +20,7 @@
         <label id="name-label" hidden>Name<input id="name" autocomplete="name" maxlength="80"></label>
         <label>Email<input id="email" type="email" autocomplete="email" required></label>
         <label>Password<input id="password" type="password" autocomplete="current-password" minlength="8" maxlength="128" required></label>
+        <a class="forgot-link" href="./forgot-password.html">Forgot password?</a>
         <button class="primary-button" type="submit" id="submit-button">Login <span>→</span></button>
         <p class="auth-message" id="auth-message" role="alert"></p>
       </form>
