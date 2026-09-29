@@ -42,6 +42,17 @@ Full-stack ecommerce rebuild for the Royal Store V2 project.
 - Invalid coupon IDs are rejected before database lookup.
 - Deactivation is soft-delete style: the coupon record and usage history remain available to admins.
 
+### Step 19 — Reviews & Ratings
+- Customers can submit a review only when authenticated and only against their own delivered order.
+- The reviewed product must actually be present in that delivered order; the server does not trust a client-supplied purchase claim.
+- Reviews accept integer ratings from 1–5 and comments from 3–1000 characters.
+- Each customer can review a given product only once, enforced by both route validation and a database unique index.
+- New reviews enter pending moderation and are not publicly displayed until approved.
+- Public product reviews expose only approved reviews.
+- Admin review moderation is protected by the admin role and supports approve/reject status plus an admin note.
+- Review submission is rate-limited.
+- Delivered COD orders are eligible for reviews; review eligibility is not incorrectly tied to paid payment status.
+- A previously purchased product can still receive its verified review even if the product is later deactivated.
 ### Step 18 — Product Management
 - Admin product CRUD is protected by the authenticated admin role.
 - Product creation/editing validates SKU, slug, name, description, non-negative price, integer stock and image URLs.
