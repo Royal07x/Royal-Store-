@@ -1,24 +1,27 @@
 import { Router } from 'express';
+import mongoose from 'mongoose';
 import Coupon from '../models/Coupon.js';
 import { requireAuth, requireRole } from '../middleware/auth.js';
 
 const router = Router();
 router.use(requireAuth, requireRole('admin'));
 
-const normalize = (body = {}) => ({
-  code: String(body.code ?? '').trim().toUpperCase(),
-  type: body.type,
-  value: Number(body.value),
-  minSubtotal: Number(body.minSubtotal ?? 0),
-  maxDiscount: body.maxDiscount === '' || body.maxDiscount == null ? null : Number(body.maxDiscount),
-  usageLimit: body.usageLimit === '' || body.usageLimit == null ? null : Number(body.usageLimit),
-  startsAt: body.startsAt ? new Date(body.startsAt) : null,
-  expiresAt: body.expiresAt ? new Date(body.expiresAt) : null,
-  active: body.active === undefined ? true : Boolean(body.active)
-});
+const normalize = (body = {}, { partial = false } = {}) => {
+  const coupon = {};
+  if (!partial || body.code !== undefined) coupon.code = String(body.code ?? '').trim().toUpperCase();
+  if (!partial || body.type !== undefined) coupon.type = body.type;
+  if (!partial || body.value !== undefined) coupon.value = Number(body.value);
+  if (!partial || body.minSubtotal !== undefined) coupon.minSubtotal = Number(body.minSubtotal ?? 0);
+  if (!partial || body.maxDiscount !== undefined) coupon.maxDiscount = body.maxDiscount === '' || body.maxDiscount == null ? null : Number(body.maxDiscount);
+  if (!partial || body.usageLimit !== undefined) coupon.usageLimit = body.usageLimit === '' || body.usageLimit == null ? null : Number(body.usageLimit);
+  if (!partial || body.startsAt !== undefined) coupon.startsAt = body.startsAt ? new Date(body.startsAt) : null;
+  if (!partial || body.expiresAt !== undefined) coupon.expiresAt = body.expiresAt ? new Date(body.expiresAt) : null;
+  if (body.active !== undefined) coupon.active = Boolean(body.active);
+  return coupon;
+};
 
 const validate = (c) => {
-  if (!/^[A-Z0-9_-]{3,40}$/.test(c.code)) return 'Code must be 3–40 characters using letters, numbers, _ or -.';
+  if (!c.code || !/^[A-Z0-9_-]{3,40}$/.test(c.code)) return 'Code must be 3–40 characters using letters, numbers, _ or -.';
   if (!['percent', 'fixed'].includes(c.type)) return 'Coupon type must be percent or fixed.';
   if (!Number.isFinite(c.value) || c.value <= 0 || (c.type === 'percent' && c.value > 100)) return 'Coupon value is invalid.';
   if (!Number.isFinite(c.minSubtotal) || c.minSubtotal < 0) return 'Minimum subtotal is invalid.';
@@ -51,11 +54,15 @@ router.post('/', async (req, res, next) => {
 
 router.patch('/:couponId', async (req, res, next) => {
   try {
-    const coupon = normalize(req.body);
-    const error = validate(coupon);
+    if (!mongoose.Types.ObjectId.isValid(req.params.couponId)) return res.status(400).json({ success: false, message: 'Invalid coupon ID.' });
+    const existing = await Coupon.findById(req.params.couponId);
+    if (!existing) return res.status(404).json({ success: false, message: 'Coupon not found.' });
+    const coupon = normalize(req.body, { partial: true });
+    const merged = { ...existing.toObject(), ...coupon };
+    const error = validate(merged);
     if (error) return res.status(400).json({ success: false, message: error });
+    if (merged.usageLimit != null && Number(merged.usageLimit) < Number(existing.usedCount)) return res.status(400).json({ success: false, message: 'Usage limit cannot be below the current used count.' });
     const updated = await Coupon.findByIdAndUpdate(req.params.couponId, coupon, { new: true, runValidators: true }).lean();
-    if (!updated) return res.status(404).json({ success: false, message: 'Coupon not found.' });
     res.json({ success: true, coupon: updated });
   } catch (error) {
     if (error?.code === 11000) return res.status(409).json({ success: false, message: 'Coupon code already exists.' });
@@ -65,6 +72,7 @@ router.patch('/:couponId', async (req, res, next) => {
 
 router.delete('/:couponId', async (req, res, next) => {
   try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.couponId)) return res.status(400).json({ success: false, message: 'Invalid coupon ID.' });
     const updated = await Coupon.findByIdAndUpdate(req.params.couponId, { active: false }, { new: true }).lean();
     if (!updated) return res.status(404).json({ success: false, message: 'Coupon not found.' });
     res.json({ success: true, message: 'Coupon deactivated.', coupon: updated });
