@@ -39,9 +39,10 @@ r.post('/', async (q, s, n) => {
     }
     const fee = subtotal >= 999 ? 0 : 49;
     const total = Math.max(0, subtotal - discount + fee);
-    const o = await Order.create({ orderNumber: `RS-${Date.now()}-${crypto.randomBytes(3).toString('hex').toUpperCase()}`, user: q.user._id, items, shippingAddress: a, subtotal, couponCode, discount, shippingFee: fee, total });
+    const paymentMethod = 'cod';
+    const o = await Order.create({ paymentMethod, orderNumber: `RS-${Date.now()}-${crypto.randomBytes(3).toString('hex').toUpperCase()}`, user: q.user._id, items, shippingAddress: a, subtotal, couponCode, discount, shippingFee: fee, total });
     await notifyOrderCreated(o);
-    s.status(201).json({ success: true, data: { order: o } });
+    s.status(201).json({ success: true, data: { order: o, paymentMethod } });
   } catch (e) { n(e); }
 });
 
