@@ -18,6 +18,7 @@ r.post('/', async (q, s, n) => {
     if (!a?.fullName || !a?.phone || !a?.line1 || !a?.city || !a?.state || !a?.postalCode) return s.status(400).json({ success: false, message: 'Complete shipping address is required.' });
     const buyNowProductId = String(q.body?.buyNowProductId ?? '').trim();
     const buyNowQuantity = Math.max(1, Math.min(99, Number(q.body?.buyNowQuantity ?? 1) || 1));
+    if (buyNowProductId && !mongoose.Types.ObjectId.isValid(buyNowProductId)) return s.status(400).json({ success: false, message: 'Invalid product ID.' });
     const c = buyNowProductId ? null : await Cart.findOne({ user: q.user._id });
     if (!buyNowProductId && !c?.items.length) return s.status(400).json({ success: false, message: 'Cart is empty.' });
     const productIds = buyNowProductId ? [buyNowProductId] : c.items.map((x) => x.product);
