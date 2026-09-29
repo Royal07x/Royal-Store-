@@ -42,6 +42,15 @@ Full-stack ecommerce rebuild for the Royal Store V2 project.
 - Invalid coupon IDs are rejected before database lookup.
 - Deactivation is soft-delete style: the coupon record and usage history remain available to admins.
 
+### Step 20 — Notifications + Customer Support
+- Authenticated customers can view their own notifications and mark individual notifications as read.
+- Customer support tickets are authentication-protected, rate-limited and ownership-scoped.
+- Support tickets validate subject/message length and show ticket status plus admin replies.
+- Admin support management is admin-only and sends a customer notification when a ticket is updated.
+- When an admin reply exists, the support notification includes the reply so the customer can see the response from the notification center.
+- Order creation notifications match the current COD checkout flow.
+- Admin order status changes generate customer notifications when the status actually changes.
+- Notification records are scoped to the owning customer; notification read updates cannot modify another customer's record.
 ### Step 19 — Reviews & Ratings
 - Customers can submit a review only when authenticated and only against their own delivered order.
 - The reviewed product must actually be present in that delivered order; the server does not trust a client-supplied purchase claim.
