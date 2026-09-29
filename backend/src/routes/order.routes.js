@@ -40,7 +40,25 @@ r.post('/', async (q, s, n) => {
     const fee = subtotal >= 999 ? 0 : 49;
     const total = Math.max(0, subtotal - discount + fee);
     const paymentMethod = 'cod';
-    const o = await Order.create({ paymentMethod, orderNumber: `RS-${Date.now()}-${crypto.randomBytes(3).toString('hex').toUpperCase()}`, user: q.user._id, items, shippingAddress: a, subtotal, couponCode, discount, shippingFee: fee, total });
+    const reserved = [];
+    for (const item of items) {
+      const result = await Product.updateOne({ _id: item.product, active: true, stock: { $gte: item.quantity } }, { $inc: { stock: -item.quantity } });
+      if (!result.modifiedCount) {
+        for (const done of reserved) await Product.updateOne({ _id: done.product }, { $inc: { stock: done.quantity } });
+        if (couponCode) await Coupon.updateOne({ code: couponCode, active: true, usedCount: { $gt: 0 } }, { $inc: { usedCount: -1 } });
+        return s.status(409).json({ success: false, message: 'Stock changed while placing the order. Please retry.' });
+      }
+      reserved.push(item);
+    }
+    let o;
+    try {
+      o = await Order.create({ paymentMethod, status: 'confirmed', orderNumber: `RS-${Date.now()}-${crypto.randomBytes(3).toString('hex').toUpperCase()}`, user: q.user._id, items, shippingAddress: a, subtotal, couponCode, discount, shippingFee: fee, total });
+    } catch (error) {
+      for (const done of reserved) await Product.updateOne({ _id: done.product }, { $inc: { stock: done.quantity } });
+      if (couponCode) await Coupon.updateOne({ code: couponCode, active: true, usedCount: { $gt: 0 } }, { $inc: { usedCount: -1 } });
+      throw error;
+    }
+    await Cart.updateOne({ user: q.user._id }, { $set: { items: [] } });
     await notifyOrderCreated(o);
     s.status(201).json({ success: true, data: { order: o, paymentMethod } });
   } catch (e) { n(e); }
@@ -48,5 +66,5 @@ r.post('/', async (q, s, n) => {
 
 r.get('/', async (q, s, n) => { try { s.json({ success: true, data: { orders: await Order.find({ user: q.user._id }).sort({ createdAt: -1 }) } }); } catch (e) { n(e); } });
 r.get('/:id', async (q, s, n) => { try { if (!mongoose.Types.ObjectId.isValid(q.params.id)) return s.status(400).json({ success: false, message: 'Invalid order ID.' }); const o = await Order.findOne({ _id: q.params.id, user: q.user._id }); if (!o) return s.status(404).json({ success: false, message: 'Order not found.' }); s.json({ success: true, data: { order: o } }); } catch (e) { n(e); } });
-r.post('/:id/cancel', async (q, s, n) => { try { if (!mongoose.Types.ObjectId.isValid(q.params.id)) return s.status(400).json({ success: false, message: 'Invalid order ID.' }); const o = await Order.findOne({ _id: q.params.id, user: q.user._id }); if (!o) return s.status(404).json({ success: false, message: 'Order not found.' }); if (o.paymentStatus === 'paid') return s.status(409).json({ success: false, message: 'Paid orders require the refund/return flow and cannot be cancelled here.' }); if (o.status !== 'pending') return s.status(409).json({ success: false, message: 'This order can no longer be cancelled at this stage.' }); o.status = 'cancelled'; await o.save(); await notifyOrderCancelled(o); s.json({ success: true, data: { order: o } }); } catch (e) { n(e); } });
+r.post('/:id/cancel', async (q, s, n) => { try { if (!mongoose.Types.ObjectId.isValid(q.params.id)) return s.status(400).json({ success: false, message: 'Invalid order ID.' }); const o = await Order.findOne({ _id: q.params.id, user: q.user._id }); if (!o) return s.status(404).json({ success: false, message: 'Order not found.' }); if (o.paymentStatus === 'paid') return s.status(409).json({ success: false, message: 'Paid orders require the refund/return flow and cannot be cancelled here.' }); if (!['pending', 'confirmed'].includes(o.status)) return s.status(409).json({ success: false, message: 'This order can no longer be cancelled at this stage.' }); o.status = 'cancelled'; await o.save(); for (const item of o.items) await Product.updateOne({ _id: item.product }, { $inc: { stock: item.quantity } }); await notifyOrderCancelled(o); s.json({ success: true, data: { order: o } }); } catch (e) { n(e); } });
 export default r;
