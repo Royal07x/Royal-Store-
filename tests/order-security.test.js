@@ -19,3 +19,16 @@ test('admin order status changes protect paid and delivered cancellations', asyn
   assert.match(source, /Delivered orders require the return flow/);
   assert.match(source, /current\.status==='cancelled'/);
 });
+
+test('order and user-owned resource routes validate object IDs before database lookup', async () => {
+  const order = await read('backend/src/routes/order.routes.js');
+  const cart = await read('backend/src/routes/cart.routes.js');
+  const wishlist = await read('backend/src/routes/wishlist.routes.js');
+  const returns = await read('backend/src/routes/return.routes.js');
+  const admin = await read('backend/src/routes/admin.routes.js');
+  assert.match(order, /buyNowProductId && !mongoose\.Types\.ObjectId\.isValid\(buyNowProductId\)/);
+  assert.match(cart, /const validId=\(id\)=>mongoose\.Types\.ObjectId\.isValid\(id\)/);
+  assert.match(wishlist, /const validId=\(id\)=>mongoose\.Types\.ObjectId\.isValid\(id\)/);
+  assert.match(returns, /mongoose\.Types\.ObjectId\.isValid\(orderId\)/);
+  assert.match(admin, /Invalid return request ID/);
+});
