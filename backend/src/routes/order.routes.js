@@ -16,15 +16,19 @@ r.post('/', async (q, s, n) => {
   try {
     const a = q.body?.shippingAddress;
     if (!a?.fullName || !a?.phone || !a?.line1 || !a?.city || !a?.state || !a?.postalCode) return s.status(400).json({ success: false, message: 'Complete shipping address is required.' });
-    const c = await Cart.findOne({ user: q.user._id });
-    if (!c?.items.length) return s.status(400).json({ success: false, message: 'Cart is empty.' });
-    const ps = await Product.find({ _id: { $in: c.items.map((x) => x.product) }, active: true });
+    const buyNowProductId = String(q.body?.buyNowProductId ?? '').trim();
+    const buyNowQuantity = Math.max(1, Math.min(99, Number(q.body?.buyNowQuantity ?? 1) || 1));
+    const c = buyNowProductId ? null : await Cart.findOne({ user: q.user._id });
+    if (!buyNowProductId && !c?.items.length) return s.status(400).json({ success: false, message: 'Cart is empty.' });
+    const productIds = buyNowProductId ? [buyNowProductId] : c.items.map((x) => x.product);
+    const ps = await Product.find({ _id: { $in: productIds }, active: true });
     const m = new Map(ps.map((p) => [p._id.toString(), p]));
+    const sourceItems = buyNowProductId ? [{ product: buyNowProductId, quantity: buyNowQuantity }] : c.items;
     const items = [];
     let subtotal = 0;
-    for (const ci of c.items) {
+    for (const ci of sourceItems) {
       const p = m.get(ci.product.toString());
-      if (!p || ci.quantity > p.stock) return s.status(409).json({ success: false, message: 'A cart item is unavailable or has insufficient stock.' });
+      if (!p || ci.quantity > p.stock) return s.status(409).json({ success: false, message: 'A product is unavailable or has insufficient stock.' });
       const line = p.price * ci.quantity; subtotal += line;
       items.push({ product: p._id, sku: p.sku, name: p.name, unitPrice: p.price, quantity: ci.quantity, lineTotal: line });
     }
@@ -58,7 +62,7 @@ r.post('/', async (q, s, n) => {
       if (couponCode) await Coupon.updateOne({ code: couponCode, active: true, usedCount: { $gt: 0 } }, { $inc: { usedCount: -1 } });
       throw error;
     }
-    await Cart.updateOne({ user: q.user._id }, { $set: { items: [] } });
+    if (!buyNowProductId) await Cart.updateOne({ user: q.user._id }, { $set: { items: [] } });
     await notifyOrderCreated(o);
     s.status(201).json({ success: true, data: { order: o, paymentMethod } });
   } catch (e) { n(e); }
