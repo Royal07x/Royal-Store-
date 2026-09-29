@@ -42,6 +42,16 @@ Full-stack ecommerce rebuild for the Royal Store V2 project.
 - Invalid coupon IDs are rejected before database lookup.
 - Deactivation is soft-delete style: the coupon record and usage history remain available to admins.
 
+### Step 18 — Product Management
+- Admin product CRUD is protected by the authenticated admin role.
+- Product creation/editing validates SKU, slug, name, description, non-negative price, integer stock and image URLs.
+- Products must use an active approved category before creation or category changes.
+- SKU and slug uniqueness conflicts return a safe conflict response.
+- Product IDs are preserved during edits so existing carts, orders and reviews continue to reference the same product.
+- Deactivation is a soft status change; product records are not deleted.
+- Inactive products can be explicitly reactivated through a separate status endpoint, and activation re-checks that the category is active.
+- Editing product details no longer implicitly changes the product's active/inactive status.
+
 ### Step 16 — Cart + Checkout + Payment UI/Verification
 - Cart quantity controls respect server-reported stock and show update errors.
 - Cart header buttons open the cart and show the authenticated cart item count when available.
