@@ -8,5 +8,5 @@ test('paid orders cannot use the direct cancellation endpoint', async () => {
   const source = await read('backend/src/routes/order.routes.js');
   assert.match(source, /paymentStatus === ['"]paid['"]/);
   assert.match(source, /Paid orders require the refund\/return flow/);
-  assert.match(source, /o\.status !== ['"]pending['"]/);
+  assert.match(source, /!\[['"]pending['"], ['"]confirmed['"]\]\.includes\(o\.status\)/);
 });
