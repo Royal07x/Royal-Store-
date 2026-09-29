@@ -8,7 +8,7 @@
 <body><main class="page-shell"><section class="section" style="padding-top:8vh"><div class="glass about-card"><p class="eyebrow">ORDER STATUS</p><h1 id="title">Loading…</h1><div id="details" aria-live="polite">Please wait.</div><p id="actions"></p><a class="primary-button" href="./shop.html">Continue shopping <span>→</span></a></div></section></main>
 <script type="module">
 import { authFetch, isLoggedIn } from './js/auth.js';
-const id = new URLSearchParams(location.search).get('order');
+const params = new URLSearchParams(location.search); const id = params.get('order') || params.get('placed');
 const title = document.querySelector('#title'), details = document.querySelector('#details'), actions = document.querySelector('#actions');
 if (!isLoggedIn()) location.href = `./auth.html?next=${encodeURIComponent(`./orders.html?order=${id || ''}`)}`;
 else if (!id) { title.textContent = 'Order not found'; details.textContent = 'No order ID was provided.'; }
@@ -16,7 +16,8 @@ else try {
   const response = await authFetch(`/api/orders/${encodeURIComponent(id)}`); const payload = await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(payload.message || 'Could not load order.');
   const order = payload.data.order; title.textContent = `Order ${order.orderNumber || 'confirmed'}`; details.replaceChildren();
-  for (const [label, value] of [['Status', order.status], ['Payment', order.paymentStatus], ['Total', `₹${Number(order.total || 0).toLocaleString('en-IN')}`]]) { const p=document.createElement('p'), strong=document.createElement('strong'); strong.textContent=String(value ?? '—'); p.append(`${label}: `,strong); details.appendChild(p); }
+  for (const [label, value] of [['Status', order.status], ['Payment method', String(order.paymentMethod || 'cod').toUpperCase()], ['Payment status', order.paymentStatus], ['Total', `₹${Number(order.total || 0).toLocaleString('en-IN')}`]]) { const p=document.createElement('p'), strong=document.createElement('strong'); strong.textContent=String(value ?? '—'); p.append(`${label}: `,strong); details.appendChild(p); }
+  if (order.paymentMethod === 'cod' && order.status !== 'cancelled') { const p=document.createElement('p'); p.textContent='💵 Cash on Delivery — payment will be collected at delivery.'; details.appendChild(p); }
   if (order.paymentStatus === 'paid') { const a=document.createElement('a'); a.className='secondary-button'; a.href=`./invoice.html?order=${encodeURIComponent(order._id)}`; a.textContent='View / Print Invoice 🧾'; actions.appendChild(a); }
 } catch (error) { title.textContent='Unable to load order'; details.textContent=error.message || 'Something went wrong.'; }
 </script></body></html>
