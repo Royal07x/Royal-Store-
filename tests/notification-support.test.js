@@ -40,6 +40,6 @@ test('order status changes notify the customer and COD creation message is accur
 
 test('support update notification includes the admin reply when provided', async () => {
   const source = await read('backend/src/routes/admin.routes.js');
-  assert.match(source, /ticket\.adminReply\?/);
+  assert.match(source, /ticket\.adminReply\s*\?/);
   assert.match(source, /Support replied to/);
 });
