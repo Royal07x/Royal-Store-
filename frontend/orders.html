@@ -18,6 +18,6 @@ else try {
   const order = payload.data.order; title.textContent = `Order ${order.orderNumber || 'confirmed'}`; details.replaceChildren();
   for (const [label, value] of [['Status', order.status], ['Payment method', String(order.paymentMethod || 'cod').toUpperCase()], ['Payment status', order.paymentStatus], ['Total', `₹${Number(order.total || 0).toLocaleString('en-IN')}`]]) { const p=document.createElement('p'), strong=document.createElement('strong'); strong.textContent=String(value ?? '—'); p.append(`${label}: `,strong); details.appendChild(p); }
   if (order.paymentMethod === 'cod' && order.status !== 'cancelled') { const p=document.createElement('p'); p.textContent='💵 Cash on Delivery — payment will be collected at delivery.'; details.appendChild(p); }
-  if (order.paymentStatus === 'paid') { const a=document.createElement('a'); a.className='secondary-button'; a.href=`./invoice.html?order=${encodeURIComponent(order._id)}`; a.textContent='View / Print Invoice 🧾'; actions.appendChild(a); }
+  if (order.status !== 'cancelled') { const a=document.createElement('a'); a.className='secondary-button'; a.href=`./invoice.html?order=${encodeURIComponent(order._id)}`; a.textContent='View / Print Order Receipt 🧾'; actions.appendChild(a); }
 } catch (error) { title.textContent='Unable to load order'; details.textContent=error.message || 'Something went wrong.'; }
 </script></body></html>

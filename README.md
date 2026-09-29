@@ -51,6 +51,7 @@ Full-stack ecommerce rebuild for the Royal Store V2 project.
 - Order creation notifications match the current COD checkout flow.
 - Admin order status changes generate customer notifications when the status actually changes.
 - Notification records are scoped to the owning customer; notification read updates cannot modify another customer's record.
+
 ### Step 19 — Reviews & Ratings
 - Customers can submit a review only when authenticated and only against their own delivered order.
 - The reviewed product must actually be present in that delivered order; the server does not trust a client-supplied purchase claim.
@@ -62,6 +63,7 @@ Full-stack ecommerce rebuild for the Royal Store V2 project.
 - Review submission is rate-limited.
 - Delivered COD orders are eligible for reviews; review eligibility is not incorrectly tied to paid payment status.
 - A previously purchased product can still receive its verified review even if the product is later deactivated.
+
 ### Step 18 — Product Management
 - Admin product CRUD is protected by the authenticated admin role.
 - Product creation/editing validates SKU, slug, name, description, non-negative price, integer stock and image URLs.
@@ -81,6 +83,14 @@ Full-stack ecommerce rebuild for the Royal Store V2 project.
 - Before redirecting to the order page, the frontend verifies that the server returned payment method `cod` and payment status `pending`.
 - Razorpay order/signature verification and dynamic QR generation remain future payment infrastructure and are not enabled in the current COD checkout.
 - Live MongoDB, Razorpay and browser checks still require a controlled environment with real service credentials.
+
+### Step 21 — Invoices + Order Receipt
+- Every non-cancelled customer order can open a protected printable receipt.
+- Paid orders are represented as invoices; COD orders are represented as order receipts until payment is actually collected.
+- Receipt records snapshot item names, SKUs, prices, quantities and shipping address so the document does not depend on later product edits.
+- Access is ownership-scoped and cancelled orders are blocked.
+- Gateway payment identifiers and secrets are excluded from customer-facing documents.
+- Browser Print / Save PDF is supported; a server-generated PDF remains a future enhancement.
 
 The repository contains automated Node.js tests plus the core storefront/backend/admin modules listed above. Password reset uses one-time hashed tokens with expiry, generic account-discovery responses, and JWT invalidation after a password change.
 
