@@ -24,3 +24,13 @@ test('coupon model supports percent/fixed, validity and usage controls', async (
   const model = await read('backend/src/models/Coupon.js');
   for (const field of ['code', 'type', 'value', 'minSubtotal', 'usageLimit', 'usedCount', 'startsAt', 'expiresAt', 'active']) assert.match(model, new RegExp(field));
 });
+
+test('admin product management validates and safely toggles products', async () => {
+  const admin = await read('backend/src/routes/admin.routes.js');
+  assert.match(admin, /requireRole\('admin'\)/);
+  assert.match(admin, /Stock must be a non-negative integer/);
+  assert.match(admin, /Price must be a non-negative number/);
+  assert.match(admin, /Images must use valid http or https URLs/);
+  assert.match(admin, /Category must be one of the active approved categories/);
+  assert.match(admin, /\/products\/:productId\/status/);
+});
