@@ -16,7 +16,7 @@ const orderSchema = new mongoose.Schema({
   items: { type: [itemSchema], required: true, validate: v => v.length > 0 }, shippingAddress: { type: addressSchema, required: true },
   subtotal: { type: Number, required: true, min: 0 }, couponCode: { type: String, trim: true, uppercase: true, maxlength: 40, default: '' },
   discount: { type: Number, min: 0, default: 0 }, shippingFee: { type: Number, min: 0, default: 0 }, total: { type: Number, required: true, min: 0 },
-  currency: { type: String, enum: ['INR'], default: 'INR' }, status: { type: String, enum: ['pending', 'confirmed', 'processing', 'shipped', 'delivered', 'cancelled', 'returned', 'refunded'], default: 'pending', index: true },
+  currency: { type: String, enum: ['INR'], default: 'INR' }, paymentMethod: { type: String, enum: ['cod', 'razorpay'], default: 'cod', index: true }, status: { type: String, enum: ['pending', 'confirmed', 'processing', 'shipped', 'delivered', 'cancelled', 'returned', 'refunded'], default: 'pending', index: true },
   paymentStatus: { type: String, enum: ['pending', 'paid', 'failed', 'refunded'], default: 'pending' }
 }, { timestamps: true });
 
