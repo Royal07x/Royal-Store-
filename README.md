@@ -28,12 +28,25 @@ Full-stack ecommerce rebuild for the Royal Store V2 project.
 
 ## Current status
 
+### Step 17 — Coupons
+- Customer coupon validation is authentication-protected and rate-limited.
+- Coupon codes are normalized to uppercase and restricted to safe characters.
+- Percent coupons cannot exceed 100%.
+- Fixed coupons cannot use a max-discount field.
+- Minimum subtotal, start time, expiry time and usage limit are enforced server-side.
+- Order creation never trusts a client-supplied discount; the server recalculates the coupon discount from the current product subtotal.
+- Coupon usage is reserved atomically against the usage limit during order creation and rolled back if stock reservation or order creation fails.
+- Admin coupon CRUD is protected by the admin role.
+- Admin edits validate the merged coupon state and cannot lower a usage limit below the current used count.
+- Editing an inactive coupon no longer silently reactivates it.
+- Invalid coupon IDs are rejected before database lookup.
+- Deactivation is soft-delete style: the coupon record and usage history remain available to admins.
+
 ### Step 16 — Cart + Checkout + Payment UI/Verification
 - Cart quantity controls respect server-reported stock and show update errors.
-- Cart header buttons now open the cart and show the authenticated cart item count when available.
+- Cart header buttons open the cart and show the authenticated cart item count when available.
 - Checkout supports both normal cart checkout and isolated Buy Now checkout.
 - Checkout shows an estimated subtotal and delivery summary before submission.
-- Coupon validation is connected to the server, while the order endpoint recalculates the final discount.
 - COD is the only enabled payment method for the current phase.
 - Before redirecting to the order page, the frontend verifies that the server returned payment method `cod` and payment status `pending`.
 - Razorpay order/signature verification and dynamic QR generation remain future payment infrastructure and are not enabled in the current COD checkout.
