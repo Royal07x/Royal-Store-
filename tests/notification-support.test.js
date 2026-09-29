@@ -27,3 +27,19 @@ test('admin support updates create a customer notification', async () => {
   assert.match(source, /Notification\.create\(/);
   assert.match(source, /type:\s*['"]support['"]/);
 });
+
+
+test('order status changes notify the customer and COD creation message is accurate', async () => {
+  const service = await read('backend/src/services/notification.service.js');
+  const admin = await read('backend/src/routes/admin.routes.js');
+  assert.match(service, /notifyOrderStatusChanged/);
+  assert.match(service, /Cash on Delivery/);
+  assert.match(admin, /notifyOrderStatusChanged/);
+  assert.match(admin, /previousStatus/);
+});
+
+test('support update notification includes the admin reply when provided', async () => {
+  const source = await read('backend/src/routes/admin.routes.js');
+  assert.match(source, /ticket\.adminReply\?/);
+  assert.match(source, /Support replied to/);
+});
