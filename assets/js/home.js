@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",()=>{const g=document.getElementById("categoryGrid");if(!g)return;CATS.forEach(c=>g.innerHTML+=`<a class="category" href="./shop.html?category=${c.id}"><div class="category-icon">${c.icon}</div><h3>${c.name}</h3><p>${c.desc}</p></a>`)})
