@@ -1,0 +1,8 @@
+const PRODUCTS=[{id:1,cat:"pants",name:"Classic Black Cargo Pants",price:899,icon:"👖"},{id:2,cat:"pants",name:"Relaxed Blue Jeans",price:999,icon:"👖"},{id:3,cat:"shirt",name:"Premium White Shirt",price:699,icon:"👔"},{id:4,cat:"shirt",name:"Oversized Pink Shirt",price:749,icon:"👕"},{id:5,cat:"beauty",name:"Glow Face Serum",price:549,icon:"✨"},{id:6,cat:"beauty",name:"Daily Skincare Kit",price:799,icon:"🧴"},{id:7,cat:"sneakers",name:"Royal Street Sneakers",price:1499,icon:"👟"},{id:8,cat:"sneakers",name:"Classic White Sneakers",price:1299,icon:"👟"},{id:9,cat:"kids",name:"Fun Building Blocks",price:499,icon:"🧸"},{id:10,cat:"kids",name:"Kids Creative Toy Set",price:599,icon:"🧩"}];
+const CATS=[{id:"pants",name:"Pants",icon:"👖",desc:"Everyday bottoms"},{id:"shirt",name:"Shirt",icon:"👕",desc:"Clean everyday style"},{id:"beauty",name:"Beauty",icon:"✨",desc:"Care & glow"},{id:"sneakers",name:"Sneakers",icon:"👟",desc:"Street-ready pairs"},{id:"kids",name:"Kids' Toy",icon:"🧸",desc:"Fun for little ones"}];
+function getCart(){try{return JSON.parse(localStorage.getItem("royal-cart")||"[]")}catch{return[]}}
+function saveCart(c){localStorage.setItem("royal-cart",JSON.stringify(c));updateCounts()}
+function addToCart(id){const c=getCart();const x=c.find(i=>i.id===id);x?x.qty++:c.push({id,qty:1});saveCart(c)}
+function updateCounts(){const n=getCart().reduce((s,i)=>s+i.qty,0);document.querySelectorAll("#cartCount,#cartCountMobile").forEach(x=>x.textContent=n)}
+function money(n){return "₹"+n.toLocaleString("en-IN")}
+document.addEventListener("DOMContentLoaded",updateCounts);
